@@ -1,36 +1,145 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Filipino Web3 - Next.js
+
+A modern Next.js application for the Filipino Web3 community, converted from the original HTML/CSS/JS website.
+
+## Features
+
+- 🚀 Built with Next.js 15 and React 19
+- 📱 Responsive design with mobile-first approach
+- 🎨 Custom CSS with CSS variables for theming
+- 🔧 TypeScript for type safety
+- 📦 Modern component architecture
+- 🖼️ Optimized images with Next.js Image component
+- 📝 Contact form with reCAPTCHA integration
+- 🎯 Interactive FAQs with smooth animations
+- 👥 Team member showcase with social links
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Custom CSS with CSS Variables
+- **Icons**: Unicons and Font Awesome
+- **Fonts**: Google Fonts (Montserrat)
+- **Forms**: FormKeep integration with reCAPTCHA
+- **Package Manager**: pnpm
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- pnpm (recommended) or npm
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd filipinoweb3-nextjs
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+pnpm install
+# or
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+pnpm dev
+# or
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles and CSS variables
+│   ├── layout.tsx           # Root layout with metadata
+│   └── page.tsx             # Home page
+└── components/
+    ├── Navigation.tsx       # Navigation bar with mobile menu
+    ├── Header.tsx           # Hero section
+    ├── Categories.tsx       # Vision and Mission section
+    ├── Values.tsx           # Core values section
+    ├── Team.tsx             # Team members showcase
+    ├── FAQs.tsx             # Interactive FAQ section
+    ├── Contact.tsx          # Contact form
+    └── Footer.tsx           # Footer with links
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Navigation
+- Fixed navigation bar with scroll effects
+- Mobile-responsive hamburger menu
+- Smooth scroll navigation
 
-## Deploy on Vercel
+### Header
+- Hero section with call-to-action
+- Responsive image with Next.js Image optimization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Team Section
+- Core team and founding members
+- Hover effects with social media links
+- Responsive grid layout
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### FAQs
+- Interactive accordion-style questions
+- Smooth open/close animations
+- Client-side state management
+
+### Contact Form
+- FormKeep integration
+- reCAPTCHA v3 protection
+- Form validation and state management
+
+## Styling
+
+The project uses custom CSS with CSS variables for consistent theming:
+
+```css
+:root {
+  --color-primary: #055709;
+  --color-bg: #05386b;
+  --color-bg1: #06407a;
+  --color-bg2: #0c5eb1;
+  /* ... more variables */
+}
+```
+
+## Deployment
+
+The application is ready for deployment on platforms like:
+
+- **Vercel** (recommended for Next.js)
+- **Netlify**
+- **AWS Amplify**
+- **Railway**
+
+### Vercel Deployment
+
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For questions or support, contact the Filipino Web3 team at filipinoweb3@gmail.com
