@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,36 +42,93 @@ export default function Navigation() {
     setIsMenuOpen(false);
   };
 
+  const menuItems = [
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "/community", label: "Community" },
+    { href: "#team", label: "Team" },
+    { href: "#faqs", label: "FAQs" },
+    { href: "#contact", label: "Contact" }
+  ];
+
   return (
-    <nav aria-label="Primary navigation">
+    <motion.nav 
+      aria-label="Primary navigation"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="container nav__container">
-        <a href="/" className="nav__brand" aria-label="FW3 Home">
+        <motion.a 
+          href="/" 
+          className="nav__brand" 
+          aria-label="FW3 Home"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <h4>FW3</h4>
-        </a>
+        </motion.a>
+        
         <ul className={`nav__menu ${isMenuOpen ? 'flex' : 'hidden'}`}>
-          <li><a href="#home" onClick={closeMenu}>Home</a></li>
-          <li><a href="#about" onClick={closeMenu}>About</a></li>
-          <li><a href="/community" onClick={closeMenu}>Community</a></li>
-          <li><a href="#team" onClick={closeMenu}>Team</a></li>
-          <li><a href="#faqs" onClick={closeMenu}>FAQs</a></li>
-          <li><a href="#contact" onClick={closeMenu}>Contact</a></li>
+          {menuItems.map((item, index) => (
+            <motion.li
+              key={item.href}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+            >
+              <motion.a 
+                href={item.href} 
+                onClick={closeMenu}
+                whileHover={{ 
+                  scale: 1.05,
+                  color: "#22d3ee"
+                }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                {item.label}
+              </motion.a>
+            </motion.li>
+          ))}
         </ul>
-        <a href="#contact" className="btn btn-secondary nav__cta" aria-label="Join our community">Join</a>
-        <button 
+        
+        <motion.a 
+          href="#contact" 
+          className="btn btn-secondary nav__cta" 
+          aria-label="Join our community"
+          whileHover={{ 
+            scale: 1.05,
+            boxShadow: "0 10px 25px rgba(0,0,0,0.3)"
+          }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
+          Join
+        </motion.a>
+        
+        <motion.button 
           id="open-menu-btn" 
           onClick={toggleMenu}
           style={{ display: isMenuOpen ? 'none' : 'inline-block' }}
+          whileHover={{ scale: 1.1, rotate: 90 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <i className="uil uil-bars"></i>
-        </button>
-        <button 
+        </motion.button>
+        
+        <motion.button 
           id="close-menu-btn" 
           onClick={closeMenu}
           style={{ display: isMenuOpen ? 'inline-block' : 'none' }}
+          whileHover={{ scale: 1.1, rotate: 90 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <i className="uil uil-multiply"></i>
-        </button>
+        </motion.button>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

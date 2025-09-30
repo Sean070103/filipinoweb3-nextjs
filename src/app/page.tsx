@@ -1,4 +1,5 @@
 import Navigation from '@/components/Navigation';
+import CosmicHero from '@/components/CosmicHero';
 import Header from '@/components/Header';
 import Categories from '@/components/Categories';
 import Values from '@/components/Values';
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
+      <CosmicHero />
       <Header />
       <Categories />
       <Values />

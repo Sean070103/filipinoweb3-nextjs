@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import PerformanceMonitor from "@/components/PerformanceMonitor";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
           backgroundImage: "url('/images/bg-texture.png')",
         }}
       >
+        <PerformanceMonitor />
         {children}
       </body>
     </html>

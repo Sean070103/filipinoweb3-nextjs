@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
   {
@@ -37,27 +38,126 @@ function FAQItem({ faq, index }: { faq: any, index: number }) {
   };
 
   return (
-    <article className={`faq ${isOpen ? 'open' : ''}`} onClick={toggleFAQ}>
-      <div className="faq__icon">
+    <motion.article 
+      className={`faq ${isOpen ? 'open' : ''}`} 
+      onClick={toggleFAQ}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      whileHover={{ 
+        scale: 1.02,
+        boxShadow: "0 15px 35px rgba(34, 211, 238, 0.2)"
+      }}
+      viewport={{ once: true }}
+    >
+      <motion.div 
+        className="faq__icon"
+        animate={{ rotate: isOpen ? 45 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        whileHover={{ scale: 1.2 }}
+      >
         <i className={`uil ${isOpen ? 'uil-minus' : 'uil-plus'}`}></i>
-      </div>
+      </motion.div>
       <div className="question__answer">
-        <h4>{faq.question}</h4>
-        <p>{faq.answer}</p>
+        <motion.h4
+          animate={{ color: isOpen ? "#22d3ee" : "#ffffff" }}
+          transition={{ duration: 0.3 }}
+        >
+          {faq.question}
+        </motion.h4>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.p
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              style={{ overflow: "hidden" }}
+            >
+              {faq.answer}
+            </motion.p>
+          )}
+        </AnimatePresence>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
 export default function FAQs() {
   return (
-    <section id="faqs" className="faqs">
-      <h2>Frequently Asked Questions</h2>
-      <div className="container faqs__container">
-        {faqs.map((faq, index) => (
-          <FAQItem key={index} faq={faq} index={index} />
-        ))}
+    <section id="faqs" className="faqs relative overflow-hidden">
+      {/* Enhanced Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black" />
+      
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        <motion.div 
+          className="absolute top-20 left-10 w-32 h-32 bg-cyan-400/10 rounded-full blur-xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute top-40 right-20 w-24 h-24 bg-purple-400/10 rounded-full blur-lg"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-20 left-1/4 w-40 h-40 bg-cyan-400/5 rounded-full blur-2xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.1, 0.4, 0.1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+      </div>
+      
+      <div className="container relative z-10">
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-5xl lg:text-6xl font-mono font-black text-white"
+                style={{ textShadow: '0 0 20px rgba(34, 211, 238, 0.5), 0 0 40px rgba(34, 211, 238, 0.3)' }}>
+            Frequently Asked Questions
+          </span>
+        </motion.h2>
+        
+        <motion.div 
+          className="faqs__container"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          {faqs.map((faq, index) => (
+            <FAQItem key={index} faq={faq} index={index} />
+          ))}
+        </motion.div>
       </div>
     </section>
   );
 }
+
