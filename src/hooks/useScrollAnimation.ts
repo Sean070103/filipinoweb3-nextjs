@@ -34,4 +34,7 @@ export const useParallax = (speed: number = 0.5) => {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a61c099 (chore: Clean up code by removing unnecessary empty lines in multiple components)

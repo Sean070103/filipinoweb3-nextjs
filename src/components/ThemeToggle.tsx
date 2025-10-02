@@ -38,4 +38,7 @@ export default function ThemeToggle() {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a61c099 (chore: Clean up code by removing unnecessary empty lines in multiple components)
