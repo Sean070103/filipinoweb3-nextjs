@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th, strong, em {
 
 /* Pixelated text effects */
 .pixelated {
-  font-family: 'Courier New', monospace !important;
+  font-family: var(--font-press-start-2p), 'Courier New', monospace !important;
   font-weight: bold !important;
   text-rendering: optimizeSpeed !important;
   -webkit-font-smoothing: none !important;
@@ -86,6 +86,40 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th, strong, em {
   image-rendering: pixelated !important;
   image-rendering: -moz-crisp-edges !important;
   image-rendering: crisp-edges !important;
+  font-feature-settings: normal !important;
+  font-variant-ligatures: none !important;
+  text-rendering: geometricPrecision !important;
+  -webkit-text-stroke: 0 !important;
+  text-stroke: 0 !important;
+}
+
+/* Neon sign flicker animation */
+@keyframes neonFlicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00;
+  }
+  20%, 24%, 55% {
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00;
+  }
+}
+
+/* Futuristic glow animation */
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 25px #00ff00;
+  }
+  100% {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
+  }
+}
+
+/* Futuristic values heading */
+.values h2 {
+  font-family: var(--font-orbitron), 'Arial', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em !important;
+  line-height: 1.0 !important;
 }
 
 /* Terminal cursor blinking animation */
@@ -893,9 +927,12 @@ header::before {
 
 /* ===== FOOTER ====== */
 footer {
-  background: var(--color-bg);
+  background: linear-gradient(180deg, #071521 0%, #05101a 100%);
+  color: #cfd8e3;
   padding: 2rem;
   font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 .footer__container {
@@ -906,6 +943,7 @@ footer {
 
 .footer__container > div h4 {
   margin-bottom: 1.2rem;
+  color: #ffffff;
 }
 
 .footer_1 p {
@@ -916,8 +954,10 @@ footer ul li {
   margin-bottom: 0.7rem;
 }
 
+footer ul li a { color: #e2e8f0; }
 footer ul li a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: #22d3ee;
 }
 
 .footer__socials {
@@ -931,15 +971,17 @@ footer ul li a:hover {
   transition: var(--transition);
 }
 
+.footer__socials a { color: #e2e8f0; }
 .footer__socials a:hover {
   transform: translateY(-3px);
-  color: var(--color-bg2);
+  color: #22d3ee;
 }
 
 .footer__copyright {
   grid-column: 1 / -1;
   text-align: center;
   margin-top: 1rem;
+  color: #98a6b8;
 }
 
 /* ===== TEAM ====== */
@@ -1197,12 +1239,26 @@ textarea {
   border: 2px solid transparent;
   transition: var(--transition);
 }
+/* Override legacy blue inside modern contact section */
+.contact-modern input,
+.contact-modern textarea {
+  background: #111 !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.4) !important;
+}
+.contact-modern input::placeholder,
+.contact-modern textarea::placeholder { color: rgba(255,255,255,0.6) !important; }
 
 input:focus,
 textarea:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(5, 87, 9, 0.1);
+}
+.contact-modern input:focus,
+.contact-modern textarea:focus {
+  border-color: rgba(255,255,255,0.6) !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.08) !important;
 }
 
 .contact__form .btn {

@@ -65,7 +65,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden py-24">
+    <section id="contact" className="contact-modern relative overflow-hidden py-24">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-950 to-black" />
       {/* Grid overlay */}
@@ -177,7 +177,7 @@ export default function Contact() {
               value={formData.firstName}
               onChange={handleInputChange}
               required
-              className="w-full rounded-lg border border-white/15 bg-black/40 px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-white/40 appearance-none"
+              className="w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
                 whileFocus={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
@@ -192,7 +192,7 @@ export default function Contact() {
               value={formData.lastName}
               onChange={handleInputChange}
               required
-              className="w-full rounded-lg border border-white/15 bg-black/40 px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-white/40 appearance-none"
+              className="w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
                 whileFocus={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
             />
@@ -211,7 +211,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="mt-4 w-full rounded-lg border border-white/15 bg-black/40 px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-white/40 appearance-none"
+              className="mt-4 w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
               whileFocus={{ scale: 1.02 }}
               viewport={{ once: true }}
           />
@@ -229,7 +229,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="mt-4 w-full rounded-lg border border-white/15 bg-black/40 px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-white/40 appearance-none"
+              className="mt-4 w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
               whileFocus={{ scale: 1.02 }}
               viewport={{ once: true }}
           />

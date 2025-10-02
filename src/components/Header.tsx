@@ -44,7 +44,8 @@ export default function Header() {
             height: '240px', 
             background: 'rgba(34,211,238,0.12)', 
             filter: 'blur(60px)', 
-            borderRadius: '50%' 
+            borderRadius: '50%',
+            y: y1
           }}
           animate={{
             x: [0, 20, -10, 0],
@@ -56,7 +57,6 @@ export default function Header() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          style={{ y: y1 }}
         />
         <motion.div 
           style={{ 
@@ -67,7 +67,8 @@ export default function Header() {
             height: '280px', 
             background: 'rgba(168,85,247,0.12)', 
             filter: 'blur(70px)', 
-            borderRadius: '50%' 
+            borderRadius: '50%',
+            y: y2
           }}
           animate={{
             x: [0, -25, 15, 0],
@@ -79,7 +80,6 @@ export default function Header() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          style={{ y: y2 }}
         />
         
         {/* Floating Particles */}
@@ -158,19 +158,23 @@ export default function Header() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="relative text-white font-bold"
             style={{ 
-              color: '#ffffff !important',
-              textShadow: '0 0 30px rgba(34, 211, 238, 0.5), 0 0 60px rgba(168, 85, 247, 0.3)',
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+              color: '#ffffff',
+              textShadow: 'none',
+              fontFamily: 'var(--font-jersey), Montserrat, sans-serif',
+              fontSize: 'clamp(4.5rem, 9vw, 8rem)',
+              lineHeight: 1.05,
               fontWeight: '800',
-              WebkitTextFillColor: '#ffffff !important'
+              WebkitTextFillColor: 'currentColor',
+              display: 'inline-block'
             }}
             whileHover={{ 
               scale: 1.02,
-              textShadow: '0 0 40px rgba(34, 211, 238, 0.8), 0 0 60px rgba(168, 85, 247, 0.6)'
+              textShadow: 'none'
             }}
           >
-            Filipino Web3
+            <span style={{ color: '#ffffff' }}>Filipino </span>
+            <span style={{ color: '#39ff14', WebkitTextFillColor: '#39ff14', textShadow: '0 0 8px #39ff14, 0 0 16px #39ff14' }}>WEB3</span>
+            {/* Sweep removed */}
           </motion.h1>
 
           {/* Enhanced Description */}
@@ -246,70 +250,7 @@ export default function Header() {
             </motion.a>
           </motion.div>
 
-          {/* Enhanced Stats with Counter Animation */}
-          <motion.div 
-            className="hero__stats"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-          >
-            <motion.span
-              whileHover={{ 
-                scale: 1.1, 
-                color: "#ffffff",
-                textShadow: "0 0 20px rgba(34, 211, 238, 0.8)"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative group cursor-pointer text-white"
-              style={{ color: '#ffffff !important' }}
-            >
-              <strong>2K+</strong> members
-              <motion.div
-                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-transparent"
-                initial={{ width: 0 }}
-                whileHover={{ width: '100%' }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.span>
-            <span className="dot" />
-            <motion.span
-              whileHover={{ 
-                scale: 1.1, 
-                color: "#ffffff",
-                textShadow: "0 0 20px rgba(168, 85, 247, 0.8)"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative group cursor-pointer text-white"
-              style={{ color: '#ffffff !important' }}
-            >
-              <strong>30+</strong> partners
-              <motion.div
-                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-transparent"
-                initial={{ width: 0 }}
-                whileHover={{ width: '100%' }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.span>
-            <span className="dot" />
-            <motion.span
-              whileHover={{ 
-                scale: 1.1, 
-                color: "#ffffff",
-                textShadow: "0 0 20px rgba(34, 211, 238, 0.8)"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="relative group cursor-pointer text-white"
-              style={{ color: '#ffffff !important' }}
-            >
-              <strong>100+</strong> events
-              <motion.div
-                className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-transparent"
-                initial={{ width: 0 }}
-                whileHover={{ width: '100%' }}
-                transition={{ duration: 0.3 }}
-              />
-            </motion.span>
-          </motion.div>
+          {/* Stats removed as requested */}
         </motion.div>
         
         {/* Enhanced Right Section with 3D Effects */}
@@ -319,82 +260,16 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
-          <motion.div 
-            className="header__right-image relative"
-            whileHover={{ 
-              scale: 1.05,
-              rotateY: 5,
-              rotateX: 5
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            style={{ transformStyle: 'preserve-3d' }}
-          >
-            {/* 3D Container */}
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-                rotateY: [0, 2, -2, 0],
-                rotateX: [0, 1, -1, 0],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              style={{ transformStyle: 'preserve-3d' }}
-            >
+          <div className="header__right-image relative" style={{ transformStyle: 'flat' }}>
             <Image 
               src="/images/fw3-logo-bg1.png" 
               alt="Filipino Web3 Logo" 
               width={500}
               height={500}
-                className="relative z-10"
-                style={{ 
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.3))',
-                  transform: 'translateZ(20px)'
-                }}
-              />
-              
-              {/* Glow Effect Behind Image */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 rounded-full blur-xl"
-                animate={{
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                style={{ transform: 'translateZ(-10px)' }}
-              />
-            </motion.div>
-
-            {/* Floating Elements Around Logo */}
-            {Array.from({ length: 6 }, (_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-2 h-2 bg-cyan-400 rounded-full"
-                style={{
-                  left: `${20 + (i * 15)}%`,
-                  top: `${30 + (i * 10)}%`,
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  x: [0, Math.random() * 10 - 5, 0],
-                  scale: [1, 1.5, 1],
-                  opacity: [0.3, 1, 0.3],
-                }}
-                transition={{
-                  duration: 3 + i,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.5,
-                }}
-              />
-            ))}
-          </motion.div>
+              className="relative z-10"
+              style={{ filter: 'none', transform: 'none' }}
+            />
+          </div>
         </motion.div>
       </div>
     </header>

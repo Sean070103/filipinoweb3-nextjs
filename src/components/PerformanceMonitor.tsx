@@ -45,3 +45,5 @@ export default function PerformanceMonitor() {
   // Don't render anything, just monitor performance
   return null;
 }
+
+

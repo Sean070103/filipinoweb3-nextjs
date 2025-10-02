@@ -54,20 +54,39 @@ export default function Values() {
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black" />
       
       <div className="container relative z-10">
-        {/* Clean Header */}
+        {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-20 flex justify-center"
         >
-          <h2 className="text-5xl lg:text-6xl font-mono font-bold mb-6 text-white">
-            Our Values
-          </h2>
+          <div className="relative inline-block mb-12">
+            {/* No background bar */}
+            <div className="px-0 py-0 bg-transparent">
+              <h2 className="text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[8rem] xl:text-[10rem] 2xl:text-[12rem] font-bold pixelated" style={{ 
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', 
+                letterSpacing: '0.08em', 
+                lineHeight: '1.0', 
+                fontSize: 'clamp(2.5rem, 6vw, 8rem)'
+              }}>
+                <span style={{ 
+                  color: '#000000',
+                  textShadow: '2px 2px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000',
+                  WebkitFontSmoothing: 'none' 
+                }}>OUR </span>
+                <span style={{ 
+                  color: '#00ff00',
+                  textShadow: '0 0 3px #00ff00, 0 0 6px #00ff00, 0 0 9px #00ff00, 2px 2px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000',
+                  WebkitFontSmoothing: 'none'
+                }}>VALUES</span>
+              </h2>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Clean Values Grid */}
+        {/* Values Grid - updated styling */}
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-12 max-w-6xl mx-auto mb-20">
           {values.map((value, index) => (
             <motion.div
@@ -81,8 +100,8 @@ export default function Values() {
               }}
               className="group relative"
             >
-              {/* Clean Card */}
-              <div className="bg-black border-2 border-cyan-400 p-8 hover:border-purple-400 transition-all duration-300">
+              {/* Card */}
+              <div className="bg-black/60 border border-white/10 p-8 hover:border-white/30 transition-all duration-300">
                 {/* Clean Image */}
                 <div className="relative mb-6 overflow-hidden group/image">
                   <Image 
@@ -92,16 +111,13 @@ export default function Values() {
                     height={250}
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover/image:scale-110 group-hover/image:brightness-110"
                   />
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-400/20 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"></div>
-                  {/* Hover Border Effect */}
-                  <div className="absolute inset-0 border-2 border-cyan-400 opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"></div>
+                  {/* Hover Overlay removed for cleaner look */}
                 </div>
                 
-                {/* Clean Content */}
+                {/* Content */}
                 <div className="space-y-4">
-                  <h3 className="text-2xl font-mono font-bold text-cyan-400 mb-3 group-hover:text-purple-400 transition-colors duration-300">
-                    {value.title}
+                  <h3 className="text-4xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-jersey)', letterSpacing: '0.03em' }}>
+                    {value.title.toUpperCase()}
                   </h3>
                   <p className="text-gray-300 font-mono text-base leading-relaxed">
                     {value.description}
@@ -112,7 +128,7 @@ export default function Values() {
           ))}
         </div>
 
-        {/* Clean CTA Section */}
+        {/* CTA Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -120,9 +136,9 @@ export default function Values() {
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <div className="bg-black border-2 border-cyan-400 p-12 max-w-4xl mx-auto text-center hover:border-purple-400 transition-all duration-300">
-            <h3 className="text-3xl font-mono font-bold text-white mb-6">
-              Ready to Build the Future?
+          <div className="bg-black/60 border border-white/10 p-12 max-w-4xl mx-auto text-center">
+            <h3 className="text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-jersey)', letterSpacing: '0.03em' }}>
+              READY TO BUILD THE FUTURE?
             </h3>
             <p className="text-lg text-gray-300 font-mono mb-8 max-w-2xl mx-auto">
               Join our community of Web3 builders, developers, and innovators.
@@ -130,7 +146,7 @@ export default function Values() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-cyan-400 to-purple-400 text-black px-8 py-4 border-2 border-white font-mono font-bold text-lg hover:from-cyan-300 hover:to-purple-300 transition-all duration-300"
+              className="bg-white text-black px-8 py-4 border border-white/10 font-mono font-bold text-lg transition-all duration-300 hover:bg-gray-100"
             >
               JOIN OUR COMMUNITY
             </motion.button>

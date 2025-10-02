@@ -31,3 +31,5 @@ export const useParallax = (speed: number = 0.5) => {
   const { scrollY } = useScrollAnimation();
   return scrollY * speed;
 };
+
+

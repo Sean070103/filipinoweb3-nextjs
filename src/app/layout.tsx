@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Jersey_10, Press_Start_2P, Orbitron } from "next/font/google";
 import "./globals.css";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
 
@@ -7,6 +7,24 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-montserrat",
+});
+
+const jersey = Jersey_10({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-jersey",
+});
+
+const pressStart2P = Press_Start_2P({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-press-start-2p",
+});
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-orbitron",
 });
 
 export const metadata: Metadata = {
@@ -33,7 +51,7 @@ export default function RootLayout({
         <script src="https://kit.fontawesome.com/f8565b8867.js" crossOrigin="anonymous"></script>
       </head>
       <body
-        className={`${montserrat.variable} font-sans antialiased`}
+        className={`${montserrat.variable} ${jersey.variable} ${pressStart2P.variable} ${orbitron.variable} font-sans antialiased`}
         style={{
           backgroundImage: "url('/images/bg-texture.png')",
         }}

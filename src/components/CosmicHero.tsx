@@ -221,36 +221,33 @@ export default function CosmicHero() {
              />
             
              {/* Main Sphere */}
-             <motion.div
-               className="relative w-80 h-80 rounded-full overflow-hidden"
-               style={{
-                 background: `
-                   radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
-                   radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
-                   radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.8) 30%, rgba(40, 40, 40, 0.6) 60%, rgba(0, 0, 0, 0.95) 100%)
-                 `,
-                 boxShadow: `
-                   0 0 60px rgba(255, 255, 255, 0.1),
-                   0 0 120px rgba(0, 0, 0, 0.8),
-                   inset 0 0 60px rgba(60, 60, 60, 0.3),
-                   inset 0 0 120px rgba(0, 0, 0, 0.5)
-                 `,
-                 border: '1px solid rgba(255, 255, 255, 0.1)',
-               }}
-               animate={{
-                 scale: [1, 1.05, 1],
-                 boxShadow: [
-                   '0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.3), inset 0 0 120px rgba(0, 0, 0, 0.5)',
-                   '0 0 80px rgba(255, 255, 255, 0.2), 0 0 160px rgba(0, 0, 0, 0.9), inset 0 0 80px rgba(80, 80, 80, 0.5), inset 0 0 160px rgba(0, 0, 0, 0.7)',
-                   '0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.3), inset 0 0 120px rgba(0, 0, 0, 0.5)',
-                 ],
-               }}
-               transition={{
-                 duration: 4,
-                 repeat: Infinity,
-                 ease: "easeInOut",
-               }}
-             >
+            <motion.div
+              className="relative w-80 h-80 rounded-full overflow-hidden"
+              style={{
+                background: `
+                  radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+                  radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+                  radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.8) 30%, rgba(40, 40, 40, 0.6) 60%, rgba(0, 0, 0, 0.95) 100%)
+                `,
+                boxShadow: `
+                  0 0 60px rgba(255, 255, 255, 0.1),
+                  0 0 120px rgba(0, 0, 0, 0.8),
+                  inset 0 0 60px rgba(60, 60, 60, 0.3),
+                  inset 0 0 120px rgba(0, 0, 0, 0.5)
+                `,
+                border: '1px solid rgba(255, 255, 255, 0.1)'
+              }}
+              animate={{
+                scale: [1, 1.05, 1],
+                boxShadow: [
+                  '0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.3), inset 0 0 120px rgba(0, 0, 0, 0.5)',
+                  '0 0 80px rgba(255, 255, 255, 0.2), 0 0 160px rgba(0, 0, 0, 0.9), inset 0 0 80px rgba(80, 80, 80, 0.5), inset 0 0 160px rgba(0, 0, 0, 0.7)',
+                  '0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.3), inset 0 0 120px rgba(0, 0, 0, 0.5)'
+                ]
+              }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              {/* Web3 Text with Glitch Effect and surface details remain below */}
               {/* Web3 Text with Glitch Effect */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.h1
@@ -466,21 +463,21 @@ export default function CosmicHero() {
              animate={{ opacity: 1, y: 0 }}
              transition={{ delay: 1, duration: 1 }}
            >
-             <h2 
-               className="text-3xl text-white font-bold mb-4 pixelated terminal-text"
-               style={{ 
-                 fontFamily: 'monospace',
-                 fontSize: '2rem',
-                 letterSpacing: '0.1em',
-                 textShadow: '2px 2px 0px #00ff00, -2px -2px 0px #ff00ff, 4px 4px 0px #0000ff',
-                 filter: 'contrast(1.5) brightness(1.2)',
-                 imageRendering: 'pixelated',
-                 WebkitFontSmoothing: 'none',
-                 fontSmooth: 'never',
-               }}
-             >
-               FILIPINO WEB3 COMMUNITY<span className="terminal-cursor">█</span>
-             </h2>
+            <h2 
+              className="text-3xl text-white font-bold mb-4 pixelated"
+              style={{ 
+                fontFamily: 'var(--font-jersey), monospace',
+                fontSize: '2.25rem',
+                letterSpacing: '0.12em',
+                color: '#39ff14',
+                textShadow: '0 0 8px #39ff14, 0 0 16px #39ff14',
+                imageRendering: 'pixelated',
+                WebkitFontSmoothing: 'none',
+                fontSmooth: 'never'
+              }}
+            >
+              FILIPINO WEB3 COMMUNITY
+            </h2>
            </motion.div>
 
         </div>
