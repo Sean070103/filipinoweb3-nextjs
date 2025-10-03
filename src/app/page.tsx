@@ -3,6 +3,7 @@ import CosmicHero from '@/components/CosmicHero';
 import Header from '@/components/Header';
 import Categories from '@/components/Categories';
 import Values from '@/components/Values';
+import FilipinoVisualAccents from '@/components/FilipinoVisualAccents';
 import Team from '@/components/Team';
 import FAQs from '@/components/FAQs';
 import Contact from '@/components/Contact';
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <Categories />
       <Values />
+      <FilipinoVisualAccents />
       <Team />
       <FAQs />
       <Contact />

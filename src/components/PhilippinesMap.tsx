@@ -15,7 +15,7 @@ export default function PhilippinesMap() {
     <div className="flex flex-col items-center p-6 relative">
       <h2 className="text-2xl font-bold mb-4">Philippines Provinces Map</h2>
 
-      <div className="w-full max-w-5xl bg-[var(--surface-1)] border border-[var(--border-low)] rounded-xl overflow-hidden">
+      <div className="w-full max-w-5xl bg-gradient-to-br from-[var(--ph-blue)]/20 to-[var(--ph-red)]/20 border-2 border-[var(--ph-yellow)]/30 rounded-xl overflow-hidden shadow-2xl">
         <ComposableMap
           projection="geoMercator"
           projectionConfig={{ scale: 4000, center: [123, 12] }}
@@ -43,13 +43,23 @@ export default function PhilippinesMap() {
                       onMouseLeave={() => setTooltip(t => ({ ...t, visible: false }))}
                       style={{
                         default: {
-                          fill: selected ? '#22d3ee' : '#0b1220',
+                          fill: selected ? '#FCD116' : '#0038A8',
                           outline: 'none',
-                          stroke: '#0ea5b7',
-                          strokeWidth: 0.35,
+                          stroke: '#CE1126',
+                          strokeWidth: 0.5,
                         },
-                        hover: { fill: '#162132', outline: 'none' },
-                        pressed: { fill: '#3b82f6', outline: 'none' },
+                        hover: { 
+                          fill: '#FCD116', 
+                          outline: 'none',
+                          stroke: '#CE1126',
+                          strokeWidth: 0.8,
+                        },
+                        pressed: { 
+                          fill: '#CE1126', 
+                          outline: 'none',
+                          stroke: '#FCD116',
+                          strokeWidth: 1,
+                        },
                       }}
                     />
                   );

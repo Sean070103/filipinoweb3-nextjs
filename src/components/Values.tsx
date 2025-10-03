@@ -29,22 +29,22 @@ export default function Values() {
 
   const values = [
     {
-      title: "Holistic",
+      title: "Bayanihan",
       image: "/images/holistic.png",
-      description: "We believe in the interconnectedness of all Web3 roles. Every builder, developer, and community member plays a vital part in our ecosystem's success.",
-      color: "from-blue-500 to-cyan-500"
+      description: "The Filipino spirit of community cooperation drives our Web3 ecosystem. Every builder, developer, and community member works together for collective success.",
+      color: "from-red-500 to-yellow-500"
     },
     {
-      title: "Connected", 
+      title: "Malasakit", 
       image: "/images/connected.png",
-      description: "Building authentic relationships is at the heart of Web3. We foster genuine connections that benefit our entire community.",
-      color: "from-green-500 to-emerald-500"
+      description: "Deep concern for others' welfare guides our Web3 relationships. We build authentic connections that uplift our entire Filipino community.",
+      color: "from-blue-500 to-red-500"
     },
     {
-      title: "Innovative",
+      title: "Diskarte",
       image: "/images/innovative.png", 
-      description: "Web3 moves fast, and so do we. We embrace change, encourage experimentation, and stay ahead of the curve.",
-      color: "from-purple-500 to-pink-500"
+      description: "Filipino resourcefulness meets Web3 innovation. We embrace change with creative problem-solving and stay ahead of the curve.",
+      color: "from-yellow-500 to-blue-500"
     }
   ];
 

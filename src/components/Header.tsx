@@ -172,8 +172,8 @@ export default function Header() {
               textShadow: 'none'
             }}
           >
-            <span style={{ color: '#ffffff' }}>Filipino </span>
-            <span style={{ color: '#39ff14', WebkitTextFillColor: '#39ff14', textShadow: '0 0 8px #39ff14, 0 0 16px #39ff14' }}>WEB3</span>
+            <span style={{ color: '#CE1126', textShadow: '0 0 8px #CE1126, 0 0 16px #CE1126' }}>Filipino </span>
+            <span style={{ color: '#FCD116', WebkitTextFillColor: '#FCD116', textShadow: '0 0 8px #FCD116, 0 0 16px #FCD116' }}>WEB3</span>
             {/* Sweep removed */}
           </motion.h1>
 

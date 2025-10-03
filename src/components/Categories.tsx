@@ -30,7 +30,7 @@ export default function Categories() {
 
   return (
     <section id="home" className="categories relative overflow-hidden">
-      {/* Background */}
+      {/* Clean Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black" />
       
       {/* Static soft glows (no animation) */}
@@ -85,6 +85,14 @@ export default function Categories() {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
+
+
+
+
+
+
+
+                
               >
                 {displayText}
               </motion.div>
@@ -130,7 +138,7 @@ export default function Categories() {
                   fontSize: '1.375rem',
                   lineHeight: 1.7
                 }}>
-                  To be the premium hub of Filipinos in Web3 that is focused on bringing holistic, connected, and innovative principles.
+                  To be the premier global hub for Filipino Web3 innovators, embodying the Bayanihan spirit through holistic, connected, and innovative principles that unite our worldwide Filipino community in building the decentralized future.
                 </p>
               </div>
               {/* Bullets removed as requested */}
@@ -164,15 +172,15 @@ export default function Categories() {
                   fontSize: '1.375rem',
                   lineHeight: 1.7
                 }}>
-                  Provide a channel for Web3 community to exchange ideas, information, and opportunities.
+                  Create a comprehensive platform for the Filipino Web3 community to exchange ideas, share knowledge, and discover opportunities, fostering innovation through the spirit of Malasakit and Pagkakaisa.
                 </p>
               </div>
               {/* Bullets removed; exact sentences preserved */}
               <p className="text-gray-300" style={{ fontFamily: 'var(--font-montserrat)', fontSize: '1.125rem', lineHeight: 1.7, maxWidth: '62ch' }}>
-                Share valuable information and resources for the community that will help with upscaling skills in Web3 career and development.
+                Provide comprehensive educational resources, mentorship programs, and skill development opportunities to empower Filipino developers, builders, and entrepreneurs in the Web3 ecosystem.
               </p>
               <p className="text-gray-300 mt-4" style={{ fontFamily: 'var(--font-montserrat)', fontSize: '1.125rem', lineHeight: 1.7, maxWidth: '62ch' }}>
-                Help professionalize the field of Web3 industry through continuing education and training.
+                Establish professional standards and best practices in the Web3 industry through continuous education, certification programs, and collaborative learning initiatives.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded text-xs bg-indigo-500/10 text-indigo-300 border border-indigo-500/30" style={{ fontFamily: 'var(--font-jersey)', imageRendering: 'pixelated', textTransform: 'uppercase' }}>EDUCATION</span>

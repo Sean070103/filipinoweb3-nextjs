@@ -469,8 +469,8 @@ export default function CosmicHero() {
                 fontFamily: 'var(--font-jersey), monospace',
                 fontSize: '2.25rem',
                 letterSpacing: '0.12em',
-                color: '#39ff14',
-                textShadow: '0 0 8px #39ff14, 0 0 16px #39ff14',
+                color: '#FCD116',
+                textShadow: '0 0 8px #FCD116, 0 0 16px #FCD116',
                 imageRendering: 'pixelated',
                 WebkitFontSmoothing: 'none',
                 fontSmooth: 'never'
