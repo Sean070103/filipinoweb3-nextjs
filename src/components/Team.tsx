@@ -7,6 +7,8 @@ import { Github, Linkedin, Facebook } from 'lucide-react';
 const coreTeam = [
   {
     name: "Sift",
+    role: "Community Lead",
+    expertise: "Blockchain Development, Community Building",
     image: "/images/Sift.jpg",
     socials: {
       facebook: "https://www.facebook.com/sift.croix",
@@ -16,6 +18,8 @@ const coreTeam = [
   },
   {
     name: "Lupin_XIV",
+    role: "Technical Lead",
+    expertise: "Smart Contracts, DeFi Protocols",
     image: "/images/lupz_u.jpg",
     socials: {
       facebook: "https://www.facebook.com/ljmags14/",
@@ -25,6 +29,8 @@ const coreTeam = [
   },
   {
     name: "Zirk",
+    role: "Developer Relations",
+    expertise: "Developer Tools, API Integration",
     image: "/images/coretoshi_zirk.png",
     socials: {
       facebook: "https://www.facebook.com/GGzirk/",
@@ -34,6 +40,8 @@ const coreTeam = [
   },
   {
     name: "Clivv",
+    role: "NFT & Gaming Lead",
+    expertise: "NFT Development, GameFi, Metaverse",
     image: "/images/clivv_azuki1.jpg",
     socials: {
       facebook: "https://www.facebook.com/clivvx27/",
@@ -43,6 +51,8 @@ const coreTeam = [
   },
   {
     name: "Aerva",
+    role: "Marketing & Growth",
+    expertise: "Digital Marketing, Community Growth",
     image: "/images/Aerva.jpg",
     socials: {
       facebook: "https://web.facebook.com/profile.php?id=100095422653463",
@@ -52,6 +62,8 @@ const coreTeam = [
   },
   {
     name: "Kata",
+    role: "Content Creator",
+    expertise: "Technical Writing, Educational Content",
     image: "/images/Katrina.jpg",
     socials: {
       facebook: "https://web.facebook.com/kyukaii",
@@ -61,6 +73,8 @@ const coreTeam = [
   },
   {
     name: "Waterlemon",
+    role: "Frontend Developer",
+    expertise: "React, Next.js, UI/UX Design",
     image: "/images/Waterlemon.jpg",
     socials: {
       facebook: "https://www.facebook.com/chervin.cruz.7/",
@@ -70,6 +84,8 @@ const coreTeam = [
   },
   {
     name: "Speedy",
+    role: "Operations Manager",
+    expertise: "Project Management, Event Coordination",
     image: "/images/Speedy.jpg",
     socials: {
       facebook: "https://www.facebook.com/rowena.marbida",
@@ -79,6 +95,8 @@ const coreTeam = [
   },
   {
     name: "Mychel_T",
+    role: "Backend Developer",
+    expertise: "Node.js, Database Design, API Development",
     image: "/images/Mychel_T.jpg",
     socials: {
       facebook: "https://www.facebook.com/mychelan.tautoan.7/",
@@ -187,11 +205,21 @@ function TeamMember({ member, isCore = false, index }: { member: any, isCore?: b
              <div className="absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
            </div>
            
-           {/* Name */}
+           {/* Name and Role */}
            <div className="text-center p-4">
              <h4 className="text-xl font-mono font-bold text-cyan-400 group-hover:text-purple-400 transition-colors duration-300">
                {member.name}
              </h4>
+             {member.role && (
+               <p className="text-sm text-[var(--ph-yellow)] font-mono mt-1">
+                 {member.role}
+               </p>
+             )}
+             {member.expertise && (
+               <p className="text-xs text-gray-400 font-mono mt-2 leading-relaxed">
+                 {member.expertise}
+               </p>
+             )}
              {isCore && (
                <span className="text-sm text-gray-400 font-mono">Core Team</span>
              )}

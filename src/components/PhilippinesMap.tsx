@@ -9,7 +9,46 @@ const geoUrl = 'https://raw.githubusercontent.com/deldersveld/topojson/master/co
 
 export default function PhilippinesMap() {
   const [selectedProvince, setSelectedProvince] = useState<string | null>(null);
-  const [tooltip, setTooltip] = useState<{ visible: boolean; name: string; x: number; y: number }>({ visible: false, name: '', x: 0, y: 0 });
+  const [tooltip, setTooltip] = useState<{ visible: boolean; name: string; x: number; y: number; data?: any }>({ visible: false, name: '', x: 0, y: 0 });
+
+  // Filipino Web3 Communities Data
+  const web3Communities = {
+    'Metro Manila': {
+      name: 'Metro Manila',
+      communities: ['Manila Web3 Hub', 'Makati Blockchain Society', 'Quezon City Crypto Club'],
+      events: 12,
+      members: 2500,
+      companies: ['Coins.ph', 'UnionBank', 'GCash', 'PayMongo']
+    },
+    'Cebu': {
+      name: 'Cebu',
+      communities: ['Cebu Web3 Builders', 'Visayas Blockchain Network'],
+      events: 6,
+      members: 800,
+      companies: ['Cebu Web3 Incubator', 'Visayas Crypto Exchange']
+    },
+    'Davao': {
+      name: 'Davao',
+      communities: ['Davao Web3 Society', 'Mindanao Blockchain Alliance'],
+      events: 4,
+      members: 450,
+      companies: ['Mindanao Web3 Labs']
+    },
+    'Iloilo': {
+      name: 'Iloilo',
+      communities: ['Iloilo Crypto Community'],
+      events: 2,
+      members: 200,
+      companies: ['Panay Web3 Solutions']
+    },
+    'Baguio': {
+      name: 'Baguio',
+      communities: ['Baguio Web3 Collective'],
+      events: 3,
+      members: 300,
+      companies: ['Cordillera Blockchain Hub']
+    }
+  };
 
   return (
     <div className="flex flex-col items-center p-6 relative">
@@ -35,7 +74,14 @@ export default function PhilippinesMap() {
                       geography={geo}
                       onClick={() => setSelectedProvince(provinceName)}
                       onMouseEnter={(e: any) => {
-                        setTooltip({ visible: true, name: provinceName, x: e.clientX, y: e.clientY });
+                        const communityData = web3Communities[provinceName as keyof typeof web3Communities];
+                        setTooltip({ 
+                          visible: true, 
+                          name: provinceName, 
+                          x: e.clientX, 
+                          y: e.clientY,
+                          data: communityData
+                        });
                       }}
                       onMouseMove={(e: any) => {
                         setTooltip(t => ({ ...t, x: e.clientX + 12, y: e.clientY + 12 }));
@@ -71,19 +117,72 @@ export default function PhilippinesMap() {
       </div>
 
       {selectedProvince && (
-        <div className="mt-6 p-4 border border-[var(--border-low)] rounded-lg bg-[var(--surface-1)] shadow text-white">
-          <p className="text-lg">
-            You clicked on: <span className="font-bold">{selectedProvince}</span>
-          </p>
+        <div className="mt-6 p-6 border-2 border-[var(--ph-yellow)]/30 rounded-xl bg-black/80 shadow-2xl text-white max-w-2xl">
+          {web3Communities[selectedProvince as keyof typeof web3Communities] ? (
+            <div>
+              <h3 className="text-2xl font-bold text-[var(--ph-yellow)] mb-4">
+                {selectedProvince} Web3 Community
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-bold text-lg mb-2">📊 Statistics</h4>
+                  <div className="space-y-2 text-sm">
+                    <div>👥 <span className="font-bold">{web3Communities[selectedProvince as keyof typeof web3Communities].members.toLocaleString()}</span> members</div>
+                    <div>📅 <span className="font-bold">{web3Communities[selectedProvince as keyof typeof web3Communities].events}</span> events this year</div>
+                    <div>🏢 <span className="font-bold">{web3Communities[selectedProvince as keyof typeof web3Communities].companies.length}</span> Web3 companies</div>
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg mb-2">🏘️ Communities</h4>
+                  <div className="space-y-1 text-sm">
+                    {web3Communities[selectedProvince as keyof typeof web3Communities].communities.map((community, index) => (
+                      <div key={index} className="text-gray-300">• {community}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4">
+                <h4 className="font-bold text-lg mb-2">🏢 Local Companies</h4>
+                <div className="flex flex-wrap gap-2">
+                  {web3Communities[selectedProvince as keyof typeof web3Communities].companies.map((company, index) => (
+                    <span key={index} className="px-3 py-1 bg-[var(--ph-blue)]/20 text-[var(--ph-yellow)] rounded-full text-xs">
+                      {company}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <h3 className="text-2xl font-bold text-[var(--ph-yellow)] mb-4">
+                {selectedProvince}
+              </h3>
+              <p className="text-gray-300">
+                No Web3 communities found in this region yet. 
+                <span className="text-[var(--ph-yellow)]"> Be the first to start one!</span>
+              </p>
+            </div>
+          )}
         </div>
       )}
 
       {tooltip.visible && (
         <div
-          className="fixed pointer-events-none px-2 py-1 rounded bg-black/80 border border-[var(--border-low)] text-xs text-white"
+          className="fixed pointer-events-none px-4 py-3 rounded-lg bg-black/90 border border-[var(--ph-yellow)]/30 text-sm text-white max-w-xs"
           style={{ left: tooltip.x, top: tooltip.y, zIndex: 50 }}
         >
-          {tooltip.name}
+          <div className="font-bold text-[var(--ph-yellow)] mb-2">{tooltip.name}</div>
+          {tooltip.data ? (
+            <div className="space-y-1">
+              <div>👥 {tooltip.data.members.toLocaleString()} members</div>
+              <div>📅 {tooltip.data.events} events</div>
+              <div className="text-xs text-gray-300">
+                Communities: {tooltip.data.communities.length}
+              </div>
+            </div>
+          ) : (
+            <div className="text-gray-400">Click to explore Web3 communities</div>
+          )}
         </div>
       )}
     </div>

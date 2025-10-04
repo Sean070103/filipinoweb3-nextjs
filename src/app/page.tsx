@@ -5,6 +5,7 @@ import Categories from '@/components/Categories';
 import Values from '@/components/Values';
 import FilipinoVisualAccents from '@/components/FilipinoVisualAccents';
 import Team from '@/components/Team';
+import Partners from '@/components/Partners';
 import FAQs from '@/components/FAQs';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -19,6 +20,7 @@ export default function Home() {
       <Values />
       <FilipinoVisualAccents />
       <Team />
+      <Partners />
       <FAQs />
       <Contact />
       <Footer />
