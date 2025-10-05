@@ -74,10 +74,13 @@ export default function Contact() {
       {/* Minimal background (no blobs) */}
       <div className="absolute inset-0" />
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 ph-banig-border-top">
         {/* Section header */}
         <div className="mx-auto max-w-2xl text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>Get in touch</h2>
+          <div className="flex justify-center mt-4">
+            <div className="ph-divider" />
+          </div>
           <p className="text-zinc-300 mt-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>Have a question or proposal? We’d love to hear from you.</p>
         </div>
 

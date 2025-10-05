@@ -29,7 +29,7 @@ export default function Categories() {
   }, []);
 
   return (
-    <section id="home" className="categories relative overflow-hidden">
+    <section id="home" className="categories relative overflow-hidden ph-rice-terraces">
       {/* Clean Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black" />
       
@@ -55,7 +55,7 @@ export default function Categories() {
       
       <div className="container relative z-10">
         {/* Section Title */}
-        <div className="text-center">
+        <div className="text-center ph-sun-rays">
           <ScrollReveal direction="up" delay={0.2}>
             <motion.h1 
               className="text-5xl lg:text-6xl font-black text-white leading-tight relative"

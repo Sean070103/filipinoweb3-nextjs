@@ -326,7 +326,7 @@ export default function Team() {
         backgroundSize: '40px 40px'
       }} />
       
-      <div className="container relative z-10 py-20">
+      <div className="container relative z-10 py-20 ph-banig-border-top">
         {/* Core Team Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

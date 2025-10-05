@@ -51,11 +51,10 @@ export default function RootLayout({
         <script src="https://kit.fontawesome.com/f8565b8867.js" crossOrigin="anonymous"></script>
       </head>
       <body
-        className={`${montserrat.variable} ${jersey.variable} ${pressStart2P.variable} ${orbitron.variable} font-sans antialiased`}
-        style={{
-          backgroundImage: "url('/images/bg-texture.png')",
-        }}
+        className={`${montserrat.variable} ${jersey.variable} ${pressStart2P.variable} ${orbitron.variable} font-sans antialiased ph-page-bg`}
       >
+        {/* Subtle Filipino pattern overlay */}
+        <div className="ph-page-pattern fixed inset-0 -z-10" />
         <PerformanceMonitor />
         {children}
       </body>

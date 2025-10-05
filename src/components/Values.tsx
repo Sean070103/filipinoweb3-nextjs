@@ -53,7 +53,7 @@ export default function Values() {
       {/* Clean Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black" />
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 ph-sun-rays">
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -98,7 +98,7 @@ export default function Values() {
                 y: -8,
                 transition: { duration: 0.3 }
               }}
-              className="group relative"
+              className="group relative ph-banig-border-top"
             >
               {/* Card */}
               <div className="bg-black/60 border border-white/10 p-8 hover:border-white/30 transition-all duration-300">
@@ -122,6 +122,9 @@ export default function Values() {
                   <p className="text-gray-300 font-mono text-base leading-relaxed">
                     {value.description}
                   </p>
+                  <div className="flex justify-center pt-2">
+                    <div className="ph-divider" />
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -136,7 +139,7 @@ export default function Values() {
           viewport={{ once: true }}
           className="flex justify-center"
         >
-          <div className="bg-black/60 border border-white/10 p-12 max-w-4xl mx-auto text-center">
+          <div className="bg-black/60 border border-white/10 p-12 max-w-4xl mx-auto text-center ph-banig-border-top ph-capiz-chip">
             <h3 className="text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-jersey)', letterSpacing: '0.03em' }}>
               READY TO BUILD THE FUTURE?
             </h3>

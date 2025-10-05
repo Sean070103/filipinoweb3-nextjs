@@ -49,6 +49,20 @@ body {
   background: #000000;
 }
 
+/* Filipino page background (dark gradient) */
+.ph-page-bg {
+  background: linear-gradient(135deg, #0b1220 0%, #0a0f19 50%, #080c14 100%);
+}
+
+/* Subtle banig pattern overlay for page background */
+.ph-page-pattern {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(206, 17, 38, 0.06) 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(-45deg, rgba(0, 56, 168, 0.06) 0 6px, transparent 6px 12px);
+  opacity: 0.06;
+  pointer-events: none;
+}
+
 /* Ensure all text is white */
 h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th, strong, em {
   color: #ffffff !important;
@@ -316,6 +330,18 @@ nav {
   transition: var(--transition);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Jeepney pinstripe accent */
+nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--ph-red), var(--ph-blue), var(--ph-yellow));
+  opacity: 0.6;
 }
 
 .window-scroll {
@@ -1904,6 +1930,96 @@ textarea:focus {
     radial-gradient(circle at 50% 50%, var(--ph-blue) 1px, transparent 1px);
   background-size: 30px 30px;
   opacity: 0.3;
+}
+
+/* Minimal Filipino accents (no covers) */
+.ph-banig-border-top {
+  position: relative;
+}
+.ph-banig-border-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-image:
+    repeating-linear-gradient(45deg, var(--ph-red) 0 6px, transparent 6px 12px),
+    repeating-linear-gradient(-45deg, var(--ph-blue) 0 6px, transparent 6px 12px);
+  opacity: 0.35;
+  border-radius: 2px;
+}
+
+.ph-divider {
+  position: relative;
+  width: 120px;
+  height: 8px;
+  background: linear-gradient(90deg, var(--ph-red), var(--ph-blue), var(--ph-yellow));
+  border-radius: 999px;
+  filter: saturate(0.9) brightness(0.9);
+}
+.ph-divider::before,
+.ph-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ph-yellow);
+  transform: translateY(-50%);
+  box-shadow: 0 0 6px rgba(252, 209, 22, 0.6);
+}
+.ph-divider::before { left: -14px; }
+.ph-divider::after { right: -14px; }
+
+.ph-capiz-chip {
+  position: relative;
+  border-radius: 12px;
+  background: radial-gradient(100% 100% at 0% 0%, rgba(252,209,22,0.08), transparent 60%),
+              radial-gradient(100% 100% at 100% 0%, rgba(255,255,255,0.06), transparent 60%),
+              radial-gradient(100% 100% at 50% 100%, rgba(252,209,22,0.06), transparent 60%);
+  backdrop-filter: blur(1px);
+}
+
+/* Glassmorphism utility */
+.glass-card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+}
+
+/* Motifs */
+.ph-sun-rays {
+  position: relative;
+}
+.ph-sun-rays::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at center, rgba(252,209,22,0.12) 0%, rgba(252,209,22,0.0) 60%),
+    conic-gradient(from 0deg, rgba(252,209,22,0.08) 0 10deg, transparent 10deg 20deg) ;
+  -webkit-mask: radial-gradient(circle at center, black 0 60%, transparent 60%);
+  mask: radial-gradient(circle at center, black 0 60%, transparent 60%);
+  pointer-events: none;
+}
+
+.ph-rice-terraces {
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(0,56,168,0.05) 20%, transparent 21%),
+    radial-gradient(ellipse at 50% 15%, rgba(206,17,38,0.05) 20%, transparent 21%),
+    radial-gradient(ellipse at 50% 30%, rgba(252,209,22,0.05) 20%, transparent 21%);
+  background-size: 120% 120%;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+}
+
+.ph-jeepney-stripe-thick {
+  background: linear-gradient(90deg, var(--ph-red), var(--ph-blue), var(--ph-yellow));
+  height: 4px;
+  border-radius: 999px;
 }
 
 /* Enhanced text effects */

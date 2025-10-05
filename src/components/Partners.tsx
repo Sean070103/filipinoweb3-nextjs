@@ -99,7 +99,7 @@ export default function Partners() {
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
-              className="group relative"
+              className="group relative ph-banig-border-top"
             >
               {/* Partner Card */}
               <div className="bg-black/60 border border-white/10 p-6 rounded-xl hover:border-[var(--ph-yellow)]/50 transition-all duration-300 h-full">
@@ -136,6 +136,9 @@ export default function Partners() {
                       Visit Website →
                     </a>
                   </div>
+                  <div className="flex justify-center pt-3">
+                    <div className="ph-divider" />
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -150,7 +153,7 @@ export default function Partners() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <div className="bg-black/60 border border-white/10 p-8 max-w-4xl mx-auto rounded-xl">
+          <div className="bg-black/60 border border-white/10 p-8 max-w-4xl mx-auto rounded-xl ph-banig-border-top ph-capiz-chip">
             <h3 className="text-3xl font-bold text-white mb-4" style={{ 
               fontFamily: 'var(--font-jersey), monospace',
               color: '#FCD116'

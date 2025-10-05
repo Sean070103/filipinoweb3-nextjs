@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer>
-      <div className="container footer__container">
+      <div className="container footer__container ph-banig-border-top">
         <div className="footer__1">
           <a href="/" className="footer__logo">
             <h4>FW3</h4>

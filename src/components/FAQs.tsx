@@ -131,7 +131,7 @@ export default function FAQs() {
         />
       </div>
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 ph-banig-border-top">
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -143,6 +143,9 @@ export default function FAQs() {
                 style={{ textShadow: '0 0 20px rgba(34, 211, 238, 0.5), 0 0 40px rgba(34, 211, 238, 0.3)' }}>
             Frequently Asked Questions
           </span>
+          <div className="flex justify-center mt-6">
+            <div className="ph-divider" />
+          </div>
         </motion.h2>
         
         <motion.div 
