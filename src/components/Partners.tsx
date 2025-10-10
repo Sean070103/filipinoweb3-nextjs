@@ -99,11 +99,7 @@ export default function Partners() {
                 scale: 1.02,
                 transition: { duration: 0.3 }
               }}
-<<<<<<< HEAD
-              className="group relative ph-banig-border-top"
-=======
               className="group relative"
->>>>>>> a3f52a0 (feat: Add Partners component showcasing Filipino Web3 companies and their details)
             >
               {/* Partner Card */}
               <div className="bg-black/60 border border-white/10 p-6 rounded-xl hover:border-[var(--ph-yellow)]/50 transition-all duration-300 h-full">
@@ -140,12 +136,6 @@ export default function Partners() {
                       Visit Website →
                     </a>
                   </div>
-<<<<<<< HEAD
-                  <div className="flex justify-center pt-3">
-                    <div className="ph-divider" />
-                  </div>
-=======
->>>>>>> a3f52a0 (feat: Add Partners component showcasing Filipino Web3 companies and their details)
                 </div>
               </div>
             </motion.div>
@@ -160,11 +150,7 @@ export default function Partners() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-<<<<<<< HEAD
-          <div className="bg-black/60 border border-white/10 p-8 max-w-4xl mx-auto rounded-xl ph-banig-border-top ph-capiz-chip">
-=======
           <div className="bg-black/60 border border-white/10 p-8 max-w-4xl mx-auto rounded-xl">
->>>>>>> a3f52a0 (feat: Add Partners component showcasing Filipino Web3 companies and their details)
             <h3 className="text-3xl font-bold text-white mb-4" style={{ 
               fontFamily: 'var(--font-jersey), monospace',
               color: '#FCD116'

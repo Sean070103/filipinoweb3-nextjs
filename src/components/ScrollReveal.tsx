@@ -53,10 +53,3 @@ export default function ScrollReveal({
     </motion.div>
   );
 }
-
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> a61c099 (chore: Clean up code by removing unnecessary empty lines in multiple components)

@@ -32,9 +32,3 @@ export const useParallax = (speed: number = 0.5) => {
   return scrollY * speed;
 };
 
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> a61c099 (chore: Clean up code by removing unnecessary empty lines in multiple components)
