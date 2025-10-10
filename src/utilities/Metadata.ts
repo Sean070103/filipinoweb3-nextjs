@@ -20,7 +20,7 @@ export default function MetadataUtils() {
             },
         },
          verification: {
-            google: "google9249e550c23b54d0.html",
+            google: setting.google_verifications,
         },
         openGraph: {
             title: "Filipino Web3",
