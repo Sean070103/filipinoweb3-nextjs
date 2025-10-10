@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://filipinoweb3-beta.vercel.app/
+
+# Sitemaps
+Sitemap: https://filipinoweb3-beta.vercel.app/sitemap.xml
