@@ -30,7 +30,12 @@ const faqs = [
   }
 ];
 
-function FAQItem({ faq, index }: { faq: any, index: number }) {
+type FAQ = {
+  question: string;
+  answer: string;
+};
+
+function FAQItem({ faq, index }: { faq: FAQ, index: number }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleFAQ = () => {

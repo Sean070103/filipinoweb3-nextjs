@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Facebook } from 'lucide-react';
+import { Linkedin, Facebook } from 'lucide-react';
 
 const coreTeam = [
   {
@@ -163,7 +163,19 @@ const foundingMembers = [
   }
 ];
 
-function TeamMember({ member, isCore = false, index }: { member: any, isCore?: boolean, index: number }) {
+type TeamMemberType = {
+  name: string;
+  image: string;
+  socials: {
+    facebook: string;
+    twitter: string;
+    linkedin: string;
+  };
+  role?: string;
+  expertise?: string;
+};
+
+function TeamMember({ member, isCore = false, index }: { member: TeamMemberType, isCore?: boolean, index: number }) {
   return (
     <motion.article 
       initial={{ opacity: 0, y: 50, rotateX: -15 }}

@@ -1,11 +1,13 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer>
       <div className="container footer__container ph-banig-border-top">
         <div className="footer__1">
-          <a href="/" className="footer__logo">
+          <Link href="/" className="footer__logo">
             <h4>FW3</h4>
-          </a>
+          </Link>
           <p>
             helping to build a healthy group of Web3 enthusiasts and community
             builders

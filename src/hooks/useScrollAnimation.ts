@@ -5,7 +5,7 @@ export const useScrollAnimation = () => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     
     const handleScroll = () => {
       setScrollY(window.scrollY);
