@@ -1,7 +1,10 @@
+import React from "react";
+import Script from "next/script";
 import { MetadataUtils, Json_LD } from "@/utilities";
 import { Montserrat, Jersey_10, Press_Start_2P, Orbitron } from "next/font/google";
 import "./globals.css";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
+import setting from "@/config/setting.json";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -46,8 +49,6 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
         />
-        <script src="https://www.google.com/recaptcha/api.js?render=6LcYuLkpAAAAAGWDdPvO0UwzXsEsICHqkniMD4-y"></script>
-        <script src="https://kit.fontawesome.com/f8565b8867.js" crossOrigin="anonymous"></script>
       </head>
       <body
         className={`${montserrat.variable} ${jersey.variable} ${pressStart2P.variable} ${orbitron.variable} font-sans antialiased ph-page-bg`}
@@ -56,6 +57,17 @@ export default function RootLayout({
         <div className="ph-page-pattern fixed inset-0 -z-10" />
         <PerformanceMonitor />
         {children}
+        
+        {/* External Scripts */}
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || setting.recapcha}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          src="https://kit.fontawesome.com/f8565b8867.js"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
