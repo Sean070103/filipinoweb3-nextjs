@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { MetadataUtils, Json_LD } from "@/utilities";
 import { Montserrat, Jersey_10, Press_Start_2P, Orbitron } from "next/font/google";
 import "./globals.css";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
@@ -27,13 +27,7 @@ const orbitron = Orbitron({
   variable: "--font-orbitron",
 });
 
-export const metadata: Metadata = {
-  title: "Filipino Web3",
-  description: "An organization with the aim of helping our fellow Filipinos hone their skills and maximize their potential to grow in the Web3 space.",
-  icons: {
-    icon: "/images/upper_icon-01.png",
-  },
-};
+export const metadata = MetadataUtils();
 
 export default function RootLayout({
   children,
@@ -43,6 +37,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(Json_LD()) }}
+        />
+        
         <link
           rel="stylesheet"
           href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
