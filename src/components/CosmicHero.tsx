@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 export default function CosmicHero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+  console.log(mousePosition);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -15,6 +17,7 @@ export default function CosmicHero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+<<<<<<< HEAD
   // Generate stars with consistent values
   const stars = Array.from({ length: 100 }, (_, i) => ({
     id: i,
@@ -34,6 +37,27 @@ export default function CosmicHero() {
     delay: (i * 7.1) % 10,
     speed: ((i * 5.7) % 3) + 1,
   }));
+=======
+  // Generate stars
+  // const stars = Array.from({ length: 100 }, (_, i) => ({
+  //   id: i,
+  //   x: Math.random() * 100,
+  //   y: Math.random() * 100,
+  //   size: Math.random() * 3 + 1,
+  //   delay: Math.random() * 5,
+  // }));
+
+  // Generate Ethereum-themed matrix characters
+  // const ethereumChars = Array.from({ length: 50 }, () => 'Ξ');
+  // const matrixChars = Array.from({ length: 50 }, (_, i) => ({
+  //   id: i,
+  //   x: Math.random() * 100,
+  //   y: Math.random() * 100,
+  //   char: ethereumChars[i] || 'Ξ',
+  //   delay: Math.random() * 10,
+  //   speed: Math.random() * 3 + 1,
+  // }));
+>>>>>>> 44036beaa5c8980881a52d01ea389ef8e797a2e1
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black">
@@ -138,7 +162,7 @@ export default function CosmicHero() {
            }}
          >
            <div>$ npm install web3</div>
-           <div>$ git commit -m "deploy smart contract"</div>
+           <div>$ git commit -m (deploy smart contract)</div>
          </motion.div>
          
          <motion.div

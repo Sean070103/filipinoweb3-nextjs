@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+// import { useRef, useState } from "react";
 import PhilippinesMap from "../../components/PhilippinesMap";
 
 type Location = {
@@ -21,51 +21,51 @@ const locations: Location[] = [
 ];
 
 export default function CommunityPage() {
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
-  const gRef = useRef<SVGGElement | null>(null);
-  const [view, setView] = useState({ x: 0, y: 0, scale: 1 });
+  // const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  // const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  // const gRef = useRef<SVGGElement | null>(null);
+  // const [view, setView] = useState({ x: 0, y: 0, scale: 1 });
 
-  const startRef = useRef<{
-    x: number;
-    y: number;
-    vx: number;
-    vy: number;
-    drag: boolean;
-  }>({ x: 0, y: 0, vx: 0, vy: 0, drag: false });
+  // const startRef = useRef<{
+  //   x: number;
+  //   y: number;
+  //   vx: number;
+  //   vy: number;
+  //   drag: boolean;
+  // }>({ x: 0, y: 0, vx: 0, vy: 0, drag: false });
 
-  const onWheel = (e: React.WheelEvent<SVGSVGElement>) => {
-    e.preventDefault();
-    const delta = -e.deltaY;
-    const factor = delta > 0 ? 1.1 : 0.9;
-    setView((v) => ({
-      ...v,
-      scale: Math.min(5, Math.max(0.6, v.scale * factor)),
-    }));
-  };
+  // const onWheel = (e: React.WheelEvent<SVGSVGElement>) => {
+  //   e.preventDefault();
+  //   const delta = -e.deltaY;
+  //   const factor = delta > 0 ? 1.1 : 0.9;
+  //   setView((v) => ({
+  //     ...v,
+  //     scale: Math.min(5, Math.max(0.6, v.scale * factor)),
+  //   }));
+  // };
 
-  const onPointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
-    startRef.current.drag = true;
-    startRef.current.x = e.clientX;
-    startRef.current.y = e.clientY;
-    startRef.current.vx = view.x;
-    startRef.current.vy = view.y;
-  };
+  // const onPointerDown = (e: React.PointerEvent<SVGSVGElement>) => {
+  //   startRef.current.drag = true;
+  //   startRef.current.x = e.clientX;
+  //   startRef.current.y = e.clientY;
+  //   startRef.current.vx = view.x;
+  //   startRef.current.vy = view.y;
+  // };
 
-  const onPointerMove = (e: React.PointerEvent<SVGSVGElement>) => {
-    if (!startRef.current.drag) return;
-    const dx = e.clientX - startRef.current.x;
-    const dy = e.clientY - startRef.current.y;
-    setView((v) => ({
-      ...v,
-      x: startRef.current.vx + dx,
-      y: startRef.current.vy + dy,
-    }));
-  };
+  // const onPointerMove = (e: React.PointerEvent<SVGSVGElement>) => {
+  //   if (!startRef.current.drag) return;
+  //   const dx = e.clientX - startRef.current.x;
+  //   const dy = e.clientY - startRef.current.y;
+  //   setView((v) => ({
+  //     ...v,
+  //     x: startRef.current.vx + dx,
+  //     y: startRef.current.vy + dy,
+  //   }));
+  // };
 
-  const onPointerUp = () => {
-    startRef.current.drag = false;
-  };
+  // const onPointerUp = () => {
+  //   startRef.current.drag = false;
+  // };
 
   return (
     <main
@@ -105,7 +105,7 @@ export default function CommunityPage() {
                   gap: "0.75rem",
                 }}
               >
-                {["Luzon", "Visayas", "Mindanao"].map((r) => (
+                {(["Luzon", "Visayas", "Mindanao"] as Location["region"][]).map((r) => (
                   <div
                     key={r}
                     style={{
@@ -126,7 +126,7 @@ export default function CommunityPage() {
                     </div>
                     <div style={{ fontWeight: 800, fontSize: "1.4rem" }}>
                       {locations
-                        .filter((l) => l.region === (r as any))
+                        .filter((l) => l.region === r)
                         .reduce((a, b) => a + b.members, 0)
                         .toLocaleString()}
                       +

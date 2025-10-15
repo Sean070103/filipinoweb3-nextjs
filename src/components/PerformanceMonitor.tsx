@@ -7,6 +7,8 @@ export default function PerformanceMonitor() {
   const [isLowPerformance, setIsLowPerformance] = useState(false);
   const [memoryUsage, setMemoryUsage] = useState<number | null>(null);
 
+  console.log(isLowPerformance);
+
   useEffect(() => {
     let frameCount = 0;
     let lastTime = performance.now();

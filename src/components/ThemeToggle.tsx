@@ -18,7 +18,7 @@ export default function ThemeToggle() {
       {themes.map(({ value, icon: Icon, label }) => (
         <button
           key={value}
-          onClick={() => setTheme(value as any)}
+          onClick={() => setTheme(value)}
           className={cn(
             "flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200",
             theme === value

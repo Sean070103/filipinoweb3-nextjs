@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function Partners() {
   const partners = [
@@ -55,7 +55,7 @@ export default function Partners() {
     }
   ];
 
-  const categories = ["All", "Exchange", "Fintech", "Banking", "Payments", "Education", "Gaming"];
+  // const categories = ["All", "Exchange", "Fintech", "Banking", "Payments", "Education", "Gaming"];
 
   return (
     <section className="relative py-20 overflow-hidden">

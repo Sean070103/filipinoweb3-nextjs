@@ -1,12 +1,16 @@
 'use client';
-
-import Image from 'next/image';
+import React from 'react';
+// import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import settings from "@/config/setting.json";
 
 declare global {
   interface Window {
-    grecaptcha: any;
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
   }
 }
 
@@ -47,7 +51,7 @@ export default function Contact() {
     try {
       if (window.grecaptcha) {
         window.grecaptcha.ready(() => {
-          window.grecaptcha.execute('6LcYuLkpAAAAAGWDdPvO0UwzXsEsICHqkniMD4-y', { action: 'submit' }).then((token: string) => {
+          window.grecaptcha.execute(settings.recapcha, { action: 'submit' }).then((token: string) => {
             const form = e.currentTarget as HTMLFormElement;
             const hiddenInput = form.querySelector('input[name="g-recaptcha-response"]') as HTMLInputElement;
             if (hiddenInput) {

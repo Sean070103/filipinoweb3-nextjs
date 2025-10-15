@@ -1,15 +1,42 @@
 'use client';
 
 import { useState } from 'react';
+import type { MouseEvent } from 'react';
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps';
-import { useEffect } from 'react';
+
+interface CommunityData {
+  name: string;
+  communities: string[];
+  events: number;
+  members: number;
+  companies: string[];
+}
+
+interface TooltipData {
+  visible: boolean;
+  name: string;
+  x: number;
+  y: number;
+  data?: CommunityData;
+}
+
+interface GeographyProperties {
+  NAME_1: string;
+  [key: string]: unknown;
+}
+
+interface GeographyFeature {
+  properties: GeographyProperties;
+  rsmKey: string;
+  [key: string]: unknown;
+}
 
 // TopoJSON of Philippine provinces
 const geoUrl = 'https://raw.githubusercontent.com/deldersveld/topojson/master/countries/philippines/philippines-provinces.json';
 
 export default function PhilippinesMap() {
   const [selectedProvince, setSelectedProvince] = useState<string | null>(null);
-  const [tooltip, setTooltip] = useState<{ visible: boolean; name: string; x: number; y: number; data?: any }>({ visible: false, name: '', x: 0, y: 0 });
+  const [tooltip, setTooltip] = useState<TooltipData>({ visible: false, name: '', x: 0, y: 0 });
 
   // Filipino Web3 Communities Data
   const web3Communities = {
@@ -65,15 +92,16 @@ export default function PhilippinesMap() {
           <ZoomableGroup zoom={1} minZoom={0.8} maxZoom={8} center={[123, 12]}>
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
-                geographies.map((geo) => {
-                  const provinceName = (geo as any).properties.NAME_1 as string;
+                geographies.map((geo, index) => {
+                  const geoFeature = geo as unknown as GeographyFeature;
+                  const provinceName = geoFeature.properties.NAME_1;
                   const selected = selectedProvince === provinceName;
                   return (
                     <Geography
-                      key={(geo as any).rsmKey}
+                      key={geoFeature.rsmKey || `geo-${index}`}
                       geography={geo}
                       onClick={() => setSelectedProvince(provinceName)}
-                      onMouseEnter={(e: any) => {
+                      onMouseEnter={(e: MouseEvent<SVGPathElement>) => {
                         const communityData = web3Communities[provinceName as keyof typeof web3Communities];
                         setTooltip({ 
                           visible: true, 
@@ -83,7 +111,7 @@ export default function PhilippinesMap() {
                           data: communityData
                         });
                       }}
-                      onMouseMove={(e: any) => {
+                      onMouseMove={(e: MouseEvent<SVGPathElement>) => {
                         setTooltip(t => ({ ...t, x: e.clientX + 12, y: e.clientY + 12 }));
                       }}
                       onMouseLeave={() => setTooltip(t => ({ ...t, visible: false }))}

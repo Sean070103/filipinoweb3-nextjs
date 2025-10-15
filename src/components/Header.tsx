@@ -9,7 +9,7 @@ export default function Header() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 300], [0, -50]);
   const y2 = useTransform(scrollY, [0, 300], [0, -100]);
-  const y3 = useTransform(scrollY, [0, 300], [0, -150]);
+  // const y3 = useTransform(scrollY, [0, 300], [0, -150]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
