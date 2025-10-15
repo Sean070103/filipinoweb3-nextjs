@@ -8,7 +8,6 @@ export default function Categories() {
   const [displayText, setDisplayText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
   const fullText = 'TO WEB3 AND BEYOND!';
-  // Background animations removed for a calmer look
   
   useEffect(() => {
     let index = 0;
@@ -51,7 +50,6 @@ export default function Categories() {
         backgroundSize: '100% 3px',
         mixBlendMode: 'overlay'
       }} />
-      {/* Pixel sprites removed for a calmer background */}
       
       <div className="container relative z-10">
         {/* Section Title */}
@@ -85,14 +83,6 @@ export default function Categories() {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-
-
-
-
-
-
-
-                
               >
                 {displayText}
               </motion.div>
@@ -141,7 +131,6 @@ export default function Categories() {
                   To be the premier global hub for Filipino Web3 innovators, embodying the Bayanihan spirit through holistic, connected, and innovative principles that unite our worldwide Filipino community in building the decentralized future.
                 </p>
               </div>
-              {/* Bullets removed as requested */}
               <div className="mt-6 flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/30" style={{ fontFamily: 'var(--font-jersey)', imageRendering: 'pixelated', textTransform: 'uppercase' }}>GLOBAL-FIRST</span>
                 <span className="px-3 py-1 rounded text-xs bg-purple-500/10 text-purple-300 border border-purple-500/30" style={{ fontFamily: 'var(--font-jersey)', imageRendering: 'pixelated', textTransform: 'uppercase' }}>INCLUSIVE</span>
@@ -175,7 +164,6 @@ export default function Categories() {
                   Create a comprehensive platform for the Filipino Web3 community to exchange ideas, share knowledge, and discover opportunities, fostering innovation through the spirit of Malasakit and Pagkakaisa.
                 </p>
               </div>
-              {/* Bullets removed; exact sentences preserved */}
               <p className="text-gray-300" style={{ fontFamily: 'var(--font-montserrat)', fontSize: '1.125rem', lineHeight: 1.7, maxWidth: '62ch' }}>
                 Provide comprehensive educational resources, mentorship programs, and skill development opportunities to empower Filipino developers, builders, and entrepreneurs in the Web3 ecosystem.
               </p>

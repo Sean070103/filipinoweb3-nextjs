@@ -10,6 +10,8 @@ interface ScrollRevealProps {
   duration?: number;
   distance?: number;
   className?: string;
+  threshold?: number;
+  rootMargin?: string;
 }
 
 export default function ScrollReveal({ 
@@ -18,10 +20,16 @@ export default function ScrollReveal({
   delay = 0, 
   duration = 0.6,
   distance = 50,
-  className = ''
+  className = '',
+  threshold = 0.1,
+  rootMargin = "-100px"
 }: ScrollRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { 
+    once: true, 
+    margin: rootMargin as any,
+    amount: threshold
+  });
 
   const directionVariants = {
     up: { y: distance, opacity: 0 },
@@ -45,9 +53,15 @@ export default function ScrollReveal({
       transition={{
         duration,
         delay,
-        ease: "easeOut"
+        ease: "easeOut",
+        type: "spring",
+        stiffness: 100,
+        damping: 20
       }}
       className={className}
+      style={{
+        willChange: 'transform, opacity'
+      }}
     >
       {children}
     </motion.div>

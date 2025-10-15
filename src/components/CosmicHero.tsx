@@ -15,24 +15,24 @@ export default function CosmicHero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Generate stars
+  // Generate stars with consistent values
   const stars = Array.from({ length: 100 }, (_, i) => ({
     id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    delay: Math.random() * 5,
+    x: (i * 7.3) % 100, // Use deterministic values instead of Math.random()
+    y: (i * 11.7) % 100,
+    size: ((i * 3.1) % 3) + 1,
+    delay: (i * 2.3) % 5,
   }));
 
   // Generate Ethereum-themed matrix characters
   const ethereumChars = Array.from({ length: 50 }, () => 'Ξ');
   const matrixChars = Array.from({ length: 50 }, (_, i) => ({
     id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
+    x: (i * 13.7) % 100, // Use deterministic values instead of Math.random()
+    y: (i * 19.3) % 100,
     char: ethereumChars[i] || 'Ξ',
-    delay: Math.random() * 10,
-    speed: Math.random() * 3 + 1,
+    delay: (i * 7.1) % 10,
+    speed: ((i * 5.7) % 3) + 1,
   }));
 
   return (
@@ -41,7 +41,7 @@ export default function CosmicHero() {
       <div className="absolute inset-0">
          {/* Subtle nebula clouds */}
          <motion.div
-           className="absolute top-0 left-0 w-full h-full opacity-10"
+           className="absolute top-0 left-0 w-full h-full opacity-20"
            animate={{
              background: [
                'radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.1) 0%, rgba(20, 20, 20, 0.05) 30%, transparent 60%)',
@@ -59,21 +59,21 @@ export default function CosmicHero() {
          {Array.from({ length: 8 }, (_, i) => (
            <motion.div
              key={`code-${i}`}
-             className="absolute font-mono text-xs text-gray-600 opacity-20"
+             className="absolute font-mono text-xs text-gray-400 opacity-40"
              style={{
-               left: `${Math.random() * 100}%`,
-               top: `${Math.random() * 100}%`,
+               left: `${(i * 13.7) % 100}%`,
+               top: `${(i * 19.3) % 100}%`,
                fontSize: '10px',
              }}
              animate={{
                y: [0, -20, 0],
-               opacity: [0.1, 0.3, 0.1],
+               opacity: [0.2, 0.5, 0.2],
              }}
              transition={{
-               duration: 8 + Math.random() * 4,
+               duration: 8 + ((i * 3.1) % 4),
                repeat: Infinity,
                ease: "easeInOut",
-               delay: Math.random() * 5,
+               delay: (i * 2.3) % 5,
              }}
            >
              {['function()', 'const web3', 'blockchain', 'smart contract', 'defi', 'nft', 'dao', 'solidity'][i]}
@@ -84,17 +84,17 @@ export default function CosmicHero() {
          {Array.from({ length: 12 }, (_, i) => (
            <motion.div
              key={`node-${i}`}
-             className="absolute w-2 h-2 rounded-full bg-gray-700 opacity-30"
+             className="absolute w-2 h-2 rounded-full bg-gray-500 opacity-50"
              style={{
                left: `${20 + (i * 6)}%`,
                top: `${30 + Math.sin(i * 0.5) * 20}%`,
              }}
              animate={{
-               opacity: [0.2, 0.5, 0.2],
+               opacity: [0.3, 0.6, 0.3],
                scale: [1, 1.2, 1],
              }}
              transition={{
-               duration: 4 + Math.random() * 2,
+               duration: 4 + ((i * 1.7) % 2),
                repeat: Infinity,
                ease: "easeInOut",
                delay: i * 0.3,
@@ -106,18 +106,18 @@ export default function CosmicHero() {
          {Array.from({ length: 6 }, (_, i) => (
            <motion.div
              key={`connection-${i}`}
-             className="absolute h-0.5 bg-gray-600 opacity-20"
+             className="absolute h-0.5 bg-gray-400 opacity-40"
              style={{
                left: `${25 + (i * 8)}%`,
                top: `${35 + Math.sin(i * 0.3) * 15}%`,
-               width: `${20 + Math.random() * 30}px`,
-               transform: `rotate(${Math.random() * 45}deg)`,
+               width: `${20 + ((i * 7.3) % 30)}px`,
+               transform: `rotate(${(i * 11.7) % 45}deg)`,
              }}
              animate={{
-               opacity: [0.1, 0.3, 0.1],
+               opacity: [0.2, 0.5, 0.2],
              }}
              transition={{
-               duration: 6 + Math.random() * 3,
+               duration: 6 + ((i * 2.1) % 3),
                repeat: Infinity,
                ease: "easeInOut",
                delay: i * 0.5,
@@ -127,9 +127,9 @@ export default function CosmicHero() {
          
          {/* Terminal/Console Elements */}
          <motion.div
-           className="absolute top-20 left-10 font-mono text-xs text-gray-500 opacity-30"
+           className="absolute top-20 left-10 font-mono text-xs text-gray-300 opacity-60"
            animate={{
-             opacity: [0.2, 0.4, 0.2],
+             opacity: [0.3, 0.6, 0.3],
            }}
            transition={{
              duration: 3,
@@ -142,9 +142,9 @@ export default function CosmicHero() {
          </motion.div>
          
          <motion.div
-           className="absolute bottom-20 right-10 font-mono text-xs text-gray-500 opacity-30"
+           className="absolute bottom-20 right-10 font-mono text-xs text-gray-300 opacity-60"
            animate={{
-             opacity: [0.2, 0.4, 0.2],
+             opacity: [0.3, 0.6, 0.3],
            }}
            transition={{
              duration: 4,
@@ -159,7 +159,7 @@ export default function CosmicHero() {
          
          {/* Community Icons */}
          <motion.div
-           className="absolute top-1/4 right-1/4 w-8 h-8 opacity-20"
+           className="absolute top-1/4 right-1/4 w-8 h-8 opacity-40"
            animate={{
              rotate: [0, 360],
              scale: [1, 1.1, 1],
@@ -170,16 +170,16 @@ export default function CosmicHero() {
              ease: "linear",
            }}
          >
-           <div className="w-full h-full border border-gray-600 rounded-full flex items-center justify-center">
-             <div className="w-3 h-3 bg-gray-600 rounded-full"></div>
+           <div className="w-full h-full border border-gray-500 rounded-full flex items-center justify-center">
+             <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
            </div>
          </motion.div>
          
          <motion.div
-           className="absolute bottom-1/3 left-1/4 w-6 h-6 opacity-15"
+           className="absolute bottom-1/3 left-1/4 w-6 h-6 opacity-35"
            animate={{
              y: [0, -10, 0],
-             opacity: [0.1, 0.3, 0.1],
+             opacity: [0.2, 0.5, 0.2],
            }}
            transition={{
              duration: 5,
@@ -187,8 +187,8 @@ export default function CosmicHero() {
              ease: "easeInOut",
            }}
          >
-           <div className="w-full h-full border border-gray-500 rounded flex items-center justify-center">
-             <div className="w-2 h-2 bg-gray-500"></div>
+           <div className="w-full h-full border border-gray-400 rounded flex items-center justify-center">
+             <div className="w-2 h-2 bg-gray-300"></div>
            </div>
          </motion.div>
          
@@ -196,13 +196,13 @@ export default function CosmicHero() {
        </div>
 
       {/* Central Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen">
-        <div className="text-center">
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-6 md:px-10">
+        <div className="text-center max-w-5xl">
           {/* Central Sphere with Web3 Text */}
           <div className="relative inline-block">
              {/* Outer Ring */}
-             <motion.div
-               className="absolute inset-0 rounded-full border-4 border-gray-600/30"
+            <motion.div
+              className="absolute inset-0 rounded-full border-4 border-gray-500/60"
                style={{
                  width: '400px',
                  height: '400px',
@@ -221,33 +221,32 @@ export default function CosmicHero() {
              />
             
              {/* Main Sphere */}
-            <motion.div
+           <motion.div
               className="relative w-80 h-80 rounded-full overflow-hidden"
               style={{
                 background: `
-                  radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
-                  radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+                 radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
+                 radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
                   radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.8) 30%, rgba(40, 40, 40, 0.6) 60%, rgba(0, 0, 0, 0.95) 100%)
                 `,
                 boxShadow: `
-                  0 0 60px rgba(255, 255, 255, 0.1),
+                 0 0 60px rgba(255, 255, 255, 0.15),
                   0 0 120px rgba(0, 0, 0, 0.8),
-                  inset 0 0 60px rgba(60, 60, 60, 0.3),
-                  inset 0 0 120px rgba(0, 0, 0, 0.5)
+                 inset 0 0 60px rgba(60, 60, 60, 0.4),
+                 inset 0 0 120px rgba(0, 0, 0, 0.6)
                 `,
-                border: '1px solid rgba(255, 255, 255, 0.1)'
+               border: '1px solid rgba(255, 255, 255, 0.2)'
               }}
               animate={{
                 scale: [1, 1.05, 1],
                 boxShadow: [
-                  '0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.3), inset 0 0 120px rgba(0, 0, 0, 0.5)',
-                  '0 0 80px rgba(255, 255, 255, 0.2), 0 0 160px rgba(0, 0, 0, 0.9), inset 0 0 80px rgba(80, 80, 80, 0.5), inset 0 0 160px rgba(0, 0, 0, 0.7)',
-                  '0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.3), inset 0 0 120px rgba(0, 0, 0, 0.5)'
+                 '0 0 60px rgba(255, 255, 255, 0.15), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.4), inset 0 0 120px rgba(0, 0, 0, 0.6)',
+                 '0 0 80px rgba(255, 255, 255, 0.25), 0 0 160px rgba(0, 0, 0, 0.9), inset 0 0 80px rgba(80, 80, 80, 0.55), inset 0 0 160px rgba(0, 0, 0, 0.75)',
+                 '0 0 60px rgba(255, 255, 255, 0.15), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.4), inset 0 0 120px rgba(0, 0, 0, 0.6)'
                 ]
               }}
               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             >
-              {/* Web3 Text with Glitch Effect and surface details remain below */}
               {/* Web3 Text with Glitch Effect */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.h1
@@ -283,7 +282,7 @@ export default function CosmicHero() {
                 <motion.div
                   className="absolute inset-0 flex items-center justify-center"
                   animate={{
-                    opacity: [0, 0.4, 0],
+                    opacity: [0, 0.6, 0],
                     x: [0, 3, 0],
                   }}
                   transition={{
@@ -308,7 +307,7 @@ export default function CosmicHero() {
                 <motion.div
                   className="absolute inset-0 flex items-center justify-center"
                   animate={{
-                    opacity: [0, 0.4, 0],
+                    opacity: [0, 0.6, 0],
                     x: [0, -3, 0],
                   }}
                   transition={{
@@ -334,7 +333,7 @@ export default function CosmicHero() {
                 <motion.div
                   className="absolute inset-0 flex items-center justify-center"
                   animate={{
-                    opacity: [0, 0.3, 0],
+                    opacity: [0, 0.5, 0],
                     y: [0, 2, 0],
                   }}
                   transition={{
@@ -399,13 +398,13 @@ export default function CosmicHero() {
                  
                  {/* Subtle surface texture */}
                  <motion.div
-                   className="absolute inset-4 rounded-full opacity-20"
+                   className="absolute inset-4 rounded-full opacity-30"
                    style={{
-                     background: 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 50%)',
+                     background: 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%)',
                      filter: 'blur(1px)',
                    }}
                    animate={{
-                     opacity: [0.1, 0.3, 0.1],
+                     opacity: [0.15, 0.35, 0.15],
                    }}
                    transition={{
                      duration: 5,
@@ -417,8 +416,8 @@ export default function CosmicHero() {
              </motion.div>
              
              {/* Additional Orb Rings */}
-             <motion.div
-               className="absolute inset-0 rounded-full border border-white/20"
+            <motion.div
+              className="absolute inset-0 rounded-full border border-white/30"
                style={{
                  width: '420px',
                  height: '420px',
@@ -436,8 +435,8 @@ export default function CosmicHero() {
                }}
              />
              
-             <motion.div
-               className="absolute inset-0 rounded-full border border-white/10"
+            <motion.div
+              className="absolute inset-0 rounded-full border border-white/20"
                style={{
                  width: '440px',
                  height: '440px',

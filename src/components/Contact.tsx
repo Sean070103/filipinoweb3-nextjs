@@ -81,7 +81,7 @@ export default function Contact() {
           <div className="flex justify-center mt-4">
             <div className="ph-divider" />
           </div>
-          <p className="text-zinc-300 mt-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>Have a question or proposal? We’d love to hear from you.</p>
+          <p className="text-zinc-300 mt-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>Have a question or proposal? We'd love to hear from you.</p>
         </div>
 
         <motion.div 
@@ -119,7 +119,7 @@ export default function Contact() {
               className="text-zinc-300 mt-2"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
-              We’re responsive on email and social. Drop us a line and we’ll get back soon.
+              We're responsive on email and social. Drop us a line and we'll get back soon.
             </motion.p>
             <motion.ul 
               className="mt-6 space-y-3"
@@ -147,18 +147,18 @@ export default function Contact() {
 
           {/* Right card - form */}
           <motion.form
-          action="https://formkeep.com/f/13efdf753c97"
-          method="POST"
-          id="contact_form"
-          onSubmit={handleSubmit}
-          className="relative overflow-hidden rounded-none border border-white/20 bg-black p-8 [color-scheme:dark] lg:border-l lg:border-white/30 lg:pl-10"
+            action="https://formkeep.com/f/13efdf753c97"
+            method="POST"
+            id="contact_form"
+            onSubmit={handleSubmit}
+            className="relative overflow-hidden rounded-none border border-white/20 bg-black p-8 [color-scheme:dark] lg:border-l lg:border-white/30 lg:pl-10"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-        >
+          >
             {/* Minimal border only */}
-          <input type="hidden" name="g-recaptcha-response" value="" />
+            <input type="hidden" name="g-recaptcha-response" value="" />
             {success && (
               <div className="mb-4 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-emerald-300" role="status">
                 {success}
@@ -174,74 +174,74 @@ export default function Contact() {
               <label className="flex flex-col gap-2">
                 <span className="text-sm text-zinc-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>First name</span>
                 <motion.input
-              type="text"
-              name="firstName"
-              placeholder="First Name"
-              value={formData.firstName}
-              onChange={handleInputChange}
-              required
-              className="w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
-                whileFocus={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            />
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
+                  whileFocus={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                />
                 {errors.firstName && <span className="text-xs text-rose-400">{errors.firstName}</span>}
               </label>
               <label className="flex flex-col gap-2">
                 <span className="text-sm text-zinc-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>Last name</span>
                 <motion.input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={formData.lastName}
-              onChange={handleInputChange}
-              required
-              className="w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
-                whileFocus={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            />
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
+                  whileFocus={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                />
                 {errors.lastName && <span className="text-xs text-rose-400">{errors.lastName}</span>}
               </label>
             </motion.div>
             <label className="mt-4 flex flex-col gap-2">
               <span className="text-sm text-zinc-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>Email</span>
               <motion.input
-            type="email"
-            name="email"
-            placeholder="Your Email Address"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="mt-4 w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
-              whileFocus={{ scale: 1.02 }}
-              viewport={{ once: true }}
-          />
+                type="email"
+                name="email"
+                placeholder="Your Email Address"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="mt-4 w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
+                whileFocus={{ scale: 1.02 }}
+                viewport={{ once: true }}
+              />
               {errors.email && <span className="text-xs text-rose-400">{errors.email}</span>}
             </label>
             <label className="mt-4 flex flex-col gap-2">
               <span className="text-sm text-zinc-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>Message</span>
               <motion.textarea
-            name="message"
-            rows={7}
-            placeholder="Message"
-            value={formData.message}
-            onChange={handleInputChange}
-            required
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              className="mt-4 w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
-              whileFocus={{ scale: 1.02 }}
-              viewport={{ once: true }}
-          />
+                name="message"
+                rows={7}
+                placeholder="Message"
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+                className="mt-4 w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
+                whileFocus={{ scale: 1.02 }}
+                viewport={{ once: true }}
+              />
               {errors.message && <span className="text-xs text-rose-400">{errors.message}</span>}
               {!errors.message && (
                 <span className="text-xs text-zinc-400">{formData.message.length}/1000</span>
               )}
             </label>
-          <span id="captcha" style={{ color: 'red' }}></span>
+            <span id="captcha" style={{ color: 'red' }}></span>
             <motion.button 
               className="mt-6 inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-bold text-black hover:bg-zinc-200 transition-colors disabled:opacity-60 disabled:cursor-not-allowed" 
               type="submit"
@@ -255,7 +255,7 @@ export default function Contact() {
               whileTap={{ scale: 0.95 }}
               viewport={{ once: true }}
             >
-            {submitting ? 'Sending…' : 'Send Message'}
+              {submitting ? 'Sending…' : 'Send Message'}
             </motion.button>
             <p className="mt-3 text-xs text-zinc-500" style={{ fontFamily: 'Montserrat, sans-serif' }}>By sending, you agree to our respectful contact policy. We never share your info.</p>
           </motion.form>
@@ -264,4 +264,3 @@ export default function Contact() {
     </section>
   );
 }
-

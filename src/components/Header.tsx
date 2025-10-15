@@ -20,14 +20,14 @@ export default function Header() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Generate random particles
+  // Generate particles with consistent values
   const particles = Array.from({ length: 20 }, (_, i) => ({
     id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 4 + 1,
-    delay: Math.random() * 5,
-    duration: Math.random() * 10 + 10,
+    x: (i * 17.3) % 100, // Use deterministic values instead of Math.random()
+    y: (i * 23.7) % 100,
+    size: ((i * 7.1) % 4) + 1,
+    delay: (i * 3.7) % 5,
+    duration: ((i * 11.3) % 10) + 10,
   }));
 
   return (
@@ -98,7 +98,7 @@ export default function Header() {
             }}
             animate={{
               y: [0, -30, 0],
-              x: [0, Math.random() * 20 - 10, 0],
+              x: [0, ((particle.id * 13.7) % 20) - 10, 0],
               scale: [1, 1.5, 1],
               opacity: [0.3, 1, 0.3],
             }}
