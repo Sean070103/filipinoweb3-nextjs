@@ -50,6 +50,7 @@ export default [
       "import/no-unresolved": "error",
       "import/named": "error",
        "@typescript-eslint/triple-slash-reference": "off",
+       "no-undef": "off",
     },
     settings: {
       react: { version: "detect" },
