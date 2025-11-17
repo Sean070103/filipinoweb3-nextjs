@@ -31,115 +31,68 @@ export default function Header() {
   }));
 
   return (
-    <header className="relative overflow-hidden">
-      {/* Advanced Particle System */}
+    <header 
+      className="relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(180deg, #5C94FC 0%, #87CEEB 50%, #ADD8E6 100%)',
+        minHeight: '100vh',
+      }}
+    >
+
+      {/* Mario-Style Game Background */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-        {/* Main Ambient Orbs with Parallax */}
-        <motion.div 
-          style={{ 
-            position: 'absolute', 
-            top: '10%', 
-            left: '5%', 
-            width: '240px', 
-            height: '240px', 
-            background: 'rgba(34,211,238,0.12)', 
-            filter: 'blur(60px)', 
-            borderRadius: '50%',
-            y: y1
-          }}
-          animate={{
-            x: [0, 20, -10, 0],
-            y: [0, -15, 10, 0],
-            scale: [1, 1.1, 0.95, 1],
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          style={{ 
-            position: 'absolute', 
-            bottom: '8%', 
-            right: '12%', 
-            width: '280px', 
-            height: '280px', 
-            background: 'rgba(168,85,247,0.12)', 
-            filter: 'blur(70px)', 
-            borderRadius: '50%',
-            y: y2
-          }}
-          animate={{
-            x: [0, -25, 15, 0],
-            y: [0, 20, -12, 0],
-            scale: [1, 1.15, 0.9, 1],
-          }}
-          transition={{
-            duration: 32,
-            repeat: Infinity,
-            ease: "easeInOut"
+        {/* Ground/Floor at bottom */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '120px',
+            background: 'repeating-linear-gradient(90deg, #8B4513 0px, #8B4513 8px, #A0522D 8px, #A0522D 16px)',
+            imageRendering: 'pixelated',
+            borderTop: '4px solid #654321',
+            boxShadow: '0 -2px 0 #654321, 0 -4px 0 #8B4513'
           }}
         />
         
-        {/* Floating Particles */}
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            style={{
-              position: 'absolute',
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              width: `${particle.size}px`,
-              height: `${particle.size}px`,
-              background: 'rgba(34, 211, 238, 0.6)',
-              borderRadius: '50%',
-              filter: 'blur(1px)',
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, ((particle.id * 13.7) % 20) - 10, 0],
-              scale: [1, 1.5, 1],
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: particle.delay,
-            }}
-          />
-        ))}
-
-        {/* Mouse-following glow effect */}
-        <motion.div
+        {/* Grass layer on top of ground */}
+        <div
           style={{
             position: 'absolute',
-            left: mousePosition.x - 100,
-            top: mousePosition.y - 100,
-            width: '200px',
-            height: '200px',
-            background: 'radial-gradient(circle, rgba(34,211,238,0.1) 0%, transparent 70%)',
-            filter: 'blur(40px)',
-            pointerEvents: 'none',
-          }}
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
+            bottom: '120px',
+            left: 0,
+            right: 0,
+            height: '20px',
+            background: '#7CB342',
+            imageRendering: 'pixelated',
+            borderTop: '2px solid #558B2F',
+            boxShadow: '0 -2px 0 #558B2F, 0 -4px 0 #7CB342'
           }}
         />
 
-        {/* Grid Pattern Overlay */}
+        {/* Distant Hills */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '140px',
+            left: 0,
+            right: 0,
+            height: '150px',
+            background: 'linear-gradient(180deg, #4CAF50 0%, #66BB6A 100%)',
+            clipPath: 'polygon(0% 100%, 15% 60%, 25% 70%, 35% 50%, 45% 65%, 55% 45%, 65% 60%, 75% 55%, 85% 65%, 100% 50%, 100% 100%)',
+            imageRendering: 'pixelated',
+            opacity: 0.7
+          }}
+        />
+
+        {/* Retro Pixelated Grid Pattern Overlay (subtle) */}
         <div 
           className="absolute inset-0 opacity-5" 
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='none'/%3E%3Crect x='0' y='0' width='1' height='8' fill='%23ffffff'/%3E%3Crect x='0' y='0' width='8' height='1' fill='%23ffffff'/%3E%3C/svg%3E")`,
+            backgroundSize: '8px 8px',
+            imageRendering: 'pixelated'
           }}
         />
       </div>
@@ -151,42 +104,60 @@ export default function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Enhanced Title with Text Effects */}
+          {/* Enhanced Title with Retro Pixelated Text Effects */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative text-white font-bold"
+            className="relative text-white font-bold pixelated"
             style={{ 
               color: '#ffffff',
-              textShadow: 'none',
-              fontFamily: 'var(--font-jersey), Montserrat, sans-serif',
-              fontSize: 'clamp(4.5rem, 9vw, 8rem)',
-              lineHeight: 1.05,
-              fontWeight: '800',
+              fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              lineHeight: 1.2,
+              fontWeight: '400',
               WebkitTextFillColor: 'currentColor',
-              display: 'inline-block'
+              display: 'inline-block',
+              imageRendering: 'pixelated',
+              textRendering: 'optimizeSpeed',
+              WebkitFontSmoothing: 'none',
+              MozOsxFontSmoothing: 'unset',
+              fontSmooth: 'never',
+              letterSpacing: '0.05em'
             }}
             whileHover={{ 
-              scale: 1.02,
-              textShadow: 'none'
+              scale: 1.02
             }}
           >
-            <span style={{ color: '#CE1126', textShadow: '0 0 8px #CE1126, 0 0 16px #CE1126' }}>Filipino </span>
-            <span style={{ color: '#FCD116', WebkitTextFillColor: '#FCD116', textShadow: '0 0 8px #FCD116, 0 0 16px #FCD116' }}>WEB3</span>
-            {/* Sweep removed */}
+            <span style={{ 
+              color: '#CE1126', 
+              textShadow: '4px 4px 0px rgba(0,0,0,0.3), 0 0 0 #CE1126, 2px 2px 0 #CE1126',
+              filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.5))'
+            }}>Filipino </span>
+            <span style={{ 
+              color: '#FCD116', 
+              WebkitTextFillColor: '#FCD116', 
+              textShadow: '4px 4px 0px rgba(0,0,0,0.3), 0 0 0 #FCD116, 2px 2px 0 #FCD116',
+              filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.5))'
+            }}>WEB3</span>
           </motion.h1>
 
-          {/* Enhanced Description */}
+          {/* Enhanced Description with Retro Styling */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="relative text-white"
+            className="relative text-white pixelated"
             style={{ 
               color: '#ffffff !important',
-              fontFamily: 'Montserrat, sans-serif',
-              fontSize: '1.1rem'
+              fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+              fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)',
+              lineHeight: 1.6,
+              imageRendering: 'pixelated',
+              textRendering: 'optimizeSpeed',
+              WebkitFontSmoothing: 'none',
+              letterSpacing: '0.02em',
+              textShadow: '2px 2px 0px rgba(0,0,0,0.3)'
             }}
             whileHover={{ 
               scale: 1.01,
@@ -197,56 +168,70 @@ export default function Header() {
             their skills and maximize their potential to grow in the Web3 space.
           </motion.p>
 
-          {/* Enhanced Button Container */}
+          {/* Retro Pixelated Button Container */}
           <motion.div 
-            style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}
+            style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
           >
             <motion.a 
               href="#about" 
-              className="btn btn-secondary relative overflow-hidden"
+              className="btn btn-secondary relative overflow-hidden pixelated"
               style={{ 
                 color: '#ffffff !important',
-                background: 'transparent',
-                border: '1px solid rgba(255,255,255,0.25)',
-                padding: '0.9rem 1.6rem',
-                borderRadius: '0.65rem',
-                backdropFilter: 'blur(2px)'
+                background: 'rgba(206, 17, 38, 0.9)',
+                border: '4px solid #ffffff',
+                borderStyle: 'outset',
+                padding: '1rem 2rem',
+                borderRadius: '0',
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                fontSize: 'clamp(0.6rem, 1.2vw, 0.8rem)',
+                textTransform: 'uppercase',
+                imageRendering: 'pixelated',
+                textRendering: 'optimizeSpeed',
+                WebkitFontSmoothing: 'none',
+                boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
+                textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
+                letterSpacing: '0.05em'
               }}
               whileHover={{ 
                 scale: 1.05,
-                boxShadow: "0 8px 20px rgba(0,0,0,0.25), 0 0 0 2px rgba(255,255,255,0.08) inset"
+                boxShadow: "6px 6px 0px rgba(0,0,0,0.4), inset -2px -2px 0px rgba(0,0,0,0.3)"
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.95, boxShadow: "2px 2px 0px rgba(0,0,0,0.3)" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
               <span className="relative z-10" style={{ color: '#ffffff !important' }}>Get Started</span>
             </motion.a>
             <motion.a 
               href="#team" 
-              className="btn btn-secondary relative overflow-hidden"
+              className="btn btn-secondary relative overflow-hidden pixelated"
+              style={{ 
+                color: '#ffffff !important',
+                background: 'rgba(252, 209, 22, 0.9)',
+                border: '4px solid #ffffff',
+                borderStyle: 'outset',
+                padding: '1rem 2rem',
+                borderRadius: '0',
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                fontSize: 'clamp(0.6rem, 1.2vw, 0.8rem)',
+                textTransform: 'uppercase',
+                imageRendering: 'pixelated',
+                textRendering: 'optimizeSpeed',
+                WebkitFontSmoothing: 'none',
+                boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
+                textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
+                letterSpacing: '0.05em'
+              }}
               whileHover={{ 
                 scale: 1.05,
-                boxShadow: "0 15px 30px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.15) inset"
+                boxShadow: "6px 6px 0px rgba(0,0,0,0.4), inset -2px -2px 0px rgba(0,0,0,0.3)"
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.95, boxShadow: "2px 2px 0px rgba(0,0,0,0.3)" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-purple-400/20"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-              <span className="relative z-10">Meet the Team</span>
+              <span className="relative z-10" style={{ color: '#000000 !important' }}>Meet the Team</span>
             </motion.a>
           </motion.div>
 
@@ -267,11 +252,55 @@ export default function Header() {
               width={500}
               height={500}
               className="relative z-10"
-              style={{ filter: 'none', transform: 'none' }}
+              style={{ 
+                filter: 'none', 
+                transform: 'none',
+                imageRendering: 'pixelated'
+              }}
             />
           </div>
         </motion.div>
       </div>
+      
+      {/* CSS Animations with Retro Pixelated Effects */}
+      <style jsx>{`
+        @keyframes floatHouse {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px);
+            opacity: 0.2;
+          }
+          25% {
+            transform: translateY(-5px) translateX(3px);
+            opacity: 0.3;
+          }
+          50% {
+            transform: translateY(-8px) translateX(-2px);
+            opacity: 0.25;
+          }
+          75% {
+            transform: translateY(-3px) translateX(5px);
+            opacity: 0.35;
+          }
+        }
+        
+        @keyframes pixelGlow {
+          0%, 100% {
+            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.5));
+          }
+          50% {
+            filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.6));
+          }
+        }
+        
+        .pixelated {
+          image-rendering: pixelated !important;
+          image-rendering: -moz-crisp-edges !important;
+          image-rendering: crisp-edges !important;
+          -webkit-font-smoothing: none !important;
+          -moz-osx-font-smoothing: unset !important;
+          font-smooth: never !important;
+        }
+      `}</style>
     </header>
   );
 }

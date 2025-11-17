@@ -40,6 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Pixel Theme Meta Tags */}
+        <meta name="theme-color" content="#4a148c" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(Json_LD()) }}
@@ -51,11 +53,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${montserrat.variable} ${jersey.variable} ${pressStart2P.variable} ${orbitron.variable} font-sans antialiased ph-page-bg`}
+        className={`${montserrat.variable} ${jersey.variable} ${pressStart2P.variable} ${orbitron.variable} font-sans antialiased`}
       >
-        {/* Subtle Filipino pattern overlay */}
-        <div className="ph-page-pattern fixed inset-0 -z-10" />
-        <PerformanceMonitor />
+        
+        {setting.enablePerformanceMonitor && <PerformanceMonitor />}
         {children}
         
         {/* External Scripts */}

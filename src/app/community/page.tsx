@@ -1,7 +1,6 @@
 "use client";
 
 // import { useRef, useState } from "react";
-import PhilippinesMap from "../../components/PhilippinesMap";
 
 type Location = {
   name: string;
@@ -89,12 +88,12 @@ export default function CommunityPage() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
+            gridTemplateColumns: "1fr",
             gap: "2rem",
+            maxWidth: "600px",
+            margin: "0 auto"
           }}
         >
-          <PhilippinesMap />
-
           {/* Stats / CTA */}
           <aside style={{ alignSelf: "center" }}>
             <div style={{ display: "grid", gap: "1rem" }}>

@@ -1,134 +1,198 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Users, Star } from "lucide-react";
 
 export default function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const nav = document.querySelector('nav');
-      if (nav) {
-        nav.classList.toggle('window-scroll', window.scrollY > 100);
-      }
-      // Active section underline
-      const links = document.querySelectorAll('.nav__menu a');
-      const sections = Array.from(links).map(l => document.querySelector((l as HTMLAnchorElement).getAttribute('href') || '')).filter(Boolean) as HTMLElement[];
-      const scrollPos = window.scrollY + 120;
-      sections.forEach((sec, idx) => {
-        const link = links[idx] as HTMLElement;
-        if (sec && link) {
-          const top = sec.offsetTop;
-          const bottom = top + sec.offsetHeight;
-          if (scrollPos >= top && scrollPos < bottom) {
-            link.classList.add('active');
-          } else {
-            link.classList.remove('active');
-          }
-        }
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  const menuItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "About" },
-    { href: "/community", label: "Community" },
-    { href: "#team", label: "Team" },
-    { href: "#faqs", label: "FAQs" },
-    { href: "#contact", label: "Contact" }
-  ];
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   return (
-    <motion.nav 
-      aria-label="Primary navigation"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
-      <div className="container nav__container">
-        <motion.a 
-          href="/" 
-          className="nav__brand" 
-          aria-label="FW3 Home"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <h4>FW3</h4>
-        </motion.a>
-        
-        <ul className={`nav__menu ${isMenuOpen ? 'flex' : 'hidden'}`}>
-          {menuItems.map((item, index) => (
-            <motion.li
-              key={item.href}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <motion.a 
-                href={item.href} 
-                onClick={closeMenu}
-                whileHover={{ 
-                  scale: 1.05,
-                  color: "#22d3ee"
-                }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                {item.label}
-              </motion.a>
-            </motion.li>
-          ))}
-        </ul>
-        
-        <motion.a 
-          href="#contact" 
-          className="btn btn-secondary nav__cta" 
-          aria-label="Join our community"
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0 10px 25px rgba(0,0,0,0.3)"
+    <>
+      {/* Circus Boxes Navbar Design */}
+      <div className="w-full fixed top-0 left-0 right-0 py-6 flex justify-center items-center z-[9999] bg-transparent">
+          <div 
+          className="navbar-container flex items-center justify-center gap-1 pixelated"
+          style={{
+            background: '#000000',
+            borderRadius: '0',
+            boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(255,255,255,0.1)',
+            border: '4px solid #ffffff',
+            borderStyle: 'outset',
+            padding: '8px',
+            imageRendering: 'pixelated'
           }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
-          Join
-        </motion.a>
-        
-        <motion.button 
-          id="open-menu-btn" 
-          onClick={toggleMenu}
-          style={{ display: isMenuOpen ? 'none' : 'inline-block' }}
-          whileHover={{ scale: 1.1, rotate: 90 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        >
-          <i className="uil uil-bars"></i>
-        </motion.button>
-        
-        <motion.button 
-          id="close-menu-btn" 
-          onClick={closeMenu}
-          style={{ display: isMenuOpen ? 'inline-block' : 'none' }}
-          whileHover={{ scale: 1.1, rotate: 90 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        >
-          <i className="uil uil-multiply"></i>
-        </motion.button>
+          {/* FW Circus Box */}
+          <Link
+            href="/#home"
+            className="flex items-center justify-center px-6 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2"
+            style={{
+              background: '#22c55e',
+              borderRadius: '0',
+              boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
+              border: '3px solid #ffffff',
+              borderStyle: 'outset',
+              minWidth: '70px',
+              minHeight: '60px',
+              position: 'relative',
+              imageRendering: 'pixelated'
+            }}
+          >
+            <span 
+              className="text-white font-black pixelated"
+              style={{
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
+                fontSize: '14px',
+                fontWeight: '400',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                imageRendering: 'pixelated',
+                WebkitFontSmoothing: 'none',
+                fontSmooth: 'never'
+              }}
+            >
+              FW
+            </span>
+          </Link>
+
+          {/* ABOUT Circus Box */}
+          <Link
+            href="/#about"
+            className="flex flex-col items-center justify-center px-5 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
+            style={{
+              background: '#eab308',
+              borderRadius: '0',
+              boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
+              border: '3px solid #ffffff',
+              borderStyle: 'outset',
+              minWidth: '90px',
+              minHeight: '75px',
+              position: 'relative',
+              imageRendering: 'pixelated'
+            }}
+          >
+            <span 
+              className="text-white font-black pixelated"
+              style={{
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
+                fontSize: '10px',
+                fontWeight: '400',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                imageRendering: 'pixelated',
+                WebkitFontSmoothing: 'none',
+                fontSmooth: 'never'
+              }}
+            >
+              ABOUT
+            </span>
+            {/* Circus People Icon */}
+            <Users 
+              className="w-5 h-5 text-white mt-2" 
+              style={{ 
+                filter: 'drop-shadow(2px 2px 0px rgba(135, 206, 250, 0.4))',
+                transition: 'transform 0.3s ease',
+              }}
+            />
+          </Link>
+
+          {/* COMMUNITY Circus Box */}
+          <Link
+            href="/community"
+            className="flex flex-col items-center justify-center px-5 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
+            style={{
+              background: '#06b6d4',
+              borderRadius: '0',
+              boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
+              border: '3px solid #ffffff',
+              borderStyle: 'outset',
+              minWidth: '110px',
+              minHeight: '75px',
+              position: 'relative',
+              imageRendering: 'pixelated'
+            }}
+          >
+            <span 
+              className="text-white font-black pixelated"
+              style={{
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
+                fontSize: '8px',
+                fontWeight: '400',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                imageRendering: 'pixelated',
+                WebkitFontSmoothing: 'none',
+                fontSmooth: 'never'
+              }}
+            >
+              COMMUNITY
+            </span>
+            {/* Circus Star Icon */}
+            <Star 
+              className="w-5 h-5 text-white mt-2" 
+              style={{ 
+                filter: 'drop-shadow(2px 2px 0px rgba(135, 206, 250, 0.4))',
+                transition: 'transform 0.3s ease',
+              }}
+            />
+          </Link>
+
+          {/* TEAM Circus Box */}
+          <Link
+            href="/#team"
+            className="flex items-center justify-center px-6 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2"
+            style={{
+              background: '#f97316',
+              borderRadius: '0',
+              boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
+              border: '3px solid #ffffff',
+              borderStyle: 'outset',
+              minWidth: '70px',
+              minHeight: '60px',
+              position: 'relative',
+              imageRendering: 'pixelated'
+            }}
+          >
+            <span 
+              className="text-white font-black pixelated"
+              style={{
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
+                fontSize: '14px',
+                fontWeight: '400',
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                imageRendering: 'pixelated',
+                WebkitFontSmoothing: 'none',
+                fontSmooth: 'never'
+              }}
+            >
+              TEAM
+            </span>
+          </Link>
+        </div>
       </div>
-    </motion.nav>
+      
+      {/* Circus Animation Styles */}
+      <style jsx>{`
+        @keyframes circusGradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
+    </>
   );
 }

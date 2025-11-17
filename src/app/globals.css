@@ -45,7 +45,12 @@ body {
   font-family: "Montserrat", sans-serif;
   line-height: 1.7;
   color: #ffffff;
-  /* Solid black background */
+  /* Transparent background - let sections define their own */
+  background: transparent;
+}
+
+/* Only apply black background to sections that don't have their own background */
+body > *:not(section):not(.categories):not(#home) {
   background: #000000;
 }
 
@@ -65,6 +70,23 @@ body {
 
 /* Ensure all text is white */
 h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th, strong, em {
+  color: #ffffff !important;
+}
+
+/* Exception for Categories section - allow custom colors */
+section#home.categories h3,
+section.categories h3,
+#home.categories h3,
+section#home h3,
+.categories h3 {
+  color: inherit !important;
+}
+
+section#home.categories p,
+section.categories p,
+#home.categories p,
+section#home p,
+.categories p {
   color: #ffffff !important;
 }
 
@@ -1021,6 +1043,47 @@ footer ul li a:hover {
   min-height: 100vh;
   position: relative;
   font-family: 'Courier New', monospace;
+}
+
+/* Train Sign Scrolling Animation */
+@keyframes scrollTrain {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.train-sign-scroll {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* One Piece Boss Card Animations */
+@keyframes bossGlow {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 20px currentColor, inset 0 0 20px currentColor;
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 40px currentColor, inset 0 0 30px currentColor;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+.one-piece-boss-card {
+  transform-style: preserve-3d;
 }
 
 .team__container {
@@ -2141,4 +2204,49 @@ textarea:focus {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-bg2);
+}
+
+/* Override dark/black colors in Categories section */
+section#home.categories,
+section.categories,
+#home.categories {
+  background: linear-gradient(180deg, #87CEFA 0%, #B0E0FF 50%, #87CEFA 100%) !important;
+}
+
+section#home.categories h3,
+section.categories h3,
+#home.categories h3,
+section#home h3.categories,
+section#home .categories h3 {
+  text-shadow: 2px 2px 0 rgba(135, 206, 250, 0.6), -2px -2px 0 #22d3ee, 0 0 20px rgba(103, 232, 249, 0.5) !important;
+  color: inherit !important;
+}
+
+section#home.categories p,
+section.categories p,
+#home.categories p,
+section#home p.categories,
+section#home .categories p,
+section#home .text-gray-100,
+section#home .text-gray-200 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(135, 206, 250, 0.4) !important;
+}
+
+section#home.categories h1,
+section.categories h1,
+#home.categories h1,
+section#home h1 {
+  color: #ffffff !important;
+}
+
+/* Remove any black shadows from navigation */
+.navbar-container,
+.navbar-container * {
+  box-shadow: 0 8px 30px rgba(135, 206, 250, 0.3), inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+.navbar-container a,
+.navbar-container span {
+  text-shadow: 2px 2px 0px rgba(135, 206, 250, 0.6), 0 0 10px rgba(255, 255, 255, 0.5) !important;
 }

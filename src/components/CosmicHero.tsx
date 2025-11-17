@@ -1,12 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export default function CosmicHero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  console.log(mousePosition);
+  const prefersReduced = useReducedMotion();
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -17,65 +16,50 @@ export default function CosmicHero() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-<<<<<<< HEAD
-  // Generate stars with consistent values
-  const stars = Array.from({ length: 100 }, (_, i) => ({
-    id: i,
-    x: (i * 7.3) % 100, // Use deterministic values instead of Math.random()
-    y: (i * 11.7) % 100,
-    size: ((i * 3.1) % 3) + 1,
-    delay: (i * 2.3) % 5,
-  }));
-
-  // Generate Ethereum-themed matrix characters
-  const ethereumChars = Array.from({ length: 50 }, () => 'Ξ');
-  const matrixChars = Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    x: (i * 13.7) % 100, // Use deterministic values instead of Math.random()
-    y: (i * 19.3) % 100,
-    char: ethereumChars[i] || 'Ξ',
-    delay: (i * 7.1) % 10,
-    speed: ((i * 5.7) % 3) + 1,
-  }));
-=======
-  // Generate stars
-  // const stars = Array.from({ length: 100 }, (_, i) => ({
-  //   id: i,
-  //   x: Math.random() * 100,
-  //   y: Math.random() * 100,
-  //   size: Math.random() * 3 + 1,
-  //   delay: Math.random() * 5,
-  // }));
-
-  // Generate Ethereum-themed matrix characters
-  // const ethereumChars = Array.from({ length: 50 }, () => 'Ξ');
-  // const matrixChars = Array.from({ length: 50 }, (_, i) => ({
-  //   id: i,
-  //   x: Math.random() * 100,
-  //   y: Math.random() * 100,
-  //   char: ethereumChars[i] || 'Ξ',
-  //   delay: Math.random() * 10,
-  //   speed: Math.random() * 3 + 1,
-  // }));
->>>>>>> 44036beaa5c8980881a52d01ea389ef8e797a2e1
+  // (Optional) You can use mousePosition for interactive effects later
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black">
-      {/* Deep Space Background */}
-      <div className="absolute inset-0">
-         {/* Subtle nebula clouds */}
-         <motion.div
-           className="absolute top-0 left-0 w-full h-full opacity-20"
-           animate={{
-             background: [
-               'radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.1) 0%, rgba(20, 20, 20, 0.05) 30%, transparent 60%)',
-               'radial-gradient(circle at 80% 70%, rgba(40, 40, 40, 0.1) 0%, rgba(0, 0, 0, 0.05) 30%, transparent 60%)',
-               'radial-gradient(circle at 50% 20%, rgba(60, 60, 60, 0.08) 0%, rgba(0, 0, 0, 0.1) 40%, transparent 70%)',
-               'radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.1) 0%, rgba(20, 20, 20, 0.05) 30%, transparent 60%)',
-             ],
-           }}
-           transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
-         />
+    <div className="relative min-h-screen overflow-hidden" style={{ backgroundColor: '#4A90E2' }}>
+      {/* Blue Background with Subtle Horizontal Bands */}
+      <div className="absolute inset-0" aria-hidden="true" role="presentation">
+        {/* Main blue background */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: `
+              linear-gradient(180deg, 
+                #4A90E2 0%, 
+                #4A8FE0 8%, 
+                #4A90E2 16%, 
+                #4A91E4 24%, 
+                #4A90E2 32%, 
+                #4A8FE0 40%, 
+                #4A90E2 48%, 
+                #4A91E4 56%, 
+                #4A90E2 64%, 
+                #4A8FE0 72%, 
+                #4A90E2 80%, 
+                #4A91E4 88%, 
+                #4A90E2 100%
+              )
+            `
+          }}
+        />
+
+        {/* Single Pixel Art Cloud */}
+        <div className="absolute inset-0 opacity-30">
+          <div 
+            className="absolute top-16 left-1/2 transform -translate-x-1/2"
+            style={{
+              width: '160px',
+              height: '80px',
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 80 40\'%3E%3C!-- Pixel Art Cloud with blue-grey shading --%3E%3C!-- Main cloud body (white) --%3E%3Crect x=\'8\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'12\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'16\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'20\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'24\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'28\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'32\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'36\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'40\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'44\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'48\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'52\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'56\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'60\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'64\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3C!-- Top section --%3E%3Crect x=\'12\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'16\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'20\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'24\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'28\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'32\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'36\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'40\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'44\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'48\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'52\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'56\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'60\' y=\'16\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3C!-- Peak section --%3E%3Crect x=\'16\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'20\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'24\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'28\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'32\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'36\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'40\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'44\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'48\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'52\' y=\'12\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3C!-- Top peak --%3E%3Crect x=\'20\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'24\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'28\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'32\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'36\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'40\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3Crect x=\'44\' y=\'8\' width=\'4\' height=\'4\' fill=\'%23ffffff\'/%3E%3C!-- Light blue-grey shading --%3E%3Crect x=\'12\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'16\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'20\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'24\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'28\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'32\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'36\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'40\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'44\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'48\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'52\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'56\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3Crect x=\'60\' y=\'20\' width=\'4\' height=\'4\' fill=\'%23b8c5d1\'/%3E%3C!-- Dark blue-grey outline --%3E%3Crect x=\'8\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'12\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'16\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'20\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'24\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'28\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'32\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'36\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'40\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'44\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'48\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'52\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'56\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'60\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3Crect x=\'64\' y=\'24\' width=\'4\' height=\'4\' fill=\'%236b7b8c\'/%3E%3C/svg%3E")',
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              imageRendering: 'pixelated'
+            }}
+          />
+        </div>
         
          {/* Web3/Software Development Background Elements */}
          
@@ -89,16 +73,8 @@ export default function CosmicHero() {
                top: `${(i * 19.3) % 100}%`,
                fontSize: '10px',
              }}
-             animate={{
-               y: [0, -20, 0],
-               opacity: [0.2, 0.5, 0.2],
-             }}
-             transition={{
-               duration: 8 + ((i * 3.1) % 4),
-               repeat: Infinity,
-               ease: "easeInOut",
-               delay: (i * 2.3) % 5,
-             }}
+            animate={prefersReduced ? undefined : { y: [0, -20, 0], opacity: [0.2, 0.5, 0.2] }}
+            transition={prefersReduced ? undefined : { duration: 8 + ((i * 3.1) % 4), repeat: Infinity, ease: "easeInOut", delay: (i * 2.3) % 5 }}
            >
              {['function()', 'const web3', 'blockchain', 'smart contract', 'defi', 'nft', 'dao', 'solidity'][i]}
            </motion.div>
@@ -113,16 +89,8 @@ export default function CosmicHero() {
                left: `${20 + (i * 6)}%`,
                top: `${30 + Math.sin(i * 0.5) * 20}%`,
              }}
-             animate={{
-               opacity: [0.3, 0.6, 0.3],
-               scale: [1, 1.2, 1],
-             }}
-             transition={{
-               duration: 4 + ((i * 1.7) % 2),
-               repeat: Infinity,
-               ease: "easeInOut",
-               delay: i * 0.3,
-             }}
+            animate={prefersReduced ? undefined : { opacity: [0.3, 0.6, 0.3], scale: [1, 1.2, 1] }}
+            transition={prefersReduced ? undefined : { duration: 4 + ((i * 1.7) % 2), repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
            />
          ))}
          
@@ -137,29 +105,16 @@ export default function CosmicHero() {
                width: `${20 + ((i * 7.3) % 30)}px`,
                transform: `rotate(${(i * 11.7) % 45}deg)`,
              }}
-             animate={{
-               opacity: [0.2, 0.5, 0.2],
-             }}
-             transition={{
-               duration: 6 + ((i * 2.1) % 3),
-               repeat: Infinity,
-               ease: "easeInOut",
-               delay: i * 0.5,
-             }}
+            animate={prefersReduced ? undefined : { opacity: [0.2, 0.5, 0.2] }}
+            transition={prefersReduced ? undefined : { duration: 6 + ((i * 2.1) % 3), repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
            />
          ))}
          
          {/* Terminal/Console Elements */}
          <motion.div
            className="absolute top-20 left-10 font-mono text-xs text-gray-300 opacity-60"
-           animate={{
-             opacity: [0.3, 0.6, 0.3],
-           }}
-           transition={{
-             duration: 3,
-             repeat: Infinity,
-             ease: "easeInOut",
-           }}
+          animate={prefersReduced ? undefined : { opacity: [0.3, 0.6, 0.3] }}
+          transition={prefersReduced ? undefined : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
          >
            <div>$ npm install web3</div>
            <div>$ git commit -m (deploy smart contract)</div>
@@ -167,15 +122,8 @@ export default function CosmicHero() {
          
          <motion.div
            className="absolute bottom-20 right-10 font-mono text-xs text-gray-300 opacity-60"
-           animate={{
-             opacity: [0.3, 0.6, 0.3],
-           }}
-           transition={{
-             duration: 4,
-             repeat: Infinity,
-             ease: "easeInOut",
-             delay: 1,
-           }}
+          animate={prefersReduced ? undefined : { opacity: [0.3, 0.6, 0.3] }}
+          transition={prefersReduced ? undefined : { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
          >
            <div>{"const { ethers } = require(\"ethers\");"}</div>
            <div>{"// Filipino Web3 Community"}</div>
@@ -201,15 +149,8 @@ export default function CosmicHero() {
          
          <motion.div
            className="absolute bottom-1/3 left-1/4 w-6 h-6 opacity-35"
-           animate={{
-             y: [0, -10, 0],
-             opacity: [0.2, 0.5, 0.2],
-           }}
-           transition={{
-             duration: 5,
-             repeat: Infinity,
-             ease: "easeInOut",
-           }}
+          animate={prefersReduced ? undefined : { y: [0, -10, 0], opacity: [0.2, 0.5, 0.2] }}
+          transition={prefersReduced ? undefined : { duration: 5, repeat: Infinity, ease: "easeInOut" }}
          >
            <div className="w-full h-full border border-gray-400 rounded flex items-center justify-center">
              <div className="w-2 h-2 bg-gray-300"></div>
@@ -222,78 +163,32 @@ export default function CosmicHero() {
       {/* Central Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-6 md:px-10">
         <div className="text-center max-w-5xl">
-          {/* Central Sphere with Web3 Text */}
+          {/* Main Title - Just FWEB3 Text */}
           <div className="relative inline-block">
-             {/* Outer Ring */}
-            <motion.div
-              className="absolute inset-0 rounded-full border-4 border-gray-500/60"
-               style={{
-                 width: '400px',
-                 height: '400px',
-                 left: '-200px',
-                 top: '-200px',
-               }}
-               animate={{
-                 rotate: [0, 360],
-                 scale: [1, 1.1, 1],
-               }}
-               transition={{
-                 duration: 15,
-                 repeat: Infinity,
-                 ease: "easeInOut",
-               }}
-             />
-            
-             {/* Main Sphere */}
-           <motion.div
-              className="relative w-80 h-80 rounded-full overflow-hidden"
+            <motion.h1
+              className="text-8xl md:text-9xl font-black relative"
               style={{
-                background: `
-                 radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 30%),
-                 radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
-                  radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.9) 0%, rgba(20, 20, 20, 0.8) 30%, rgba(40, 40, 40, 0.6) 60%, rgba(0, 0, 0, 0.95) 100%)
+                fontFamily: 'Courier New, monospace',
+                color: '#ffffff',
+                textShadow: `
+                  4px 4px 0px #1a365d,
+                  8px 8px 0px #2d3748,
+                  12px 12px 0px #1a202c,
+                  0 0 30px #ffffff
                 `,
-                boxShadow: `
-                 0 0 60px rgba(255, 255, 255, 0.15),
-                  0 0 120px rgba(0, 0, 0, 0.8),
-                 inset 0 0 60px rgba(60, 60, 60, 0.4),
-                 inset 0 0 120px rgba(0, 0, 0, 0.6)
-                `,
-               border: '1px solid rgba(255, 255, 255, 0.2)'
+                imageRendering: 'pixelated',
+                WebkitFontSmoothing: 'none',
+                fontSmooth: 'never',
+                letterSpacing: '0.2em',
+                fontSize: 'clamp(4rem, 12vw, 8rem)',
+                lineHeight: '0.8',
+                transform: 'scale(1)',
+                filter: 'contrast(1.2)',
               }}
-              animate={{
-                scale: [1, 1.05, 1],
-                boxShadow: [
-                 '0 0 60px rgba(255, 255, 255, 0.15), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.4), inset 0 0 120px rgba(0, 0, 0, 0.6)',
-                 '0 0 80px rgba(255, 255, 255, 0.25), 0 0 160px rgba(0, 0, 0, 0.9), inset 0 0 80px rgba(80, 80, 80, 0.55), inset 0 0 160px rgba(0, 0, 0, 0.75)',
-                 '0 0 60px rgba(255, 255, 255, 0.15), 0 0 120px rgba(0, 0, 0, 0.8), inset 0 0 60px rgba(60, 60, 60, 0.4), inset 0 0 120px rgba(0, 0, 0, 0.6)'
-                ]
+              animate={prefersReduced ? undefined : {
+                scale: [1, 1.02, 1],
               }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              {/* Web3 Text with Glitch Effect */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.h1
-                  className="text-6xl font-black relative"
-                  style={{
-                    fontFamily: 'Montserrat, sans-serif',
-                    background: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff)',
-                    backgroundSize: '400% 400%',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    textShadow: '0 0 30px rgba(255, 107, 107, 0.5)',
-                  }}
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                    textShadow: [
-                      '0 0 30px rgba(255, 107, 107, 0.5)',
-                      '0 0 40px rgba(78, 205, 196, 0.6), 0 0 60px rgba(69, 183, 209, 0.4)',
-                      '0 0 50px rgba(254, 202, 87, 0.7), 0 0 70px rgba(255, 159, 243, 0.5)',
-                      '0 0 30px rgba(255, 107, 107, 0.5)',
-                    ],
-                  }}
-                  transition={{
+              transition={prefersReduced ? undefined : {
                     duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut",
@@ -302,206 +197,8 @@ export default function CosmicHero() {
                   FWEB3
                 </motion.h1>
                 
-                {/* Colorful Glitch Effect Overlay */}
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center"
-                  animate={{
-                    opacity: [0, 0.6, 0],
-                    x: [0, 3, 0],
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <h1 
-                    className="text-6xl font-black"
-                    style={{
-                      background: 'linear-gradient(45deg, #ff6b6b, #ff9ff3)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}
-                  >
-                    FWEB3
-                  </h1>
-                </motion.div>
-                
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center"
-                  animate={{
-                    opacity: [0, 0.6, 0],
-                    x: [0, -3, 0],
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.15,
-                  }}
-                >
-                  <h1 
-                    className="text-6xl font-black"
-                    style={{
-                      background: 'linear-gradient(45deg, #4ecdc4, #45b7d1)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}
-                  >
-                    FWEB3
-                  </h1>
-                </motion.div>
-                
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center"
-                  animate={{
-                    opacity: [0, 0.5, 0],
-                    y: [0, 2, 0],
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.3,
-                  }}
-                >
-                  <h1 
-                    className="text-6xl font-black"
-                    style={{
-                      background: 'linear-gradient(45deg, #feca57, #54a0ff)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}
-                  >
-                    FWEB3
-                  </h1>
-                </motion.div>
                </div>
                
-               {/* Orb Surface Details */}
-               <div className="absolute inset-0">
-                 {/* Highlight spots */}
-                 <motion.div
-                   className="absolute top-8 left-12 w-4 h-4 rounded-full"
-                   style={{
-                     background: 'radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%)',
-                     boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)',
-                   }}
-                   animate={{
-                     opacity: [0.3, 0.8, 0.3],
-                     scale: [1, 1.2, 1],
-                   }}
-                   transition={{
-                     duration: 3,
-                     repeat: Infinity,
-                     ease: "easeInOut",
-                     delay: 0.5,
-                   }}
-                 />
-                 
-                 <motion.div
-                   className="absolute bottom-16 right-20 w-3 h-3 rounded-full"
-                   style={{
-                     background: 'radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%)',
-                     boxShadow: '0 0 8px rgba(255, 255, 255, 0.15)',
-                   }}
-                   animate={{
-                     opacity: [0.2, 0.6, 0.2],
-                     scale: [1, 1.3, 1],
-                   }}
-                   transition={{
-                     duration: 4,
-                     repeat: Infinity,
-                     ease: "easeInOut",
-                     delay: 1.5,
-                   }}
-                 />
-                 
-                 {/* Subtle surface texture */}
-                 <motion.div
-                   className="absolute inset-4 rounded-full opacity-30"
-                   style={{
-                     background: 'radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 50%)',
-                     filter: 'blur(1px)',
-                   }}
-                   animate={{
-                     opacity: [0.15, 0.35, 0.15],
-                   }}
-                   transition={{
-                     duration: 5,
-                     repeat: Infinity,
-                     ease: "easeInOut",
-                   }}
-                 />
-               </div>
-             </motion.div>
-             
-             {/* Additional Orb Rings */}
-            <motion.div
-              className="absolute inset-0 rounded-full border border-white/30"
-               style={{
-                 width: '420px',
-                 height: '420px',
-                 left: '-210px',
-                 top: '-210px',
-               }}
-               animate={{
-                 rotate: [0, -360],
-                 scale: [1, 1.05, 1],
-               }}
-               transition={{
-                 duration: 20,
-                 repeat: Infinity,
-                 ease: "linear",
-               }}
-             />
-             
-            <motion.div
-              className="absolute inset-0 rounded-full border border-white/20"
-               style={{
-                 width: '440px',
-                 height: '440px',
-                 left: '-220px',
-                 top: '-220px',
-               }}
-               animate={{
-                 rotate: [0, 360],
-                 scale: [1, 1.1, 1],
-               }}
-               transition={{
-                 duration: 25,
-                 repeat: Infinity,
-                 ease: "linear",
-               }}
-             />
-           </div>
-
-           {/* Pixelated Subtitle */}
-           <motion.div
-             className="mt-8"
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ delay: 1, duration: 1 }}
-           >
-            <h2 
-              className="text-3xl text-white font-bold mb-4 pixelated"
-              style={{ 
-                fontFamily: 'var(--font-jersey), monospace',
-                fontSize: '2.25rem',
-                letterSpacing: '0.12em',
-                color: '#FCD116',
-                textShadow: '0 0 8px #FCD116, 0 0 16px #FCD116',
-                imageRendering: 'pixelated',
-                WebkitFontSmoothing: 'none',
-                fontSmooth: 'never'
-              }}
-            >
-              FILIPINO WEB3 COMMUNITY
-            </h2>
-           </motion.div>
 
         </div>
       </div>

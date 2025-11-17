@@ -3,5 +3,6 @@
     "openGraph" : "https://filipinoweb3-beta.vercel.app/vercel.svg",
     "links__src" : "",
     "google_verifications" : "google9249e550c23b54d0.html",
-    "recapcha" : ""
+    "recapcha" : "",
+    "enablePerformanceMonitor" : false
 }

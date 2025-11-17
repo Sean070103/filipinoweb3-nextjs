@@ -32,3 +32,4 @@ export const useParallax = (speed: number = 0.5) => {
   return scrollY * speed;
 };
 
+

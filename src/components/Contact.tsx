@@ -3,7 +3,37 @@ import React from 'react';
 // import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Linkedin, Facebook, Instagram } from 'lucide-react';
 import settings from "@/config/setting.json";
+
+const TelegramIcon = () => (
+  <svg
+    className="w-4 h-4"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M21 4L10 14" />
+    <path d="M21 4l-7 18-4-8-6-3 17-7z" />
+  </svg>
+);
+
+const XIcon = () => (
+  <svg
+    className="w-4 h-4"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.8"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4 4l16 16M20 4L4 20" />
+  </svg>
+);
 
 declare global {
   interface Window {
@@ -24,6 +54,34 @@ export default function Contact() {
   const [errors, setErrors] = useState<{ [k: string]: string }>({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
+
+  const socialButtons = [
+    {
+      name: 'Facebook',
+      href: 'https://www.facebook.com/groups/filipinoweb3communitybuilders',
+      icon: <Facebook className="w-4 h-4" strokeWidth={2.2} />
+    },
+    {
+      name: 'Instagram',
+      href: 'https://www.instagram.com/filipinoweb3',
+      icon: <Instagram className="w-4 h-4" strokeWidth={2} />
+    },
+    {
+      name: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/filipino-web3-community-builders/',
+      icon: <Linkedin className="w-4 h-4" strokeWidth={2} />
+    },
+    {
+      name: 'X (Twitter)',
+      href: 'https://twitter.com/filipinoweb3',
+      icon: <XIcon />
+    },
+    {
+      name: 'Telegram',
+      href: 'https://t.me/Filipinocryptomanagers',
+      icon: <TelegramIcon />
+    }
+  ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -69,145 +127,195 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="contact-modern relative overflow-hidden py-24">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-950 to-black" />
-      {/* Grid overlay */}
-      <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)", backgroundSize: '24px 24px' }} />
-
-      {/* Minimal background (no blobs) */}
-      <div className="absolute inset-0" />
+    <section id="contact" className="contact-modern relative overflow-hidden py-12">
+      {/* Simple Background */}
+      <div className="absolute inset-0 bg-black" />
 
       <div className="container relative z-10 ph-banig-border-top">
-        {/* Section header */}
-        <div className="mx-auto max-w-2xl text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black text-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>Get in touch</h2>
-          <div className="flex justify-center mt-4">
-            <div className="ph-divider" />
-          </div>
-          <p className="text-zinc-300 mt-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>Have a question or proposal? We'd love to hear from you.</p>
-        </div>
-
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch"
+          className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          {/* Left card */}
-          <motion.aside 
-            className="relative overflow-hidden rounded-none border border-white/20 bg-black p-8"
+          {/* Left Panel - Contact Info (1/3) */}
+          <motion.div 
+            className="lg:col-span-1"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
           >
-            {/* Minimal border only */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="text-2xl font-bold text-white"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              Contact
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-              className="text-zinc-300 mt-2"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              We're responsive on email and social. Drop us a line and we'll get back soon.
-            </motion.p>
-            <motion.ul 
-              className="mt-6 space-y-3"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <li className="text-zinc-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>filipinoweb3@gmail.com</li>
-              <li className="text-zinc-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>Philippines • Web3</li>
-            </motion.ul>
-            <motion.ul 
-              className="mt-6 flex items-center gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              viewport={{ once: true }}
-            >
-              <motion.a whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} href="https://www.facebook.com/groups/filipinoweb3communitybuilders" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white">Facebook</motion.a>
-              <motion.a whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} href="https://t.me/Filipinocryptomanagers" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white">Telegram</motion.a>
-              <motion.a whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} href="https://twitter.com/filipinoweb3" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white">Twitter/X</motion.a>
-              <motion.a whileHover={{ scale: 1.1, y: -2 }} whileTap={{ scale: 0.95 }} href="https://www.linkedin.com/company/filipino-web3-community-builders/" target="_blank" rel="noopener noreferrer" className="text-zinc-300 hover:text-white">LinkedIn</motion.a>
-            </motion.ul>
-          </motion.aside>
+            <div>
+              <h2 
+                className="text-white mb-4 uppercase" 
+                style={{ 
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: 'clamp(0.9rem, 1.8vw, 1.2rem)',
+                  fontWeight: '400',
+                  letterSpacing: '0.15em',
+                  textShadow: '2px 2px 0px #000000',
+                  imageRendering: 'pixelated',
+                  WebkitFontSmoothing: 'none',
+                  lineHeight: '1.2'
+                }}
+              >
+                LET&apos;S CONNECT
+              </h2>
+              <p 
+                className="text-white mb-6" 
+                style={{ 
+                  fontFamily: '"Courier New", monospace',
+                  fontWeight: 'bold',
+                  fontSize: 'clamp(0.8rem, 1.2vw, 0.95rem)',
+                  color: '#ffffff',
+                  textShadow: '2px 2px 0px #000000',
+                  lineHeight: '1.5',
+                  textAlign: 'left'
+                }}
+              >
+                Have a project in mind, want to collaborate, or just want to say hello? Fill out the form and we&apos;ll get back to you soon!
+              </p>
+            </div>
+            
+            <div>
+              {/* Social Media Icons */}
+              <div className="flex items-center gap-3 mb-4">
+                {socialButtons.map((social, idx) => (
+                  <motion.a 
+                    key={social.name}
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.08, y: -2 }} 
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center justify-center w-11 h-11 rounded-full bg-white/5 border border-white/20 text-white hover:border-white hover:bg-white/10 transition-all duration-200"
+                    aria-label={social.name}
+                    style={{ backdropFilter: 'blur(2px)' }}
+                    transition={{ duration: 0.2, delay: idx * 0.05 }}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </div>
+              
+              {/* Contact Details */}
+              <div className="space-y-1">
+                <p 
+                  className="text-white"
+                  style={{ 
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    fontSize: 'clamp(0.75rem, 1.1vw, 0.9rem)',
+                    color: '#ffffff',
+                    textShadow: '2px 2px 0px #000000',
+                    textAlign: 'left'
+                  }}
+                >
+                  filipinoweb3@gmail.com
+                </p>
+                <p 
+                  className="text-white"
+                  style={{ 
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    fontSize: 'clamp(0.75rem, 1.1vw, 0.9rem)',
+                    color: '#ffffff',
+                    textShadow: '2px 2px 0px #000000',
+                    textAlign: 'left'
+                  }}
+                >
+                  Philippines • Web3
+                </p>
+              </div>
+            </div>
+          </motion.div>
 
-          {/* Right card - form */}
+          {/* Right Panel - Contact Form (2/3) */}
           <motion.form
             action="https://formkeep.com/f/13efdf753c97"
             method="POST"
             id="contact_form"
             onSubmit={handleSubmit}
-            className="relative overflow-hidden rounded-none border border-white/20 bg-black p-8 [color-scheme:dark] lg:border-l lg:border-white/30 lg:pl-10"
+            className="lg:col-span-2 relative overflow-hidden p-4 [color-scheme:dark]"
+            style={{
+              background: '#000000',
+              border: '2px solid #ffffff',
+              borderStyle: 'outset',
+              boxShadow: '3px 3px 0px rgba(0,0,0,0.8)',
+              borderRadius: '0'
+            }}
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            {/* Minimal border only */}
             <input type="hidden" name="g-recaptcha-response" value="" />
             {success && (
-              <div className="mb-4 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-emerald-300" role="status">
+              <div className="mb-4 px-4 py-3" style={{ 
+                border: '2px solid #ffffff',
+                background: '#000000',
+                color: '#ffffff',
+                fontFamily: '"Courier New", monospace',
+                fontWeight: 'bold',
+                textShadow: '2px 2px 0px #000000'
+              }} role="status">
                 {success}
               </div>
             )}
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <label className="flex flex-col gap-2">
-                <span className="text-sm text-zinc-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>First name</span>
+            <div className="space-y-3">
+              <label className="flex flex-col gap-0.5">
+                <span 
+                  className="text-white" 
+                  style={{ 
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                    fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
+                    textShadow: '1px 1px 0px #000000'
+                  }}
+                >
+                  Name
+                </span>
                 <motion.input
                   type="text"
                   name="firstName"
-                  placeholder="First Name"
+                  placeholder="Your Name"
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
-                  className="w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
-                  whileFocus={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="w-full"
+                  style={{
+                    border: '2px solid #ffffff',
+                    borderStyle: 'outset',
+                    background: '#000000',
+                    padding: '0.6rem 0.875rem',
+                    color: '#ffffff',
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    fontSize: 'clamp(0.7rem, 1vw, 0.85rem)',
+                    imageRendering: 'pixelated',
+                    borderRadius: '0'
+                  }}
+                  whileFocus={{ scale: 1.01 }}
                 />
-                {errors.firstName && <span className="text-xs text-rose-400">{errors.firstName}</span>}
+                {errors.firstName && <span className="text-xs mt-0.5" style={{ fontFamily: '"Courier New", monospace', fontSize: '0.7rem', color: '#ffffff', textShadow: '1px 1px 0px #000000' }}>{errors.firstName}</span>}
               </label>
-              <label className="flex flex-col gap-2">
-                <span className="text-sm text-zinc-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>Last name</span>
-                <motion.input
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
-                  whileFocus={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                />
-                {errors.lastName && <span className="text-xs text-rose-400">{errors.lastName}</span>}
-              </label>
-            </motion.div>
-            <label className="mt-4 flex flex-col gap-2">
-              <span className="text-sm text-zinc-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>Email</span>
+              
+              <label className="flex flex-col gap-0.5">
+                <span 
+                  className="text-white" 
+                  style={{ 
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                    fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
+                    textShadow: '1px 1px 0px #000000'
+                  }}
+                >
+                  Email
+                </span>
               <motion.input
                 type="email"
                 name="email"
@@ -215,53 +323,151 @@ export default function Contact() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
-                className="mt-4 w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
-                whileFocus={{ scale: 1.02 }}
-                viewport={{ once: true }}
-              />
-              {errors.email && <span className="text-xs text-rose-400">{errors.email}</span>}
+                  className="w-full"
+                  style={{
+                    border: '2px solid #ffffff',
+                    borderStyle: 'outset',
+                    background: '#000000',
+                    padding: '0.6rem 0.875rem',
+                    color: '#ffffff',
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    fontSize: 'clamp(0.7rem, 1vw, 0.85rem)',
+                    imageRendering: 'pixelated',
+                    borderRadius: '0'
+                  }}
+                  whileFocus={{ scale: 1.01 }}
+                />
+                {errors.email && <span className="text-xs mt-0.5" style={{ fontFamily: '"Courier New", monospace', fontSize: '0.7rem', color: '#ffffff', textShadow: '1px 1px 0px #000000' }}>{errors.email}</span>}
+              </label>
+              
+              <label className="flex flex-col gap-0.5">
+                <span 
+                  className="text-white" 
+                  style={{ 
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                    fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
+                    textShadow: '1px 1px 0px #000000'
+                  }}
+                >
+                  Website (optional)
+                </span>
+                <motion.input
+                  type="url"
+                  name="website"
+                  placeholder="https://yourwebsite.com"
+                  className="w-full"
+                  style={{
+                    border: '2px solid #ffffff',
+                    borderStyle: 'outset',
+                    background: '#000000',
+                    padding: '0.6rem 0.875rem',
+                    color: '#ffffff',
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    fontSize: 'clamp(0.7rem, 1vw, 0.85rem)',
+                    imageRendering: 'pixelated',
+                    borderRadius: '0'
+                  }}
+                  whileFocus={{ scale: 1.01 }}
+                />
             </label>
-            <label className="mt-4 flex flex-col gap-2">
-              <span className="text-sm text-zinc-400" style={{ fontFamily: 'Montserrat, sans-serif' }}>Message</span>
+              
+              <label className="flex flex-col gap-0.5">
+                <span 
+                  className="text-white" 
+                  style={{ 
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    color: '#ffffff',
+                    fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
+                    textShadow: '1px 1px 0px #000000'
+                  }}
+                >
+                  Tell me about your project or message...
+                </span>
               <motion.textarea
                 name="message"
-                rows={7}
-                placeholder="Message"
+                  rows={4}
+                  placeholder="Your message here..."
                 value={formData.message}
                 onChange={handleInputChange}
                 required
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.0 }}
-                className="mt-4 w-full rounded-none border border-white/40 bg-neutral-900 px-4 py-3 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/60 appearance-none"
-                whileFocus={{ scale: 1.02 }}
-                viewport={{ once: true }}
-              />
-              {errors.message && <span className="text-xs text-rose-400">{errors.message}</span>}
+                  className="w-full"
+                  style={{
+                    border: '2px solid #ffffff',
+                    borderStyle: 'outset',
+                    background: '#000000',
+                    padding: '0.6rem 0.875rem',
+                    color: '#ffffff',
+                    fontFamily: '"Courier New", monospace',
+                    fontWeight: 'bold',
+                    fontSize: 'clamp(0.7rem, 1vw, 0.85rem)',
+                    imageRendering: 'pixelated',
+                    borderRadius: '0',
+                    resize: 'vertical'
+                  }}
+                  whileFocus={{ scale: 1.01 }}
+                />
+                {errors.message && <span className="text-xs mt-0.5" style={{ fontFamily: '"Courier New", monospace', fontSize: '0.7rem', color: '#ffffff', textShadow: '1px 1px 0px #000000' }}>{errors.message}</span>}
               {!errors.message && (
-                <span className="text-xs text-zinc-400">{formData.message.length}/1000</span>
+                  <span className="text-xs mt-0.5" style={{ fontFamily: '"Courier New", monospace', fontWeight: 'bold', fontSize: '0.7rem', color: '#ffffff', textShadow: '1px 1px 0px #000000' }}>{formData.message.length}/1000</span>
               )}
             </label>
-            <span id="captcha" style={{ color: 'red' }}></span>
+            </div>
+            <span id="captcha" style={{ color: '#ffffff' }}></span>
             <motion.button 
-              className="mt-6 inline-flex items-center justify-center rounded-lg bg-white px-6 py-3 font-bold text-black hover:bg-zinc-200 transition-colors disabled:opacity-60 disabled:cursor-not-allowed" 
+              className="mt-4 w-full flex items-center justify-center group" 
               type="submit"
               disabled={submitting}
+              style={{
+                background: submitting ? '#0d0d0d' : '#000000',
+                color: '#ffffff',
+                padding: '0.85rem 1.5rem',
+                border: '2px solid #ffffff',
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                fontSize: 'clamp(0.64rem, 0.9vw, 0.82rem)',
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                boxShadow: submitting 
+                  ? 'inset 0 0 10px rgba(255,255,255,0.05)' 
+                  : '0 10px 25px rgba(0,0,0,0.6)',
+                imageRendering: 'pixelated',
+                WebkitFontSmoothing: 'none',
+                borderRadius: '6px',
+                cursor: submitting ? 'not-allowed' : 'pointer',
+                opacity: submitting ? 0.75 : 1,
+                letterSpacing: '0.18em',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              whileHover={{ 
-                scale: 1.03
+              whileHover={submitting ? {} : { 
+                scale: 1.02,
+                y: -2
               }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={submitting ? {} : { scale: 0.98, y: 1 }}
               viewport={{ once: true }}
             >
-              {submitting ? 'Sending…' : 'Send Message'}
+              <span className="flex items-center gap-3 relative z-10">
+                {submitting ? 'SENDING' : 'CONNECT'}
+              </span>
             </motion.button>
-            <p className="mt-3 text-xs text-zinc-500" style={{ fontFamily: 'Montserrat, sans-serif' }}>By sending, you agree to our respectful contact policy. We never share your info.</p>
+            <p 
+              className="mt-3 text-xs text-white pixelated" 
+              style={{ 
+                fontFamily: '"Courier New", monospace',
+                fontWeight: 'bold',
+                color: '#ffffff',
+                fontSize: 'clamp(0.7rem, 1.3vw, 0.9rem)'
+              }}
+            >
+              By sending, you agree to our respectful contact policy. We never share your info.
+            </p>
           </motion.form>
         </motion.div>
       </div>
