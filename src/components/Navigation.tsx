@@ -180,7 +180,7 @@ export default function Navigation() {
       </div>
       
       {/* Circus Animation Styles */}
-      <style jsx>{`
+      <style>{`
         @keyframes circusGradient {
           0% {
             background-position: 0% 50%;

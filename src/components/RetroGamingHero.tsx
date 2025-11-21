@@ -232,7 +232,7 @@ export default function RetroGamingHero() {
       </div>
 
       {/* CSS Animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes moveJeepney {
           0% {
             left: -200px;

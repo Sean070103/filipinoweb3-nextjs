@@ -251,7 +251,7 @@ export default function Categories() {
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='none'/%3E%3Crect x='0' y='0' width='1' height='8' fill='%23ffffff'/%3E%3Crect x='0' y='0' width='8' height='1' fill='%23ffffff'/%3E%3C/svg%3E")`,
         backgroundSize: '8px 8px',
         imageRendering: 'pixelated'
-      }} />
+      } as ExtendedCSSProperties} />
       
       <div className="container relative z-10">
         {/* Section Title - Pixelated */}
@@ -405,7 +405,7 @@ export default function Categories() {
                             background: '#654321',
                             borderRadius: '1px',
                             imageRendering: 'pixelated'
-                          }} />
+                          } as ExtendedCSSProperties} />
                         </div>
                         {/* BMO Speech Bubble */}
                         {showBmoSpeech && bmoMessage && (
@@ -453,7 +453,7 @@ export default function Categories() {
                               borderRight: '8px solid transparent',
                               borderTop: '12px solid #000000',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
                             <div style={{
                               position: 'absolute',
                               bottom: '-8px',
@@ -465,7 +465,7 @@ export default function Categories() {
                               borderRight: '6px solid transparent',
                               borderTop: '10px solid #FFD700',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
                           </motion.div>
                         )}
                         {/* BMO Body */}
@@ -478,7 +478,7 @@ export default function Categories() {
                           position: 'relative',
                           boxShadow: 'inset 2px 2px 0 rgba(255,255,255,0.3), inset -2px -2px 0 rgba(0,0,0,0.3)',
                           imageRendering: 'pixelated'
-                        }}>
+                        } as ExtendedCSSProperties}>
                           {/* BMO Screen */}
                           <div style={{
                             position: 'absolute',
@@ -490,7 +490,7 @@ export default function Categories() {
                             border: '3px solid #000000',
                             borderRadius: '4px',
                             imageRendering: 'pixelated'
-                          }}>
+                          } as ExtendedCSSProperties}>
                             {/* BMO Eyes */}
                             <div style={{
                               display: 'flex',
@@ -506,14 +506,14 @@ export default function Categories() {
                                 background: '#000000',
                                 borderRadius: '50%',
                                 imageRendering: 'pixelated'
-                              }} />
+                              } as ExtendedCSSProperties} />
                               <div style={{
                                 width: '8px',
                                 height: '8px',
                                 background: '#000000',
                                 borderRadius: '50%',
                                 imageRendering: 'pixelated'
-                              }} />
+                              } as ExtendedCSSProperties} />
                             </div>
                             {/* BMO Mouth */}
                             <div style={{
@@ -526,7 +526,7 @@ export default function Categories() {
                               background: '#000000',
                               borderRadius: '2px',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
                           </div>
                           {/* BMO Buttons */}
                           <div style={{
@@ -544,7 +544,7 @@ export default function Categories() {
                               border: '2px solid #000000',
                               borderRadius: '50%',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
                             <div style={{
                               width: '12px',
                               height: '12px',
@@ -552,7 +552,7 @@ export default function Categories() {
                               border: '2px solid #000000',
                               borderRadius: '50%',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
                           </div>
                         </div>
                       </div>
@@ -773,7 +773,7 @@ export default function Categories() {
                             background: '#654321',
                             borderRadius: '1px',
                             imageRendering: 'pixelated'
-                          }} />
+                          } as ExtendedCSSProperties} />
                         </div>
                         {/* BMO Speech Bubble */}
                         {showBmoSpeech && bmoMessage && (
@@ -821,7 +821,7 @@ export default function Categories() {
                               borderRight: '8px solid transparent',
                               borderTop: '12px solid #000000',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
                             <div style={{
                               position: 'absolute',
                               bottom: '-8px',
@@ -832,8 +832,8 @@ export default function Categories() {
                               borderLeft: '6px solid transparent',
                               borderRight: '6px solid transparent',
                               borderTop: '10px solid #FFD700',
-                              imageRendering: 'pixelated' as any
-                            }} />
+                              imageRendering: 'pixelated'
+                            } as ExtendedCSSProperties} />
                   </motion.div>
                         )}
                         {/* BMO Body */}
@@ -846,7 +846,7 @@ export default function Categories() {
                           position: 'relative',
                           boxShadow: 'inset 2px 2px 0 rgba(255,255,255,0.3), inset -2px -2px 0 rgba(0,0,0,0.3)',
                           imageRendering: 'pixelated'
-                        }}>
+                        } as ExtendedCSSProperties}>
                           {/* BMO Screen */}
                           <div style={{
                             position: 'absolute',
@@ -858,7 +858,7 @@ export default function Categories() {
                             border: '3px solid #000000',
                             borderRadius: '4px',
                             imageRendering: 'pixelated'
-                          }}>
+                          } as ExtendedCSSProperties}>
                             {/* BMO Eyes */}
                             <div style={{
                               display: 'flex',
@@ -874,14 +874,14 @@ export default function Categories() {
                                 background: '#000000',
                                 borderRadius: '50%',
                                 imageRendering: 'pixelated'
-                              }} />
+                              } as ExtendedCSSProperties} />
                               <div style={{
                                 width: '8px',
                                 height: '8px',
                                 background: '#000000',
                                 borderRadius: '50%',
                                 imageRendering: 'pixelated'
-                              }} />
+                              } as ExtendedCSSProperties} />
                 </div>
                             {/* BMO Mouth */}
                             <div style={{
@@ -894,7 +894,7 @@ export default function Categories() {
                               background: '#000000',
                               borderRadius: '2px',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
               </div>
                           {/* BMO Buttons */}
                           <div style={{
@@ -912,7 +912,7 @@ export default function Categories() {
                               border: '2px solid #000000',
                               borderRadius: '50%',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
                             <div style={{
                               width: '12px',
                               height: '12px',
@@ -920,7 +920,7 @@ export default function Categories() {
                               border: '2px solid #000000',
                               borderRadius: '50%',
                               imageRendering: 'pixelated'
-                            }} />
+                            } as ExtendedCSSProperties} />
                           </div>
                         </div>
                 </div>
@@ -936,7 +936,7 @@ export default function Categories() {
                             border: '6px solid #000000',
                             borderStyle: 'outset',
                             boxShadow: '8px 8px 0 rgba(0,0,0,0.8), inset 2px 2px 0 rgba(255,255,255,0.2)',
-                            imageRendering: 'pixelated' as any,
+                            imageRendering: 'pixelated',
                             WebkitFontSmoothing: 'none',
                             fontSmooth: 'never',
                             margin: '0 auto'
@@ -953,7 +953,7 @@ export default function Categories() {
                               background: '#FF6B9D',
                               borderBottom: '6px solid #000000',
                               borderStyle: 'outset',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated',
                               WebkitFontSmoothing: 'none',
                               fontSmooth: 'never'
                             }}
@@ -976,7 +976,7 @@ export default function Categories() {
                               color: '#000000',
                               fontSize: 'clamp(0.7rem, 1.4vw, 0.95rem)',
                               letterSpacing: '0.05em',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated',
                               WebkitFontSmoothing: 'none',
                               MozOsxFontSmoothing: 'unset',
                               fontSmooth: 'never',
@@ -996,7 +996,7 @@ export default function Categories() {
                                   border: '4px solid #000000',
                                   borderStyle: 'outset',
                                   boxShadow: '4px 4px 0 rgba(0,0,0,0.6), inset 1px 1px 0 rgba(255,255,255,0.3)',
-                                  imageRendering: 'pixelated' as any,
+                                  imageRendering: 'pixelated',
                                   WebkitFontSmoothing: 'none',
                                   fontSmooth: 'never'
                                 }}
@@ -1014,7 +1014,7 @@ export default function Categories() {
                                   border: '4px solid #000000',
                                   borderStyle: 'outset',
                                   boxShadow: '4px 4px 0 rgba(0,0,0,0.6), inset 1px 1px 0 rgba(255,255,255,0.3)',
-                                  imageRendering: 'pixelated' as any,
+                                  imageRendering: 'pixelated',
                                   WebkitFontSmoothing: 'none',
                                   fontSmooth: 'never'
                                 }}
@@ -1032,7 +1032,7 @@ export default function Categories() {
                     border: '4px solid #000000',
                                   borderStyle: 'outset',
                                   boxShadow: '4px 4px 0 rgba(0,0,0,0.6), inset 1px 1px 0 rgba(255,255,255,0.3)',
-                                  imageRendering: 'pixelated' as any,
+                                  imageRendering: 'pixelated',
                                   WebkitFontSmoothing: 'none',
                                   fontSmooth: 'never'
                                 }}
@@ -1047,7 +1047,7 @@ export default function Categories() {
                     style={{
                     background: '#FFD700',
                               padding: '1.5rem 2rem',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated',
                               WebkitFontSmoothing: 'none',
                               fontSmooth: 'never'
                             }}
@@ -1067,7 +1067,7 @@ export default function Categories() {
                                     color: '#000000',
                     fontWeight: 'normal',
                                     letterSpacing: '0.04em',
-                                    imageRendering: 'pixelated' as any,
+                                    imageRendering: 'pixelated',
                     WebkitFontSmoothing: 'none',
                                     MozOsxFontSmoothing: 'unset',
                     fontSmooth: 'never',
@@ -1086,7 +1086,7 @@ export default function Categories() {
                                       border: '4px solid #000000',
                                       borderStyle: 'outset',
                                       boxShadow: '4px 4px 0 rgba(0,0,0,0.6), inset 1px 1px 0 rgba(255,255,255,0.3)',
-                                      imageRendering: 'pixelated' as any,
+                                      imageRendering: 'pixelated',
                                       WebkitFontSmoothing: 'none',
                                       fontSmooth: 'never'
                                     }}
@@ -1113,7 +1113,7 @@ export default function Categories() {
                                       border: '4px solid #000000',
                                       borderStyle: 'outset',
                                       boxShadow: '4px 4px 0 rgba(0,0,0,0.6), inset 1px 1px 0 rgba(255,255,255,0.3)',
-                                      imageRendering: 'pixelated' as any,
+                                      imageRendering: 'pixelated',
                       WebkitFontSmoothing: 'none',
                       fontSmooth: 'never'
                     }}
@@ -1144,7 +1144,7 @@ export default function Categories() {
                                     color: '#000000',
                       fontWeight: 'normal',
                                     letterSpacing: '0.04em',
-                                    imageRendering: 'pixelated' as any,
+                                    imageRendering: 'pixelated',
                       WebkitFontSmoothing: 'none',
                                     MozOsxFontSmoothing: 'unset',
                                     fontSmooth: 'never',
@@ -1164,7 +1164,7 @@ export default function Categories() {
                                         fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                         marginTop: '2px',
                                         lineHeight: '1',
-                                        imageRendering: 'pixelated' as any,
+                                        imageRendering: 'pixelated',
                                         WebkitFontSmoothing: 'none',
                                         MozOsxFontSmoothing: 'unset',
                                         fontSmooth: 'never',
@@ -1182,7 +1182,7 @@ export default function Categories() {
                                         color: '#000000',
                         fontWeight: 'normal',
                                         letterSpacing: '0.05em',
-                                        imageRendering: 'pixelated' as any,
+                                        imageRendering: 'pixelated',
                         WebkitFontSmoothing: 'none',
                                         MozOsxFontSmoothing: 'unset',
                                         fontSmooth: 'never',
@@ -1201,7 +1201,7 @@ export default function Categories() {
                                         fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                         marginTop: '2px',
                                         lineHeight: '1',
-                                        imageRendering: 'pixelated' as any,
+                                        imageRendering: 'pixelated',
                                         WebkitFontSmoothing: 'none',
                                         MozOsxFontSmoothing: 'unset',
                                         fontSmooth: 'never',
@@ -1219,7 +1219,7 @@ export default function Categories() {
                                         color: '#000000',
                         fontWeight: 'normal',
                                         letterSpacing: '0.05em',
-                                        imageRendering: 'pixelated' as any,
+                                        imageRendering: 'pixelated',
                         WebkitFontSmoothing: 'none',
                                         MozOsxFontSmoothing: 'unset',
                                         fontSmooth: 'never',
@@ -1239,7 +1239,7 @@ export default function Categories() {
                                       border: '4px solid #000000',
                                       borderStyle: 'outset',
                                       boxShadow: '4px 4px 0 rgba(0,0,0,0.6), inset 1px 1px 0 rgba(255,255,255,0.3)',
-                                      imageRendering: 'pixelated' as any,
+                                      imageRendering: 'pixelated',
                                       WebkitFontSmoothing: 'none',
                                       fontSmooth: 'never'
                                     }}
@@ -1266,7 +1266,7 @@ export default function Categories() {
                                       border: '4px solid #000000',
                                       borderStyle: 'outset',
                                       boxShadow: '4px 4px 0 rgba(0,0,0,0.6), inset 1px 1px 0 rgba(255,255,255,0.3)',
-                                      imageRendering: 'pixelated' as any,
+                                      imageRendering: 'pixelated',
                                       WebkitFontSmoothing: 'none',
                                       fontSmooth: 'never'
                                     }}
@@ -1294,9 +1294,9 @@ export default function Categories() {
                     </div>
                     {/* Bottom soft keys */}
                     <div className="flex items-center justify-between px-6 pb-4">
-                      <button onClick={() => setSelectedApp(null)} className="text-white" style={{ fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', imageRendering: 'pixelated' as any, background: 'transparent', border: 'none', cursor: 'pointer', fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)' }}>MENU</button>
-                      <span className="text-white" style={{ fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', imageRendering: 'pixelated' as any, fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)' }}>SYSTEM READY</span>
-                      <button onClick={() => setSelectedApp(null)} className="text-white" style={{ fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', imageRendering: 'pixelated' as any, background: 'transparent', border: 'none', cursor: 'pointer', fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)' }}>CLEAR</button>
+                      <button onClick={() => setSelectedApp(null)} className="text-white" style={{ fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', imageRendering: 'pixelated', background: 'transparent', border: 'none', cursor: 'pointer', fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)' }}>MENU</button>
+                      <span className="text-white" style={{ fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', imageRendering: 'pixelated', fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)' }}>SYSTEM READY</span>
+                      <button onClick={() => setSelectedApp(null)} className="text-white" style={{ fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', imageRendering: 'pixelated', background: 'transparent', border: 'none', cursor: 'pointer', fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)' }}>CLEAR</button>
                     </div>
                   </motion.div>
                 )}

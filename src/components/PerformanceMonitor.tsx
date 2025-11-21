@@ -52,7 +52,7 @@ export default function PerformanceMonitor() {
   useEffect(() => {
     if ('memory' in performance) {
       const updateMemoryUsage = () => {
-        const memory = (performance as any).memory;
+        const memory = (performance as PerformanceWithMemory).memory;
         if (memory) {
           setMemoryUsage(memory.usedJSHeapSize / 1024 / 1024); // Convert to MB
         }

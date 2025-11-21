@@ -263,7 +263,7 @@ export default function Header() {
       </div>
       
       {/* CSS Animations with Retro Pixelated Effects */}
-      <style jsx>{`
+      <style>{`
         @keyframes floatHouse {
           0%, 100% {
             transform: translateY(0px) translateX(0px);
