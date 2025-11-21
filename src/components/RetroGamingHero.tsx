@@ -13,33 +13,38 @@ export default function RetroGamingHero() {
     >
       {/* Dirt Layer - combined from left to right */}
       <div
-        className="absolute left-0 right-0 z-10"
+        className="absolute left-0 right-0 z-10 dirt-layer"
           style={{
           bottom: 0,
-          height: 120,
+          height: 'clamp(60px, 8vw, 120px)',
           backgroundImage: "url('/images/dirt.png'), url('/images/dirt.png')",
           backgroundRepeat: 'repeat-x, repeat-x',
-          backgroundSize: 'auto 120px, auto 120px',
+          backgroundSize: 'auto clamp(60px, 8vw, 120px), auto clamp(60px, 8vw, 120px)',
           backgroundPosition: 'left bottom, right bottom',
           imageRendering: 'pixelated',
         }}
       />
 
       {/* Tindahan Store on top of dirt */}
-      <div className="absolute left-1/4 z-20" style={{ bottom: '-10px' }}>
+      <div className="absolute left-1/4 z-20 tindahan-store hidden sm:block" style={{ bottom: '-10px' }}>
         <Image
           src="/images/tindahan2.png"
           alt="Sari-Sari Store"
           width={200}
           height={150}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          className="w-auto h-auto"
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(100px, 15vw, 200px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       {/* Animated Clouds */}
       <div 
-        className="absolute top-10 left-10 z-20"
+        className="absolute top-10 left-10 z-20 pixel-cloud hidden sm:block"
         style={{
           animation: 'floatCloud 8s ease-in-out infinite',
         }}
@@ -50,12 +55,16 @@ export default function RetroGamingHero() {
           width={80}
           height={40}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(30px, 5vw, 80px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       <div 
-        className="absolute top-20 right-20 z-20"
+        className="absolute top-20 right-20 z-20 pixel-cloud hidden md:block"
         style={{
           animation: 'floatCloud 10s ease-in-out infinite reverse',
         }}
@@ -66,12 +75,16 @@ export default function RetroGamingHero() {
           width={60}
           height={30}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(25px, 4vw, 60px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       <div 
-        className="absolute top-16 left-1/2 transform -translate-x-1/2 z-20"
+        className="absolute top-16 left-1/2 transform -translate-x-1/2 z-20 pixel-cloud"
         style={{
           animation: 'floatCloud 12s ease-in-out infinite',
         }}
@@ -82,12 +95,16 @@ export default function RetroGamingHero() {
           width={70}
           height={35}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(28px, 4.5vw, 70px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       <div 
-        className="absolute top-12 left-1/4 z-20"
+        className="absolute top-12 left-1/4 z-20 pixel-cloud hidden lg:block"
         style={{
           animation: 'floatCloud 9s ease-in-out infinite',
         }}
@@ -98,12 +115,16 @@ export default function RetroGamingHero() {
           width={50}
           height={25}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(20px, 3vw, 50px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       <div 
-        className="absolute top-24 right-1/4 z-20"
+        className="absolute top-24 right-1/4 z-20 pixel-cloud hidden md:block"
         style={{
           animation: 'floatCloud 11s ease-in-out infinite reverse',
         }}
@@ -114,12 +135,16 @@ export default function RetroGamingHero() {
           width={65}
           height={32}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(26px, 4vw, 65px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       <div 
-        className="absolute top-8 left-3/4 z-20"
+        className="absolute top-8 left-3/4 z-20 pixel-cloud hidden lg:block"
         style={{
           animation: 'floatCloud 7s ease-in-out infinite',
         }}
@@ -130,12 +155,16 @@ export default function RetroGamingHero() {
           width={45}
           height={22}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(18px, 3vw, 45px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       <div 
-        className="absolute top-28 left-1/6 z-20"
+        className="absolute top-28 left-1/6 z-20 pixel-cloud hidden xl:block"
         style={{
           animation: 'floatCloud 13s ease-in-out infinite',
         }}
@@ -146,12 +175,16 @@ export default function RetroGamingHero() {
           width={55}
           height={28}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(22px, 3.5vw, 55px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       <div 
-        className="absolute top-14 right-1/6 z-20"
+        className="absolute top-14 right-1/6 z-20 pixel-cloud hidden xl:block"
         style={{
           animation: 'floatCloud 6s ease-in-out infinite reverse',
         }}
@@ -162,22 +195,28 @@ export default function RetroGamingHero() {
           width={40}
           height={20}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(16px, 2.5vw, 40px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       {/* Animated Sun */}
       <div 
-        className="absolute top-8 right-1/3 z-20"
+        className="absolute top-8 right-1/3 z-20 hidden sm:block"
         style={{
           animation: 'pulseSun 4s ease-in-out infinite',
         }}
       >
         <div 
-          className="w-16 h-16 bg-yellow-400"
+          className="bg-yellow-400"
           style={{ 
             imageRendering: 'pixelated',
             borderRadius: '50%',
+            width: 'clamp(40px, 5vw, 64px)',
+            height: 'clamp(40px, 5vw, 64px)',
             boxShadow: '0 0 20px rgba(255, 255, 0, 0.6), 0 0 40px rgba(255, 255, 0, 0.4)',
             animation: 'rotateSun 20s linear infinite',
           }}
@@ -192,7 +231,7 @@ export default function RetroGamingHero() {
             className="font-black"
             style={{
               fontFamily: '"Orbitron", "Arial Black", sans-serif',
-              fontSize: '5rem',
+              fontSize: 'clamp(2rem, 8vw, 5rem)',
               letterSpacing: '0.1em',
               textShadow: '6px 6px 0px rgba(0,0,0,0.8), 12px 12px 0px rgba(0,0,0,0.4), 0 0 30px rgba(255,255,255,0.6), 0 0 60px rgba(255,255,255,0.3)',
               fontWeight: '900',
@@ -226,7 +265,11 @@ export default function RetroGamingHero() {
           width={120}
           height={60}
           priority
-          style={{ imageRendering: 'pixelated' }}
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(60px, 8vw, 120px)',
+            height: 'auto'
+          }}
         />
       </div>
 
@@ -244,19 +287,24 @@ export default function RetroGamingHero() {
           width={120}
           height={60}
           priority
-          style={{ imageRendering: 'pixelated', transform: 'scaleX(-1)' }}
+          style={{ 
+            imageRendering: 'pixelated', 
+            transform: 'scaleX(-1)',
+            width: 'clamp(60px, 8vw, 120px)',
+            height: 'auto'
+          }}
         />
       </div>
 
       {/* Destination Carousel under dirt */}
       <div 
-        className="absolute left-0 right-0 z-5"
+        className="absolute left-0 right-0 z-5 jeepney-carousel-container"
         style={{
-          bottom: '-80px',
-          height: '80px',
+          bottom: 'clamp(-60px, -8vw, -80px)',
+          height: 'clamp(50px, 7vw, 80px)',
           background: '#000000',
-          borderTop: '4px solid #00FF00',
-          borderBottom: '4px solid #FF6B00',
+          borderTop: 'clamp(2px, 0.3vw, 4px) solid #00FF00',
+          borderBottom: 'clamp(2px, 0.3vw, 4px) solid #FF6B00',
           overflow: 'hidden',
           imageRendering: 'pixelated',
           boxShadow: 'inset 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(255, 107, 0, 0.3)'
@@ -288,10 +336,10 @@ export default function RetroGamingHero() {
             whiteSpace: 'nowrap',
             animation: 'scrollCarousel 10s linear infinite',
             fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-            fontSize: 'clamp(1rem, 2vw, 1.6rem)',
+            fontSize: 'clamp(0.5rem, 2vw, 1.6rem)',
             fontWeight: '400',
-            lineHeight: '80px',
-            padding: '0 30px',
+            lineHeight: 'clamp(50px, 7vw, 80px)',
+            padding: '0 clamp(15px, 2vw, 30px)',
             imageRendering: 'pixelated',
             WebkitFontSmoothing: 'none',
             fontSmooth: 'never',
@@ -299,7 +347,7 @@ export default function RetroGamingHero() {
             letterSpacing: '0.1em'
           }}
         >
-          <span style={{ paddingRight: '150px' }}>
+          <span style={{ paddingRight: 'clamp(75px, 10vw, 150px)' }}>
             <span style={{ 
               color: '#39FF14', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #39FF14, 0 0 30px #39FF14, 0 0 45px #39FF14',
@@ -310,7 +358,7 @@ export default function RetroGamingHero() {
               filter: 'drop-shadow(0 0 5px #FF6B00)'
             }}>TO FUTURE</span>
           </span>
-          <span style={{ paddingRight: '150px' }}>
+          <span style={{ paddingRight: 'clamp(75px, 10vw, 150px)' }}>
             <span style={{ 
               color: '#FFD700', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #FFD700, 0 0 30px #FFD700, 0 0 45px #FFD700',
@@ -321,7 +369,7 @@ export default function RetroGamingHero() {
               filter: 'drop-shadow(0 0 5px #FF00FF)'
             }}>TO FUTURE</span>
           </span>
-          <span style={{ paddingRight: '150px' }}>
+          <span style={{ paddingRight: 'clamp(75px, 10vw, 150px)' }}>
             <span style={{ 
               color: '#00FFFF', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #00FFFF, 0 0 30px #00FFFF, 0 0 45px #00FFFF',
@@ -332,7 +380,7 @@ export default function RetroGamingHero() {
               filter: 'drop-shadow(0 0 5px #FFFF00)'
             }}>TO FUTURE</span>
           </span>
-          <span style={{ paddingRight: '150px' }}>
+          <span style={{ paddingRight: 'clamp(75px, 10vw, 150px)' }}>
             <span style={{ 
               color: '#FF6B9D', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #FF6B9D, 0 0 30px #FF6B9D, 0 0 45px #FF6B9D',
@@ -343,7 +391,7 @@ export default function RetroGamingHero() {
               filter: 'drop-shadow(0 0 5px #4ECDC4)'
             }}>TO FUTURE</span>
           </span>
-          <span style={{ paddingRight: '150px' }}>
+          <span style={{ paddingRight: 'clamp(75px, 10vw, 150px)' }}>
             <span style={{ 
               color: '#39FF14', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #39FF14, 0 0 30px #39FF14, 0 0 45px #39FF14',

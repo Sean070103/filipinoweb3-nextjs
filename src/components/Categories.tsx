@@ -282,7 +282,7 @@ export default function Categories() {
           className="max-w-4xl mx-auto"
         >
           <div className="relative overflow-hidden flex flex-col"
-            style={{ imageRendering: 'pixelated', minHeight: '600px' }}
+            style={{ imageRendering: 'pixelated', minHeight: 'clamp(400px, 60vh, 600px)' }}
           >
             <div className="relative z-10 flex-1">
               <AnimatePresence mode="wait">
@@ -308,8 +308,8 @@ export default function Categories() {
                       <div 
                         className="bmo-robot absolute"
                 style={{
-                          width: '80px',
-                          height: '80px',
+                          width: 'clamp(60px, 8vw, 120px)',
+                          height: 'clamp(60px, 8vw, 120px)',
                           imageRendering: 'pixelated',
                           filter: 'drop-shadow(4px 4px 0px rgba(0,0,0,0.8))',
                           zIndex: 1,
@@ -372,11 +372,11 @@ export default function Categories() {
                         <div 
                           className="absolute -bottom-8 left-1/2 transform -translate-x-1/2"
                   style={{
-                            width: '100px',
-                            height: '20px',
+                            width: 'clamp(75px, 10vw, 120px)',
+                            height: 'clamp(15px, 2vw, 25px)',
                             background: '#8B4513',
-                    border: '4px solid #000000',
-                            borderRadius: '10px',
+                    border: 'clamp(3px, 0.4vw, 4px) solid #000000',
+                            borderRadius: 'clamp(8px, 1vw, 10px)',
                             boxShadow: 'inset 2px 2px 0 rgba(255,255,255,0.2), 4px 4px 0 rgba(0,0,0,0.8)',
                             imageRendering: 'pixelated',
                             animation: 'padFloat 2s ease-in-out infinite',
@@ -562,7 +562,7 @@ export default function Categories() {
                           margin: '0 auto 2rem auto',
                     textRendering: 'optimizeSpeed'
                         }}>SYSTEM MODULES</h3>
-                        <div className="grid grid-cols-2 gap-8 md:gap-12 justify-items-center items-center w-full max-w-lg mx-auto">
+                        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 justify-items-center items-center w-full max-w-lg mx-auto">
                           {apps.map((app) => (
                             <button
                               key={app.id}
@@ -573,10 +573,12 @@ export default function Categories() {
                               className="flex flex-col items-center gap-3 focus:outline-none"
                             >
                               <motion.div
-                                className="w-28 h-28 md:w-36 md:h-36 flex items-center justify-center"
+                                className="flex items-center justify-center"
                     style={{
                                   background: app.id === 'vision' ? '#FF6B9D' : '#4ECDC4',
-                                  border: '6px solid #000000',
+                                  width: 'clamp(80px, 12vw, 144px)',
+                                  height: 'clamp(80px, 12vw, 144px)',
+                                  border: 'clamp(4px, 0.6vw, 6px) solid #000000',
                                   borderStyle: 'outset',
                                   boxShadow: '6px 6px 0 rgba(0,0,0,0.8), inset 2px 2px 0 rgba(255,255,255,0.3)',
                                   imageRendering: 'pixelated',
@@ -590,7 +592,7 @@ export default function Categories() {
                                 transition={{ duration: 0.2 }}
                               >
                                 <span style={{ 
-                                  fontSize: '3.5rem', 
+                                  fontSize: 'clamp(2rem, 5vw, 3.5rem)', 
                                   imageRendering: 'pixelated',
                                   filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.8))'
                                 }}>{app.icon}</span>
