@@ -2,6 +2,12 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import React from 'react';
+
+// Type helper for CSS properties with custom properties support
+type CSSPropertiesWithVars = React.CSSProperties & {
+  [key: `--${string}`]: string | number;
+};
 
 export default function Values() {
   // const containerVariants = {
@@ -176,15 +182,15 @@ export default function Values() {
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='none'/%3E%3Crect x='0' y='0' width='1' height='8' fill='%23FFD700'/%3E%3Crect x='0' y='0' width='8' height='1' fill='%23FFD700'/%3E%3C/svg%3E")`,
         backgroundSize: '8px 8px',
-        imageRendering: 'pixelated' as any
-      }} />
+        imageRendering: 'pixelated' as React.CSSProperties['imageRendering']
+      } as React.CSSProperties} />
       
       {/* Animated Scanlines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10" style={{
         background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)',
-        imageRendering: 'pixelated' as any,
+        imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
         animation: 'scanline 8s linear infinite'
-      }} />
+      } as React.CSSProperties} />
       
       <div className="container relative z-10 py-16 md:py-24">
         {/* Header */}
@@ -200,11 +206,11 @@ export default function Values() {
             letterSpacing: '0.1em', 
             lineHeight: '1.4', 
             fontSize: 'clamp(2rem, 6vw, 5rem)',
-            imageRendering: 'pixelated' as any,
+            imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
             WebkitFontSmoothing: 'none',
             textRendering: 'optimizeSpeed',
             wordSpacing: '0.2em'
-          }}>
+          } as React.CSSProperties}>
             <span style={{ 
               color: '#FFFFFF',
               textShadow: '4px 4px 0px #000000',
@@ -242,11 +248,11 @@ export default function Values() {
                   borderStyle: 'outset',
                   borderRadius: '12px',
                   boxShadow: '6px 6px 0px rgba(0,0,0,0.8), inset 2px 2px 0px rgba(255,255,255,0.1)',
-                  imageRendering: 'pixelated' as any,
+                  imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                   WebkitFontSmoothing: 'none',
                   fontSmooth: 'never',
                   overflow: 'hidden'
-                }}
+                } as React.CSSProperties}
                 whileHover={{ 
                   y: -8,
                   transition: { duration: 0.3 }
@@ -263,8 +269,8 @@ export default function Values() {
                         borderLeft: '6px solid transparent',
                         borderRight: '6px solid transparent',
                         borderBottom: '8px solid #FF6B9D',
-                        imageRendering: 'pixelated' as any
-                      }}
+                        imageRendering: 'pixelated' as React.CSSProperties['imageRendering']
+                      } as React.CSSProperties}
                     />
                   ))}
                 </div>
@@ -278,8 +284,8 @@ export default function Values() {
                     height={250}
                     className="w-full h-48 md:h-56 object-cover"
                     style={{
-                      imageRendering: 'pixelated' as any
-                    }}
+                      imageRendering: 'pixelated' as React.CSSProperties['imageRendering']
+                    } as React.CSSProperties}
                   />
                 </div>
                 
@@ -293,7 +299,7 @@ export default function Values() {
                       fontSize: 'clamp(1rem, 2.5vw, 1.8rem)',
                       color: '#FFFFFF',
                       fontWeight: '400',
-                      imageRendering: 'pixelated' as any,
+                      imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                       WebkitFontSmoothing: 'none',
                       MozOsxFontSmoothing: 'unset',
                       fontSmooth: 'never',
@@ -302,7 +308,7 @@ export default function Values() {
                       lineHeight: '1.3',
                       wordBreak: 'break-word',
                       marginBottom: '0.75rem'
-                    }}
+                    } as React.CSSProperties}
                   >
                     {value.title.toUpperCase()}
                   </h3>
@@ -314,12 +320,12 @@ export default function Values() {
                       fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
                       fontWeight: 'bold',
                       lineHeight: '1.7',
-                      imageRendering: 'pixelated' as any,
+                      imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                       WebkitFontSmoothing: 'none',
                       textRendering: 'optimizeSpeed',
                       wordWrap: 'break-word',
                       overflowWrap: 'break-word'
-                    }}
+                    } as React.CSSProperties}
                   >
                     {value.description}
                   </p>
@@ -333,9 +339,9 @@ export default function Values() {
                         style={{
                           background: '#0066FF',
                           border: '2px solid #000000',
-                          imageRendering: 'pixelated' as any,
+                          imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                           '--index': '0'
-                        } as any}
+                        } as CSSPropertiesWithVars}
                       >
                         {/* Blue Dot Indicator */}
                         {dotPositions[index] === 0 && (
@@ -347,10 +353,10 @@ export default function Values() {
                               background: '#0066FF',
                               border: '2px solid #000000',
                               borderRadius: '50%',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #0066FF, 0 0 20px #0066FF',
                               zIndex: 10
-                            }}
+                            } as React.CSSProperties}
                           />
                         )}
                       </div>
@@ -360,9 +366,9 @@ export default function Values() {
                         style={{
                           background: '#FF0000',
                           border: '2px solid #000000',
-                          imageRendering: 'pixelated' as any,
+                          imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                           '--index': '1'
-                        } as any}
+                        } as CSSPropertiesWithVars}
                       >
                         {/* Red Dot Indicator */}
                         {dotPositions[index] === 1 && (
@@ -374,10 +380,10 @@ export default function Values() {
                               background: '#FF0000',
                               border: '2px solid #000000',
                               borderRadius: '50%',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #FF0000, 0 0 20px #FF0000',
                               zIndex: 10
-                            }}
+                            } as React.CSSProperties}
                           />
                         )}
                       </div>
@@ -387,9 +393,9 @@ export default function Values() {
                         style={{
                           background: '#FFD700',
                           border: '2px solid #000000',
-                          imageRendering: 'pixelated' as any,
+                          imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                           '--index': '2'
-                        } as any}
+                        } as CSSPropertiesWithVars}
                       >
                         {/* Yellow Dot Indicator */}
                         {dotPositions[index] === 2 && (
@@ -401,10 +407,10 @@ export default function Values() {
                               background: '#FFD700',
                               border: '2px solid #000000',
                               borderRadius: '50%',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #FFD700, 0 0 20px #FFD700',
                               zIndex: 10
-                            }}
+                            } as React.CSSProperties}
                           />
                         )}
                       </div>
@@ -432,9 +438,9 @@ export default function Values() {
               borderStyle: 'outset',
               borderRadius: '12px',
               boxShadow: '6px 6px 0px rgba(0,0,0,0.8), inset 2px 2px 0px rgba(255,255,255,0.1)',
-              imageRendering: 'pixelated' as any,
+              imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
               overflow: 'hidden'
-            }}
+            } as React.CSSProperties}
           >
             <h3 
               className="pixelated mb-4 md:mb-6" 
@@ -444,12 +450,12 @@ export default function Values() {
                 fontSize: 'clamp(1.2rem, 2.5vw, 2rem)',
                 color: '#FFFFFF',
                 fontWeight: '400',
-                imageRendering: 'pixelated' as any,
+                imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                 WebkitFontSmoothing: 'none',
                 textShadow: '3px 3px 0px #000000',
                 lineHeight: '1.4',
                 wordBreak: 'break-word'
-              }}
+              } as React.CSSProperties}
             >
               READY TO BUILD THE FUTURE?
             </h3>
@@ -489,7 +495,7 @@ export default function Values() {
                   fontWeight: '400',
                   textTransform: 'uppercase',
                   boxShadow: 'inset 0 -4px 0 rgba(0,0,0,0.3), inset 0 4px 0 rgba(255,255,255,0.2), 0 8px 0 rgba(0,0,0,0.6), 0 12px 0 rgba(0,0,0,0.4)',
-                  imageRendering: 'pixelated' as any,
+                  imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                   WebkitFontSmoothing: 'none',
                   fontSmooth: 'never',
                   letterSpacing: '0.1em',
@@ -505,7 +511,7 @@ export default function Values() {
                   opacity: 1,
                   textShadow: '3px 3px 0px rgba(0,0,0,0.8), 1px 1px 0px rgba(0,0,0,0.5)',
                   clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
-                }}
+                } as React.CSSProperties}
               >
                 {/* Top highlight */}
                 <div 
@@ -514,8 +520,8 @@ export default function Values() {
                     height: '40%',
                     background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)',
                     borderRadius: '50px 50px 0 0',
-                    imageRendering: 'pixelated' as any
-                  }}
+                    imageRendering: 'pixelated' as React.CSSProperties['imageRendering']
+                  } as React.CSSProperties}
                 />
                 {/* Bottom shadow */}
                 <div 
@@ -524,8 +530,8 @@ export default function Values() {
                     height: '40%',
                     background: 'linear-gradient(0deg, rgba(0,0,0,0.2) 0%, transparent 100%)',
                     borderRadius: '0 0 50px 50px',
-                    imageRendering: 'pixelated' as any
-                  }}
+                    imageRendering: 'pixelated' as React.CSSProperties['imageRendering']
+                  } as React.CSSProperties}
                 />
                 {/* Pixelated pattern overlay */}
                 <div 
@@ -533,16 +539,16 @@ export default function Values() {
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='4' fill='none'/%3E%3Crect x='0' y='0' width='1' height='4' fill='%23ffffff'/%3E%3Crect x='0' y='0' width='4' height='1' fill='%23ffffff'/%3E%3C/svg%3E")`,
                     backgroundSize: '4px 4px',
-                    imageRendering: 'pixelated' as any,
+                    imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                     borderRadius: '50px'
-                  }}
+                  } as React.CSSProperties}
                 />
                 <span className="relative z-10" style={{
-                  imageRendering: 'pixelated' as any,
+                  imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                   WebkitFontSmoothing: 'none',
                   fontSmooth: 'never',
                   display: 'block'
-                }}>JOIN OUR COMMUNITY</span>
+                } as React.CSSProperties}>JOIN OUR COMMUNITY</span>
               </motion.button>
             </div>
             
@@ -558,11 +564,11 @@ export default function Values() {
                 style={{
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='%23FFD700'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%23000000'/%3E%3C/svg%3E")`,
                   backgroundSize: '8px 8px',
-                  imageRendering: 'pixelated' as any,
+                  imageRendering: 'pixelated' as React.CSSProperties['imageRendering'],
                   height: '16px',
                   opacity: 0.8,
                   borderTop: '1px solid #999999'
-                }}
+                } as React.CSSProperties}
               />
             </div>
           </div>
