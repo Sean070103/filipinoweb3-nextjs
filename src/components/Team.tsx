@@ -176,8 +176,6 @@ type TeamMemberType = {
 };
 
 function TeamMember({ member, isCore = false, index }: { member: TeamMemberType, isCore?: boolean, index: number }) {
-  const cardNumber = String(index + 1).padStart(3, '0');
-  const rarity = isCore ? 'UR' : 'SSR'; // SSR for boss cards
   
   // Boss card colors for founding members (One Piece style)
   const bossColors = [

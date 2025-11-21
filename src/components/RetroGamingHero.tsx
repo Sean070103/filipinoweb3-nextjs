@@ -213,12 +213,11 @@ export default function RetroGamingHero() {
         </div>
       </div>
 
-      {/* Moving Jeepney */}
+      {/* Moving Jeepney 1 - Left to Right */}
       <div 
         className="absolute bottom-8 z-20"
         style={{
-          animation: 'moveJeepney 15s linear infinite',
-          left: '-200px',
+          animation: 'moveJeepneyLeftToRight 25s linear infinite',
         }}
       >
         <Image
@@ -231,14 +230,188 @@ export default function RetroGamingHero() {
         />
       </div>
 
+      {/* Moving Jeepney 2 - Right to Left */}
+      <div 
+        className="absolute bottom-8 z-20"
+        style={{
+          animation: 'moveJeepneyRightToLeft 25s linear infinite',
+          animationDelay: '12.5s'
+        }}
+      >
+        <Image
+          src="/images/jeep.png"
+          alt="Pixel Jeepney"
+          width={120}
+          height={60}
+          priority
+          style={{ imageRendering: 'pixelated', transform: 'scaleX(-1)' }}
+        />
+      </div>
+
+      {/* Destination Carousel under dirt */}
+      <div 
+        className="absolute left-0 right-0 z-5"
+        style={{
+          bottom: '-80px',
+          height: '80px',
+          background: '#000000',
+          borderTop: '4px solid #00FF00',
+          borderBottom: '4px solid #FF6B00',
+          overflow: 'hidden',
+          imageRendering: 'pixelated',
+          boxShadow: 'inset 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(255, 107, 0, 0.3)'
+        }}
+      >
+        {/* Decorative top border pattern */}
+        <div 
+          className="absolute top-0 left-0 right-0"
+          style={{
+            height: '4px',
+            background: 'repeating-linear-gradient(90deg, #00FF00 0px, #00FF00 8px, #000000 8px, #000000 16px)',
+            imageRendering: 'pixelated'
+          }}
+        />
+        {/* Decorative bottom border pattern */}
+        <div 
+          className="absolute bottom-0 left-0 right-0"
+          style={{
+            height: '4px',
+            background: 'repeating-linear-gradient(90deg, #FF6B00 0px, #FF6B00 8px, #000000 8px, #000000 16px)',
+            imageRendering: 'pixelated'
+          }}
+        />
+        {/* Scrolling text with multi-color neon style */}
+        <div 
+          className="jeepney-carousel relative z-10"
+          style={{
+            display: 'flex',
+            whiteSpace: 'nowrap',
+            animation: 'scrollCarousel 10s linear infinite',
+            fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+            fontSize: 'clamp(1rem, 2vw, 1.6rem)',
+            fontWeight: '400',
+            lineHeight: '80px',
+            padding: '0 30px',
+            imageRendering: 'pixelated',
+            WebkitFontSmoothing: 'none',
+            fontSmooth: 'never',
+            textRendering: 'optimizeSpeed',
+            letterSpacing: '0.1em'
+          }}
+        >
+          <span style={{ paddingRight: '150px' }}>
+            <span style={{ 
+              color: '#39FF14', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #39FF14, 0 0 30px #39FF14, 0 0 45px #39FF14',
+              filter: 'drop-shadow(0 0 5px #39FF14)'
+            }}>FWEB3</span> <span style={{ 
+              color: '#FF6B00', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #FF6B00, 0 0 30px #FF6B00, 0 0 45px #FF6B00',
+              filter: 'drop-shadow(0 0 5px #FF6B00)'
+            }}>TO FUTURE</span>
+          </span>
+          <span style={{ paddingRight: '150px' }}>
+            <span style={{ 
+              color: '#FFD700', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #FFD700, 0 0 30px #FFD700, 0 0 45px #FFD700',
+              filter: 'drop-shadow(0 0 5px #FFD700)'
+            }}>FWEB3</span> <span style={{ 
+              color: '#FF00FF', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #FF00FF, 0 0 30px #FF00FF, 0 0 45px #FF00FF',
+              filter: 'drop-shadow(0 0 5px #FF00FF)'
+            }}>TO FUTURE</span>
+          </span>
+          <span style={{ paddingRight: '150px' }}>
+            <span style={{ 
+              color: '#00FFFF', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #00FFFF, 0 0 30px #00FFFF, 0 0 45px #00FFFF',
+              filter: 'drop-shadow(0 0 5px #00FFFF)'
+            }}>FWEB3</span> <span style={{ 
+              color: '#FFFF00', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #FFFF00, 0 0 30px #FFFF00, 0 0 45px #FFFF00',
+              filter: 'drop-shadow(0 0 5px #FFFF00)'
+            }}>TO FUTURE</span>
+          </span>
+          <span style={{ paddingRight: '150px' }}>
+            <span style={{ 
+              color: '#FF6B9D', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #FF6B9D, 0 0 30px #FF6B9D, 0 0 45px #FF6B9D',
+              filter: 'drop-shadow(0 0 5px #FF6B9D)'
+            }}>FWEB3</span> <span style={{ 
+              color: '#4ECDC4', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #4ECDC4, 0 0 30px #4ECDC4, 0 0 45px #4ECDC4',
+              filter: 'drop-shadow(0 0 5px #4ECDC4)'
+            }}>TO FUTURE</span>
+          </span>
+          <span style={{ paddingRight: '150px' }}>
+            <span style={{ 
+              color: '#39FF14', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #39FF14, 0 0 30px #39FF14, 0 0 45px #39FF14',
+              filter: 'drop-shadow(0 0 5px #39FF14)'
+            }}>FWEB3</span> <span style={{ 
+              color: '#FF6B00', 
+              textShadow: '3px 3px 0px #000000, 0 0 15px #FF6B00, 0 0 30px #FF6B00, 0 0 45px #FF6B00',
+              filter: 'drop-shadow(0 0 5px #FF6B00)'
+            }}>TO FUTURE</span>
+          </span>
+        </div>
+        {/* Subtle grid pattern overlay */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-10"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='none'/%3E%3Crect x='0' y='0' width='1' height='8' fill='%2300FF00'/%3E%3Crect x='0' y='0' width='8' height='1' fill='%23FF6B00'/%3E%3C/svg%3E")`,
+            backgroundSize: '8px 8px',
+            imageRendering: 'pixelated'
+          }}
+        />
+      </div>
+
       {/* CSS Animation */}
-      <style jsx>{`
-        @keyframes moveJeepney {
+      <style>{`
+        @keyframes moveJeepneyLeftToRight {
           0% {
             left: -200px;
+            opacity: 0;
+          }
+          2% {
+            left: -200px;
+            opacity: 1;
+          }
+          98% {
+            left: calc(100vw + 200px);
+            opacity: 1;
           }
           100% {
             left: calc(100vw + 200px);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes moveJeepneyRightToLeft {
+          0% {
+            left: calc(100vw + 200px);
+            opacity: 0;
+          }
+          2% {
+            left: calc(100vw + 200px);
+            opacity: 1;
+          }
+          98% {
+            left: -200px;
+            opacity: 1;
+          }
+          100% {
+            left: -200px;
+            opacity: 0;
+          }
+        }
+        
+        @keyframes scrollCarousel {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
           }
         }
         

@@ -1,34 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Header() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 300], [0, -50]);
-  const y2 = useTransform(scrollY, [0, 300], [0, -100]);
-  // const y3 = useTransform(scrollY, [0, 300], [0, -150]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Generate particles with consistent values
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    x: (i * 17.3) % 100, // Use deterministic values instead of Math.random()
-    y: (i * 23.7) % 100,
-    size: ((i * 7.1) % 4) + 1,
-    delay: (i * 3.7) % 5,
-    duration: ((i * 11.3) % 10) + 10,
-  }));
 
   return (
     <header 
@@ -263,7 +238,7 @@ export default function Header() {
       </div>
       
       {/* CSS Animations with Retro Pixelated Effects */}
-      <style jsx>{`
+      <style>{`
         @keyframes floatHouse {
           0%, 100% {
             transform: translateY(0px) translateX(0px);

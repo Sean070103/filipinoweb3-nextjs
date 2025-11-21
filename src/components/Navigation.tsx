@@ -1,13 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Users, Star } from "lucide-react";
 
 export default function Navigation() {
-  const pathname = usePathname();
-  const isHomePage = pathname === '/';
 
   return (
     <>
@@ -180,7 +176,7 @@ export default function Navigation() {
       </div>
       
       {/* Circus Animation Styles */}
-      <style jsx>{`
+      <style>{`
         @keyframes circusGradient {
           0% {
             background-position: 0% 50%;

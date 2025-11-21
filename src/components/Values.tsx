@@ -1,7 +1,9 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import type { CSSProperties } from 'react';
 
 export default function Values() {
   // const containerVariants = {
@@ -176,13 +178,13 @@ export default function Values() {
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='none'/%3E%3Crect x='0' y='0' width='1' height='8' fill='%23FFD700'/%3E%3Crect x='0' y='0' width='8' height='1' fill='%23FFD700'/%3E%3C/svg%3E")`,
         backgroundSize: '8px 8px',
-        imageRendering: 'pixelated' as any
+        imageRendering: 'pixelated' as CSSProperties['imageRendering']
       }} />
       
       {/* Animated Scanlines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10" style={{
         background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)',
-        imageRendering: 'pixelated' as any,
+        imageRendering: 'pixelated' as CSSProperties['imageRendering'],
         animation: 'scanline 8s linear infinite'
       }} />
       
@@ -200,7 +202,7 @@ export default function Values() {
             letterSpacing: '0.1em', 
             lineHeight: '1.4', 
             fontSize: 'clamp(2rem, 6vw, 5rem)',
-            imageRendering: 'pixelated' as any,
+            imageRendering: 'pixelated' as CSSProperties['imageRendering'],
             WebkitFontSmoothing: 'none',
             textRendering: 'optimizeSpeed',
             wordSpacing: '0.2em'
@@ -242,7 +244,7 @@ export default function Values() {
                   borderStyle: 'outset',
                   borderRadius: '12px',
                   boxShadow: '6px 6px 0px rgba(0,0,0,0.8), inset 2px 2px 0px rgba(255,255,255,0.1)',
-                  imageRendering: 'pixelated' as any,
+                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                   WebkitFontSmoothing: 'none',
                   fontSmooth: 'never',
                   overflow: 'hidden'
@@ -263,7 +265,7 @@ export default function Values() {
                         borderLeft: '6px solid transparent',
                         borderRight: '6px solid transparent',
                         borderBottom: '8px solid #FF6B9D',
-                        imageRendering: 'pixelated' as any
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering']
                       }}
                     />
                   ))}
@@ -278,7 +280,7 @@ export default function Values() {
                     height={250}
                     className="w-full h-48 md:h-56 object-cover"
                     style={{
-                      imageRendering: 'pixelated' as any
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering']
                     }}
                   />
                 </div>
@@ -293,7 +295,7 @@ export default function Values() {
                       fontSize: 'clamp(1rem, 2.5vw, 1.8rem)',
                       color: '#FFFFFF',
                       fontWeight: '400',
-                      imageRendering: 'pixelated' as any,
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                       WebkitFontSmoothing: 'none',
                       MozOsxFontSmoothing: 'unset',
                       fontSmooth: 'never',
@@ -314,7 +316,7 @@ export default function Values() {
                       fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
                       fontWeight: 'bold',
                       lineHeight: '1.7',
-                      imageRendering: 'pixelated' as any,
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                       WebkitFontSmoothing: 'none',
                       textRendering: 'optimizeSpeed',
                       wordWrap: 'break-word',
@@ -333,9 +335,9 @@ export default function Values() {
                         style={{
                           background: '#0066FF',
                           border: '2px solid #000000',
-                          imageRendering: 'pixelated' as any,
+                          imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                           '--index': '0'
-                        } as any}
+                        } as React.CSSProperties}
                       >
                         {/* Blue Dot Indicator */}
                         {dotPositions[index] === 0 && (
@@ -347,7 +349,7 @@ export default function Values() {
                               background: '#0066FF',
                               border: '2px solid #000000',
                               borderRadius: '50%',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #0066FF, 0 0 20px #0066FF',
                               zIndex: 10
                             }}
@@ -360,9 +362,9 @@ export default function Values() {
                         style={{
                           background: '#FF0000',
                           border: '2px solid #000000',
-                          imageRendering: 'pixelated' as any,
+                          imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                           '--index': '1'
-                        } as any}
+                        } as React.CSSProperties}
                       >
                         {/* Red Dot Indicator */}
                         {dotPositions[index] === 1 && (
@@ -374,7 +376,7 @@ export default function Values() {
                               background: '#FF0000',
                               border: '2px solid #000000',
                               borderRadius: '50%',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #FF0000, 0 0 20px #FF0000',
                               zIndex: 10
                             }}
@@ -387,9 +389,9 @@ export default function Values() {
                         style={{
                           background: '#FFD700',
                           border: '2px solid #000000',
-                          imageRendering: 'pixelated' as any,
+                          imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                           '--index': '2'
-                        } as any}
+                        } as React.CSSProperties}
                       >
                         {/* Yellow Dot Indicator */}
                         {dotPositions[index] === 2 && (
@@ -401,7 +403,7 @@ export default function Values() {
                               background: '#FFD700',
                               border: '2px solid #000000',
                               borderRadius: '50%',
-                              imageRendering: 'pixelated' as any,
+                              imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #FFD700, 0 0 20px #FFD700',
                               zIndex: 10
                             }}
@@ -432,7 +434,7 @@ export default function Values() {
               borderStyle: 'outset',
               borderRadius: '12px',
               boxShadow: '6px 6px 0px rgba(0,0,0,0.8), inset 2px 2px 0px rgba(255,255,255,0.1)',
-              imageRendering: 'pixelated' as any,
+              imageRendering: 'pixelated' as CSSProperties['imageRendering'],
               overflow: 'hidden'
             }}
           >
@@ -444,7 +446,7 @@ export default function Values() {
                 fontSize: 'clamp(1.2rem, 2.5vw, 2rem)',
                 color: '#FFFFFF',
                 fontWeight: '400',
-                imageRendering: 'pixelated' as any,
+                imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                 WebkitFontSmoothing: 'none',
                 textShadow: '3px 3px 0px #000000',
                 lineHeight: '1.4',
@@ -454,13 +456,17 @@ export default function Values() {
               READY TO BUILD THE FUTURE?
             </h3>
             <p 
-              className="text-white mb-6 md:mb-8 max-w-2xl mx-auto text-left md:text-center" 
+              className="text-white mb-6 md:mb-8 text-center" 
               style={{
                 fontFamily: '"Courier New", monospace',
                 fontWeight: 'bold',
                 fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
                 lineHeight: '1.6',
-                wordWrap: 'break-word'
+                wordWrap: 'break-word',
+                textAlign: 'center',
+                display: 'block',
+                margin: '0 auto',
+                maxWidth: '100%'
               }}
             >
               Join our community of Web3 builders, developers, and innovators.
@@ -489,7 +495,7 @@ export default function Values() {
                   fontWeight: '400',
                   textTransform: 'uppercase',
                   boxShadow: 'inset 0 -4px 0 rgba(0,0,0,0.3), inset 0 4px 0 rgba(255,255,255,0.2), 0 8px 0 rgba(0,0,0,0.6), 0 12px 0 rgba(0,0,0,0.4)',
-                  imageRendering: 'pixelated' as any,
+                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                   WebkitFontSmoothing: 'none',
                   fontSmooth: 'never',
                   letterSpacing: '0.1em',
@@ -514,7 +520,7 @@ export default function Values() {
                     height: '40%',
                     background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)',
                     borderRadius: '50px 50px 0 0',
-                    imageRendering: 'pixelated' as any
+                    imageRendering: 'pixelated' as CSSProperties['imageRendering']
                   }}
                 />
                 {/* Bottom shadow */}
@@ -524,7 +530,7 @@ export default function Values() {
                     height: '40%',
                     background: 'linear-gradient(0deg, rgba(0,0,0,0.2) 0%, transparent 100%)',
                     borderRadius: '0 0 50px 50px',
-                    imageRendering: 'pixelated' as any
+                    imageRendering: 'pixelated' as CSSProperties['imageRendering']
                   }}
                 />
                 {/* Pixelated pattern overlay */}
@@ -533,12 +539,12 @@ export default function Values() {
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='4' fill='none'/%3E%3Crect x='0' y='0' width='1' height='4' fill='%23ffffff'/%3E%3Crect x='0' y='0' width='4' height='1' fill='%23ffffff'/%3E%3C/svg%3E")`,
                     backgroundSize: '4px 4px',
-                    imageRendering: 'pixelated' as any,
+                    imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                     borderRadius: '50px'
                   }}
                 />
                 <span className="relative z-10" style={{
-                  imageRendering: 'pixelated' as any,
+                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                   WebkitFontSmoothing: 'none',
                   fontSmooth: 'never',
                   display: 'block'
@@ -558,7 +564,7 @@ export default function Values() {
                 style={{
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='%23FFD700'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%23000000'/%3E%3C/svg%3E")`,
                   backgroundSize: '8px 8px',
-                  imageRendering: 'pixelated' as any,
+                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                   height: '16px',
                   opacity: 0.8,
                   borderTop: '1px solid #999999'

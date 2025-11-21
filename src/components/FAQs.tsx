@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const faqs = [
@@ -112,37 +112,6 @@ function FAQIcon({ index }: { index: number }) {
   return icons[index] || icons[0];
 }
 
-// Typing animation component
-function TypingText({ text, speed = 30, delay = 0 }: { text: string, speed?: number, delay?: number }) {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (currentIndex < text.length) {
-        setDisplayedText(prev => prev + text[currentIndex]);
-        setCurrentIndex(prev => prev + 1);
-      }
-    }, delay + (currentIndex * speed));
-
-    return () => clearTimeout(timer);
-  }, [currentIndex, text, speed, delay]);
-
-  return (
-    <span>
-      {displayedText}
-      {currentIndex < text.length && (
-        <motion.span
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 0.8, repeat: Infinity }}
-          className="text-green-400"
-        >
-          |
-        </motion.span>
-      )}
-    </span>
-  );
-}
 
 function FAQItem({ faq, index }: { faq: FAQ, index: number }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -262,24 +231,10 @@ function FAQItem({ faq, index }: { faq: FAQ, index: number }) {
 
 export default function FAQs() {
   const [showArcadeMenu, setShowArcadeMenu] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory] = useState<string | null>(null);
   const [selectedApp, setSelectedApp] = useState<number | null>(null);
   const [isMaximized, setIsMaximized] = useState(true);
   const [swipeStart, setSwipeStart] = useState<{ x: number; y: number } | null>(null);
-
-  const arcadeCategories = [
-    { id: 'general', label: 'GENERAL INFO', icon: 'ℹ️' },
-    { id: 'web3', label: 'WEB3 BASICS', icon: '🔗' },
-    { id: 'community', label: 'COMMUNITY', icon: '👥' },
-    { id: 'participation', label: 'HOW TO JOIN', icon: '🚀' },
-  ];
-
-  const handleCategorySelect = (categoryId: string) => {
-    setSelectedCategory(categoryId);
-    setTimeout(() => {
-      setShowArcadeMenu(false);
-    }, 1000);
-  };
 
   const filteredFaqs = selectedCategory 
     ? faqs.filter(faq => {

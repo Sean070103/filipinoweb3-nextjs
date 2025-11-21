@@ -2210,7 +2210,7 @@ textarea:focus {
 section#home.categories,
 section.categories,
 #home.categories {
-  background: linear-gradient(180deg, #87CEFA 0%, #B0E0FF 50%, #87CEFA 100%) !important;
+  background: #000000 !important;
 }
 
 section#home.categories h3,

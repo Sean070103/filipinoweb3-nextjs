@@ -3,9 +3,7 @@
 import { useEffect, useState } from 'react';
 
 export default function PerformanceMonitor() {
-  const [fps, setFps] = useState(0);
   const [isLowPerformance, setIsLowPerformance] = useState(false);
-  const [memoryUsage, setMemoryUsage] = useState<number | null>(null);
 
   console.log(isLowPerformance);
 
@@ -20,7 +18,6 @@ export default function PerformanceMonitor() {
       
       if (currentTime - lastTime >= 1000) {
         const currentFps = Math.round((frameCount * 1000) / (currentTime - lastTime));
-        setFps(currentFps);
         frameCount = 0;
         lastTime = currentTime;
         
@@ -52,9 +49,13 @@ export default function PerformanceMonitor() {
   useEffect(() => {
     if ('memory' in performance) {
       const updateMemoryUsage = () => {
-        const memory = (performance as any).memory;
+        interface PerformanceMemory {
+          usedJSHeapSize: number;
+        }
+        const memory = (performance as unknown as { memory?: PerformanceMemory }).memory;
         if (memory) {
-          setMemoryUsage(memory.usedJSHeapSize / 1024 / 1024); // Convert to MB
+          // Memory usage is tracked but not stored in state
+          void memory.usedJSHeapSize;
         }
       };
 
