@@ -1,20 +1,10 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export default function CosmicHero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const prefersReduced = useReducedMotion();
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   // (Optional) You can use mousePosition for interactive effects later
 

@@ -27,7 +27,7 @@ export default function ScrollReveal({
   const ref = useRef(null);
   const isInView = useInView(ref, { 
     once: true, 
-    margin: rootMargin as any,
+    margin: rootMargin,
     amount: threshold
   });
 

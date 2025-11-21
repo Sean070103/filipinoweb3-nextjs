@@ -112,7 +112,8 @@ function FAQIcon({ index }: { index: number }) {
   return icons[index] || icons[0];
 }
 
-// Typing animation component
+// Typing animation component (currently unused)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function TypingText({ text, speed = 30, delay = 0 }: { text: string, speed?: number, delay?: number }) {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -267,6 +268,8 @@ export default function FAQs() {
   const [isMaximized, setIsMaximized] = useState(true);
   const [swipeStart, setSwipeStart] = useState<{ x: number; y: number } | null>(null);
 
+  // Unused variables - kept for potential future use
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const arcadeCategories = [
     { id: 'general', label: 'GENERAL INFO', icon: 'ℹ️' },
     { id: 'web3', label: 'WEB3 BASICS', icon: '🔗' },
@@ -274,6 +277,7 @@ export default function FAQs() {
     { id: 'participation', label: 'HOW TO JOIN', icon: '🚀' },
   ];
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory(categoryId);
     setTimeout(() => {

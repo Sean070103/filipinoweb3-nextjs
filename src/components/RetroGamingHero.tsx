@@ -232,7 +232,7 @@ export default function RetroGamingHero() {
       </div>
 
       {/* CSS Animation */}
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{__html: `
         @keyframes moveJeepney {
           0% {
             left: -200px;
@@ -288,7 +288,7 @@ export default function RetroGamingHero() {
             transform: rotate(360deg);
           }
         }
-      `}</style>
+      `}} />
 
 
       {/* Right Edge Blue Strip */}

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect } from 'react';
+import type { MouseEvent } from 'react';
 
 interface RetroGamingMobileMenuProps {
   isOpen: boolean;
@@ -43,7 +44,7 @@ export default function RetroGamingMobileMenu({ isOpen, onClose, activeSection, 
   }, [isOpen, onClose]);
 
   // Close menu on outside click
-  const handleBackdropClick = (e: React.MouseEvent) => {
+  const handleBackdropClick = (e: MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
     }

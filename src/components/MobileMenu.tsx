@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect } from 'react';
+import type { MouseEvent } from 'react';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -43,7 +44,7 @@ export default function MobileMenu({ isOpen, onClose, activeSection, onNavigate 
   }, [isOpen, onClose]);
 
   // Close menu on outside click
-  const handleBackdropClick = (e: React.MouseEvent) => {
+  const handleBackdropClick = (e: MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
