@@ -89,7 +89,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-white text-sm whitespace-nowrap" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-              FWEB3 2025. All rights reserved.
+              FW3 2025. All rights reserved.
             </p>
           </motion.div>
 

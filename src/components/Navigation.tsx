@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Users, Star } from "lucide-react";
+import { FlaskConical, Briefcase, Star } from "lucide-react";
 
 export default function Navigation() {
 
@@ -55,9 +55,9 @@ export default function Navigation() {
             </span>
           </Link>
 
-          {/* ABOUT Circus Box */}
+          {/* LABS Circus Box */}
           <Link
-            href="/#about"
+            href="/labs"
             className="flex flex-col items-center justify-center px-5 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
             style={{
               background: '#eab308',
@@ -85,10 +85,10 @@ export default function Navigation() {
                 fontSmooth: 'never'
               }}
             >
-              ABOUT
+              LABS
             </span>
-            {/* Circus People Icon */}
-            <Users 
+            {/* Flask Icon */}
+            <FlaskConical 
               className="w-5 h-5 text-white mt-2" 
               style={{ 
                 filter: 'drop-shadow(2px 2px 0px rgba(135, 206, 250, 0.4))',
@@ -139,18 +139,18 @@ export default function Navigation() {
             />
           </Link>
 
-          {/* TEAM Circus Box */}
+          {/* CAREERS Circus Box */}
           <Link
-            href="/#team"
-            className="flex items-center justify-center px-6 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2"
+            href="/careers"
+            className="flex flex-col items-center justify-center px-5 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
             style={{
               background: '#f97316',
               borderRadius: '0',
               boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
               border: '3px solid #ffffff',
               borderStyle: 'outset',
-              minWidth: '70px',
-              minHeight: '60px',
+              minWidth: '110px',
+              minHeight: '75px',
               position: 'relative',
               imageRendering: 'pixelated'
             }}
@@ -160,7 +160,7 @@ export default function Navigation() {
               style={{
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                 textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
-                fontSize: '14px',
+                fontSize: '8px',
                 fontWeight: '400',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
@@ -169,8 +169,16 @@ export default function Navigation() {
                 fontSmooth: 'never'
               }}
             >
-              TEAM
+              CAREERS
             </span>
+            {/* Briefcase Icon */}
+            <Briefcase 
+              className="w-5 h-5 text-white mt-2" 
+              style={{ 
+                filter: 'drop-shadow(2px 2px 0px rgba(135, 206, 250, 0.4))',
+                transition: 'transform 0.3s ease',
+              }}
+            />
           </Link>
         </div>
       </div>

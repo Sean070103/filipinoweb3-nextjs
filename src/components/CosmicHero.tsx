@@ -150,7 +150,7 @@ export default function CosmicHero() {
       {/* Central Content */}
       <div className="relative z-10 flex items-center justify-center min-h-screen px-6 md:px-10">
         <div className="text-center max-w-5xl">
-          {/* Main Title - Just FWEB3 Text */}
+          {/* Main Title - Just FW3 Text */}
           <div className="relative inline-block">
             <motion.h1
               className="text-8xl md:text-9xl font-black relative"
@@ -181,7 +181,7 @@ export default function CosmicHero() {
                     ease: "easeInOut",
                   }}
                 >
-                  FWEB3
+                  FW3
                 </motion.h1>
                 
                </div>

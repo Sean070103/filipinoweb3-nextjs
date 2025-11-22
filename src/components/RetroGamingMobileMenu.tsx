@@ -114,7 +114,7 @@ export default function RetroGamingMobileMenu({ isOpen, onClose, activeSection, 
                   letterSpacing: '0.1em',
                 }}
               >
-                FWEB3
+                FW3
               </span>
             </div>
             <motion.button

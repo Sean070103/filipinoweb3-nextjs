@@ -352,7 +352,7 @@ export default function RetroGamingHero() {
               color: '#39FF14', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #39FF14, 0 0 30px #39FF14, 0 0 45px #39FF14',
               filter: 'drop-shadow(0 0 5px #39FF14)'
-            }}>FWEB3</span> <span style={{ 
+            }}>FW3</span> <span style={{ 
               color: '#FF6B00', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #FF6B00, 0 0 30px #FF6B00, 0 0 45px #FF6B00',
               filter: 'drop-shadow(0 0 5px #FF6B00)'
@@ -363,7 +363,7 @@ export default function RetroGamingHero() {
               color: '#FFD700', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #FFD700, 0 0 30px #FFD700, 0 0 45px #FFD700',
               filter: 'drop-shadow(0 0 5px #FFD700)'
-            }}>FWEB3</span> <span style={{ 
+            }}>FW3</span> <span style={{ 
               color: '#FF00FF', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #FF00FF, 0 0 30px #FF00FF, 0 0 45px #FF00FF',
               filter: 'drop-shadow(0 0 5px #FF00FF)'
@@ -374,7 +374,7 @@ export default function RetroGamingHero() {
               color: '#00FFFF', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #00FFFF, 0 0 30px #00FFFF, 0 0 45px #00FFFF',
               filter: 'drop-shadow(0 0 5px #00FFFF)'
-            }}>FWEB3</span> <span style={{ 
+            }}>FW3</span> <span style={{ 
               color: '#FFFF00', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #FFFF00, 0 0 30px #FFFF00, 0 0 45px #FFFF00',
               filter: 'drop-shadow(0 0 5px #FFFF00)'
@@ -385,7 +385,7 @@ export default function RetroGamingHero() {
               color: '#FF6B9D', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #FF6B9D, 0 0 30px #FF6B9D, 0 0 45px #FF6B9D',
               filter: 'drop-shadow(0 0 5px #FF6B9D)'
-            }}>FWEB3</span> <span style={{ 
+            }}>FW3</span> <span style={{ 
               color: '#4ECDC4', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #4ECDC4, 0 0 30px #4ECDC4, 0 0 45px #4ECDC4',
               filter: 'drop-shadow(0 0 5px #4ECDC4)'
@@ -396,7 +396,7 @@ export default function RetroGamingHero() {
               color: '#39FF14', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #39FF14, 0 0 30px #39FF14, 0 0 45px #39FF14',
               filter: 'drop-shadow(0 0 5px #39FF14)'
-            }}>FWEB3</span> <span style={{ 
+            }}>FW3</span> <span style={{ 
               color: '#FF6B00', 
               textShadow: '3px 3px 0px #000000, 0 0 15px #FF6B00, 0 0 30px #FF6B00, 0 0 45px #FF6B00',
               filter: 'drop-shadow(0 0 5px #FF6B00)'
