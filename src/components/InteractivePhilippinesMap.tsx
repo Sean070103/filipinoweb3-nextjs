@@ -193,14 +193,15 @@ export default function InteractivePhilippinesMap() {
 
     const L = leafletRef.current;
 
-    // Initialize map
+    // Initialize map with responsive settings
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
     const map = L.map(mapContainerRef.current, {
       center: [12.8797, 121.7740], // Center of Philippines
-      zoom: 6,
+      zoom: isMobile ? 5 : 6,
       zoomControl: true,
       attributionControl: false,
-      minZoom: 5,
-      maxZoom: 10,
+      minZoom: isMobile ? 4 : 5,
+      maxZoom: isMobile ? 8 : 10,
     });
 
     // Set max bounds
@@ -250,8 +251,9 @@ export default function InteractivePhilippinesMap() {
             geoJsonLayer.resetStyle(e.target);
           });
           
-          // Fit map to Philippines bounds
-          map.fitBounds(geoJsonLayer.getBounds(), { padding: [30, 30] });
+          // Fit map to Philippines bounds with responsive padding
+          const padding = isMobile ? [15, 15] : [30, 30];
+          map.fitBounds(geoJsonLayer.getBounds(), { padding });
         }
       })
       .catch(() => {
@@ -276,7 +278,8 @@ export default function InteractivePhilippinesMap() {
                 },
               }).addTo(map);
               
-              map.fitBounds(geoJsonLayer.getBounds(), { padding: [30, 30] });
+              const padding = isMobile ? [15, 15] : [30, 30];
+              map.fitBounds(geoJsonLayer.getBounds(), { padding });
             }
           })
           .catch(() => {
@@ -295,7 +298,8 @@ export default function InteractivePhilippinesMap() {
         .addTo(map)
         .on('click', () => {
           setSelectedLocation(location);
-          map.setView(location.coordinates, 8, { animate: true, duration: 1 });
+          const zoomLevel = isMobile ? 7 : 8;
+          map.setView(location.coordinates, zoomLevel, { animate: true, duration: 1 });
         })
         .on('mouseover', () => {
           setHoveredLocation(location.name);
@@ -304,29 +308,29 @@ export default function InteractivePhilippinesMap() {
           setHoveredLocation(null);
         });
 
-      // Enhanced popup
+      // Enhanced popup with responsive sizing
       marker.bindPopup(`
         <div style="
           font-family: var(--font-press-start-2p), 'Courier New', monospace;
-          font-size: 0.75rem;
+          font-size: ${isMobile ? '0.6rem' : '0.75rem'};
           color: #ffffff;
           text-align: center;
-          padding: 0.75rem;
+          padding: ${isMobile ? '0.5rem' : '0.75rem'};
           background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(20,20,40,0.95));
-          border: 2px solid rgba(34, 211, 238, 0.6);
-          border-radius: 12px;
-          box-shadow: 0 0 30px rgba(34, 211, 238, 0.5);
+          border: ${isMobile ? '1.5px' : '2px'} solid rgba(34, 211, 238, 0.6);
+          border-radius: ${isMobile ? '8px' : '12px'};
+          box-shadow: 0 0 ${isMobile ? '20px' : '30px'} rgba(34, 211, 238, 0.5);
         ">
           <div style="
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
+            gap: ${isMobile ? '0.25rem' : '0.5rem'};
+            margin-bottom: ${isMobile ? '0.25rem' : '0.5rem'};
           ">
-            <span style="color: #22d3ee; font-size: 1rem;">📍</span>
+            <span style="color: #22d3ee; font-size: ${isMobile ? '0.8rem' : '1rem'};">📍</span>
             <strong style="
-              font-size: 0.8rem;
+              font-size: ${isMobile ? '0.65rem' : '0.8rem'};
               background: linear-gradient(135deg, #22d3ee, #a855f7);
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
@@ -334,18 +338,18 @@ export default function InteractivePhilippinesMap() {
             ">${location.name.toUpperCase()}</strong>
           </div>
           <div style="
-            font-size: 0.6rem;
+            font-size: ${isMobile ? '0.5rem' : '0.6rem'};
             opacity: 0.9;
-            padding: 0.25rem 0.5rem;
+            padding: ${isMobile ? '0.2rem 0.4rem' : '0.25rem 0.5rem'};
             background: rgba(34, 211, 238, 0.1);
-            border-radius: 6px;
+            border-radius: ${isMobile ? '4px' : '6px'};
             display: inline-block;
-            margin-top: 0.25rem;
+            margin-top: ${isMobile ? '0.15rem' : '0.25rem'};
           ">${location.region}</div>
         </div>
       `, {
         className: 'custom-popup',
-        maxWidth: 200,
+        maxWidth: isMobile ? 150 : 200,
         closeButton: false,
       });
 
@@ -354,10 +358,11 @@ export default function InteractivePhilippinesMap() {
 
     mapRef.current = map;
 
-    // Fit bounds to show all markers
+    // Fit bounds to show all markers with responsive padding
     if (markersRef.current.length > 0) {
       const group = new L.FeatureGroup(markersRef.current);
-      map.fitBounds(group.getBounds().pad(0.3));
+      const padAmount = isMobile ? 0.2 : 0.3;
+      map.fitBounds(group.getBounds().pad(padAmount));
     }
 
     return () => {
@@ -388,31 +393,21 @@ export default function InteractivePhilippinesMap() {
   };
 
   return (
-    <div style={{ position: 'relative', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="w-full px-4 sm:px-6 md:px-8" style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Region Legend */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '2rem',
-        flexWrap: 'wrap',
-        marginBottom: '2rem',
-      }}>
+      <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap mb-4 sm:mb-6 md:mb-8">
         {Object.entries(regionColors).map(([region, color]) => (
-          <div key={region} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-          }}>
+          <div key={region} className="flex items-center gap-2 sm:gap-3">
             <div style={{
-              width: '16px',
-              height: '16px',
+              width: 'clamp(12px, 2.5vw, 16px)',
+              height: 'clamp(12px, 2.5vw, 16px)',
               borderRadius: '50%',
               background: color,
-              boxShadow: `0 0 10px ${color}`,
+              boxShadow: `0 0 clamp(6px, 1.5vw, 10px) ${color}`,
             }}></div>
             <span style={{
               fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: '0.7rem',
+              fontSize: 'clamp(0.5rem, 1.2vw, 0.7rem)',
               color: 'var(--color-light)',
             }}>{region}</span>
           </div>
@@ -420,18 +415,15 @@ export default function InteractivePhilippinesMap() {
       </div>
 
       {/* Map Container with Enhanced Styling */}
-      <div style={{
-        position: 'relative',
-        width: '100%',
+      <div className="relative w-full overflow-hidden" style={{
         aspectRatio: '16/10',
         background: 'linear-gradient(135deg, #0a0f1a 0%, #1a1f2e 50%, #0f1419 100%)',
-        border: '4px solid rgba(34, 211, 238, 0.3)',
-        borderRadius: '1rem',
-        overflow: 'hidden',
+        border: 'clamp(2px, 0.5vw, 4px) solid rgba(34, 211, 238, 0.3)',
+        borderRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
         boxShadow: `
-          0 20px 60px rgba(0,0,0,0.5),
-          0 0 40px rgba(34, 211, 238, 0.2),
-          inset 0 0 40px rgba(34, 211, 238, 0.05)
+          0 clamp(10px, 2.5vw, 20px) clamp(30px, 7.5vw, 60px) rgba(0,0,0,0.5),
+          0 0 clamp(20px, 5vw, 40px) rgba(34, 211, 238, 0.2),
+          inset 0 0 clamp(20px, 5vw, 40px) rgba(34, 211, 238, 0.05)
         `,
         zIndex: 1,
       }}>
@@ -443,7 +435,7 @@ export default function InteractivePhilippinesMap() {
             linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px)
           `,
-          backgroundSize: '40px 40px',
+          backgroundSize: 'clamp(20px, 5vw, 40px) clamp(20px, 5vw, 40px)',
           pointerEvents: 'none',
           zIndex: 2,
         }} />
@@ -453,44 +445,44 @@ export default function InteractivePhilippinesMap() {
           position: 'absolute',
           top: 0,
           left: 0,
-          width: '40px',
-          height: '40px',
-          borderTop: '3px solid rgba(34, 211, 238, 0.6)',
-          borderLeft: '3px solid rgba(34, 211, 238, 0.6)',
-          borderTopLeftRadius: '1rem',
+          width: 'clamp(20px, 5vw, 40px)',
+          height: 'clamp(20px, 5vw, 40px)',
+          borderTop: 'clamp(2px, 0.4vw, 3px) solid rgba(34, 211, 238, 0.6)',
+          borderLeft: 'clamp(2px, 0.4vw, 3px) solid rgba(34, 211, 238, 0.6)',
+          borderTopLeftRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
           zIndex: 3,
         }} />
         <div style={{
           position: 'absolute',
           top: 0,
           right: 0,
-          width: '40px',
-          height: '40px',
-          borderTop: '3px solid rgba(34, 211, 238, 0.6)',
-          borderRight: '3px solid rgba(34, 211, 238, 0.6)',
-          borderTopRightRadius: '1rem',
+          width: 'clamp(20px, 5vw, 40px)',
+          height: 'clamp(20px, 5vw, 40px)',
+          borderTop: 'clamp(2px, 0.4vw, 3px) solid rgba(34, 211, 238, 0.6)',
+          borderRight: 'clamp(2px, 0.4vw, 3px) solid rgba(34, 211, 238, 0.6)',
+          borderTopRightRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
           zIndex: 3,
         }} />
         <div style={{
           position: 'absolute',
           bottom: 0,
           left: 0,
-          width: '40px',
-          height: '40px',
-          borderBottom: '3px solid rgba(34, 211, 238, 0.6)',
-          borderLeft: '3px solid rgba(34, 211, 238, 0.6)',
-          borderBottomLeftRadius: '1rem',
+          width: 'clamp(20px, 5vw, 40px)',
+          height: 'clamp(20px, 5vw, 40px)',
+          borderBottom: 'clamp(2px, 0.4vw, 3px) solid rgba(34, 211, 238, 0.6)',
+          borderLeft: 'clamp(2px, 0.4vw, 3px) solid rgba(34, 211, 238, 0.6)',
+          borderBottomLeftRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
           zIndex: 3,
         }} />
         <div style={{
           position: 'absolute',
           bottom: 0,
           right: 0,
-          width: '40px',
-          height: '40px',
-          borderBottom: '3px solid rgba(34, 211, 238, 0.6)',
-          borderRight: '3px solid rgba(34, 211, 238, 0.6)',
-          borderBottomRightRadius: '1rem',
+          width: 'clamp(20px, 5vw, 40px)',
+          height: 'clamp(20px, 5vw, 40px)',
+          borderBottom: 'clamp(2px, 0.4vw, 3px) solid rgba(34, 211, 238, 0.6)',
+          borderRight: 'clamp(2px, 0.4vw, 3px) solid rgba(34, 211, 238, 0.6)',
+          borderBottomRightRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
           zIndex: 3,
         }} />
 
@@ -500,18 +492,16 @@ export default function InteractivePhilippinesMap() {
       {/* Enhanced Selected Location Details Panel */}
       {selectedLocation && (
         <div
+          className="mt-4 sm:mt-6 md:mt-8 relative overflow-hidden"
           style={{
-            marginTop: '2rem',
             background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.8))',
-            border: `3px solid ${regionColors[selectedLocation.region]}`,
-            borderRadius: '1rem',
-            padding: '2rem',
+            border: `clamp(2px, 0.4vw, 3px) solid ${regionColors[selectedLocation.region]}`,
+            borderRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
+            padding: 'clamp(1rem, 3vw, 2rem)',
             boxShadow: `
-              0 20px 60px rgba(0,0,0,0.5),
-              0 0 40px ${regionColors[selectedLocation.region]}40
+              0 clamp(10px, 2.5vw, 20px) clamp(30px, 7.5vw, 60px) rgba(0,0,0,0.5),
+              0 0 clamp(20px, 5vw, 40px) ${regionColors[selectedLocation.region]}40
             `,
-            position: 'relative',
-            overflow: 'hidden',
           }}
         >
           {/* Background Glow Effect */}
@@ -526,51 +516,46 @@ export default function InteractivePhilippinesMap() {
           }} />
 
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                marginBottom: '1.5rem',
-              }}
-            >
-              <div>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '1rem',
-                  marginBottom: '0.75rem',
-                }}>
-                  <Sparkles size={24} style={{ color: regionColors[selectedLocation.region] }} />
+            <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-4 sm:mb-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3">
+                  <Sparkles 
+                    style={{ 
+                      color: regionColors[selectedLocation.region],
+                      width: 'clamp(18px, 3.5vw, 24px)',
+                      height: 'clamp(18px, 3.5vw, 24px)'
+                    }} 
+                  />
                   <h3
                     style={{
                       fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                      fontSize: '1.5rem',
+                      fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
                       letterSpacing: '0.08em',
                       margin: 0,
                       background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
-                      textShadow: `0 0 20px ${regionColors[selectedLocation.region]}40`,
+                      textShadow: `0 0 clamp(10px, 2.5vw, 20px) ${regionColors[selectedLocation.region]}40`,
+                      wordBreak: 'break-word',
                     }}
                   >
                     {selectedLocation.name.toUpperCase()}
                   </h3>
                 </div>
                 <div
+                  className="inline-block"
                   style={{
-                    display: 'inline-block',
-                    padding: '0.5rem 1rem',
+                    padding: 'clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
                     background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}20, ${regionColors[selectedLocation.region]}10)`,
-                    border: `2px solid ${regionColors[selectedLocation.region]}`,
-                    borderRadius: '8px',
-                    fontSize: '0.9rem',
+                    border: `clamp(1px, 0.3vw, 2px) solid ${regionColors[selectedLocation.region]}`,
+                    borderRadius: 'clamp(4px, 1vw, 8px)',
+                    fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.1em',
                     color: regionColors[selectedLocation.region],
                     fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                    boxShadow: `0 0 15px ${regionColors[selectedLocation.region]}40`,
+                    boxShadow: `0 0 clamp(8px, 2vw, 15px) ${regionColors[selectedLocation.region]}40`,
                   }}
                 >
                   {selectedLocation.region} REGION
@@ -578,18 +563,15 @@ export default function InteractivePhilippinesMap() {
               </div>
               <button
                 onClick={() => setSelectedLocation(null)}
+                className="flex-shrink-0 flex items-center justify-center transition-all duration-300"
                 style={{
                   background: 'rgba(255, 255, 255, 0.1)',
-                  border: '2px solid rgba(255, 255, 255, 0.2)',
+                  border: 'clamp(1px, 0.3vw, 2px) solid rgba(255, 255, 255, 0.2)',
                   borderRadius: '50%',
                   color: '#ffffff',
-                  width: '40px',
-                  height: '40px',
+                  width: 'clamp(32px, 5vw, 40px)',
+                  height: 'clamp(32px, 5vw, 40px)',
                   cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'all 0.3s ease',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
@@ -600,7 +582,7 @@ export default function InteractivePhilippinesMap() {
                   e.currentTarget.style.transform = 'rotate(0deg)';
                 }}
               >
-                <X size={20} />
+                <X style={{ width: 'clamp(16px, 2.5vw, 20px)', height: 'clamp(16px, 2.5vw, 20px)' }} />
               </button>
             </div>
           </div>
@@ -632,19 +614,21 @@ export default function InteractivePhilippinesMap() {
         }
         
         .leaflet-control-zoom {
-          border: 2px solid rgba(34, 211, 238, 0.4) !important;
-          border-radius: 12px !important;
+          border: clamp(1px, 0.3vw, 2px) solid rgba(34, 211, 238, 0.4) !important;
+          border-radius: clamp(6px, 1.5vw, 12px) !important;
           overflow: hidden;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 15px rgba(34, 211, 238, 0.3) !important;
+          box-shadow: 0 clamp(2px, 0.5vw, 4px) clamp(10px, 2.5vw, 20px) rgba(0,0,0,0.5), 0 0 clamp(8px, 2vw, 15px) rgba(34, 211, 238, 0.3) !important;
           background: rgba(0, 0, 0, 0.8) !important;
         }
         
         .leaflet-control-zoom a {
           background: rgba(0, 0, 0, 0.8) !important;
           color: #22d3ee !important;
-          border-bottom: 1px solid rgba(34, 211, 238, 0.2) !important;
-          font-size: 18px !important;
-          line-height: 30px !important;
+          border-bottom: clamp(0.5px, 0.15vw, 1px) solid rgba(34, 211, 238, 0.2) !important;
+          font-size: clamp(14px, 2.5vw, 18px) !important;
+          line-height: clamp(24px, 4vw, 30px) !important;
+          width: clamp(28px, 4.5vw, 34px) !important;
+          height: clamp(28px, 4.5vw, 34px) !important;
           transition: all 0.3s ease !important;
         }
         

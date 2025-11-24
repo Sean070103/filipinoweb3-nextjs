@@ -8,31 +8,31 @@ export default function Navigation() {
   return (
     <>
       {/* Circus Boxes Navbar Design */}
-      <div className="w-full fixed top-0 left-0 right-0 py-6 flex justify-center items-center z-[9999] bg-transparent">
+      <div className="w-full fixed top-0 left-0 right-0 py-2 sm:py-4 md:py-6 flex justify-center items-center z-[9999] bg-transparent px-2 sm:px-4">
           <div 
-          className="navbar-container flex items-center justify-center gap-1 pixelated"
+          className="navbar-container flex items-center justify-center gap-0.5 sm:gap-1 pixelated"
           style={{
             background: '#000000',
             borderRadius: '0',
-            boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(255,255,255,0.1)',
-            border: '4px solid #ffffff',
+            boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.3), inset clamp(-1px, -0.3vw, -2px) clamp(-1px, -0.3vw, -2px) 0px rgba(255,255,255,0.1)',
+            border: 'clamp(2px, 0.5vw, 4px) solid #ffffff',
             borderStyle: 'outset',
-            padding: '8px',
+            padding: 'clamp(4px, 1vw, 8px)',
             imageRendering: 'pixelated'
           }}
         >
           {/* FW Circus Box */}
           <Link
             href="/#home"
-            className="flex items-center justify-center px-6 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2"
+            className="flex items-center justify-center px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2"
             style={{
               background: '#22c55e',
               borderRadius: '0',
-              boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
-              border: '3px solid #ffffff',
+              boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.3), inset clamp(-1px, -0.3vw, -2px) clamp(-1px, -0.3vw, -2px) 0px rgba(0,0,0,0.2)',
+              border: 'clamp(2px, 0.4vw, 3px) solid #ffffff',
               borderStyle: 'outset',
-              minWidth: '70px',
-              minHeight: '60px',
+              minWidth: 'clamp(50px, 12vw, 70px)',
+              minHeight: 'clamp(45px, 10vw, 60px)',
               position: 'relative',
               imageRendering: 'pixelated'
             }}
@@ -41,8 +41,8 @@ export default function Navigation() {
               className="text-white font-black pixelated"
               style={{
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
-                fontSize: '14px',
+                textShadow: 'clamp(2px, 0.4vw, 3px) clamp(2px, 0.4vw, 3px) 0px #000000, clamp(1px, 0.2vw, 1px) clamp(1px, 0.2vw, 1px) 0px rgba(0,0,0,0.8)',
+                fontSize: 'clamp(10px, 2vw, 14px)',
                 fontWeight: '400',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
@@ -58,15 +58,15 @@ export default function Navigation() {
           {/* LABS Circus Box */}
           <Link
             href="/labs"
-            className="flex flex-col items-center justify-center px-5 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
+            className="flex flex-col items-center justify-center px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
             style={{
               background: '#eab308',
               borderRadius: '0',
-              boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
-              border: '3px solid #ffffff',
+              boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.3), inset clamp(-1px, -0.3vw, -2px) clamp(-1px, -0.3vw, -2px) 0px rgba(0,0,0,0.2)',
+              border: 'clamp(2px, 0.4vw, 3px) solid #ffffff',
               borderStyle: 'outset',
-              minWidth: '90px',
-              minHeight: '75px',
+              minWidth: 'clamp(65px, 15vw, 90px)',
+              minHeight: 'clamp(55px, 12vw, 75px)',
               position: 'relative',
               imageRendering: 'pixelated'
             }}
@@ -75,8 +75,8 @@ export default function Navigation() {
               className="text-white font-black pixelated"
               style={{
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
-                fontSize: '10px',
+                textShadow: 'clamp(2px, 0.4vw, 3px) clamp(2px, 0.4vw, 3px) 0px #000000, clamp(1px, 0.2vw, 1px) clamp(1px, 0.2vw, 1px) 0px rgba(0,0,0,0.8)',
+                fontSize: 'clamp(7px, 1.5vw, 10px)',
                 fontWeight: '400',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
@@ -89,8 +89,10 @@ export default function Navigation() {
             </span>
             {/* Flask Icon */}
             <FlaskConical 
-              className="w-5 h-5 text-white mt-2" 
+              className="text-white mt-1 sm:mt-1.5 md:mt-2" 
               style={{ 
+                width: 'clamp(12px, 3vw, 20px)',
+                height: 'clamp(12px, 3vw, 20px)',
                 filter: 'drop-shadow(2px 2px 0px rgba(135, 206, 250, 0.4))',
                 transition: 'transform 0.3s ease',
               }}
@@ -100,15 +102,15 @@ export default function Navigation() {
           {/* COMMUNITY Circus Box */}
           <Link
             href="/community"
-            className="flex flex-col items-center justify-center px-5 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
+            className="flex flex-col items-center justify-center px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
             style={{
               background: '#06b6d4',
               borderRadius: '0',
-              boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
-              border: '3px solid #ffffff',
+              boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.3), inset clamp(-1px, -0.3vw, -2px) clamp(-1px, -0.3vw, -2px) 0px rgba(0,0,0,0.2)',
+              border: 'clamp(2px, 0.4vw, 3px) solid #ffffff',
               borderStyle: 'outset',
-              minWidth: '110px',
-              minHeight: '75px',
+              minWidth: 'clamp(75px, 18vw, 110px)',
+              minHeight: 'clamp(55px, 12vw, 75px)',
               position: 'relative',
               imageRendering: 'pixelated'
             }}
@@ -117,8 +119,8 @@ export default function Navigation() {
               className="text-white font-black pixelated"
               style={{
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
-                fontSize: '8px',
+                textShadow: 'clamp(2px, 0.4vw, 3px) clamp(2px, 0.4vw, 3px) 0px #000000, clamp(1px, 0.2vw, 1px) clamp(1px, 0.2vw, 1px) 0px rgba(0,0,0,0.8)',
+                fontSize: 'clamp(6px, 1.2vw, 8px)',
                 fontWeight: '400',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
@@ -131,8 +133,10 @@ export default function Navigation() {
             </span>
             {/* Circus Star Icon */}
             <Star 
-              className="w-5 h-5 text-white mt-2" 
+              className="text-white mt-1 sm:mt-1.5 md:mt-2" 
               style={{ 
+                width: 'clamp(12px, 3vw, 20px)',
+                height: 'clamp(12px, 3vw, 20px)',
                 filter: 'drop-shadow(2px 2px 0px rgba(135, 206, 250, 0.4))',
                 transition: 'transform 0.3s ease',
               }}
@@ -142,15 +146,15 @@ export default function Navigation() {
           {/* CAREERS Circus Box */}
           <Link
             href="/careers"
-            className="flex flex-col items-center justify-center px-5 py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
+            className="flex flex-col items-center justify-center px-3 sm:px-4 md:px-5 py-3 sm:py-4 md:py-5 transition-all duration-300 hover:scale-110 hover:rotate-3 hover:skew-x-2 relative"
             style={{
               background: '#f97316',
               borderRadius: '0',
-              boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
-              border: '3px solid #ffffff',
+              boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.3), inset clamp(-1px, -0.3vw, -2px) clamp(-1px, -0.3vw, -2px) 0px rgba(0,0,0,0.2)',
+              border: 'clamp(2px, 0.4vw, 3px) solid #ffffff',
               borderStyle: 'outset',
-              minWidth: '110px',
-              minHeight: '75px',
+              minWidth: 'clamp(75px, 18vw, 110px)',
+              minHeight: 'clamp(55px, 12vw, 75px)',
               position: 'relative',
               imageRendering: 'pixelated'
             }}
@@ -159,8 +163,8 @@ export default function Navigation() {
               className="text-white font-black pixelated"
               style={{
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                textShadow: '3px 3px 0px #000000, 1px 1px 0px rgba(0,0,0,0.8)',
-                fontSize: '8px',
+                textShadow: 'clamp(2px, 0.4vw, 3px) clamp(2px, 0.4vw, 3px) 0px #000000, clamp(1px, 0.2vw, 1px) clamp(1px, 0.2vw, 1px) 0px rgba(0,0,0,0.8)',
+                fontSize: 'clamp(6px, 1.2vw, 8px)',
                 fontWeight: '400',
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
@@ -173,8 +177,10 @@ export default function Navigation() {
             </span>
             {/* Briefcase Icon */}
             <Briefcase 
-              className="w-5 h-5 text-white mt-2" 
+              className="text-white mt-1 sm:mt-1.5 md:mt-2" 
               style={{ 
+                width: 'clamp(12px, 3vw, 20px)',
+                height: 'clamp(12px, 3vw, 20px)',
                 filter: 'drop-shadow(2px 2px 0px rgba(135, 206, 250, 0.4))',
                 transition: 'transform 0.3s ease',
               }}

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import type { CSSProperties } from 'react';
 
@@ -188,14 +189,14 @@ export default function Values() {
         animation: 'scanline 8s linear infinite'
       }} />
       
-      <div className="container relative z-10 py-16 md:py-24">
+      <div className="container relative z-10 py-8 sm:py-12 md:py-16 lg:py-24">
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16 px-4"
+          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 px-4 sm:px-6"
         >
           <h2 className="pixelated" style={{ 
             fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', 
@@ -225,7 +226,7 @@ export default function Values() {
         </motion.div>
 
         {/* Values Grid */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 md:gap-8 max-w-7xl mx-auto mb-16 px-4">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto mb-8 sm:mb-12 md:mb-16 px-4 sm:px-6 md:px-8">
           {values.map((value, index) => (
             <motion.div
               key={value.title}
@@ -240,10 +241,10 @@ export default function Values() {
                 className="value-card relative pixelated h-full flex flex-col"
                 style={{
                   background: '#000000',
-                  border: '4px solid #FFFFFF',
+                  border: 'clamp(2px, 0.5vw, 4px) solid #FFFFFF',
                   borderStyle: 'outset',
-                  borderRadius: '12px',
-                  boxShadow: '6px 6px 0px rgba(0,0,0,0.8), inset 2px 2px 0px rgba(255,255,255,0.1)',
+                  borderRadius: 'clamp(8px, 1.5vw, 12px)',
+                  boxShadow: 'clamp(3px, 0.8vw, 6px) clamp(3px, 0.8vw, 6px) 0px rgba(0,0,0,0.8), inset clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px rgba(255,255,255,0.1)',
                   imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                   WebkitFontSmoothing: 'none',
                   fontSmooth: 'never',
@@ -255,16 +256,17 @@ export default function Values() {
                 }}
               >
                 {/* Pink Triangles on Top Edge */}
-                <div className="absolute -top-4 left-0 right-0 flex justify-start gap-1 px-2" style={{ zIndex: 1 }}>
+                <div className="absolute -top-2 sm:-top-3 md:-top-4 left-0 right-0 flex justify-start gap-0.5 sm:gap-1 px-1 sm:px-2" style={{ zIndex: 1 }}>
                   {[...Array(8)].map((_, i) => (
                     <div
                       key={i}
+                      className="hidden sm:block"
                       style={{
                         width: 0,
                         height: 0,
-                        borderLeft: '6px solid transparent',
-                        borderRight: '6px solid transparent',
-                        borderBottom: '8px solid #FF6B9D',
+                        borderLeft: 'clamp(4px, 1vw, 6px) solid transparent',
+                        borderRight: 'clamp(4px, 1vw, 6px) solid transparent',
+                        borderBottom: 'clamp(6px, 1.2vw, 8px) solid #FF6B9D',
                         imageRendering: 'pixelated' as CSSProperties['imageRendering']
                       }}
                     />
@@ -272,13 +274,13 @@ export default function Values() {
                 </div>
                 
                 {/* Image */}
-                <div className="relative overflow-hidden flex-shrink-0" style={{ borderBottom: '4px solid #FFFFFF' }}>
+                <div className="relative overflow-hidden flex-shrink-0" style={{ borderBottom: 'clamp(2px, 0.5vw, 4px) solid #FFFFFF' }}>
                   <Image 
                     src={value.image} 
                     alt={value.title} 
                     width={400}
                     height={250}
-                    className="w-full h-48 md:h-56 object-cover"
+                    className="w-full h-40 xs:h-44 sm:h-48 md:h-56 object-cover"
                     style={{
                       imageRendering: 'pixelated' as CSSProperties['imageRendering']
                     }}
@@ -286,7 +288,7 @@ export default function Values() {
                 </div>
                 
                 {/* Content */}
-                <div className="p-4 md:p-6 flex flex-col flex-grow space-y-3 md:space-y-4">
+                <div className="p-3 sm:p-4 md:p-6 flex flex-col flex-grow space-y-2 sm:space-y-3 md:space-y-4">
                   <h3 
                     className="pixelated" 
                     style={{ 
@@ -327,14 +329,14 @@ export default function Values() {
                   </p>
                   
                   {/* Bottom Bar with Segments */}
-                  <div className="mt-4 pt-3 relative flex-shrink-0" style={{ borderTop: '2px solid #FFFFFF' }}>
-                    <div className="flex items-center gap-1 h-5 relative">
+                  <div className="mt-3 sm:mt-4 pt-2 sm:pt-3 relative flex-shrink-0" style={{ borderTop: 'clamp(1px, 0.3vw, 2px) solid #FFFFFF' }}>
+                    <div className="flex items-center gap-0.5 sm:gap-1 h-4 sm:h-5 relative">
                       {/* Blue Segment */}
                       <div 
                         className="progress-bar-segment flex-1 h-full relative"
                         style={{
                           background: '#0066FF',
-                          border: '2px solid #000000',
+                          border: 'clamp(1px, 0.3vw, 2px) solid #000000',
                           imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                           '--index': '0'
                         } as React.CSSProperties}
@@ -342,12 +344,12 @@ export default function Values() {
                         {/* Blue Dot Indicator */}
                         {dotPositions[index] === 0 && (
                           <div 
-                            className="dot-indicator absolute -top-2.5 left-1/2 transform -translate-x-1/2"
+                            className="dot-indicator absolute -top-2 sm:-top-2.5 left-1/2 transform -translate-x-1/2"
                             style={{
-                              width: '14px',
-                              height: '14px',
+                              width: 'clamp(10px, 2vw, 14px)',
+                              height: 'clamp(10px, 2vw, 14px)',
                               background: '#0066FF',
-                              border: '2px solid #000000',
+                              border: 'clamp(1px, 0.3vw, 2px) solid #000000',
                               borderRadius: '50%',
                               imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #0066FF, 0 0 20px #0066FF',
@@ -361,7 +363,7 @@ export default function Values() {
                         className="progress-bar-segment flex-1 h-full relative"
                         style={{
                           background: '#FF0000',
-                          border: '2px solid #000000',
+                          border: 'clamp(1px, 0.3vw, 2px) solid #000000',
                           imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                           '--index': '1'
                         } as React.CSSProperties}
@@ -369,12 +371,12 @@ export default function Values() {
                         {/* Red Dot Indicator */}
                         {dotPositions[index] === 1 && (
                           <div 
-                            className="dot-indicator absolute -top-2.5 left-1/2 transform -translate-x-1/2"
+                            className="dot-indicator absolute -top-2 sm:-top-2.5 left-1/2 transform -translate-x-1/2"
                             style={{
-                              width: '14px',
-                              height: '14px',
+                              width: 'clamp(10px, 2vw, 14px)',
+                              height: 'clamp(10px, 2vw, 14px)',
                               background: '#FF0000',
-                              border: '2px solid #000000',
+                              border: 'clamp(1px, 0.3vw, 2px) solid #000000',
                               borderRadius: '50%',
                               imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #FF0000, 0 0 20px #FF0000',
@@ -388,7 +390,7 @@ export default function Values() {
                         className="progress-bar-segment flex-1 h-full relative"
                         style={{
                           background: '#FFD700',
-                          border: '2px solid #000000',
+                          border: 'clamp(1px, 0.3vw, 2px) solid #000000',
                           imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                           '--index': '2'
                         } as React.CSSProperties}
@@ -396,12 +398,12 @@ export default function Values() {
                         {/* Yellow Dot Indicator */}
                         {dotPositions[index] === 2 && (
                           <div 
-                            className="dot-indicator absolute -top-2.5 left-1/2 transform -translate-x-1/2"
+                            className="dot-indicator absolute -top-2 sm:-top-2.5 left-1/2 transform -translate-x-1/2"
                             style={{
-                              width: '14px',
-                              height: '14px',
+                              width: 'clamp(10px, 2vw, 14px)',
+                              height: 'clamp(10px, 2vw, 14px)',
                               background: '#FFD700',
-                              border: '2px solid #000000',
+                              border: 'clamp(1px, 0.3vw, 2px) solid #000000',
                               borderRadius: '50%',
                               imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                               boxShadow: '0 0 12px #FFD700, 0 0 20px #FFD700',
@@ -424,55 +426,62 @@ export default function Values() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
           viewport={{ once: true }}
-          className="flex justify-center px-4"
+          className="flex justify-center px-4 sm:px-6 md:px-8"
+          style={{
+            marginTop: 'clamp(3rem, 8vw, 12rem)',
+            paddingTop: 'clamp(1.5rem, 4vw, 6rem)',
+            marginBottom: 'clamp(1.5rem, 3vw, 4rem)'
+          }}
         >
           <div 
-            className="p-8 md:p-12 max-w-4xl mx-auto text-center pixelated w-full"
+            className="p-4 sm:p-6 md:p-8 lg:p-12 max-w-4xl mx-auto text-center pixelated w-full"
             style={{
               background: '#000000',
-              border: '4px solid #CCCCCC',
+              border: 'clamp(2px, 0.5vw, 4px) solid #CCCCCC',
               borderStyle: 'outset',
-              borderRadius: '12px',
-              boxShadow: '6px 6px 0px rgba(0,0,0,0.8), inset 2px 2px 0px rgba(255,255,255,0.1)',
+              borderRadius: 'clamp(8px, 1.5vw, 12px)',
+              boxShadow: 'clamp(3px, 0.8vw, 6px) clamp(3px, 0.8vw, 6px) 0px rgba(0,0,0,0.8), inset clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px rgba(255,255,255,0.1)',
               imageRendering: 'pixelated' as CSSProperties['imageRendering'],
               overflow: 'hidden'
             }}
           >
             <h3 
-              className="pixelated mb-4 md:mb-6" 
+              className="pixelated mb-3 sm:mb-4 md:mb-6" 
               style={{ 
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                 letterSpacing: '0.08em',
-                fontSize: 'clamp(1.2rem, 2.5vw, 2rem)',
+                fontSize: 'clamp(1rem, 3vw, 2rem)',
                 color: '#FFFFFF',
                 fontWeight: '400',
                 imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                 WebkitFontSmoothing: 'none',
-                textShadow: '3px 3px 0px #000000',
+                textShadow: 'clamp(2px, 0.4vw, 3px) clamp(2px, 0.4vw, 3px) 0px #000000',
                 lineHeight: '1.4',
-                wordBreak: 'break-word'
+                wordBreak: 'break-word',
+                padding: '0 clamp(0.5rem, 2vw, 1rem)'
               }}
             >
               READY TO BUILD THE FUTURE?
             </h3>
             <p 
-              className="text-white mb-6 md:mb-8 text-center" 
+              className="text-white mb-4 sm:mb-6 md:mb-8 text-center" 
               style={{
                 fontFamily: '"Courier New", monospace',
                 fontWeight: 'bold',
-                fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
+                fontSize: 'clamp(0.75rem, 2vw, 1rem)',
                 lineHeight: '1.6',
                 wordWrap: 'break-word',
                 textAlign: 'center',
                 display: 'block',
                 margin: '0 auto',
-                maxWidth: '100%'
+                maxWidth: '100%',
+                padding: '0 clamp(0.5rem, 2vw, 1rem)'
               }}
             >
               Join our community of Web3 builders, developers, and innovators.
             </p>
-            <div className="flex justify-center mb-4">
-              <motion.button
+            <div className="flex justify-center mb-3 sm:mb-4 px-2">
+              <motion.div
                 whileHover={{ 
                   scale: 1.05,
                   y: -2
@@ -482,37 +491,41 @@ export default function Values() {
                   y: 2,
                   boxShadow: 'inset 0 4px 8px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3)'
                 }}
-                className="pixelated mario-button relative overflow-hidden"
-                style={{
-                  background: 'linear-gradient(180deg, #FF6B6B 0%, #E63946 50%, #C1121F 100%)',
-                  color: '#FFFFFF',
-                  padding: '1.5rem 3rem',
-                  border: '4px solid #000000',
-                  borderStyle: 'outset',
-                  borderRadius: '50px',
-                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: 'clamp(0.8rem, 1.5vw, 1rem)',
-                  fontWeight: '400',
-                  textTransform: 'uppercase',
-                  boxShadow: 'inset 0 -4px 0 rgba(0,0,0,0.3), inset 0 4px 0 rgba(255,255,255,0.2), 0 8px 0 rgba(0,0,0,0.6), 0 12px 0 rgba(0,0,0,0.4)',
-                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                  WebkitFontSmoothing: 'none',
-                  fontSmooth: 'never',
-                  letterSpacing: '0.1em',
-                  lineHeight: '1.3',
-                  cursor: 'pointer',
-                  transition: 'all 0.1s ease',
-                  minWidth: '280px',
-                  width: 'auto',
-                  maxWidth: '400px',
-                  display: 'inline-block',
-                  position: 'relative',
-                  zIndex: 10,
-                  opacity: 1,
-                  textShadow: '3px 3px 0px rgba(0,0,0,0.8), 1px 1px 0px rgba(0,0,0,0.5)',
-                  clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
-                }}
               >
+                <Link
+                  href="/community"
+                  className="pixelated mario-button relative overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(180deg, #FF6B6B 0%, #E63946 50%, #C1121F 100%)',
+                    color: '#FFFFFF',
+                    padding: 'clamp(1rem, 2.5vw, 1.5rem) clamp(1.5rem, 4vw, 3rem)',
+                    border: 'clamp(2px, 0.5vw, 4px) solid #000000',
+                    borderStyle: 'outset',
+                    borderRadius: 'clamp(30px, 6vw, 50px)',
+                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                    fontSize: 'clamp(0.7rem, 2vw, 1rem)',
+                    fontWeight: '400',
+                    textTransform: 'uppercase',
+                    boxShadow: 'inset 0 clamp(-2px, -0.5vw, -4px) 0 rgba(0,0,0,0.3), inset 0 clamp(2px, 0.5vw, 4px) 0 rgba(255,255,255,0.2), 0 clamp(4px, 1vw, 8px) 0 rgba(0,0,0,0.6), 0 clamp(6px, 1.5vw, 12px) 0 rgba(0,0,0,0.4)',
+                    imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                    WebkitFontSmoothing: 'none',
+                    fontSmooth: 'never',
+                    letterSpacing: '0.1em',
+                    lineHeight: '1.3',
+                    cursor: 'pointer',
+                    transition: 'all 0.1s ease',
+                    minWidth: 'clamp(200px, 50vw, 280px)',
+                    width: 'auto',
+                    maxWidth: '100%',
+                    display: 'inline-block',
+                    position: 'relative',
+                    zIndex: 10,
+                    opacity: 1,
+                    textShadow: 'clamp(2px, 0.4vw, 3px) clamp(2px, 0.4vw, 3px) 0px rgba(0,0,0,0.8), clamp(1px, 0.2vw, 1px) clamp(1px, 0.2vw, 1px) 0px rgba(0,0,0,0.5)',
+                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                    textDecoration: 'none'
+                  }}
+                >
                 {/* Top highlight */}
                 <div 
                   className="absolute top-0 left-0 right-0 pointer-events-none"
@@ -543,31 +556,32 @@ export default function Values() {
                     borderRadius: '50px'
                   }}
                 />
-                <span className="relative z-10" style={{
-                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                  WebkitFontSmoothing: 'none',
-                  fontSmooth: 'never',
-                  display: 'block'
-                }}>JOIN OUR COMMUNITY</span>
-              </motion.button>
+                  <span className="relative z-10" style={{
+                    imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                    WebkitFontSmoothing: 'none',
+                    fontSmooth: 'never',
+                    display: 'block'
+                  }}>JOIN OUR COMMUNITY</span>
+                </Link>
+              </motion.div>
             </div>
             
             {/* Pixelated Footer Pattern */}
             <div 
-              className="mt-8 pt-4"
+              className="mt-4 sm:mt-6 md:mt-8 pt-2 sm:pt-3 md:pt-4"
               style={{
-                borderTop: '2px solid #666666',
-                paddingTop: '1rem'
+                borderTop: 'clamp(1px, 0.3vw, 2px) solid #666666',
+                paddingTop: 'clamp(0.5rem, 1.5vw, 1rem)'
               }}
             >
               <div
                 style={{
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='%23FFD700'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%23000000'/%3E%3C/svg%3E")`,
-                  backgroundSize: '8px 8px',
+                  backgroundSize: 'clamp(6px, 1.5vw, 8px) clamp(6px, 1.5vw, 8px)',
                   imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                  height: '16px',
+                  height: 'clamp(12px, 2.5vw, 16px)',
                   opacity: 0.8,
-                  borderTop: '1px solid #999999'
+                  borderTop: 'clamp(0.5px, 0.2vw, 1px) solid #999999'
                 }}
               />
             </div>

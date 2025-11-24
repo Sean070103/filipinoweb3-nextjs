@@ -220,13 +220,13 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           className="relative overflow-hidden"
           style={{ 
             background: `linear-gradient(135deg, ${bossColor.primary}15 0%, ${bossColor.secondary}25 50%, ${bossColor.primary}15 100%)`,
-            border: `6px solid ${bossColor.primary}`,
-            borderRadius: '16px',
+            border: `clamp(3px, 0.8vw, 6px) solid ${bossColor.primary}`,
+            borderRadius: 'clamp(8px, 2vw, 16px)',
             boxShadow: `
-              0 0 30px ${bossColor.glow}80,
-              0 0 60px ${bossColor.glow}40,
-              0 10px 40px rgba(0,0,0,0.6),
-              inset 0 0 20px ${bossColor.primary}20
+              0 0 clamp(15px, 4vw, 30px) ${bossColor.glow}80,
+              0 0 clamp(30px, 8vw, 60px) ${bossColor.glow}40,
+              0 clamp(5px, 1.5vw, 10px) clamp(20px, 5vw, 40px) rgba(0,0,0,0.6),
+              inset 0 0 clamp(10px, 2.5vw, 20px) ${bossColor.primary}20
             `,
             position: 'relative',
             transformStyle: 'preserve-3d'
@@ -236,9 +236,9 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              borderRadius: '12px',
-              border: `2px solid ${bossColor.glow}`,
-              boxShadow: `0 0 20px ${bossColor.glow}, inset 0 0 20px ${bossColor.glow}40`,
+              borderRadius: 'clamp(6px, 1.5vw, 12px)',
+              border: `clamp(1px, 0.3vw, 2px) solid ${bossColor.glow}`,
+              boxShadow: `0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}, inset 0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}40`,
               animation: 'bossGlow 3s ease-in-out infinite',
               opacity: 0.8
             }}
@@ -246,35 +246,43 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           
           {/* Corner Decorations - One Piece Style */}
           <div 
-            className="absolute top-0 left-0 w-12 h-12"
+            className="absolute top-0 left-0"
             style={{
+              width: 'clamp(24px, 6vw, 48px)',
+              height: 'clamp(24px, 6vw, 48px)',
               background: `linear-gradient(135deg, ${bossColor.primary} 0%, transparent 70%)`,
               clipPath: 'polygon(0 0, 100% 0, 0 100%)',
-              borderTopLeftRadius: '10px'
+              borderTopLeftRadius: 'clamp(5px, 1.25vw, 10px)'
             }}
           />
           <div 
-            className="absolute top-0 right-0 w-12 h-12"
+            className="absolute top-0 right-0"
             style={{
+              width: 'clamp(24px, 6vw, 48px)',
+              height: 'clamp(24px, 6vw, 48px)',
               background: `linear-gradient(225deg, ${bossColor.primary} 0%, transparent 70%)`,
               clipPath: 'polygon(100% 0, 100% 100%, 0 0)',
-              borderTopRightRadius: '10px'
+              borderTopRightRadius: 'clamp(5px, 1.25vw, 10px)'
             }}
           />
           <div 
-            className="absolute bottom-0 left-0 w-12 h-12"
+            className="absolute bottom-0 left-0"
             style={{
+              width: 'clamp(24px, 6vw, 48px)',
+              height: 'clamp(24px, 6vw, 48px)',
               background: `linear-gradient(45deg, ${bossColor.primary} 0%, transparent 70%)`,
               clipPath: 'polygon(0 100%, 100% 100%, 0 0)',
-              borderBottomLeftRadius: '10px'
+              borderBottomLeftRadius: 'clamp(5px, 1.25vw, 10px)'
             }}
           />
           <div 
-            className="absolute bottom-0 right-0 w-12 h-12"
+            className="absolute bottom-0 right-0"
             style={{
+              width: 'clamp(24px, 6vw, 48px)',
+              height: 'clamp(24px, 6vw, 48px)',
               background: `linear-gradient(315deg, ${bossColor.primary} 0%, transparent 70%)`,
               clipPath: 'polygon(100% 100%, 100% 0, 0 100%)',
-              borderBottomRightRadius: '10px'
+              borderBottomRightRadius: 'clamp(5px, 1.25vw, 10px)'
             }}
           />
           
@@ -295,14 +303,15 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           
           {/* Scrolling Train Sign Header - Boss Style */}
           <div 
-            className="w-full py-3 relative z-10 overflow-hidden"
+            className="w-full relative z-10 overflow-hidden"
             style={{
               background: `linear-gradient(180deg, ${bossColor.secondary} 0%, #000000 100%)`,
-              borderBottom: `4px solid ${bossColor.primary}`,
-              height: '40px',
+              borderBottom: `clamp(2px, 0.5vw, 4px) solid ${bossColor.primary}`,
+              height: 'clamp(28px, 5vw, 40px)',
               display: 'flex',
               alignItems: 'center',
-              boxShadow: `0 4px 20px ${bossColor.glow}60`
+              padding: 'clamp(0.5rem, 1vw, 0.75rem) 0',
+              boxShadow: `0 clamp(2px, 0.5vw, 4px) clamp(10px, 2.5vw, 20px) ${bossColor.glow}60`
             }}
           >
             <div 
@@ -312,11 +321,11 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 whiteSpace: 'nowrap',
                 animation: 'scrollTrain 12s linear infinite',
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: 'clamp(0.7rem, 1.4vw, 1rem)',
+                fontSize: 'clamp(0.5rem, 1.2vw, 1rem)',
                 color: bossColor.primary,
                 fontWeight: '400',
-                letterSpacing: '0.15em',
-                textShadow: `0 0 10px ${bossColor.glow}, 0 0 20px ${bossColor.glow}, 0 0 30px ${bossColor.glow}`,
+                letterSpacing: 'clamp(0.05em, 0.2vw, 0.15em)',
+                textShadow: `0 0 clamp(5px, 1.5vw, 10px) ${bossColor.glow}, 0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}, 0 0 clamp(15px, 4vw, 30px) ${bossColor.glow}`,
                 textTransform: 'uppercase'
               }}
             >
@@ -331,11 +340,13 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           
           {/* Character Portrait Area - Boss Style */}
           <div 
-            className="relative mx-4 mb-4 mt-4"
+            className="relative mb-4 mt-4"
             style={{
-              minHeight: '350px',
+              minHeight: 'clamp(200px, 45vw, 350px)',
               background: 'transparent',
-              position: 'relative'
+              position: 'relative',
+              marginLeft: 'clamp(0.75rem, 2vw, 1rem)',
+              marginRight: 'clamp(0.75rem, 2vw, 1rem)'
             }}
           >
             {/* Portrait Glow Effect */}
@@ -343,8 +354,8 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
               className="absolute inset-0 pointer-events-none"
               style={{
                 background: `radial-gradient(ellipse at center, ${bossColor.glow}30 0%, transparent 70%)`,
-                borderRadius: '8px',
-                filter: 'blur(20px)',
+                borderRadius: 'clamp(4px, 1vw, 8px)',
+                filter: 'blur(clamp(10px, 2.5vw, 20px))',
                 zIndex: 1
               }}
             />
@@ -352,11 +363,11 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
             <div 
               className="relative overflow-hidden z-10"
               style={{
-                height: '320px',
-                borderRadius: '8px',
+                height: 'clamp(180px, 40vw, 320px)',
+                borderRadius: 'clamp(4px, 1vw, 8px)',
                 background: `linear-gradient(135deg, ${bossColor.primary}20 0%, ${bossColor.secondary}20 100%)`,
-                border: `3px solid ${bossColor.primary}60`,
-                boxShadow: `0 0 30px ${bossColor.glow}40, inset 0 0 30px ${bossColor.primary}20`
+                border: `clamp(2px, 0.4vw, 3px) solid ${bossColor.primary}60`,
+                boxShadow: `0 0 clamp(15px, 4vw, 30px) ${bossColor.glow}40, inset 0 0 clamp(15px, 4vw, 30px) ${bossColor.primary}20`
               }}
             >
               <Image 
@@ -388,19 +399,25 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           
           {/* Boss Name Tag - Epic Style */}
           <div 
-            className="px-4 pb-4 relative z-10"
+            className="relative z-10"
+            style={{
+              paddingLeft: 'clamp(0.75rem, 2vw, 1rem)',
+              paddingRight: 'clamp(0.75rem, 2vw, 1rem)',
+              paddingBottom: 'clamp(0.75rem, 2vw, 1rem)'
+            }}
           >
             <div 
-              className="py-3 px-4 relative"
+              className="relative"
               style={{
+                padding: 'clamp(0.75rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem)',
                 background: `linear-gradient(135deg, ${bossColor.primary} 0%, ${bossColor.secondary} 100%)`,
-                borderRadius: '8px',
+                borderRadius: 'clamp(4px, 1vw, 8px)',
                 boxShadow: `
-                  0 4px 20px ${bossColor.glow}80,
-                  0 0 40px ${bossColor.glow}40,
-                  inset 0 2px 10px rgba(255,255,255,0.3)
+                  0 clamp(2px, 0.5vw, 4px) clamp(10px, 2.5vw, 20px) ${bossColor.glow}80,
+                  0 0 clamp(20px, 5vw, 40px) ${bossColor.glow}40,
+                  inset 0 clamp(1px, 0.3vw, 2px) clamp(5px, 1.5vw, 10px) rgba(255,255,255,0.3)
                 `,
-                border: `2px solid ${bossColor.glow}`,
+                border: `clamp(1px, 0.3vw, 2px) solid ${bossColor.glow}`,
                 position: 'relative',
                 overflow: 'hidden'
               }}
@@ -419,32 +436,34 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 className="text-center relative z-10" 
                 style={{
                   fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: 'clamp(0.9rem, 1.5vw, 1.2rem)',
+                  fontSize: 'clamp(0.7rem, 1.3vw, 1.2rem)',
                   color: '#FFFFFF',
                   fontWeight: '400',
-                  letterSpacing: '0.1em',
+                  letterSpacing: 'clamp(0.05em, 0.15vw, 0.1em)',
                   textShadow: `
-                    2px 2px 0px rgba(0,0,0,0.8),
-                    0 0 10px ${bossColor.glow},
-                    0 0 20px ${bossColor.glow},
-                    0 0 30px ${bossColor.glow}
+                    clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px rgba(0,0,0,0.8),
+                    0 0 clamp(5px, 1.5vw, 10px) ${bossColor.glow},
+                    0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow},
+                    0 0 clamp(15px, 4vw, 30px) ${bossColor.glow}
                   `,
                   lineHeight: '1.4',
-                  textTransform: 'uppercase'
+                  textTransform: 'uppercase',
+                  padding: '0 clamp(0.25rem, 0.5vw, 0.5rem)'
                 }}
               >
                 {member.name.toUpperCase()}
               </h4>
               <p 
-                className="text-center relative z-10 mt-1"
+                className="text-center relative z-10"
                 style={{
                   fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: 'clamp(0.5rem, 0.9vw, 0.7rem)',
+                  fontSize: 'clamp(0.45rem, 0.8vw, 0.7rem)',
                   color: bossColor.glow,
                   fontWeight: '400',
-                  letterSpacing: '0.1em',
-                  textShadow: '0 0 10px rgba(0,0,0,0.8)',
-                  opacity: 0.9
+                  letterSpacing: 'clamp(0.05em, 0.15vw, 0.1em)',
+                  textShadow: '0 0 clamp(5px, 1.5vw, 10px) rgba(0,0,0,0.8)',
+                  opacity: 0.9,
+                  marginTop: 'clamp(0.25rem, 0.5vw, 0.5rem)'
                 }}
               >
                 FOUNDING MEMBER
@@ -452,7 +471,7 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
             </div>
             
             {/* Social Media Links - Boss Style */}
-            <div className="flex gap-4 justify-center mt-5 mb-3 relative z-20">
+            <div className="flex justify-center relative z-20" style={{ gap: 'clamp(0.75rem, 1.5vw, 1rem)', marginTop: 'clamp(1rem, 2.5vw, 1.25rem)', marginBottom: 'clamp(0.75rem, 1.5vw, 0.75rem)' }}>
               <motion.a 
                 href={member.socials.facebook} 
                 target="_blank" 
@@ -461,20 +480,20 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 whileTap={{ scale: 0.9 }}
                 className="flex items-center justify-center relative"
                 style={{
-                  width: '64px',
-                  height: '64px',
+                  width: 'clamp(44px, 8vw, 64px)',
+                  height: 'clamp(44px, 8vw, 64px)',
                   background: `linear-gradient(135deg, #1877F2 0%, #0d5fcc 100%)`,
-                  border: `4px solid ${bossColor.primary}`,
-                  borderRadius: '12px',
+                  border: `clamp(2px, 0.5vw, 4px) solid ${bossColor.primary}`,
+                  borderRadius: 'clamp(6px, 1.5vw, 12px)',
                   boxShadow: `
-                    0 0 20px ${bossColor.glow}60,
-                    4px 4px 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 2px rgba(255,255,255,0.3)
+                    0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}60,
+                    clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.6),
+                    inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.3)
                   `,
                   zIndex: 20
                 }}
               >
-                <Facebook className="w-10 h-10 text-white" fill="white" style={{ strokeWidth: 0 }} />
+                <Facebook className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(28px, 5vw, 40px)', height: 'clamp(28px, 5vw, 40px)' }} />
               </motion.a>
               <motion.a 
                 href={member.socials.twitter} 
@@ -484,20 +503,20 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 whileTap={{ scale: 0.9 }}
                 className="flex items-center justify-center relative"
                 style={{
-                  width: '64px',
-                  height: '64px',
+                  width: 'clamp(44px, 8vw, 64px)',
+                  height: 'clamp(44px, 8vw, 64px)',
                   background: `linear-gradient(135deg, #000000 0%, #1a1a1a 100%)`,
-                  border: `4px solid ${bossColor.primary}`,
-                  borderRadius: '12px',
+                  border: `clamp(2px, 0.5vw, 4px) solid ${bossColor.primary}`,
+                  borderRadius: 'clamp(6px, 1.5vw, 12px)',
                   boxShadow: `
-                    0 0 20px ${bossColor.glow}60,
-                    4px 4px 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 2px rgba(255,255,255,0.3)
+                    0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}60,
+                    clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.6),
+                    inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.3)
                   `,
                   zIndex: 20
                 }}
               >
-                <svg className="w-10 h-10 text-white" fill="white" viewBox="0 0 24 24" style={{ strokeWidth: 0 }}>
+                <svg className="text-white" fill="white" viewBox="0 0 24 24" style={{ strokeWidth: 0, width: 'clamp(28px, 5vw, 40px)', height: 'clamp(28px, 5vw, 40px)' }}>
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
               </motion.a>
@@ -509,20 +528,20 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 whileTap={{ scale: 0.9 }}
                 className="flex items-center justify-center relative"
                 style={{
-                  width: '64px',
-                  height: '64px',
+                  width: 'clamp(44px, 8vw, 64px)',
+                  height: 'clamp(44px, 8vw, 64px)',
                   background: `linear-gradient(135deg, #0077B5 0%, #005885 100%)`,
-                  border: `4px solid ${bossColor.primary}`,
-                  borderRadius: '12px',
+                  border: `clamp(2px, 0.5vw, 4px) solid ${bossColor.primary}`,
+                  borderRadius: 'clamp(6px, 1.5vw, 12px)',
                   boxShadow: `
-                    0 0 20px ${bossColor.glow}60,
-                    4px 4px 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 2px rgba(255,255,255,0.3)
+                    0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}60,
+                    clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.6),
+                    inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.3)
                   `,
                   zIndex: 20
                 }}
               >
-                <Linkedin className="w-10 h-10 text-white" fill="white" style={{ strokeWidth: 0 }} />
+                <Linkedin className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(28px, 5vw, 40px)', height: 'clamp(28px, 5vw, 40px)' }} />
               </motion.a>
             </div>
           </div>
@@ -545,9 +564,9 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
       <div 
         className="relative overflow-hidden bg-white"
         style={{ 
-          border: `4px solid ${borderColor}`,
-          borderRadius: '8px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.15), 0 2px 4px rgba(0,0,0,0.1)',
+          border: `clamp(2px, 0.5vw, 4px) solid ${borderColor}`,
+          borderRadius: 'clamp(4px, 1vw, 8px)',
+          boxShadow: '0 clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) rgba(0,0,0,0.15), 0 clamp(1px, 0.3vw, 2px) clamp(2px, 0.5vw, 4px) rgba(0,0,0,0.1)',
         }}
       >
         {/* Watercolor Background - Splattered paint effect */}
@@ -566,13 +585,14 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
         
         {/* Scrolling Train Sign Header */}
         <div 
-          className="w-full py-2 relative z-10 overflow-hidden"
+          className="w-full relative z-10 overflow-hidden"
           style={{
             background: '#000000',
-            borderBottom: `3px solid ${borderColor}`,
-            height: '32px',
+            borderBottom: `clamp(2px, 0.4vw, 3px) solid ${borderColor}`,
+            height: 'clamp(24px, 4vw, 32px)',
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
+            padding: 'clamp(0.375rem, 0.75vw, 0.5rem) 0'
           }}
         >
           <div 
@@ -582,11 +602,11 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
               whiteSpace: 'nowrap',
               animation: 'scrollTrain 15s linear infinite',
               fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: 'clamp(0.6rem, 1.2vw, 0.8rem)',
+              fontSize: 'clamp(0.5rem, 1vw, 0.8rem)',
               color: '#FFD700',
               fontWeight: '400',
-              letterSpacing: '0.1em',
-              textShadow: '0 0 8px #FFD700, 0 0 12px #FFD700, 0 0 16px #FFD700',
+              letterSpacing: 'clamp(0.05em, 0.15vw, 0.1em)',
+              textShadow: '0 0 clamp(4px, 1vw, 8px) #FFD700, 0 0 clamp(6px, 1.5vw, 12px) #FFD700, 0 0 clamp(8px, 2vw, 16px) #FFD700',
               textTransform: 'uppercase'
             }}
           >
@@ -601,17 +621,19 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
         
         {/* Character Portrait Area */}
         <div 
-          className="relative mx-3 mb-3"
+          className="relative mb-3"
           style={{
-            minHeight: '300px',
-            background: 'transparent'
+            minHeight: 'clamp(200px, 35vw, 300px)',
+            background: 'transparent',
+            marginLeft: 'clamp(0.5rem, 1.5vw, 0.75rem)',
+            marginRight: 'clamp(0.5rem, 1.5vw, 0.75rem)'
           }}
         >
           <div 
             className="relative overflow-hidden"
             style={{
-              height: '280px',
-              borderRadius: '4px',
+              height: 'clamp(180px, 32vw, 280px)',
+              borderRadius: 'clamp(3px, 0.5vw, 4px)',
               background: 'transparent'
             }}
           >
@@ -641,21 +663,26 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
         
         {/* Name Tag at Bottom - Colored border matching */}
         <div 
-          className="px-3 pb-3 relative z-10"
+          className="relative z-10"
+          style={{
+            paddingLeft: 'clamp(0.5rem, 1.5vw, 0.75rem)',
+            paddingRight: 'clamp(0.5rem, 1.5vw, 0.75rem)',
+            paddingBottom: 'clamp(0.5rem, 1.5vw, 0.75rem)'
+          }}
         >
           <div 
-            className="py-2 px-3"
             style={{
+              padding: 'clamp(0.5rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 0.75rem)',
               background: borderColor,
-              borderRadius: '4px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+              borderRadius: 'clamp(3px, 0.5vw, 4px)',
+              boxShadow: '0 clamp(1px, 0.3vw, 2px) clamp(2px, 0.5vw, 4px) rgba(0,0,0,0.2)'
             }}
           >
             <h4 
               className="text-center" 
               style={{
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: 'clamp(0.7rem, 1.2vw, 0.9rem)',
+                fontSize: 'clamp(0.6rem, 1vw, 0.9rem)',
                 color: borderColor === '#00AA00' ? '#FFFF00' : 
                        borderColor === '#0066FF' ? '#FFD700' :
                        borderColor === '#FF0000' ? '#FFFFFF' :
@@ -665,9 +692,10 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                        borderColor === '#4ECDC4' ? '#FF0000' :
                        '#000000',
                 fontWeight: '400',
-                letterSpacing: '0.05em',
-                textShadow: borderColor === '#FFD700' ? '1px 1px 0px rgba(255,255,255,0.5)' : '2px 2px 0px rgba(0,0,0,0.5)',
-                lineHeight: '1.3'
+                letterSpacing: 'clamp(0.03em, 0.08vw, 0.05em)',
+                textShadow: borderColor === '#FFD700' ? 'clamp(0.5px, 0.15vw, 1px) clamp(0.5px, 0.15vw, 1px) 0px rgba(255,255,255,0.5)' : 'clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px rgba(0,0,0,0.5)',
+                lineHeight: '1.3',
+                padding: '0 clamp(0.25rem, 0.5vw, 0.5rem)'
               }}
             >
               {member.name.toUpperCase()}
@@ -675,7 +703,7 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           </div>
           
           {/* Social Media Links */}
-          <div className="flex gap-3 justify-center mt-4 mb-2 relative z-20">
+          <div className="flex justify-center relative z-20" style={{ gap: 'clamp(0.5rem, 1vw, 0.75rem)', marginTop: 'clamp(0.75rem, 1.5vw, 1rem)', marginBottom: 'clamp(0.5rem, 1vw, 0.5rem)' }}>
             <motion.a 
               href={member.socials.facebook} 
               target="_blank" 
@@ -684,16 +712,16 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
               whileTap={{ scale: 0.9 }}
               className="flex items-center justify-center relative"
               style={{
-                width: '56px',
-                height: '56px',
+                width: 'clamp(40px, 7vw, 56px)',
+                height: 'clamp(40px, 7vw, 56px)',
                 background: '#1877F2',
-                border: '4px solid #000000',
-                borderRadius: '8px',
-                boxShadow: '4px 4px 0px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.2)',
+                border: 'clamp(2px, 0.5vw, 4px) solid #000000',
+                borderRadius: 'clamp(4px, 1vw, 8px)',
+                boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.5), inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.2)',
                 zIndex: 20
               }}
             >
-              <Facebook className="w-8 h-8 text-white" fill="white" style={{ strokeWidth: 0 }} />
+              <Facebook className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(24px, 4vw, 32px)', height: 'clamp(24px, 4vw, 32px)' }} />
             </motion.a>
             <motion.a 
               href={member.socials.twitter} 
@@ -703,16 +731,16 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
               whileTap={{ scale: 0.9 }}
               className="flex items-center justify-center relative"
               style={{
-                width: '56px',
-                height: '56px',
+                width: 'clamp(40px, 7vw, 56px)',
+                height: 'clamp(40px, 7vw, 56px)',
                 background: '#000000',
-                border: '4px solid #FFFFFF',
-                borderRadius: '8px',
-                boxShadow: '4px 4px 0px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.2)',
+                border: 'clamp(2px, 0.5vw, 4px) solid #FFFFFF',
+                borderRadius: 'clamp(4px, 1vw, 8px)',
+                boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.5), inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.2)',
                 zIndex: 20
               }}
             >
-              <svg className="w-8 h-8 text-white" fill="white" viewBox="0 0 24 24" style={{ strokeWidth: 0 }}>
+              <svg className="text-white" fill="white" viewBox="0 0 24 24" style={{ strokeWidth: 0, width: 'clamp(24px, 4vw, 32px)', height: 'clamp(24px, 4vw, 32px)' }}>
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
             </motion.a>
@@ -724,16 +752,16 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
               whileTap={{ scale: 0.9 }}
               className="flex items-center justify-center relative"
               style={{
-                width: '56px',
-                height: '56px',
+                width: 'clamp(40px, 7vw, 56px)',
+                height: 'clamp(40px, 7vw, 56px)',
                 background: '#0077B5',
-                border: '4px solid #000000',
-                borderRadius: '8px',
-                boxShadow: '4px 4px 0px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.2)',
+                border: 'clamp(2px, 0.5vw, 4px) solid #000000',
+                borderRadius: 'clamp(4px, 1vw, 8px)',
+                boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.5), inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.2)',
                 zIndex: 20
               }}
             >
-              <Linkedin className="w-8 h-8 text-white" fill="white" style={{ strokeWidth: 0 }} />
+              <Linkedin className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(24px, 4vw, 32px)', height: 'clamp(24px, 4vw, 32px)' }} />
             </motion.a>
           </div>
         </div>
@@ -756,34 +784,36 @@ export default function Team() {
         imageRendering: 'pixelated'
       }} />
       
-      <div className="container relative z-10 py-20 ph-banig-border-top">
+      <div className="container relative z-10 px-4 sm:px-6 md:px-8" style={{ paddingTop: 'clamp(3rem, 6vw, 5rem)', paddingBottom: 'clamp(3rem, 6vw, 5rem)' }}>
         {/* Core Team Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center"
+          style={{ marginBottom: 'clamp(2rem, 4vw, 4rem)' }}
         >
           <h2 
-            className="text-5xl lg:text-6xl font-black text-white mb-6 pixelated"
+            className="font-black text-white pixelated"
             style={{ 
               fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+              fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
               letterSpacing: '0.05em',
-              textShadow: '4px 4px 0px #000000',
+              textShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px #000000',
               imageRendering: 'pixelated',
-              WebkitFontSmoothing: 'none'
+              WebkitFontSmoothing: 'none',
+              marginBottom: 'clamp(1rem, 2vw, 1.5rem)'
             }}
           >
             CORE TEAM
           </h2>
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center" style={{ marginTop: 'clamp(1rem, 2vw, 1.5rem)' }}>
             <div className="ph-divider" />
           </div>
         </motion.div>
         
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8 mb-20">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 sm:gap-6 md:gap-8" style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
           {coreTeam.map((member, index) => (
             <TeamMember key={index} member={member} isCore={true} index={index} />
           ))}
@@ -795,27 +825,29 @@ export default function Team() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center"
+          style={{ marginBottom: 'clamp(2rem, 4vw, 4rem)' }}
         >
           <h2 
-            className="text-5xl lg:text-6xl font-black text-white mb-6 pixelated"
+            className="font-black text-white pixelated"
             style={{ 
               fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+              fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
               letterSpacing: '0.05em',
-              textShadow: '4px 4px 0px #000000',
+              textShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px #000000',
               imageRendering: 'pixelated',
-              WebkitFontSmoothing: 'none'
+              WebkitFontSmoothing: 'none',
+              marginBottom: 'clamp(1rem, 2vw, 1.5rem)'
             }}
           >
             FOUNDING MEMBERS
           </h2>
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-center" style={{ marginTop: 'clamp(1rem, 2vw, 1.5rem)' }}>
             <div className="ph-divider" />
           </div>
         </motion.div>
         
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 sm:gap-6 md:gap-8">
           {foundingMembers.map((member, index) => (
             <TeamMember key={index} member={member} isCore={false} index={index + coreTeam.length} />
           ))}

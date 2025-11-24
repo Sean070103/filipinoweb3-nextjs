@@ -224,16 +224,16 @@ export default function RetroGamingHero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-6 md:px-10">
-        <div className="text-center max-w-5xl">
+      <div className="relative z-10 flex items-center justify-center min-h-screen px-4 sm:px-6 md:px-10">
+        <div className="text-center max-w-5xl w-full">
           {/* Main Title */}
           <h1
             className="font-black"
             style={{
               fontFamily: '"Orbitron", "Arial Black", sans-serif',
-              fontSize: 'clamp(2rem, 8vw, 5rem)',
-              letterSpacing: '0.1em',
-              textShadow: '6px 6px 0px rgba(0,0,0,0.8), 12px 12px 0px rgba(0,0,0,0.4), 0 0 30px rgba(255,255,255,0.6), 0 0 60px rgba(255,255,255,0.3)',
+              fontSize: 'clamp(2.5rem, 10vw, 5rem)',
+              letterSpacing: 'clamp(0.05em, 0.15vw, 0.1em)',
+              textShadow: 'clamp(3px, 0.8vw, 6px) clamp(3px, 0.8vw, 6px) 0px rgba(0,0,0,0.8), clamp(6px, 1.5vw, 12px) clamp(6px, 1.5vw, 12px) 0px rgba(0,0,0,0.4), 0 0 clamp(15px, 4vw, 30px) rgba(255,255,255,0.6), 0 0 clamp(30px, 8vw, 60px) rgba(255,255,255,0.3)',
               fontWeight: '900',
               imageRendering: 'pixelated',
               WebkitFontSmoothing: 'none',
@@ -244,17 +244,20 @@ export default function RetroGamingHero() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               animation: 'gradientShift 2s ease-in-out infinite',
-              filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.5))',
+              filter: 'drop-shadow(0 0 clamp(10px, 2.5vw, 20px) rgba(255,255,255,0.5))',
+              padding: '0 clamp(0.5rem, 2vw, 1rem)',
+              wordBreak: 'break-word',
+              overflowWrap: 'break-word'
             }}
           >
-            FWEB 3
+            FW3
           </h1>
         </div>
       </div>
 
       {/* Moving Jeepney 1 - Left to Right */}
       <div 
-        className="absolute bottom-8 z-20"
+        className="absolute bottom-4 sm:bottom-6 md:bottom-8 z-20"
         style={{
           animation: 'moveJeepneyLeftToRight 25s linear infinite',
         }}
@@ -275,7 +278,7 @@ export default function RetroGamingHero() {
 
       {/* Moving Jeepney 2 - Right to Left */}
       <div 
-        className="absolute bottom-8 z-20"
+        className="absolute bottom-4 sm:bottom-6 md:bottom-8 z-20"
         style={{
           animation: 'moveJeepneyRightToLeft 25s linear infinite',
           animationDelay: '12.5s'
@@ -314,8 +317,8 @@ export default function RetroGamingHero() {
         <div 
           className="absolute top-0 left-0 right-0"
           style={{
-            height: '4px',
-            background: 'repeating-linear-gradient(90deg, #00FF00 0px, #00FF00 8px, #000000 8px, #000000 16px)',
+            height: 'clamp(2px, 0.5vw, 4px)',
+            background: 'repeating-linear-gradient(90deg, #00FF00 0px, #00FF00 clamp(4px, 1vw, 8px), #000000 clamp(4px, 1vw, 8px), #000000 clamp(8px, 2vw, 16px))',
             imageRendering: 'pixelated'
           }}
         />
@@ -323,8 +326,8 @@ export default function RetroGamingHero() {
         <div 
           className="absolute bottom-0 left-0 right-0"
           style={{
-            height: '4px',
-            background: 'repeating-linear-gradient(90deg, #FF6B00 0px, #FF6B00 8px, #000000 8px, #000000 16px)',
+            height: 'clamp(2px, 0.5vw, 4px)',
+            background: 'repeating-linear-gradient(90deg, #FF6B00 0px, #FF6B00 clamp(4px, 1vw, 8px), #000000 clamp(4px, 1vw, 8px), #000000 clamp(8px, 2vw, 16px))',
             imageRendering: 'pixelated'
           }}
         />

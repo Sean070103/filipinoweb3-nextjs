@@ -12,17 +12,18 @@ export default function CareersPage() {
           zIndex: 1,
           background: "#01060f",
           minHeight: "100vh",
-          paddingTop: "10rem",
+          paddingTop: "clamp(6rem, 12vw, 10rem)",
         }}
       >
         <section
+          className="px-4 sm:px-6 md:px-8"
           style={{
-            padding: "6rem 0",
+            padding: "clamp(3rem, 6vw, 6rem) 0",
             background:
               "radial-gradient(circle at 80% 30%, rgba(168,85,247,0.15), transparent 50%)",
           }}
         >
-          <div className="container">
+          <div className="container mx-auto max-w-7xl">
             <div
               style={{
                 textAlign: "center",
@@ -33,16 +34,16 @@ export default function CareersPage() {
               <div
                 style={{
                   display: "inline-block",
-                  padding: "0.5rem 1.25rem",
+                  padding: "clamp(0.375rem, 0.8vw, 0.5rem) clamp(0.75rem, 1.5vw, 1.25rem)",
                   background: "rgba(168, 85, 247, 0.15)",
-                  border: "2px solid rgba(168, 85, 247, 0.3)",
-                  borderRadius: "8px",
+                  border: "clamp(1px, 0.3vw, 2px) solid rgba(168, 85, 247, 0.3)",
+                  borderRadius: "clamp(6px, 1vw, 8px)",
                   fontFamily:
                     'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: "0.7rem",
+                  fontSize: "clamp(0.6rem, 1vw, 0.7rem)",
                   letterSpacing: "0.1em",
                   color: "#a855f7",
-                  marginBottom: "1.5rem",
+                  marginBottom: "clamp(1rem, 2vw, 1.5rem)",
                 }}
               >
                 COMING SOON
@@ -51,13 +52,14 @@ export default function CareersPage() {
                 style={{
                   fontFamily:
                     'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: "clamp(2rem, 5vw, 4rem)",
+                  fontSize: "clamp(1.75rem, 5vw, 4rem)",
                   letterSpacing: "0.08em",
-                  marginBottom: "1.5rem",
+                  marginBottom: "clamp(1rem, 2vw, 1.5rem)",
                   background: "linear-gradient(135deg, #a855f7, #22d3ee)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
+                  padding: "0 clamp(0.5rem, 2vw, 1rem)",
                 }}
               >
                 CAREERS
@@ -65,11 +67,12 @@ export default function CareersPage() {
               <p
                 style={{
                   color: "var(--color-light)",
-                  fontSize: "1.2rem",
+                  fontSize: "clamp(0.95rem, 1.5vw, 1.2rem)",
                   lineHeight: 1.8,
-                  marginBottom: "3rem",
+                  marginBottom: "clamp(2rem, 4vw, 3rem)",
                   maxWidth: "700px",
-                  margin: "0 auto 3rem",
+                  margin: "0 auto clamp(2rem, 4vw, 3rem)",
+                  padding: "0 clamp(0.5rem, 2vw, 1rem)",
                 }}
               >
                 Curated Web3 job postings relevant to the Philippines. Find your
@@ -78,11 +81,10 @@ export default function CareersPage() {
             </div>
 
             <div
+              className="grid gap-4 sm:gap-6 md:gap-8"
               style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                gap: "2rem",
-                marginTop: "4rem",
+                gridTemplateColumns: "repeat(auto-fit, minmax(clamp(250px, 30vw, 300px), 1fr))",
+                marginTop: "clamp(2rem, 4vw, 4rem)",
               }}
             >
               {/* Career Category Cards */}
@@ -135,10 +137,10 @@ export default function CareersPage() {
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(0,0,0,0.6), rgba(20,20,40,0.6))",
-                    border: `2px solid ${category.color}40`,
-                    borderRadius: "1.5rem",
-                    padding: "2.5rem",
-                    boxShadow: `0 20px 40px rgba(0,0,0,0.4), 0 0 30px ${category.color}20`,
+                    border: `clamp(1px, 0.3vw, 2px) solid ${category.color}40`,
+                    borderRadius: "clamp(0.75rem, 2vw, 1.5rem)",
+                    padding: "clamp(1.5rem, 3vw, 2.5rem)",
+                    boxShadow: `0 clamp(10px, 2.5vw, 20px) clamp(20px, 5vw, 40px) rgba(0,0,0,0.4), 0 0 clamp(15px, 4vw, 30px) ${category.color}20`,
                     transition: "all 0.3s ease",
                     position: "relative",
                     overflow: "hidden",
@@ -170,8 +172,8 @@ export default function CareersPage() {
                   <div style={{ position: "relative", zIndex: 1 }}>
                     <div
                       style={{
-                        fontSize: "3rem",
-                        marginBottom: "1rem",
+                        fontSize: "clamp(2rem, 4vw, 3rem)",
+                        marginBottom: "clamp(0.75rem, 1.5vw, 1rem)",
                       }}
                     >
                       {category.icon}
@@ -180,9 +182,9 @@ export default function CareersPage() {
                       style={{
                         fontFamily:
                           'var(--font-press-start-2p), "Courier New", monospace',
-                        fontSize: "1.1rem",
+                        fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)",
                         letterSpacing: "0.05em",
-                        marginBottom: "1rem",
+                        marginBottom: "clamp(0.75rem, 1.5vw, 1rem)",
                         color: category.color,
                       }}
                     >
@@ -191,7 +193,7 @@ export default function CareersPage() {
                     <p
                       style={{
                         color: "var(--color-light)",
-                        fontSize: "0.95rem",
+                        fontSize: "clamp(0.85rem, 1.2vw, 0.95rem)",
                         lineHeight: 1.6,
                         margin: 0,
                       }}
@@ -205,18 +207,18 @@ export default function CareersPage() {
 
             <div
               style={{
-                marginTop: "4rem",
+                marginTop: "clamp(2rem, 4vw, 4rem)",
                 background: "rgba(255,255,255,0.03)",
-                border: "2px dashed rgba(168, 85, 247, 0.3)",
-                borderRadius: "1rem",
-                padding: "4rem 2rem",
+                border: "clamp(1px, 0.3vw, 2px) dashed rgba(168, 85, 247, 0.3)",
+                borderRadius: "clamp(0.75rem, 1.5vw, 1rem)",
+                padding: "clamp(2rem, 4vw, 4rem) clamp(1rem, 2.5vw, 2rem)",
                 textAlign: "center",
               }}
             >
               <div
                 style={{
-                  fontSize: "4rem",
-                  marginBottom: "1.5rem",
+                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                  marginBottom: "clamp(1rem, 2vw, 1.5rem)",
                   opacity: 0.5,
                 }}
               >
@@ -225,12 +227,13 @@ export default function CareersPage() {
               <p
                 style={{
                   color: "var(--color-light)",
-                  fontSize: "1.1rem",
+                  fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)",
                   margin: 0,
-                  marginBottom: "0.5rem",
+                  marginBottom: "clamp(0.375rem, 0.75vw, 0.5rem)",
                   fontFamily:
                     'var(--font-press-start-2p), "Courier New", monospace',
                   letterSpacing: "0.05em",
+                  padding: "0 clamp(0.5rem, 2vw, 1rem)",
                 }}
               >
                 JOB BOARD LAUNCHING Q2 2025
@@ -238,9 +241,10 @@ export default function CareersPage() {
               <p
                 style={{
                   color: "var(--color-light)",
-                  fontSize: "0.9rem",
+                  fontSize: "clamp(0.8rem, 1.2vw, 0.9rem)",
                   margin: 0,
                   opacity: 0.7,
+                  padding: "0 clamp(0.5rem, 2vw, 1rem)",
                 }}
               >
                 Featuring scraped listings from top Web3 companies
