@@ -9,6 +9,7 @@ export default function RetroGamingHero() {
       className="relative min-h-screen w-full"
           style={{
         background: '#66B2FF',
+        scrollMarginTop: '120px',
       }}
     >
       {/* Dirt Layer - combined from left to right */}
