@@ -44,9 +44,149 @@ export default function RetroGamingHero() {
 
       {/* Animated Clouds */}
       <div 
-        className="absolute top-10 left-10 z-20 pixel-cloud hidden sm:block"
+        className="absolute top-32 left-10 z-20 pixel-cloud hidden sm:block"
         style={{
           animation: 'floatCloud 8s ease-in-out infinite',
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={160}
+          height={80}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(60px, 10vw, 160px)',
+            height: 'auto',
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-48 right-20 z-20 pixel-cloud hidden md:block"
+        style={{
+          animation: 'floatCloud 10s ease-in-out infinite reverse',
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={120}
+          height={60}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(50px, 8vw, 120px)',
+            height: 'auto',
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-40 left-1/2 transform -translate-x-1/2 z-20 pixel-cloud"
+        style={{
+          animation: 'floatCloud 12s ease-in-out infinite',
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={140}
+          height={70}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(56px, 9vw, 140px)',
+            height: 'auto',
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-36 left-1/4 z-20 pixel-cloud hidden lg:block"
+        style={{
+          animation: 'floatCloud 9s ease-in-out infinite',
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={100}
+          height={50}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(40px, 6vw, 100px)',
+            height: 'auto',
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-52 right-1/4 z-20 pixel-cloud hidden md:block"
+        style={{
+          animation: 'floatCloud 11s ease-in-out infinite reverse',
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={130}
+          height={64}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(52px, 8vw, 130px)',
+            height: 'auto',
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-28 left-3/4 z-20 pixel-cloud hidden lg:block"
+        style={{
+          animation: 'floatCloud 7s ease-in-out infinite',
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={90}
+          height={44}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(36px, 6vw, 90px)',
+            height: 'auto',
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-56 left-1/6 z-20 pixel-cloud hidden xl:block"
+        style={{
+          animation: 'floatCloud 13s ease-in-out infinite',
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={110}
+          height={56}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(44px, 7vw, 110px)',
+            height: 'auto',
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-44 right-1/6 z-20 pixel-cloud hidden xl:block"
+        style={{
+          animation: 'floatCloud 6s ease-in-out infinite reverse',
         }}
       >
         <Image
@@ -57,148 +197,8 @@ export default function RetroGamingHero() {
           priority
           style={{ 
             imageRendering: 'pixelated',
-            width: 'clamp(30px, 5vw, 80px)',
-            height: 'auto'
-          }}
-        />
-      </div>
-
-      <div 
-        className="absolute top-20 right-20 z-20 pixel-cloud hidden md:block"
-        style={{
-          animation: 'floatCloud 10s ease-in-out infinite reverse',
-        }}
-      >
-        <Image
-          src="/images/cloud.png"
-          alt="Pixel Cloud"
-          width={60}
-          height={30}
-          priority
-          style={{ 
-            imageRendering: 'pixelated',
-            width: 'clamp(25px, 4vw, 60px)',
-            height: 'auto'
-          }}
-        />
-      </div>
-
-      <div 
-        className="absolute top-16 left-1/2 transform -translate-x-1/2 z-20 pixel-cloud"
-        style={{
-          animation: 'floatCloud 12s ease-in-out infinite',
-        }}
-      >
-        <Image
-          src="/images/cloud.png"
-          alt="Pixel Cloud"
-          width={70}
-          height={35}
-          priority
-          style={{ 
-            imageRendering: 'pixelated',
-            width: 'clamp(28px, 4.5vw, 70px)',
-            height: 'auto'
-          }}
-        />
-      </div>
-
-      <div 
-        className="absolute top-12 left-1/4 z-20 pixel-cloud hidden lg:block"
-        style={{
-          animation: 'floatCloud 9s ease-in-out infinite',
-        }}
-      >
-        <Image
-          src="/images/cloud.png"
-          alt="Pixel Cloud"
-          width={50}
-          height={25}
-          priority
-          style={{ 
-            imageRendering: 'pixelated',
-            width: 'clamp(20px, 3vw, 50px)',
-            height: 'auto'
-          }}
-        />
-      </div>
-
-      <div 
-        className="absolute top-24 right-1/4 z-20 pixel-cloud hidden md:block"
-        style={{
-          animation: 'floatCloud 11s ease-in-out infinite reverse',
-        }}
-      >
-        <Image
-          src="/images/cloud.png"
-          alt="Pixel Cloud"
-          width={65}
-          height={32}
-          priority
-          style={{ 
-            imageRendering: 'pixelated',
-            width: 'clamp(26px, 4vw, 65px)',
-            height: 'auto'
-          }}
-        />
-      </div>
-
-      <div 
-        className="absolute top-8 left-3/4 z-20 pixel-cloud hidden lg:block"
-        style={{
-          animation: 'floatCloud 7s ease-in-out infinite',
-        }}
-      >
-        <Image
-          src="/images/cloud.png"
-          alt="Pixel Cloud"
-          width={45}
-          height={22}
-          priority
-          style={{ 
-            imageRendering: 'pixelated',
-            width: 'clamp(18px, 3vw, 45px)',
-            height: 'auto'
-          }}
-        />
-      </div>
-
-      <div 
-        className="absolute top-28 left-1/6 z-20 pixel-cloud hidden xl:block"
-        style={{
-          animation: 'floatCloud 13s ease-in-out infinite',
-        }}
-      >
-        <Image
-          src="/images/cloud.png"
-          alt="Pixel Cloud"
-          width={55}
-          height={28}
-          priority
-          style={{ 
-            imageRendering: 'pixelated',
-            width: 'clamp(22px, 3.5vw, 55px)',
-            height: 'auto'
-          }}
-        />
-      </div>
-
-      <div 
-        className="absolute top-14 right-1/6 z-20 pixel-cloud hidden xl:block"
-        style={{
-          animation: 'floatCloud 6s ease-in-out infinite reverse',
-        }}
-      >
-        <Image
-          src="/images/cloud.png"
-          alt="Pixel Cloud"
-          width={40}
-          height={20}
-          priority
-          style={{ 
-            imageRendering: 'pixelated',
-            width: 'clamp(16px, 2.5vw, 40px)',
-            height: 'auto'
+            width: 'clamp(32px, 5vw, 80px)',
+            height: 'auto',
           }}
         />
       </div>
@@ -255,31 +255,11 @@ export default function RetroGamingHero() {
         </div>
       </div>
 
-      {/* Moving Jeepney 1 - Left to Right */}
-      <div 
-        className="absolute bottom-4 sm:bottom-6 md:bottom-8 z-20"
-        style={{
-          animation: 'moveJeepneyLeftToRight 25s linear infinite',
-        }}
-      >
-        <Image
-          src="/images/jeep.png"
-          alt="Pixel Jeepney"
-          width={120}
-          height={60}
-          priority
-          style={{ 
-            imageRendering: 'pixelated',
-            width: 'clamp(60px, 8vw, 120px)',
-            height: 'auto'
-          }}
-        />
-      </div>
-
       {/* Moving Jeepney 2 - Right to Left */}
       <div 
         className="absolute bottom-4 sm:bottom-6 md:bottom-8 z-20"
         style={{
+          left: 'calc(100vw + 500px)',
           animation: 'moveJeepneyRightToLeft 25s linear infinite',
           animationDelay: '12.5s'
         }}
@@ -421,39 +401,23 @@ export default function RetroGamingHero() {
       <style>{`
         @keyframes moveJeepneyLeftToRight {
           0% {
-            left: -200px;
-            opacity: 0;
-          }
-          2% {
-            left: -200px;
-            opacity: 1;
-          }
-          98% {
-            left: calc(100vw + 200px);
+            left: -500px;
             opacity: 1;
           }
           100% {
-            left: calc(100vw + 200px);
-            opacity: 0;
+            left: calc(100vw + 500px);
+            opacity: 1;
           }
         }
         
         @keyframes moveJeepneyRightToLeft {
           0% {
-            left: calc(100vw + 200px);
-            opacity: 0;
-          }
-          2% {
-            left: calc(100vw + 200px);
-            opacity: 1;
-          }
-          98% {
-            left: -200px;
+            left: calc(100vw + 500px);
             opacity: 1;
           }
           100% {
-            left: -200px;
-            opacity: 0;
+            left: -500px;
+            opacity: 1;
           }
         }
         
@@ -512,14 +476,22 @@ export default function RetroGamingHero() {
             transform: rotate(360deg);
           }
         }
+        
+        @keyframes twinkle {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.2);
+          }
+        }
       `}</style>
 
 
       {/* Right Edge Blue Strip */}
       <div className="absolute top-0 right-0 w-2 h-full bg-blue-500 z-10"></div>
-      
-      {/* Bottom Right White Square */}
-      <div className="absolute bottom-4 right-4 w-4 h-4 bg-white z-20"></div>
     </div>
   );
 }

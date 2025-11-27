@@ -197,7 +197,7 @@ export default function InteractivePhilippinesMap() {
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
     const map = L.map(mapContainerRef.current, {
       center: [12.8797, 121.7740], // Center of Philippines
-      zoom: isMobile ? 5 : 6,
+      zoom: isMobile ? 6 : 7,
       zoomControl: true,
       attributionControl: false,
       minZoom: isMobile ? 4 : 5,
@@ -252,7 +252,7 @@ export default function InteractivePhilippinesMap() {
           });
           
           // Fit map to Philippines bounds with responsive padding
-          const padding = isMobile ? [15, 15] : [30, 30];
+          const padding = isMobile ? [10, 10] : [20, 20];
           map.fitBounds(geoJsonLayer.getBounds(), { padding });
         }
       })
@@ -298,7 +298,7 @@ export default function InteractivePhilippinesMap() {
         .addTo(map)
         .on('click', () => {
           setSelectedLocation(location);
-          const zoomLevel = isMobile ? 7 : 8;
+          const zoomLevel = isMobile ? 8 : 9;
           map.setView(location.coordinates, zoomLevel, { animate: true, duration: 1 });
         })
         .on('mouseover', () => {
@@ -361,7 +361,7 @@ export default function InteractivePhilippinesMap() {
     // Fit bounds to show all markers with responsive padding
     if (markersRef.current.length > 0) {
       const group = new L.FeatureGroup(markersRef.current);
-      const padAmount = isMobile ? 0.2 : 0.3;
+      const padAmount = isMobile ? 0.1 : 0.15;
       map.fitBounds(group.getBounds().pad(padAmount));
     }
 

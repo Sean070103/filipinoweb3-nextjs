@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function Header() {
@@ -9,231 +8,108 @@ export default function Header() {
     <header 
       className="relative overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, #5C94FC 0%, #87CEEB 50%, #ADD8E6 100%)',
+        background: '#0a0f1a',
+        backgroundImage: "url('/images/underground.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         minHeight: '100vh',
+        padding: '2rem 0',
       }}
     >
-
-      {/* Mario-Style Game Background */}
-      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-        {/* Ground/Floor at bottom */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '120px',
-            background: 'repeating-linear-gradient(90deg, #8B4513 0px, #8B4513 8px, #A0522D 8px, #A0522D 16px)',
-            imageRendering: 'pixelated',
-            borderTop: '4px solid #654321',
-            boxShadow: '0 -2px 0 #654321, 0 -4px 0 #8B4513'
-          }}
-        />
-        
-        {/* Grass layer on top of ground */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '120px',
-            left: 0,
-            right: 0,
-            height: '20px',
-            background: '#7CB342',
-            imageRendering: 'pixelated',
-            borderTop: '2px solid #558B2F',
-            boxShadow: '0 -2px 0 #558B2F, 0 -4px 0 #7CB342'
-          }}
-        />
-
-        {/* Distant Hills */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '140px',
-            left: 0,
-            right: 0,
-            height: '150px',
-            background: 'linear-gradient(180deg, #4CAF50 0%, #66BB6A 100%)',
-            clipPath: 'polygon(0% 100%, 15% 60%, 25% 70%, 35% 50%, 45% 65%, 55% 45%, 65% 60%, 75% 55%, 85% 65%, 100% 50%, 100% 100%)',
-            imageRendering: 'pixelated',
-            opacity: 0.7
-          }}
-        />
-
-        {/* Retro Pixelated Grid Pattern Overlay (subtle) */}
-        <div 
-          className="absolute inset-0 opacity-5" 
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='none'/%3E%3Crect x='0' y='0' width='1' height='8' fill='%23ffffff'/%3E%3Crect x='0' y='0' width='8' height='1' fill='%23ffffff'/%3E%3C/svg%3E")`,
-            backgroundSize: '8px 8px',
-            imageRendering: 'pixelated'
-          }}
-        />
-      </div>
-      
       <div className="container header__container" style={{ position: 'relative', zIndex: 1 }}>
         <motion.div 
-          className="header__left"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col items-center justify-center min-h-screen text-center w-full"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ paddingLeft: 'clamp(5rem, 15vw, 12rem)' }}
         >
           {/* Enhanced Title with Retro Pixelated Text Effects */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="relative text-white font-bold pixelated"
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+            className="relative text-white font-bold pixelated mb-6"
             style={{ 
               color: '#ffffff',
               fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
               lineHeight: 1.2,
               fontWeight: '400',
               WebkitTextFillColor: 'currentColor',
-              display: 'inline-block',
+              display: 'block',
               imageRendering: 'pixelated',
               textRendering: 'optimizeSpeed',
               WebkitFontSmoothing: 'none',
               MozOsxFontSmoothing: 'unset',
               fontSmooth: 'never',
-              letterSpacing: '0.05em'
+              letterSpacing: '0.05em',
+              marginBottom: '1.5rem',
             }}
             whileHover={{ 
-              scale: 1.02
+              scale: 1.02,
+              transition: { duration: 0.3 }
             }}
           >
-            <span style={{ 
-              color: '#CE1126', 
-              textShadow: '4px 4px 0px rgba(0,0,0,0.3), 0 0 0 #CE1126, 2px 2px 0 #CE1126',
-              filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.5))'
-            }}>Filipino </span>
-            <span style={{ 
-              color: '#FCD116', 
-              WebkitTextFillColor: '#FCD116', 
-              textShadow: '4px 4px 0px rgba(0,0,0,0.3), 0 0 0 #FCD116, 2px 2px 0 #FCD116',
-              filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.5))'
-            }}>WEB3</span>
+            {/* Glow effect behind text */}
+            <div 
+              className="absolute inset-0 blur-xl opacity-20"
+              style={{
+                background: 'linear-gradient(135deg, #00d4ff, #7c3aed, #f97316)',
+                zIndex: -1,
+                transform: 'scale(1.1)',
+              }}
+            />
+            <span 
+              className="block mb-1"
+              style={{ 
+                background: 'linear-gradient(135deg, #00d4ff 0%, #3b82f6 50%, #8b5cf6 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textShadow: '4px 4px 0px rgba(0,0,0,0.8), 0 0 25px rgba(0, 212, 255, 0.5), 0 0 50px rgba(0, 212, 255, 0.3)',
+                filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.7))',
+              }}
+            >
+              FILIPINO
+            </span>
+            <span 
+              className="block"
+              style={{ 
+                background: 'linear-gradient(135deg, #f97316 0%, #ec4899 50%, #a855f7 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textShadow: '4px 4px 0px rgba(0,0,0,0.8), 0 0 25px rgba(249, 115, 22, 0.5), 0 0 50px rgba(249, 115, 22, 0.3)',
+                filter: 'drop-shadow(2px 2px 0px rgba(0,0,0,0.7))',
+              }}
+            >
+              WEB3
+            </span>
           </motion.h1>
 
-          {/* Enhanced Description with Retro Styling */}
+          {/* Tagline with enhanced styling */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="relative text-white pixelated"
-            style={{ 
-              color: '#ffffff !important',
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+            className="pixelated mb-8 max-w-2xl px-6"
+            style={{
               fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)',
+              fontSize: 'clamp(0.6rem, 1.2vw, 0.85rem)',
+              background: 'linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
               lineHeight: 1.6,
-              imageRendering: 'pixelated',
-              textRendering: 'optimizeSpeed',
-              WebkitFontSmoothing: 'none',
-              letterSpacing: '0.02em',
-              textShadow: '2px 2px 0px rgba(0,0,0,0.3)'
-            }}
-            whileHover={{ 
-              scale: 1.01,
-              color: "#ffffff"
+              textShadow: '2px 2px 0px rgba(0,0,0,0.8), 0 0 15px rgba(167, 139, 250, 0.3)',
+              letterSpacing: '0.08em',
             }}
           >
-            is an organization with the aim of helping our fellow Filipinos hone
-            their skills and maximize their potential to grow in the Web3 space.
+            EMPOWERING FILIPINOS IN THE WEB3 REVOLUTION
           </motion.p>
 
-          {/* Retro Pixelated Button Container */}
-          <motion.div 
-            style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          >
-            <motion.a 
-              href="#about" 
-              className="btn btn-secondary relative overflow-hidden pixelated"
-              style={{ 
-                color: '#ffffff !important',
-                background: 'rgba(206, 17, 38, 0.9)',
-                border: '4px solid #ffffff',
-                borderStyle: 'outset',
-                padding: '1rem 2rem',
-                borderRadius: '0',
-                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: 'clamp(0.6rem, 1.2vw, 0.8rem)',
-                textTransform: 'uppercase',
-                imageRendering: 'pixelated',
-                textRendering: 'optimizeSpeed',
-                WebkitFontSmoothing: 'none',
-                boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
-                textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
-                letterSpacing: '0.05em'
-              }}
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "6px 6px 0px rgba(0,0,0,0.4), inset -2px -2px 0px rgba(0,0,0,0.3)"
-              }}
-              whileTap={{ scale: 0.95, boxShadow: "2px 2px 0px rgba(0,0,0,0.3)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <span className="relative z-10" style={{ color: '#ffffff !important' }}>Get Started</span>
-            </motion.a>
-            <motion.a 
-              href="#team" 
-              className="btn btn-secondary relative overflow-hidden pixelated"
-              style={{ 
-                color: '#ffffff !important',
-                background: 'rgba(252, 209, 22, 0.9)',
-                border: '4px solid #ffffff',
-                borderStyle: 'outset',
-                padding: '1rem 2rem',
-                borderRadius: '0',
-                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: 'clamp(0.6rem, 1.2vw, 0.8rem)',
-                textTransform: 'uppercase',
-                imageRendering: 'pixelated',
-                textRendering: 'optimizeSpeed',
-                WebkitFontSmoothing: 'none',
-                boxShadow: '4px 4px 0px rgba(0,0,0,0.3), inset -2px -2px 0px rgba(0,0,0,0.2)',
-                textShadow: '2px 2px 0px rgba(0,0,0,0.5)',
-                letterSpacing: '0.05em'
-              }}
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "6px 6px 0px rgba(0,0,0,0.4), inset -2px -2px 0px rgba(0,0,0,0.3)"
-              }}
-              whileTap={{ scale: 0.95, boxShadow: "2px 2px 0px rgba(0,0,0,0.3)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <span className="relative z-10" style={{ color: '#000000 !important' }}>Meet the Team</span>
-            </motion.a>
-          </motion.div>
-
-          {/* Stats removed as requested */}
-        </motion.div>
-        
-        {/* Enhanced Right Section with 3D Effects */}
-        <motion.div 
-          className="header__right"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-        >
-          <div className="header__right-image relative" style={{ transformStyle: 'flat' }}>
-            <Image 
-              src="/images/fw3-logo-bg1.png" 
-              alt="Filipino Web3 Logo" 
-              width={500}
-              height={500}
-              className="relative z-10"
-              style={{ 
-                filter: 'none', 
-                transform: 'none',
-                imageRendering: 'pixelated'
-              }}
-            />
-          </div>
         </motion.div>
       </div>
       
@@ -264,6 +140,24 @@ export default function Header() {
           }
           50% {
             filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.6));
+          }
+        }
+        
+        @keyframes scanLine {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        
+        @keyframes textGlow {
+          0%, 100% {
+            textShadow: '6px 6px 0px rgba(0,0,0,0.8), 0 0 30px rgba(206, 17, 38, 0.8), 0 0 60px rgba(206, 17, 38, 0.4)';
+          }
+          50% {
+            textShadow: '6px 6px 0px rgba(0,0,0,0.8), 0 0 40px rgba(206, 17, 38, 1), 0 0 80px rgba(206, 17, 38, 0.6)';
           }
         }
         

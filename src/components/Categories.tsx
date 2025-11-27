@@ -237,7 +237,11 @@ export default function Categories() {
       id="home" 
       className="categories relative overflow-hidden"
       style={{
-        background: '#000000',
+        background: '#0a0f1a',
+        backgroundImage: "url('/images/underground.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       
@@ -940,7 +944,7 @@ export default function Categories() {
                           <div 
                             className="flex items-center justify-between px-3 py-2"
                 style={{
-                              background: '#FF6B9D',
+                              background: selectedApp === 'vision' ? '#FF6B9D' : '#4ECDC4',
                               borderBottom: '6px solid #000000',
                               borderStyle: 'outset',
                               imageRendering: 'pixelated' as CSSProperties['imageRendering'],
@@ -1035,7 +1039,7 @@ export default function Categories() {
                           <motion.div 
                             className="overflow-hidden"
                     style={{
-                    background: '#FFD700',
+                    background: selectedApp === 'vision' ? '#FFB6D9' : '#A8E6CF',
                               padding: '1.5rem 2rem',
                               imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                               WebkitFontSmoothing: 'none',
