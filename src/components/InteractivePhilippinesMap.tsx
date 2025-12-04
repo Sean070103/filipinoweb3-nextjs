@@ -7,63 +7,75 @@ type CommunityLocation = {
   name: string;
   region: 'Luzon' | 'Visayas' | 'Mindanao';
   coordinates: [number, number]; // [latitude, longitude] for Leaflet
+  avatar?: string;
 };
 
 const communityLocations: CommunityLocation[] = [
   {
-    name: 'Bacolod',
-    region: 'Visayas',
-    coordinates: [10.6765, 122.9556],
+    name: 'Tarlac City • Siftcroix',
+    region: 'Luzon',
+    coordinates: [15.4861, 120.5986],
+    avatar: '/images/Sift.jpg',
   },
   {
-    name: 'Kabankalan',
+    name: 'Bacolod City • Lupin_XIV',
     region: 'Visayas',
-    coordinates: [9.9889, 123.1583],
+    coordinates: [10.6769, 122.9620],
+    avatar: '/images/Lupin_XIV.jpg',
   },
   {
-    name: 'San Carlos (Neg.Occ)',
-    region: 'Visayas',
-    coordinates: [10.4833, 123.4167],
+    name: 'Makati City • Mychel_T',
+    region: 'Luzon',
+    coordinates: [14.5546, 121.0244],
+    avatar: '/images/Mychel_T.jpg',
   },
   {
-    name: 'Dumaguete',
-    region: 'Visayas',
-    coordinates: [9.3103, 123.3044],
-  },
-  {
-    name: 'Cebu',
-    region: 'Visayas',
-    coordinates: [10.3157, 123.8854],
-  },
-  {
-    name: 'Iloilo',
-    region: 'Visayas',
-    coordinates: [10.7202, 122.5644],
-  },
-  {
-    name: 'Guimaras',
-    region: 'Visayas',
-    coordinates: [10.5667, 122.5833],
-  },
-  {
-    name: 'Leyte',
-    region: 'Visayas',
-    coordinates: [11.1667, 124.6333],
-  },
-  {
-    name: 'Davao',
+    name: 'Butuan City • Aerva',
     region: 'Mindanao',
-    coordinates: [7.1907, 125.6083],
+    coordinates: [8.9475, 125.5406],
+    avatar: '/images/Aerva.jpg',
   },
   {
-    name: 'Rizal',
+    name: 'Orani, Bataan • Zirk',
     region: 'Luzon',
-    coordinates: [14.5667, 121.1167],
+    coordinates: [14.8004, 120.5362],
+    avatar: '/images/coretoshi_zirk.png',
   },
   {
-    name: 'Baguio',
+    name: 'San Pedro, Laguna • Waterlemon',
     region: 'Luzon',
-    coordinates: [16.4023, 120.5931],
+    coordinates: [14.3571, 121.0509],
+    avatar: '/images/Waterlemon.jpg',
+  },
+  {
+    name: 'Himamaylan City • Clivv',
+    region: 'Visayas',
+    coordinates: [10.1009, 123.0303],
+    avatar: '/images/clivv_azuki1.jpg',
+  },
+  {
+    name: 'Daraga, Albay • Speedy',
+    region: 'Luzon',
+    coordinates: [13.1489, 123.7126],
+    avatar: '/images/Speedy.jpg',
+  },
+  {
+    name: 'Batangas City • Kata',
+    region: 'Luzon',
+    coordinates: [13.7565, 121.0583],
+    avatar: '/images/Katrina.jpg',
+  },
+  {
+    name: 'Cabuyao City • Arkin',
+    region: 'Luzon',
+    coordinates: [14.2742, 121.1236],
+    avatar: '/images/Arkin.png',
+  },
+  {
+    name: 'Bacolod City • CordyStackx',
+    region: 'Visayas',
+    coordinates: [10.6740, 122.9670],
+    avatar: '/images/CordyStackx.jpg',
   },
 ];
 
@@ -392,6 +404,9 @@ export default function InteractivePhilippinesMap() {
     Mindanao: '#f97316',
   };
 
+  const getCityLabel = (location: CommunityLocation) =>
+    location.name.split('•')[0]?.trim() || location.name;
+
   return (
     <div className="w-full px-4 sm:px-6 md:px-8" style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Region Legend */}
@@ -487,107 +502,200 @@ export default function InteractivePhilippinesMap() {
         }} />
 
         <div ref={mapContainerRef} style={{ width: '100%', height: '100%', zIndex: 1 }} />
-      </div>
 
-      {/* Enhanced Selected Location Details Panel */}
-      {selectedLocation && (
-        <div
-          className="mt-4 sm:mt-6 md:mt-8 relative overflow-hidden"
-          style={{
-            background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.8))',
-            border: `clamp(2px, 0.4vw, 3px) solid ${regionColors[selectedLocation.region]}`,
-            borderRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
-            padding: 'clamp(1rem, 3vw, 2rem)',
-            boxShadow: `
-              0 clamp(10px, 2.5vw, 20px) clamp(30px, 7.5vw, 60px) rgba(0,0,0,0.5),
-              0 0 clamp(20px, 5vw, 40px) ${regionColors[selectedLocation.region]}40
-            `,
-          }}
-        >
-          {/* Background Glow Effect */}
-          <div style={{
-            position: 'absolute',
-            top: '-50%',
-            right: '-50%',
-            width: '200%',
-            height: '200%',
-            background: `radial-gradient(circle, ${regionColors[selectedLocation.region]}20 0%, transparent 70%)`,
-            pointerEvents: 'none',
-          }} />
-
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-4 sm:mb-6">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3">
-                  <Sparkles 
-                    style={{ 
-                      color: regionColors[selectedLocation.region],
-                      width: 'clamp(18px, 3.5vw, 24px)',
-                      height: 'clamp(18px, 3.5vw, 24px)'
-                    }} 
-                  />
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                      fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
-                      letterSpacing: '0.08em',
-                      margin: 0,
-                      background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textShadow: `0 0 clamp(10px, 2.5vw, 20px) ${regionColors[selectedLocation.region]}40`,
-                      wordBreak: 'break-word',
-                    }}
-                  >
-                    {selectedLocation.name.toUpperCase()}
-                  </h3>
-                </div>
-                <div
-                  className="inline-block"
-                  style={{
-                    padding: 'clamp(0.375rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
-                    background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}20, ${regionColors[selectedLocation.region]}10)`,
-                    border: `clamp(1px, 0.3vw, 2px) solid ${regionColors[selectedLocation.region]}`,
-                    borderRadius: 'clamp(4px, 1vw, 8px)',
-                    fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
-                    color: regionColors[selectedLocation.region],
-                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                    boxShadow: `0 0 clamp(8px, 2vw, 15px) ${regionColors[selectedLocation.region]}40`,
-                  }}
-                >
-                  {selectedLocation.region} REGION
-                </div>
-              </div>
-              <button
-                onClick={() => setSelectedLocation(null)}
-                className="flex-shrink-0 flex items-center justify-center transition-all duration-300"
+        {/* Selected Member Overlay */}
+        {selectedLocation && (
+          <div
+            className="member-floating-card"
+            style={{
+              position: 'absolute',
+              top: 'clamp(0.75rem, 2vw, 1.5rem)',
+              right: 'clamp(0.75rem, 2vw, 1.5rem)',
+              width: 'min(340px, 85vw)',
+              background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 40, 0.95))',
+              border: `clamp(2px, 0.4vw, 3px) solid ${regionColors[selectedLocation.region]}`,
+              borderRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
+              padding: 'clamp(0.85rem, 2vw, 1.25rem)',
+              boxShadow: `
+                0 20px 40px rgba(0,0,0,0.5),
+                0 0 clamp(20px, 5vw, 40px) ${regionColors[selectedLocation.region]}60
+              `,
+              zIndex: 20,
+            }}
+          >
+            <div className="flex items-start gap-3">
+              {/* Avatars strip (scrollable when multiple members in a city) */}
+              <div
                 style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  border: 'clamp(1px, 0.3vw, 2px) solid rgba(255, 255, 255, 0.2)',
-                  borderRadius: '50%',
-                  color: '#ffffff',
-                  width: 'clamp(32px, 5vw, 40px)',
-                  height: 'clamp(32px, 5vw, 40px)',
-                  cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-                  e.currentTarget.style.transform = 'rotate(90deg)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.transform = 'rotate(0deg)';
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  flexShrink: 0,
                 }}
               >
-                <X style={{ width: 'clamp(16px, 2.5vw, 20px)', height: 'clamp(16px, 2.5vw, 20px)' }} />
-              </button>
+                <div
+                  style={{
+                    display: 'flex',
+                    gap: '0.4rem',
+                    maxWidth: '110px',
+                    overflowX: 'auto',
+                    paddingBottom: '0.15rem',
+                  }}
+                >
+                  {communityLocations
+                    .filter((loc) => getCityLabel(loc) === getCityLabel(selectedLocation))
+                    .map((loc) => (
+                      <button
+                        key={loc.name}
+                        onClick={() => setSelectedLocation(loc)}
+                        style={{
+                          border: loc.name === selectedLocation.name
+                            ? `2px solid ${regionColors[loc.region]}`
+                            : '2px solid rgba(148,163,184,0.5)',
+                          borderRadius: '18px',
+                          padding: '4px',
+                          background: 'rgba(0,0,0,0.4)',
+                          cursor: 'pointer',
+                          width: '90px',
+                          flexShrink: 0,
+                        }}
+                      >
+                        {loc.avatar && (
+                          <img
+                            src={loc.avatar}
+                            alt={loc.name}
+                            style={{
+                              width: '100%',
+                              borderRadius: '14px',
+                              objectFit: 'cover',
+                              display: 'block',
+                            }}
+                          />
+                        )}
+                      </button>
+                    ))}
+                </div>
+                {communityLocations.filter(
+                  (loc) => getCityLabel(loc) === getCityLabel(selectedLocation)
+                ).length > 1 && (
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-montserrat), sans-serif',
+                      fontSize: '0.65rem',
+                      color: '#9ca3af',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    Swipe avatars →
+                  </span>
+                )}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Sparkles 
+                        style={{ 
+                          color: regionColors[selectedLocation.region],
+                          width: 16,
+                          height: 16,
+                          flexShrink: 0,
+                        }} 
+                      />
+                      <h3
+                        style={{
+                          fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                          fontSize: 'clamp(0.75rem, 1.8vw, 1rem)',
+                          letterSpacing: '0.08em',
+                          margin: 0,
+                          background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          textShadow: `0 0 10px ${regionColors[selectedLocation.region]}40`,
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {getCityLabel(selectedLocation).toUpperCase()}
+                      </h3>
+                    </div>
+                    <div
+                      style={{
+                        display: 'inline-flex',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        gap: '0.25rem 0.5rem',
+                        padding: '0.3rem 0.7rem',
+                        background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}20, ${regionColors[selectedLocation.region]}05)`,
+                        border: `1px solid ${regionColors[selectedLocation.region]}`,
+                        borderRadius: '999px',
+                        fontSize: '0.6rem',
+                        letterSpacing: '0.08em',
+                        color: regionColors[selectedLocation.region],
+                        fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                        textTransform: 'uppercase',
+                        maxWidth: '100%',
+                      }}
+                    >
+                      <span
+                        style={{
+                          width: '0.35rem',
+                          height: '0.35rem',
+                          borderRadius: '50%',
+                          background: regionColors[selectedLocation.region],
+                          boxShadow: `0 0 8px ${regionColors[selectedLocation.region]}80`,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span>{selectedLocation.region}</span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setSelectedLocation(null)}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: '#9ca3af',
+                      width: 24,
+                      height: 24,
+                      cursor: 'pointer',
+                      flexShrink: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'color 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#ffffff';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#9ca3af';
+                    }}
+                    aria-label="Close member card"
+                  >
+                    <X style={{ width: 16, height: 16, strokeWidth: 2 }} />
+                  </button>
+                </div>
+                <p
+                  style={{
+                    marginTop: '0.55rem',
+                    fontFamily: 'var(--font-montserrat), sans-serif',
+                    fontSize: '0.72rem',
+                    lineHeight: 1.45,
+                    color: '#e5e7eb',
+                    opacity: 0.9,
+                  }}
+                >
+                  Tap markers to explore the people powering Filipino Web3 in every city.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       <style>{`
         .custom-marker {

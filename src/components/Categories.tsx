@@ -237,17 +237,18 @@ export default function Categories() {
       id="home" 
       className="categories relative overflow-hidden"
       style={{
-        background: '#0a0f1a',
+        background: 'linear-gradient(135deg, #1e40af 0%, #059669 100%)',
         backgroundImage: "url('/images/underground.png')",
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        backgroundBlendMode: 'overlay',
       }}
     >
       
-      <div className="container relative z-10">
+      <div className="container relative z-10 flex flex-col items-center">
         {/* Section Title - Pixelated */}
-        <div className="text-center ph-sun-rays mb-12">
+        <div className="text-center ph-sun-rays mb-12 w-full">
           <ScrollReveal direction="up" delay={0.2}>
             <motion.h1 
               className="text-5xl lg:text-6xl font-black leading-tight relative pixelated"
@@ -283,9 +284,9 @@ export default function Categories() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
+          className="w-full flex justify-center"
         >
-          <div className="relative overflow-hidden flex flex-col"
+          <div className="relative overflow-hidden flex flex-col max-w-4xl w-full"
             style={{ imageRendering: 'pixelated', minHeight: 'clamp(400px, 60vh, 600px)' }}
           >
             <div className="relative z-10 flex-1">
@@ -299,12 +300,12 @@ export default function Categories() {
                     transition={{ duration: 0.4 }}
                     className="relative flex h-full flex-col overflow-hidden"
               style={{ 
-                      background: '#1fbad1', 
+                      background: 'linear-gradient(135deg, #3b82f6 0%, #22c55e 100%)', 
                       border: '6px solid #000000', 
                       imageRendering: 'pixelated',
                       WebkitFontSmoothing: 'none',
                       fontSmooth: 'never',
-                      boxShadow: 'inset 0 0 50px rgba(0,0,0,0.3), 0 0 30px rgba(31, 186, 209, 0.2)'
+                      boxShadow: 'inset 0 0 50px rgba(0,0,0,0.3), 0 0 30px rgba(59, 130, 246, 0.2)'
                     }}
                   >
                     {/* Moving BMO Robot with Floating Pad */}
@@ -478,7 +479,7 @@ export default function Categories() {
                   left: '8px',
                   right: '8px',
                             height: '45px',
-                            background: '#1fbad1',
+                            background: 'linear-gradient(135deg, #3b82f6 0%, #22c55e 100%)',
                             border: '3px solid #000000',
                             borderRadius: '4px',
                             imageRendering: 'pixelated'
@@ -566,7 +567,7 @@ export default function Categories() {
                           margin: '0 auto 2rem auto',
                     textRendering: 'optimizeSpeed'
                         }}>SYSTEM MODULES</h3>
-                        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 justify-items-center items-center w-full max-w-lg mx-auto">
+                        <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12 justify-items-center items-center w-full max-w-lg mx-auto place-items-center">
                           {apps.map((app) => (
                             <button
                               key={app.id}
@@ -668,12 +669,12 @@ export default function Categories() {
                     transition={{ duration: 0.4 }}
                     className="relative flex h-full flex-col overflow-hidden"
                     style={{ 
-                      background: '#1fbad1', 
+                      background: 'linear-gradient(135deg, #3b82f6 0%, #22c55e 100%)', 
                       border: '6px solid #000000', 
                       imageRendering: 'pixelated',
                       WebkitFontSmoothing: 'none',
                       fontSmooth: 'never',
-                      boxShadow: 'inset 0 0 50px rgba(0,0,0,0.3), 0 0 30px rgba(31, 186, 209, 0.2)'
+                      boxShadow: 'inset 0 0 50px rgba(0,0,0,0.3), 0 0 30px rgba(59, 130, 246, 0.2)'
                     }}
                   >
                     {/* Moving BMO Robot with Floating Pad */}
@@ -848,7 +849,7 @@ export default function Categories() {
                             left: '8px',
                             right: '8px',
                             height: '45px',
-                            background: '#1fbad1',
+                            background: 'linear-gradient(135deg, #3b82f6 0%, #22c55e 100%)',
                             border: '3px solid #000000',
                             borderRadius: '4px',
                             imageRendering: 'pixelated'
@@ -1069,7 +1070,7 @@ export default function Categories() {
                     textRendering: 'optimizeSpeed'
                                   }}
                                 >
-                                  TO BE THE PREMIER GLOBAL HUB FOR FILIPINO WEB3 INNOVATORS, EMBODYING THE <span style={{ color: '#0066ff', fontWeight: 'bold' }}>BAYANIHAN</span> SPIRIT THROUGH HOLISTIC, CONNECTED, AND INNOVATIVE PRINCIPLES THAT UNITE OUR WORLDWIDE FILIPINO COMMUNITY IN BUILDING THE DECENTRALIZED FUTURE.
+                                  TO BE THE PREMIUM HUB OF FILIPINOS IN WEB3 THAT IS FOCUSED ON BRINGING HOLISTIC, CONNECTED, AND INNOVATIVE PRINCIPLES.
                                 </p>
                                 <div className="flex flex-wrap gap-3 justify-center">
                                   <motion.div
@@ -1146,7 +1147,7 @@ export default function Categories() {
                                     textRendering: 'optimizeSpeed'
                                   }}
                                 >
-                                  CREATE A COMPREHENSIVE PLATFORM FOR THE FILIPINO WEB3 COMMUNITY TO EXCHANGE IDEAS, SHARE KNOWLEDGE AND DISCOVER OPPORTUNITIES, FOSTERING INNOVATION THROUGH THE SPIRIT OF <span style={{ color: '#0066ff', fontWeight: 'bold' }}>MALASAKIT</span> AND <span style={{ color: '#0066ff', fontWeight: 'bold' }}>PAGKAKAISA</span>.
+                                  PROVIDE A CHANNEL FOR WEB3 COMMUNITY TO EXCHANGE IDEAS, INFORMATION, AND OPPORTUNITIES.
                                 </p>
                                 <div className="space-y-4 mb-5">
                                   <div className="flex items-start gap-3">
@@ -1183,7 +1184,7 @@ export default function Categories() {
                                         textRendering: 'optimizeSpeed'
                                       }}
                                     >
-                                      PROVIDE COMPREHENSIVE EDUCATIONAL RESOURCES, MENTORSHIP PROGRAMS, AND SKILL DEVELOPMENT OPPORTUNITIES
+                                      SHARE VALUABLE INFORMATION AND RESOURCES FOR THE COMMUNITY THAT WILL HELP WITH UPSCALING SKILLS IN WEB3 CAREER AND DEVELOPMENT.
                       </p>
                     </div>
                                   <div className="flex items-start gap-3">
@@ -1220,7 +1221,7 @@ export default function Categories() {
                                         textRendering: 'optimizeSpeed'
                                       }}
                                     >
-                                      ESTABLISH PROFESSIONAL STANDARDS AND BEST PRACTICES THROUGH CONTINUOUS EDUCATION AND COLLABORATIVE LEARNING
+                                      HELP PROFESSIONALIZE THE FIELD OF WEB3 INDUSTRY THROUGH CONTINUING EDUCATION AND TRAINING.
                       </p>
                     </div>
                   </div>

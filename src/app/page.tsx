@@ -1,4 +1,3 @@
-import Navigation from '@/components/Navigation';
 import RetroGamingHero from '@/components/RetroGamingHero';
 import Header from '@/components/Header';
 import Categories from '@/components/Categories';
@@ -12,7 +11,6 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <Navigation />
       <RetroGamingHero />
       <Header />
       <Categories />

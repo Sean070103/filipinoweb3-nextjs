@@ -2644,7 +2644,7 @@ textarea:focus {
 section#home.categories,
 section.categories,
 #home.categories {
-  background: #000000 !important;
+  background: linear-gradient(135deg, #1e40af 0%, #059669 100%) !important;
 }
 
 section#home.categories h3,

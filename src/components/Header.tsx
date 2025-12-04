@@ -17,13 +17,24 @@ export default function Header() {
         padding: '2rem 0',
       }}
     >
-      <div className="container header__container" style={{ position: 'relative', zIndex: 1 }}>
+      <div
+        className="container header__container mx-auto"
+        style={{ 
+          position: 'relative', 
+          zIndex: 1,
+          maxWidth: '100%',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
         <motion.div 
           className="flex flex-col items-center justify-center min-h-screen text-center w-full"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ paddingLeft: 'clamp(5rem, 15vw, 12rem)' }}
         >
           {/* Enhanced Title with Retro Pixelated Text Effects */}
           <motion.h1

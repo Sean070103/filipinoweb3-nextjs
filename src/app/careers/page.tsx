@@ -1,11 +1,8 @@
 "use client";
 
-import Navigation from "@/components/Navigation";
-
 export default function CareersPage() {
   return (
     <>
-      <Navigation />
       <main
         style={{
           position: "relative",

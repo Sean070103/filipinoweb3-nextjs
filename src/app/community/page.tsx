@@ -1,15 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Navigation from "@/components/Navigation";
 import InteractivePhilippinesMap from "@/components/InteractivePhilippinesMap";
-
-type RegionSpotlight = {
-  region: "Luzon" | "Visayas" | "Mindanao";
-  chapter: string;
-  lead: string;
-  focus: string;
-};
 
 type Champion = {
   name: string;
@@ -20,27 +12,6 @@ type Champion = {
   stat: number;
   responsibilities: string[];
 };
-
-const spotlights: RegionSpotlight[] = [
-  {
-    region: "Luzon",
-    chapter: "Metro Manila Builders League",
-    lead: "Aira D.",
-    focus: "DeFi tooling & AI guild experiments",
-  },
-  {
-    region: "Visayas",
-    chapter: "Cebu Crypto Carpool",
-    lead: "Marco L.",
-    focus: "On-chain gaming & IRL hardware hacks",
-  },
-  {
-    region: "Mindanao",
-    chapter: "Davao Future Foundry",
-    lead: "Jules S.",
-    focus: "Community wallets & bamboo node infra",
-  },
-];
 
 const champions: Champion[] = [
   {
@@ -166,7 +137,6 @@ const champions: Champion[] = [
 export default function CommunityPage() {
   return (
     <>
-      <Navigation />
     <main
       id="community"
       className="community"
@@ -252,167 +222,6 @@ export default function CommunityPage() {
         </div>
 
           <InteractivePhilippinesMap />
-        </section>
-
-        {/* Regional Spotlights */}
-        <section
-          className="px-4 sm:px-6 md:px-8"
-          style={{
-            padding: "clamp(3rem, 6vw, 6rem) 0",
-            background:
-              "linear-gradient(120deg, rgba(34,211,238,0.08), rgba(168,85,247,0.08))",
-            borderTop: "1px solid rgba(255,255,255,0.05)",
-            borderBottom: "1px solid rgba(255,255,255,0.05)",
-          }}
-        >
-          <div className="container mx-auto max-w-7xl">
-            <h3
-              style={{
-                textAlign: "center",
-                fontFamily:
-                  'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: "clamp(1rem, 3vw, 2rem)",
-                letterSpacing: "0.08em",
-                marginBottom: "clamp(2rem, 4vw, 3rem)",
-                background: "linear-gradient(135deg, #22d3ee, #a855f7)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                padding: "0 clamp(0.5rem, 2vw, 1rem)",
-              }}
-            >
-              FW3 Regional Spotlights
-            </h3>
-
-              <div
-                className="grid gap-4 sm:gap-6 md:gap-8"
-                style={{
-                  gridTemplateColumns: "repeat(auto-fit, minmax(clamp(250px, 30vw, 280px), 1fr))",
-                }}
-            >
-              {spotlights.map((spotlight) => {
-                const regionColors = {
-                  Luzon: "#22d3ee",
-                  Visayas: "#a855f7",
-                  Mindanao: "#f97316",
-                };
-                const color = regionColors[spotlight.region];
-
-                return (
-                  <div
-                    key={spotlight.region}
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(0,0,0,0.6), rgba(20,20,40,0.6))",
-                      border: `clamp(1px, 0.3vw, 2px) solid ${color}40`,
-                      borderRadius: "clamp(0.75rem, 2vw, 1.5rem)",
-                      padding: "clamp(1.25rem, 3vw, 2rem)",
-                      boxShadow: `0 clamp(10px, 2.5vw, 20px) clamp(20px, 5vw, 40px) rgba(0,0,0,0.4), 0 0 clamp(15px, 4vw, 30px) ${color}20`,
-                      transition: "all 0.3s ease",
-                      position: "relative",
-                      overflow: "hidden",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = "translateY(-5px)";
-                      e.currentTarget.style.borderColor = `${color}80`;
-                      e.currentTarget.style.boxShadow = `0 25px 50px rgba(0,0,0,0.5), 0 0 40px ${color}40`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.borderColor = `${color}40`;
-                      e.currentTarget.style.boxShadow = `0 20px 40px rgba(0,0,0,0.4), 0 0 30px ${color}20`;
-                    }}
-                  >
-                    {/* Background Glow */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "-50%",
-                        right: "-50%",
-                        width: "200%",
-                        height: "200%",
-                        background: `radial-gradient(circle, ${color}15 0%, transparent 70%)`,
-                        pointerEvents: "none",
-                      }}
-                    />
-
-                    <div style={{ position: "relative", zIndex: 1 }}>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "0.75rem",
-                          marginBottom: "1rem",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "clamp(10px, 1.5vw, 12px)",
-                            height: "clamp(10px, 1.5vw, 12px)",
-                            borderRadius: "50%",
-                            background: color,
-                            boxShadow: `0 0 clamp(8px, 2vw, 15px) ${color}`,
-                          }}
-                        />
-                        <span
-                          style={{
-                            fontSize: "clamp(0.7rem, 1.2vw, 0.85rem)",
-                            color: color,
-                            letterSpacing: "0.1em",
-                            textTransform: "uppercase",
-                            fontFamily:
-                              'var(--font-press-start-2p), "Courier New", monospace',
-                            fontWeight: 600,
-                          }}
-                        >
-                          {spotlight.region}
-                        </span>
-                      </div>
-                      <h4
-                        style={{
-                          margin: "0 0 clamp(0.75rem, 1.5vw, 1rem) 0",
-                          fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)",
-                          fontWeight: 700,
-                        }}
-                      >
-                        {spotlight.chapter}
-                      </h4>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                  gap: "clamp(0.5rem, 1vw, 0.75rem)",
-                }}
-              >
-                        <p
-                          style={{
-                            margin: 0,
-                            fontSize: "clamp(0.85rem, 1.2vw, 0.95rem)",
-                            color: "var(--color-light)",
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          <strong style={{ color: color }}>Lead:</strong>{" "}
-                          {spotlight.lead}
-                        </p>
-                        <p
-                          style={{
-                            margin: 0,
-                            fontSize: "clamp(0.85rem, 1.2vw, 0.95rem)",
-                            color: "var(--color-light)",
-                            lineHeight: 1.5,
-                          }}
-                        >
-                          <strong style={{ color: color }}>Focus:</strong>{" "}
-                          {spotlight.focus}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         </section>
 
         {/* Player Profiles Section - Game Style Roster */}

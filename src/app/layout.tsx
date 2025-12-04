@@ -4,6 +4,8 @@ import { MetadataUtils, Json_LD } from "@/utilities";
 import { Montserrat, Jersey_10, Press_Start_2P, Orbitron } from "next/font/google";
 import "./globals.css";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
+import MetaMaskErrorHandler from "@/components/MetaMaskErrorHandler";
+import Navigation from "@/components/Navigation";
 import setting from "@/config/setting.json";
 
 const montserrat = Montserrat({
@@ -55,8 +57,9 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${jersey.variable} ${pressStart2P.variable} ${orbitron.variable} font-sans antialiased`}
       >
-        
+        <MetaMaskErrorHandler />
         {setting.enablePerformanceMonitor && <PerformanceMonitor />}
+        <Navigation />
         {children}
         
         {/* External Scripts */}

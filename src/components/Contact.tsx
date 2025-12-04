@@ -1,18 +1,16 @@
 'use client';
 import React from 'react';
-// import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Facebook, Instagram } from 'lucide-react';
-import settings from "@/config/setting.json";
+import { Linkedin, Facebook, Instagram, Mail, MapPin, CheckCircle } from 'lucide-react';
 
 const TelegramIcon = () => (
   <svg
-    className="w-4 h-4"
+    className="w-5 h-5"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
+    stroke="#000000"
+    strokeWidth="2.5"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
@@ -23,11 +21,11 @@ const TelegramIcon = () => (
 
 const XIcon = () => (
   <svg
-    className="w-4 h-4"
+    className="w-5 h-5"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
+    stroke="#000000"
+    strokeWidth="2.5"
     strokeLinecap="round"
     strokeLinejoin="round"
   >
@@ -59,17 +57,17 @@ export default function Contact() {
     {
       name: 'Facebook',
       href: 'https://www.facebook.com/groups/filipinoweb3communitybuilders',
-      icon: <Facebook className="w-4 h-4" strokeWidth={2.2} />
+      icon: <Facebook className="w-5 h-5" strokeWidth={2.5} stroke="#000000" fill="none" />
     },
     {
       name: 'Instagram',
       href: 'https://www.instagram.com/filipinoweb3',
-      icon: <Instagram className="w-4 h-4" strokeWidth={2} />
+      icon: <Instagram className="w-5 h-5" strokeWidth={2.5} stroke="#000000" fill="none" />
     },
     {
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/company/filipino-web3-community-builders/',
-      icon: <Linkedin className="w-4 h-4" strokeWidth={2} />
+      icon: <Linkedin className="w-5 h-5" strokeWidth={2.5} stroke="#000000" fill="none" />
     },
     {
       name: 'X (Twitter)',
@@ -94,7 +92,6 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simple client validation for modern UX
     const newErrors: { [k: string]: string } = {};
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
@@ -107,370 +104,658 @@ export default function Contact() {
     setSubmitting(true);
 
     try {
-      if (window.grecaptcha) {
-        window.grecaptcha.ready(() => {
-          window.grecaptcha.execute(settings.recapcha, { action: 'submit' }).then((token: string) => {
-            const form = e.currentTarget as HTMLFormElement;
-            const hiddenInput = form.querySelector('input[name="g-recaptcha-response"]') as HTMLInputElement;
-            if (hiddenInput) {
-              hiddenInput.value = token;
-            }
-            setSuccess('Thanks! Your message has been sent.');
-            form.submit();
-          });
-        });
+      // Send email via API
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName.trim(),
+          lastName: formData.lastName.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send email');
       }
+
+      setSuccess('MESSAGE SENT');
+      
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        message: ''
+      });
+
+      // Reset button state after 3 seconds
+      setTimeout(() => {
+        setSuccess(null);
+      }, 3000);
     } catch (error) {
-      console.error('Error with reCAPTCHA:', error);
+      console.error('Error sending email:', error);
+      setSuccess(null);
+      setErrors({ 
+        submit: error instanceof Error ? error.message : 'Failed to send message. Please try again.' 
+      });
+    } finally {
       setSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="contact-modern relative overflow-hidden py-12">
-      {/* Simple Background */}
-      <div className="absolute inset-0 bg-black" />
+    <>
+      <style>{`
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+          -webkit-text-fill-color: #06b6d4 !important;
+          -webkit-box-shadow: 0 0 0px 1000px #000000 inset !important;
+          box-shadow: 0 0 0px 1000px #000000 inset !important;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+        input[name="lastName"]:-webkit-autofill,
+        input[name="lastName"]:-webkit-autofill:hover,
+        input[name="lastName"]:-webkit-autofill:focus,
+        textarea:-webkit-autofill,
+        textarea:-webkit-autofill:hover,
+        textarea:-webkit-autofill:focus {
+          -webkit-text-fill-color: #22c55e !important;
+        }
+      `}</style>
+    <section id="contact" className="relative overflow-hidden py-24 px-4">
+      {/* Background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, #0a0e1a 0%, #000000 100%)',
+        }}
+      />
+      
+      {/* Pixel grid overlay */}
+      <div
+        className="absolute inset-0 opacity-5 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(#1a1a2e 1px, transparent 1px), linear-gradient(90deg, #1a1a2e 1px, transparent 1px)",
+          backgroundSize: '12px 12px',
+          imageRendering: 'pixelated',
+        }}
+      />
 
-      <div className="container relative z-10 ph-banig-border-top">
-        <motion.div 
-          className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6"
-          initial={{ opacity: 0, y: 50 }}
+      <div className="container relative z-10 max-w-5xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          {/* Left Panel - Contact Info (1/3) */}
-          <motion.div 
-            className="lg:col-span-1"
-            initial={{ opacity: 0, x: -50 }}
+          <h2
+            className="mb-4 uppercase"
+            style={{
+              fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+              fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+              fontWeight: '400',
+              letterSpacing: '0.2em',
+              color: '#06b6d4',
+              textShadow: '3px 3px 0px #000000',
+              imageRendering: 'pixelated',
+              WebkitFontSmoothing: 'none',
+            }}
+          >
+            CONTACT US
+          </h2>
+          <div
+            className="mx-auto mb-6"
+            style={{
+              width: '100px',
+              height: '3px',
+              background: 'linear-gradient(90deg, #06b6d4 0%, #22c55e 100%)',
+              boxShadow: '0 0 10px rgba(6, 182, 212, 0.5)',
+              imageRendering: 'pixelated',
+            }}
+          />
+          <p
+            style={{
+              fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+              fontSize: 'clamp(0.7rem, 1.2vw, 0.9rem)',
+              lineHeight: '1.8',
+              letterSpacing: '0.1em',
+              color: '#22c55e',
+              imageRendering: 'pixelated',
+              WebkitFontSmoothing: 'none',
+              textAlign: 'center',
+              width: '100%',
+              margin: '0 auto',
+            }}
+          >
+            Get in touch with the Filipino Web3 community
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Contact Info */}
+          <motion.div
+            className="lg:col-span-1 space-y-6"
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <div>
-              <h2 
-                className="text-white mb-4 uppercase" 
-                style={{ 
+            {/* Contact Details */}
+            <div
+              style={{
+                background: '#0a0a0a',
+                border: '2px solid #06b6d4',
+                padding: '1.5rem',
+                imageRendering: 'pixelated',
+                boxShadow: '4px 4px 0 #000000',
+              }}
+            >
+              <h3
+                className="mb-4 uppercase"
+                style={{
                   fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: 'clamp(0.9rem, 1.8vw, 1.2rem)',
-                  fontWeight: '400',
-                  letterSpacing: '0.15em',
+                  fontSize: 'clamp(0.8rem, 1.5vw, 1rem)',
+                  letterSpacing: '0.1em',
+                  color: '#06b6d4',
                   textShadow: '2px 2px 0px #000000',
                   imageRendering: 'pixelated',
                   WebkitFontSmoothing: 'none',
-                  lineHeight: '1.2'
                 }}
               >
-                LET&apos;S CONNECT
-              </h2>
-              <p 
-                className="text-white mb-6" 
-                style={{ 
-                  fontFamily: '"Courier New", monospace',
-                  fontWeight: 'bold',
-                  fontSize: 'clamp(0.8rem, 1.2vw, 0.95rem)',
-                  color: '#ffffff',
-                  textShadow: '2px 2px 0px #000000',
-                  lineHeight: '1.5',
-                  textAlign: 'left'
-                }}
-              >
-                Have a project in mind, want to collaborate, or just want to say hello? Fill out the form and we&apos;ll get back to you soon!
-              </p>
-            </div>
-            
-            <div>
-              {/* Social Media Icons */}
-              <div className="flex items-center gap-3 mb-4">
-                {socialButtons.map((social, idx) => (
-                  <motion.a 
-                    key={social.name}
-                    href={social.href} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.08, y: -2 }} 
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center justify-center w-11 h-11 rounded-full bg-white/5 border border-white/20 text-white hover:border-white hover:bg-white/10 transition-all duration-200"
-                    aria-label={social.name}
-                    style={{ backdropFilter: 'blur(2px)' }}
-                    transition={{ duration: 0.2, delay: idx * 0.05 }}
+                INFO
+              </h3>
+              
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <Mail className="w-4 h-4 flex-shrink-0 mt-0.5" strokeWidth={2.5} stroke="#06b6d4" />
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                      fontSize: 'clamp(0.6rem, 1vw, 0.75rem)',
+                      letterSpacing: '0.05em',
+                      color: '#06b6d4',
+                      imageRendering: 'pixelated',
+                      WebkitFontSmoothing: 'none',
+                      wordBreak: 'break-all',
+                      lineHeight: '1.5',
+                    }}
                   >
+                    filipinoweb3@gmail.com
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <MapPin className="w-4 h-4 flex-shrink-0" strokeWidth={2.5} stroke="#22c55e" />
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                      fontSize: 'clamp(0.6rem, 1vw, 0.75rem)',
+                      letterSpacing: '0.05em',
+                      color: '#22c55e',
+                      imageRendering: 'pixelated',
+                      WebkitFontSmoothing: 'none',
+                    }}
+                  >
+                    Philippines
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <span className="w-4 h-4 flex-shrink-0 flex items-center justify-center" style={{ fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', fontSize: '0.5rem', color: '#22c55e' }}>•</span>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                      fontSize: 'clamp(0.6rem, 1vw, 0.75rem)',
+                      letterSpacing: '0.05em',
+                      color: '#22c55e',
+                      imageRendering: 'pixelated',
+                      WebkitFontSmoothing: 'none',
+                    }}
+                  >
+                    Web3
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div
+              style={{
+                background: '#0a0a0a',
+                border: '2px solid #22c55e',
+                padding: '1.5rem',
+                imageRendering: 'pixelated',
+                boxShadow: '4px 4px 0 #000000',
+              }}
+            >
+              <h3
+                className="mb-4 uppercase"
+                style={{
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: 'clamp(0.8rem, 1.5vw, 1rem)',
+                  letterSpacing: '0.1em',
+                  color: '#22c55e',
+                  textShadow: '2px 2px 0px #000000',
+                  imageRendering: 'pixelated',
+                  WebkitFontSmoothing: 'none',
+                }}
+              >
+                CONNECT
+              </h3>
+
+              <div className="grid grid-cols-4 gap-3">
+                {socialButtons.slice(0, 4).map((social, idx) => (
+                  <motion.a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center justify-center aspect-square"
+                    aria-label={social.name}
+                    style={{
+                      background: idx % 2 === 0 ? '#06b6d4' : '#22c55e',
+                      border: `2px solid ${idx % 2 === 0 ? '#06b6d4' : '#22c55e'}`,
+                      boxShadow: '3px 3px 0 #000000',
+                      imageRendering: 'pixelated',
+                      minHeight: '48px',
+                    }}
+                  >
+                  <div style={{ color: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {social.icon}
+                  </div>
                   </motion.a>
                 ))}
-              </div>
-              
-              {/* Contact Details */}
-              <div className="space-y-1">
-                <p 
-                  className="text-white"
-                  style={{ 
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    fontSize: 'clamp(0.75rem, 1.1vw, 0.9rem)',
-                    color: '#ffffff',
-                    textShadow: '2px 2px 0px #000000',
-                    textAlign: 'left'
+                <motion.a
+                  href={socialButtons[4].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center justify-center aspect-square col-start-1"
+                  aria-label={socialButtons[4].name}
+                  style={{
+                    background: '#06b6d4',
+                    border: '2px solid #06b6d4',
+                    boxShadow: '3px 3px 0 #000000',
+                    imageRendering: 'pixelated',
+                    minHeight: '48px',
                   }}
                 >
-                  filipinoweb3@gmail.com
-                </p>
-                <p 
-                  className="text-white"
-                  style={{ 
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    fontSize: 'clamp(0.75rem, 1.1vw, 0.9rem)',
-                    color: '#ffffff',
-                    textShadow: '2px 2px 0px #000000',
-                    textAlign: 'left'
-                  }}
-                >
-                  Philippines • Web3
-                </p>
+                  <div style={{ color: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    {socialButtons[4].icon}
+                  </div>
+                </motion.a>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Panel - Contact Form (2/3) */}
+          {/* Right Column - Contact Form */}
           <motion.form
-            action="https://formkeep.com/f/13efdf753c97"
-            method="POST"
             id="contact_form"
             onSubmit={handleSubmit}
-            className="lg:col-span-2 relative overflow-hidden p-4 [color-scheme:dark]"
+            className="lg:col-span-2 space-y-4"
             style={{
-              background: '#000000',
-              border: '2px solid #ffffff',
-              borderStyle: 'outset',
-              boxShadow: '3px 3px 0px rgba(0,0,0,0.8)',
-              borderRadius: '0'
+              background: '#0a0a0a',
+              border: '2px solid #06b6d4',
+              padding: '2rem',
+              imageRendering: 'pixelated',
+              boxShadow: '4px 4px 0 #000000',
             }}
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <input type="hidden" name="g-recaptcha-response" value="" />
             {success && (
-              <div className="mb-4 px-4 py-3" style={{ 
-                border: '2px solid #ffffff',
-                background: '#000000',
-                color: '#ffffff',
-                fontFamily: '"Courier New", monospace',
-                fontWeight: 'bold',
-                textShadow: '2px 2px 0px #000000'
-              }} role="status">
+              <motion.div
+                className="mb-4 p-3"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                style={{
+                  border: '2px solid #22c55e',
+                  background: '#0a0a0a',
+                  color: '#22c55e',
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
+                  letterSpacing: '0.08em',
+                  imageRendering: 'pixelated',
+                  WebkitFontSmoothing: 'none',
+                  boxShadow: '0 0 15px rgba(34, 197, 94, 0.3)',
+                }}
+                role="status"
+              >
                 {success}
+              </motion.div>
+            )}
+
+            {errors.submit && (
+              <div
+                className="mb-4 p-3"
+                style={{
+                  border: '2px solid #ef4444',
+                  background: '#000000',
+                  color: '#ef4444',
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
+                  letterSpacing: '0.08em',
+                  imageRendering: 'pixelated',
+                  WebkitFontSmoothing: 'none',
+                }}
+                role="alert"
+              >
+                {errors.submit}
               </div>
             )}
-            <div className="space-y-3">
-              <label className="flex flex-col gap-0.5">
-                <span 
-                  className="text-white" 
-                  style={{ 
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    color: '#ffffff',
-                    fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
-                    textShadow: '1px 1px 0px #000000'
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <label className="flex flex-col gap-2">
+                <span
+                  className="uppercase"
+                  style={{
+                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                    fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
+                    letterSpacing: '0.08em',
+                    color: '#06b6d4',
+                    imageRendering: 'pixelated',
+                    WebkitFontSmoothing: 'none',
                   }}
                 >
-                  Name
+                  First Name
                 </span>
-                <motion.input
+                <input
                   type="text"
                   name="firstName"
-                  placeholder="Your Name"
+                  placeholder=""
                   value={formData.firstName}
                   onChange={handleInputChange}
                   required
                   className="w-full"
+                  autoComplete="given-name"
                   style={{
-                    border: '2px solid #ffffff',
-                    borderStyle: 'outset',
+                    border: '2px solid #06b6d4',
                     background: '#000000',
-                    padding: '0.6rem 0.875rem',
-                    color: '#ffffff',
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    fontSize: 'clamp(0.7rem, 1vw, 0.85rem)',
+                    padding: '0.75rem 1rem',
+                    color: '#06b6d4 !important',
+                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                    fontSize: 'clamp(0.65rem, 0.9vw, 0.8rem)',
                     imageRendering: 'pixelated',
-                    borderRadius: '0'
+                    borderRadius: '0',
+                    WebkitTextFillColor: '#06b6d4',
+                    caretColor: '#06b6d4',
                   }}
-                  whileFocus={{ scale: 1.01 }}
                 />
-                {errors.firstName && <span className="text-xs mt-0.5" style={{ fontFamily: '"Courier New", monospace', fontSize: '0.7rem', color: '#ffffff', textShadow: '1px 1px 0px #000000' }}>{errors.firstName}</span>}
+                {errors.firstName && (
+                  <span
+                    className="text-xs text-red-400"
+                    style={{
+                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                      fontSize: '0.6rem',
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {errors.firstName}
+                  </span>
+                )}
               </label>
-              
-              <label className="flex flex-col gap-0.5">
-                <span 
-                  className="text-white" 
-                  style={{ 
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    color: '#ffffff',
-                    fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
-                    textShadow: '1px 1px 0px #000000'
+
+              <label className="flex flex-col gap-2">
+                <span
+                  className="uppercase"
+                  style={{
+                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                    fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
+                    letterSpacing: '0.08em',
+                    color: '#22c55e',
+                    imageRendering: 'pixelated',
+                    WebkitFontSmoothing: 'none',
                   }}
                 >
-                  Email
+                  Last Name
                 </span>
-              <motion.input
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder=""
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full"
+                  autoComplete="family-name"
+                  style={{
+                    border: '2px solid #22c55e',
+                    background: '#000000',
+                    padding: '0.75rem 1rem',
+                    color: '#22c55e !important',
+                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                    fontSize: 'clamp(0.65rem, 0.9vw, 0.8rem)',
+                    imageRendering: 'pixelated',
+                    borderRadius: '0',
+                    WebkitTextFillColor: '#22c55e',
+                    caretColor: '#22c55e',
+                  }}
+                />
+                {errors.lastName && (
+                  <span
+                    className="text-xs text-red-400"
+                    style={{
+                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                      fontSize: '0.6rem',
+                      letterSpacing: '0.05em',
+                    }}
+                  >
+                    {errors.lastName}
+                  </span>
+                )}
+              </label>
+            </div>
+
+            <label className="flex flex-col gap-2">
+              <span
+                className="uppercase"
+                style={{
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
+                  letterSpacing: '0.08em',
+                  color: '#06b6d4',
+                  imageRendering: 'pixelated',
+                  WebkitFontSmoothing: 'none',
+                }}
+              >
+                Email
+              </span>
+              <input
                 type="email"
                 name="email"
-                placeholder="Your Email Address"
+                placeholder=""
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                  className="w-full"
+                className="w-full"
+                autoComplete="email"
+                style={{
+                  border: '2px solid #06b6d4',
+                  background: '#000000',
+                  padding: '0.75rem 1rem',
+                  color: '#06b6d4 !important',
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: 'clamp(0.65rem, 0.9vw, 0.8rem)',
+                  imageRendering: 'pixelated',
+                  borderRadius: '0',
+                  WebkitTextFillColor: '#06b6d4',
+                  caretColor: '#06b6d4',
+                }}
+              />
+              {errors.email && (
+                <span
+                  className="text-xs text-red-400"
                   style={{
-                    border: '2px solid #ffffff',
-                    borderStyle: 'outset',
-                    background: '#000000',
-                    padding: '0.6rem 0.875rem',
-                    color: '#ffffff',
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    fontSize: 'clamp(0.7rem, 1vw, 0.85rem)',
-                    imageRendering: 'pixelated',
-                    borderRadius: '0'
-                  }}
-                  whileFocus={{ scale: 1.01 }}
-                />
-                {errors.email && <span className="text-xs mt-0.5" style={{ fontFamily: '"Courier New", monospace', fontSize: '0.7rem', color: '#ffffff', textShadow: '1px 1px 0px #000000' }}>{errors.email}</span>}
-              </label>
-              
-              <label className="flex flex-col gap-0.5">
-                <span 
-                  className="text-white" 
-                  style={{ 
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    color: '#ffffff',
-                    fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
-                    textShadow: '1px 1px 0px #000000'
+                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                    fontSize: '0.6rem',
+                    letterSpacing: '0.05em',
                   }}
                 >
-                  Website (optional)
+                  {errors.email}
                 </span>
-                <motion.input
-                  type="url"
-                  name="website"
-                  placeholder="https://yourwebsite.com"
-                  className="w-full"
-                  style={{
-                    border: '2px solid #ffffff',
-                    borderStyle: 'outset',
-                    background: '#000000',
-                    padding: '0.6rem 0.875rem',
-                    color: '#ffffff',
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    fontSize: 'clamp(0.7rem, 1vw, 0.85rem)',
-                    imageRendering: 'pixelated',
-                    borderRadius: '0'
-                  }}
-                  whileFocus={{ scale: 1.01 }}
-                />
+              )}
             </label>
-              
-              <label className="flex flex-col gap-0.5">
-                <span 
-                  className="text-white" 
-                  style={{ 
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    color: '#ffffff',
-                    fontSize: 'clamp(0.65rem, 1vw, 0.8rem)',
-                    textShadow: '1px 1px 0px #000000'
-                  }}
-                >
-                  Tell me about your project or message...
-                </span>
-              <motion.textarea
+
+            <label className="flex flex-col gap-2">
+              <span
+                className="uppercase"
+                style={{
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: 'clamp(0.6rem, 0.9vw, 0.75rem)',
+                  letterSpacing: '0.08em',
+                  color: '#22c55e',
+                  imageRendering: 'pixelated',
+                  WebkitFontSmoothing: 'none',
+                }}
+              >
+                Message
+              </span>
+              <textarea
                 name="message"
-                  rows={4}
-                  placeholder="Your message here..."
+                rows={5}
+                placeholder=""
                 value={formData.message}
                 onChange={handleInputChange}
                 required
-                  className="w-full"
+                className="w-full"
+                style={{
+                  border: '2px solid #22c55e',
+                  background: '#000000',
+                  padding: '0.75rem 1rem',
+                  color: '#22c55e !important',
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: 'clamp(0.65rem, 0.9vw, 0.8rem)',
+                  imageRendering: 'pixelated',
+                  borderRadius: '0',
+                  resize: 'vertical',
+                  WebkitTextFillColor: '#22c55e',
+                  caretColor: '#22c55e',
+                }}
+              />
+              {errors.message && (
+                <span
+                  className="text-xs text-red-400"
                   style={{
-                    border: '2px solid #ffffff',
-                    borderStyle: 'outset',
-                    background: '#000000',
-                    padding: '0.6rem 0.875rem',
-                    color: '#ffffff',
-                    fontFamily: '"Courier New", monospace',
-                    fontWeight: 'bold',
-                    fontSize: 'clamp(0.7rem, 1vw, 0.85rem)',
-                    imageRendering: 'pixelated',
-                    borderRadius: '0',
-                    resize: 'vertical'
+                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                    fontSize: '0.6rem',
+                    letterSpacing: '0.05em',
                   }}
-                  whileFocus={{ scale: 1.01 }}
-                />
-                {errors.message && <span className="text-xs mt-0.5" style={{ fontFamily: '"Courier New", monospace', fontSize: '0.7rem', color: '#ffffff', textShadow: '1px 1px 0px #000000' }}>{errors.message}</span>}
-              {!errors.message && (
-                  <span className="text-xs mt-0.5" style={{ fontFamily: '"Courier New", monospace', fontWeight: 'bold', fontSize: '0.7rem', color: '#ffffff', textShadow: '1px 1px 0px #000000' }}>{formData.message.length}/1000</span>
+                >
+                  {errors.message}
+                </span>
               )}
             </label>
-            </div>
-            <span id="captcha" style={{ color: '#ffffff' }}></span>
-            <motion.button 
-              className="mt-4 w-full flex items-center justify-center group" 
+
+            <motion.button
+              className="w-full mt-6 flex items-center justify-center gap-2"
               type="submit"
-              disabled={submitting}
+              disabled={submitting || !!success}
               style={{
-                background: submitting ? '#0d0d0d' : '#000000',
-                color: '#ffffff',
-                padding: '0.85rem 1.5rem',
-                border: '2px solid #ffffff',
+                background: success 
+                  ? 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)'
+                  : submitting 
+                    ? 'linear-gradient(135deg, #06b6d4 0%, #22c55e 100%)' 
+                    : 'linear-gradient(135deg, #06b6d4 0%, #22c55e 100%)',
+                padding: '1rem 2rem',
+                border: success ? '2px solid #22c55e' : '2px solid #06b6d4',
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: 'clamp(0.64rem, 0.9vw, 0.82rem)',
-                fontWeight: '600',
+                fontSize: 'clamp(0.7rem, 1vw, 0.9rem)',
+                fontWeight: '400',
                 textTransform: 'uppercase',
-                boxShadow: submitting 
-                  ? 'inset 0 0 10px rgba(255,255,255,0.05)' 
-                  : '0 10px 25px rgba(0,0,0,0.6)',
+                boxShadow: success 
+                  ? '4px 4px 0 #000000, 0 0 20px rgba(34, 197, 94, 0.5)'
+                  : '4px 4px 0 #000000',
                 imageRendering: 'pixelated',
                 WebkitFontSmoothing: 'none',
-                borderRadius: '6px',
-                cursor: submitting ? 'not-allowed' : 'pointer',
-                opacity: submitting ? 0.75 : 1,
-                letterSpacing: '0.18em',
+                borderRadius: '0',
+                cursor: (submitting || success) ? 'not-allowed' : 'pointer',
+                letterSpacing: '0.15em',
                 position: 'relative',
-                overflow: 'hidden'
+                overflow: 'hidden',
               }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              whileHover={submitting ? {} : { 
-                scale: 1.02,
-                y: -2
-              }}
-              whileTap={submitting ? {} : { scale: 0.98, y: 1 }}
-              viewport={{ once: true }}
+              whileHover={(submitting || success) ? {} : { scale: 1.02, y: -2 }}
+              whileTap={(submitting || success) ? {} : { scale: 0.98 }}
+              animate={submitting ? {
+                boxShadow: [
+                  '4px 4px 0 #000000, 0 0 10px rgba(6, 182, 212, 0.5)',
+                  '4px 4px 0 #000000, 0 0 20px rgba(34, 197, 94, 0.7)',
+                  '4px 4px 0 #000000, 0 0 10px rgba(6, 182, 212, 0.5)',
+                ]
+              } : success ? {
+                boxShadow: [
+                  '4px 4px 0 #000000, 0 0 15px rgba(34, 197, 94, 0.5)',
+                  '4px 4px 0 #000000, 0 0 25px rgba(34, 197, 94, 0.7)',
+                  '4px 4px 0 #000000, 0 0 15px rgba(34, 197, 94, 0.5)',
+                ]
+              } : {}}
+              transition={submitting || success ? { duration: 1, repeat: Infinity } : {}}
             >
-              <span className="flex items-center gap-3 relative z-10">
-                {submitting ? 'SENDING' : 'CONNECT'}
+              {submitting && !success && (
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  style={{
+                    width: '16px',
+                    height: '16px',
+                    border: '2px solid #000000',
+                    borderTop: '2px solid transparent',
+                    borderRadius: '50%',
+                  }}
+                />
+              )}
+              {success && (
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                >
+                  <CheckCircle className="w-5 h-5" strokeWidth={2.5} style={{ color: '#000000' }} />
+                </motion.div>
+              )}
+              <span style={{ 
+                color: '#000000',
+                display: 'block',
+                textAlign: 'center'
+              }}>
+                {success ? 'MESSAGE SENT!' : submitting ? 'SENDING...' : 'SEND MESSAGE'}
               </span>
             </motion.button>
-            <p 
-              className="mt-3 text-xs text-white pixelated" 
-              style={{ 
-                fontFamily: '"Courier New", monospace',
-                fontWeight: 'bold',
-                color: '#ffffff',
-                fontSize: 'clamp(0.7rem, 1.3vw, 0.9rem)'
+
+            <p
+              className="text-center mt-4"
+              style={{
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                fontSize: 'clamp(0.55rem, 0.8vw, 0.7rem)',
+                letterSpacing: '0.05em',
+                color: '#06b6d4',
+                imageRendering: 'pixelated',
+                WebkitFontSmoothing: 'none',
               }}
             >
-              By sending, you agree to our respectful contact policy. We never share your info.
+              Your information is secure and private
             </p>
           </motion.form>
-        </motion.div>
+        </div>
       </div>
     </section>
+    </>
   );
 }

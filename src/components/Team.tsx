@@ -4,107 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Linkedin, Facebook } from 'lucide-react';
 
-const coreTeam = [
-  {
-    name: "Sift",
-    role: "Community Lead",
-    expertise: "Blockchain Development, Community Building",
-    image: "/images/Sift.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/sift.croix",
-      twitter: "https://twitter.com/siftcroix",
-      linkedin: "https://www.linkedin.com/in/joseph-corpuz-14891b145/"
-    }
-  },
-  {
-    name: "Lupin_XIV",
-    role: "Technical Lead",
-    expertise: "Smart Contracts, DeFi Protocols",
-    image: "/images/lupz_u.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/ljmags14/",
-      twitter: "https://twitter.com/Lupin_XIV",
-      linkedin: "https://www.linkedin.com/in/ljmagboo/"
-    }
-  },
-  {
-    name: "Zirk",
-    role: "Developer Relations",
-    expertise: "Developer Tools, API Integration",
-    image: "/images/coretoshi_zirk.png",
-    socials: {
-      facebook: "https://www.facebook.com/GGzirk/",
-      twitter: "https://twitter.com/ggzirky",
-      linkedin: "https://www.linkedin.com/in/ggzirk/"
-    }
-  },
-  {
-    name: "Clivv",
-    role: "NFT & Gaming Lead",
-    expertise: "NFT Development, GameFi, Metaverse",
-    image: "/images/clivv_azuki1.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/clivvx27/",
-      twitter: "https://twitter.com/clivvnft",
-      linkedin: "www.linkedin.com/in/clivv"
-    }
-  },
-  {
-    name: "Aerva",
-    role: "Marketing & Growth",
-    expertise: "Digital Marketing, Community Growth",
-    image: "/images/Aerva.jpg",
-    socials: {
-      facebook: "https://web.facebook.com/profile.php?id=100095422653463",
-      twitter: "https://twitter.com/AervaWeb3",
-      linkedin: "https://www.linkedin.com/in/rhowelle-calamba-6092752a3/"
-    }
-  },
-  {
-    name: "Kata",
-    role: "Content Creator",
-    expertise: "Technical Writing, Educational Content",
-    image: "/images/Katrina.jpg",
-    socials: {
-      facebook: "https://web.facebook.com/kyukaii",
-      twitter: "https://twitter.com/kyyukai_",
-      linkedin: "https://www.linkedin.com/in/katrinapasadilla/"
-    }
-  },
-  {
-    name: "Waterlemon",
-    role: "Frontend Developer",
-    expertise: "React, Next.js, UI/UX Design",
-    image: "/images/Waterlemon.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/chervin.cruz.7/",
-      twitter: "https://twitter.com/mywaterlemon",
-      linkedin: "https://www.linkedin.com/in/cjpatrycruz/"
-    }
-  },
-  {
-    name: "Speedy",
-    role: "Operations Manager",
-    expertise: "Project Management, Event Coordination",
-    image: "/images/Speedy.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/rowena.marbida",
-      twitter: "https://twitter.com/Speedy_RM1999",
-      linkedin: "https://www.linkedin.com/in/rowena-marbida-2632ba251"
-    }
-  },
-  {
-    name: "Mychel_T",
-    role: "Backend Developer",
-    expertise: "Node.js, Database Design, API Development",
-    image: "/images/Mychel_T.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/mychelan.tautoan.7/",
-      twitter: "https://twitter.com/MychelT1",
-      linkedin: "https://www.linkedin.com/in/mychel-an-tauto-an/"
-    }
-  }
-];
+const formerMembers = ["Waterlemon", "Speedy", "Mychel_T"];
 
 const foundingMembers = [
   {
@@ -163,21 +63,102 @@ const foundingMembers = [
   }
 ];
 
+const otherMembers = [
+  {
+    name: "Sift",
+    image: "/images/Sift.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/sift.croix",
+      twitter: "https://twitter.com/siftcroix",
+      linkedin: "https://www.linkedin.com/in/joseph-corpuz-14891b145/"
+    }
+  },
+  {
+    name: "Lupin",
+    image: "/images/Lupin_XIV.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/lesterjun.magboo",
+      twitter: "https://twitter.com/Lupin_XIV",
+      linkedin: "https://www.linkedin.com/in/lester-jun-l-magbo-o-213223324/"
+    }
+  },
+  {
+    name: "Aerva",
+    image: "/images/Aerva.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/aerva.eth",
+      twitter: "https://twitter.com/aerva_eth",
+      linkedin: "https://www.linkedin.com/in/aerva-eth/"
+    }
+  },
+  {
+    name: "Zirk",
+    image: "/images/coretoshi_zirk.png",
+    socials: {
+      facebook: "https://www.facebook.com/coretoshi",
+      twitter: "https://twitter.com/coretoshi",
+      linkedin: "https://www.linkedin.com/in/coretoshi/"
+    }
+  },
+  {
+    name: "Clivv",
+    image: "/images/clivv_azuki1.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/clivv.azuki",
+      twitter: "https://twitter.com/clivv_azuki",
+      linkedin: "https://www.linkedin.com/in/clivv-azuki/"
+    }
+  },
+  {
+    name: "Kata",
+    image: "/images/Katrina.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/katrina.web3",
+      twitter: "https://twitter.com/katrina_web3",
+      linkedin: "https://www.linkedin.com/in/katrina-web3/"
+    }
+  },
+  {
+    name: "Arkin",
+    image: "/images/Arkin.png",
+    socials: {
+      facebook: "https://www.facebook.com/mndzsma/",
+      twitter: "https://x.com/Arkinnightshade",
+      linkedin: "https://www.linkedin.com/in/sean-michael-andrew-mendoza-213223324/?skipRedirect=true"
+    }
+  },
+  {
+    name: "CordyStackx",
+    image: "/images/CordyStackx.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/cordystackx",
+      twitter: "https://twitter.com/cordystackx",
+      linkedin: "https://www.linkedin.com/in/cordystackx/"
+    }
+  }
+];
+
+type SocialLinks = {
+  facebook?: string;
+  twitter?: string;
+  linkedin?: string;
+};
+
 type TeamMemberType = {
   name: string;
   image: string;
-  socials: {
-    facebook: string;
-    twitter: string;
-    linkedin: string;
-  };
+  socials?: SocialLinks | null;
   role?: string;
   expertise?: string;
+  status?: 'active' | 'former';
 };
 
-function TeamMember({ member, isCore = false, index }: { member: TeamMemberType, isCore?: boolean, index: number }) {
-  
-  // Boss card colors for founding members (One Piece style)
+function TeamMember({ member, index }: { member: TeamMemberType, index: number }) {
+  if (!member.socials) {
+    return null;
+  }
+
+  // Boss card colors for members (One Piece style)
   const bossColors = [
     { primary: '#FFD700', secondary: '#FF8C00', glow: '#FFD700' }, // Gold
     { primary: '#DC143C', secondary: '#8B0000', glow: '#FF0000' }, // Crimson
@@ -187,49 +168,33 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
     { primary: '#00CED1', secondary: '#008B8B', glow: '#00FFFF' }  // Dark Turquoise
   ];
   const bossColor = bossColors[index % bossColors.length];
-  
-  // Regular card colors for core team
-  const borderColors = ['#00AA00', '#0066FF', '#FF0000', '#FFD700', '#8B5CF6', '#FF6B9D', '#4ECDC4', '#FF8C00'];
-  const borderColor = borderColors[index % borderColors.length];
-  const bgColors = [
-    ['#4ECDC4', '#1fbad1'], // Green/Blue
-    ['#FF6B9D', '#FF8C00'], // Red/Orange
-    ['#FFD700', '#FF6B9D'], // Yellow/Pink
-    ['#8B5CF6', '#4ECDC4'], // Purple/Cyan
-    ['#1fbad1', '#00AA00'], // Cyan/Green
-    ['#FF8C00', '#FF0000'], // Orange/Red
-    ['#FF6B9D', '#8B5CF6'], // Pink/Purple
-    ['#4ECDC4', '#FFD700']  // Cyan/Yellow
-  ];
-  const bgColorPair = bgColors[index % bgColors.length];
-  
-  // Render One Piece Boss Card for Founding Members
-  if (!isCore) {
-    return (
+
+  return (
       <motion.article 
         initial={{ opacity: 0, y: 50, scale: 0.9 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ delay: index * 0.15, duration: 0.8, type: "spring", stiffness: 100 }}
         viewport={{ once: true }}
         whileHover={{ y: -12, scale: 1.05, rotateY: 5 }}
-        className="group relative one-piece-boss-card"
-        style={{ perspective: '1000px' }}
+        className="group relative one-piece-boss-card w-full"
+        style={{ perspective: '1000px', maxWidth: '100%' }}
       >
         {/* Boss Card Container - One Piece Style */}
         <div 
-          className="relative overflow-hidden"
+          className="relative overflow-hidden w-full"
           style={{ 
             background: `linear-gradient(135deg, ${bossColor.primary}15 0%, ${bossColor.secondary}25 50%, ${bossColor.primary}15 100%)`,
-            border: `clamp(3px, 0.8vw, 6px) solid ${bossColor.primary}`,
-            borderRadius: 'clamp(8px, 2vw, 16px)',
+            border: `clamp(2px, 0.6vw, 6px) solid ${bossColor.primary}`,
+            borderRadius: 'clamp(6px, 1.5vw, 16px)',
             boxShadow: `
-              0 0 clamp(15px, 4vw, 30px) ${bossColor.glow}80,
-              0 0 clamp(30px, 8vw, 60px) ${bossColor.glow}40,
-              0 clamp(5px, 1.5vw, 10px) clamp(20px, 5vw, 40px) rgba(0,0,0,0.6),
-              inset 0 0 clamp(10px, 2.5vw, 20px) ${bossColor.primary}20
+              0 0 clamp(10px, 3vw, 30px) ${bossColor.glow}80,
+              0 0 clamp(20px, 6vw, 60px) ${bossColor.glow}40,
+              0 clamp(3px, 1vw, 10px) clamp(15px, 4vw, 40px) rgba(0,0,0,0.6),
+              inset 0 0 clamp(8px, 2vw, 20px) ${bossColor.primary}20
             `,
             position: 'relative',
-            transformStyle: 'preserve-3d'
+            transformStyle: 'preserve-3d',
+            maxWidth: '100%'
           }}
         >
           {/* Glowing Border Effect */}
@@ -248,41 +213,41 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           <div 
             className="absolute top-0 left-0"
             style={{
-              width: 'clamp(24px, 6vw, 48px)',
-              height: 'clamp(24px, 6vw, 48px)',
+              width: 'clamp(16px, 4vw, 48px)',
+              height: 'clamp(16px, 4vw, 48px)',
               background: `linear-gradient(135deg, ${bossColor.primary} 0%, transparent 70%)`,
               clipPath: 'polygon(0 0, 100% 0, 0 100%)',
-              borderTopLeftRadius: 'clamp(5px, 1.25vw, 10px)'
+              borderTopLeftRadius: 'clamp(4px, 1vw, 10px)'
             }}
           />
           <div 
             className="absolute top-0 right-0"
             style={{
-              width: 'clamp(24px, 6vw, 48px)',
-              height: 'clamp(24px, 6vw, 48px)',
+              width: 'clamp(16px, 4vw, 48px)',
+              height: 'clamp(16px, 4vw, 48px)',
               background: `linear-gradient(225deg, ${bossColor.primary} 0%, transparent 70%)`,
               clipPath: 'polygon(100% 0, 100% 100%, 0 0)',
-              borderTopRightRadius: 'clamp(5px, 1.25vw, 10px)'
+              borderTopRightRadius: 'clamp(4px, 1vw, 10px)'
             }}
           />
           <div 
             className="absolute bottom-0 left-0"
             style={{
-              width: 'clamp(24px, 6vw, 48px)',
-              height: 'clamp(24px, 6vw, 48px)',
+              width: 'clamp(16px, 4vw, 48px)',
+              height: 'clamp(16px, 4vw, 48px)',
               background: `linear-gradient(45deg, ${bossColor.primary} 0%, transparent 70%)`,
               clipPath: 'polygon(0 100%, 100% 100%, 0 0)',
-              borderBottomLeftRadius: 'clamp(5px, 1.25vw, 10px)'
+              borderBottomLeftRadius: 'clamp(4px, 1vw, 10px)'
             }}
           />
           <div 
             className="absolute bottom-0 right-0"
             style={{
-              width: 'clamp(24px, 6vw, 48px)',
-              height: 'clamp(24px, 6vw, 48px)',
+              width: 'clamp(16px, 4vw, 48px)',
+              height: 'clamp(16px, 4vw, 48px)',
               background: `linear-gradient(315deg, ${bossColor.primary} 0%, transparent 70%)`,
               clipPath: 'polygon(100% 100%, 100% 0, 0 100%)',
-              borderBottomRightRadius: 'clamp(5px, 1.25vw, 10px)'
+              borderBottomRightRadius: 'clamp(4px, 1vw, 10px)'
             }}
           />
           
@@ -306,12 +271,12 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
             className="w-full relative z-10 overflow-hidden"
             style={{
               background: `linear-gradient(180deg, ${bossColor.secondary} 0%, #000000 100%)`,
-              borderBottom: `clamp(2px, 0.5vw, 4px) solid ${bossColor.primary}`,
-              height: 'clamp(28px, 5vw, 40px)',
+              borderBottom: `clamp(1px, 0.4vw, 4px) solid ${bossColor.primary}`,
+              height: 'clamp(24px, 4vw, 40px)',
               display: 'flex',
               alignItems: 'center',
-              padding: 'clamp(0.5rem, 1vw, 0.75rem) 0',
-              boxShadow: `0 clamp(2px, 0.5vw, 4px) clamp(10px, 2.5vw, 20px) ${bossColor.glow}60`
+              padding: 'clamp(0.25rem, 0.8vw, 0.75rem) 0',
+              boxShadow: `0 clamp(1px, 0.4vw, 4px) clamp(8px, 2vw, 20px) ${bossColor.glow}60`
             }}
           >
             <div 
@@ -321,32 +286,32 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 whiteSpace: 'nowrap',
                 animation: 'scrollTrain 12s linear infinite',
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: 'clamp(0.5rem, 1.2vw, 1rem)',
+                fontSize: 'clamp(0.45rem, 1.5vw, 1rem)',
                 color: bossColor.primary,
                 fontWeight: '400',
-                letterSpacing: 'clamp(0.05em, 0.2vw, 0.15em)',
-                textShadow: `0 0 clamp(5px, 1.5vw, 10px) ${bossColor.glow}, 0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}, 0 0 clamp(15px, 4vw, 30px) ${bossColor.glow}`,
+                letterSpacing: 'clamp(0.03em, 0.15vw, 0.15em)',
+                textShadow: `0 0 clamp(3px, 1vw, 10px) ${bossColor.glow}, 0 0 clamp(6px, 1.5vw, 20px) ${bossColor.glow}, 0 0 clamp(10px, 3vw, 30px) ${bossColor.glow}`,
                 textTransform: 'uppercase'
               }}
             >
-              <span style={{ paddingRight: '80px' }}>
-                ⚡ BOSS ⚡ {member.name.toUpperCase()} ⚡ FOUNDING MEMBER ⚡ LEGENDARY ⚡
+              <span style={{ paddingRight: 'clamp(40px, 8vw, 80px)' }}>
+                ⚡ BOSS ⚡ {member.name.toUpperCase()} ⚡ LEGENDARY ⚡
               </span>
-              <span style={{ paddingRight: '80px' }}>
-                ⚡ BOSS ⚡ {member.name.toUpperCase()} ⚡ FOUNDING MEMBER ⚡ LEGENDARY ⚡
+              <span style={{ paddingRight: 'clamp(40px, 8vw, 80px)' }}>
+                ⚡ BOSS ⚡ {member.name.toUpperCase()} ⚡ LEGENDARY ⚡
               </span>
             </div>
           </div>
           
           {/* Character Portrait Area - Boss Style */}
           <div 
-            className="relative mb-4 mt-4"
+            className="relative mb-3 sm:mb-4 mt-3 sm:mt-4"
             style={{
-              minHeight: 'clamp(200px, 45vw, 350px)',
+              minHeight: 'clamp(200px, 50vw, 350px)',
               background: 'transparent',
               position: 'relative',
-              marginLeft: 'clamp(0.75rem, 2vw, 1rem)',
-              marginRight: 'clamp(0.75rem, 2vw, 1rem)'
+              marginLeft: 'clamp(0.5rem, 1.5vw, 1rem)',
+              marginRight: 'clamp(0.5rem, 1.5vw, 1rem)'
             }}
           >
             {/* Portrait Glow Effect */}
@@ -354,44 +319,60 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
               className="absolute inset-0 pointer-events-none"
               style={{
                 background: `radial-gradient(ellipse at center, ${bossColor.glow}30 0%, transparent 70%)`,
-                borderRadius: 'clamp(4px, 1vw, 8px)',
-                filter: 'blur(clamp(10px, 2.5vw, 20px))',
+                borderRadius: 'clamp(3px, 0.8vw, 8px)',
+                filter: 'blur(clamp(8px, 2vw, 20px))',
                 zIndex: 1
               }}
             />
             
             <div 
-              className="relative overflow-hidden z-10"
+              className="relative overflow-visible z-10 flex items-center justify-center"
               style={{
-                height: 'clamp(180px, 40vw, 320px)',
-                borderRadius: 'clamp(4px, 1vw, 8px)',
+                minHeight: 'clamp(200px, 50vw, 350px)',
+                height: 'clamp(200px, 50vw, 350px)',
+                borderRadius: 'clamp(3px, 0.8vw, 8px)',
                 background: `linear-gradient(135deg, ${bossColor.primary}20 0%, ${bossColor.secondary}20 100%)`,
-                border: `clamp(2px, 0.4vw, 3px) solid ${bossColor.primary}60`,
-                boxShadow: `0 0 clamp(15px, 4vw, 30px) ${bossColor.glow}40, inset 0 0 clamp(15px, 4vw, 30px) ${bossColor.primary}20`
+                border: `clamp(1px, 0.3vw, 3px) solid ${bossColor.primary}60`,
+                boxShadow: `0 0 clamp(10px, 3vw, 30px) ${bossColor.glow}40, inset 0 0 clamp(10px, 3vw, 30px) ${bossColor.primary}20`,
+                padding: 'clamp(0.5rem, 1vw, 1rem)'
               }}
             >
-              <Image 
-                src={member.image} 
-                alt={member.name} 
-                width={400}
-                height={400}
-                className="w-full h-full object-cover"
-                style={{ 
-                  filter: 'contrast(1.2) saturate(1.3) brightness(1.1)',
-                  objectPosition: 'center top',
-                  mixBlendMode: 'overlay'
+              <div 
+                className="relative w-full h-full"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
-              />
+              >
+                <Image 
+                  src={member.image} 
+                  alt={member.name} 
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-contain"
+                  style={{ 
+                    filter: 'contrast(1.1) saturate(1.2) brightness(1.05)',
+                    objectPosition: 'center center',
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    display: 'block'
+                  }}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  priority={index < 4}
+                />
+              </div>
               {/* Epic Overlay Effect */}
               <div 
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background: `
-                    radial-gradient(circle at 30% 40%, ${bossColor.primary}30 0%, transparent 50%),
-                    radial-gradient(circle at 70% 60%, ${bossColor.secondary}30 0%, transparent 50%),
-                    linear-gradient(180deg, transparent 0%, ${bossColor.glow}20 100%)
+                    radial-gradient(circle at 30% 40%, ${bossColor.primary}20 0%, transparent 50%),
+                    radial-gradient(circle at 70% 60%, ${bossColor.secondary}20 0%, transparent 50%),
+                    linear-gradient(180deg, transparent 0%, ${bossColor.glow}15 100%)
                   `,
-                  mixBlendMode: 'color-dodge'
+                  mixBlendMode: 'soft-light',
+                  opacity: 0.6
                 }}
               />
             </div>
@@ -401,23 +382,23 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
           <div 
             className="relative z-10"
             style={{
-              paddingLeft: 'clamp(0.75rem, 2vw, 1rem)',
-              paddingRight: 'clamp(0.75rem, 2vw, 1rem)',
-              paddingBottom: 'clamp(0.75rem, 2vw, 1rem)'
+              paddingLeft: 'clamp(0.5rem, 1.5vw, 1rem)',
+              paddingRight: 'clamp(0.5rem, 1.5vw, 1rem)',
+              paddingBottom: 'clamp(0.5rem, 1.5vw, 1rem)'
             }}
           >
             <div 
               className="relative"
               style={{
-                padding: 'clamp(0.75rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem)',
+                padding: 'clamp(0.5rem, 1.2vw, 0.75rem) clamp(0.5rem, 1.5vw, 1rem)',
                 background: `linear-gradient(135deg, ${bossColor.primary} 0%, ${bossColor.secondary} 100%)`,
-                borderRadius: 'clamp(4px, 1vw, 8px)',
+                borderRadius: 'clamp(3px, 0.8vw, 8px)',
                 boxShadow: `
-                  0 clamp(2px, 0.5vw, 4px) clamp(10px, 2.5vw, 20px) ${bossColor.glow}80,
-                  0 0 clamp(20px, 5vw, 40px) ${bossColor.glow}40,
-                  inset 0 clamp(1px, 0.3vw, 2px) clamp(5px, 1.5vw, 10px) rgba(255,255,255,0.3)
+                  0 clamp(1px, 0.4vw, 4px) clamp(8px, 2vw, 20px) ${bossColor.glow}80,
+                  0 0 clamp(15px, 4vw, 40px) ${bossColor.glow}40,
+                  inset 0 clamp(1px, 0.25vw, 2px) clamp(4px, 1.2vw, 10px) rgba(255,255,255,0.3)
                 `,
-                border: `clamp(1px, 0.3vw, 2px) solid ${bossColor.glow}`,
+                border: `clamp(1px, 0.25vw, 2px) solid ${bossColor.glow}`,
                 position: 'relative',
                 overflow: 'hidden'
               }}
@@ -436,42 +417,28 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 className="text-center relative z-10" 
                 style={{
                   fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: 'clamp(0.7rem, 1.3vw, 1.2rem)',
+                  fontSize: 'clamp(0.6rem, 1.8vw, 1.2rem)',
                   color: '#FFFFFF',
                   fontWeight: '400',
-                  letterSpacing: 'clamp(0.05em, 0.15vw, 0.1em)',
+                  letterSpacing: 'clamp(0.03em, 0.12vw, 0.1em)',
                   textShadow: `
-                    clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px rgba(0,0,0,0.8),
-                    0 0 clamp(5px, 1.5vw, 10px) ${bossColor.glow},
-                    0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow},
-                    0 0 clamp(15px, 4vw, 30px) ${bossColor.glow}
+                    clamp(1px, 0.25vw, 2px) clamp(1px, 0.25vw, 2px) 0px rgba(0,0,0,0.8),
+                    0 0 clamp(4px, 1.2vw, 10px) ${bossColor.glow},
+                    0 0 clamp(8px, 2vw, 20px) ${bossColor.glow},
+                    0 0 clamp(12px, 3vw, 30px) ${bossColor.glow}
                   `,
-                  lineHeight: '1.4',
+                  lineHeight: '1.3',
                   textTransform: 'uppercase',
-                  padding: '0 clamp(0.25rem, 0.5vw, 0.5rem)'
+                  padding: '0 clamp(0.2rem, 0.4vw, 0.5rem)',
+                  wordBreak: 'break-word'
                 }}
               >
                 {member.name.toUpperCase()}
               </h4>
-              <p 
-                className="text-center relative z-10"
-                style={{
-                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: 'clamp(0.45rem, 0.8vw, 0.7rem)',
-                  color: bossColor.glow,
-                  fontWeight: '400',
-                  letterSpacing: 'clamp(0.05em, 0.15vw, 0.1em)',
-                  textShadow: '0 0 clamp(5px, 1.5vw, 10px) rgba(0,0,0,0.8)',
-                  opacity: 0.9,
-                  marginTop: 'clamp(0.25rem, 0.5vw, 0.5rem)'
-                }}
-              >
-                FOUNDING MEMBER
-              </p>
             </div>
             
             {/* Social Media Links - Boss Style */}
-            <div className="flex justify-center relative z-20" style={{ gap: 'clamp(0.75rem, 1.5vw, 1rem)', marginTop: 'clamp(1rem, 2.5vw, 1.25rem)', marginBottom: 'clamp(0.75rem, 1.5vw, 0.75rem)' }}>
+            <div className="flex justify-center relative z-20" style={{ gap: 'clamp(0.5rem, 1.2vw, 1rem)', marginTop: 'clamp(0.75rem, 2vw, 1.25rem)', marginBottom: 'clamp(0.5rem, 1.2vw, 0.75rem)' }}>
               <motion.a 
                 href={member.socials.facebook} 
                 target="_blank" 
@@ -480,20 +447,20 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 whileTap={{ scale: 0.9 }}
                 className="flex items-center justify-center relative"
                 style={{
-                  width: 'clamp(44px, 8vw, 64px)',
-                  height: 'clamp(44px, 8vw, 64px)',
+                  width: 'clamp(36px, 7vw, 64px)',
+                  height: 'clamp(36px, 7vw, 64px)',
                   background: `linear-gradient(135deg, #1877F2 0%, #0d5fcc 100%)`,
-                  border: `clamp(2px, 0.5vw, 4px) solid ${bossColor.primary}`,
-                  borderRadius: 'clamp(6px, 1.5vw, 12px)',
+                  border: `clamp(1px, 0.4vw, 4px) solid ${bossColor.primary}`,
+                  borderRadius: 'clamp(4px, 1.2vw, 12px)',
                   boxShadow: `
-                    0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}60,
-                    clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.3)
+                    0 0 clamp(8px, 2vw, 20px) ${bossColor.glow}60,
+                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.6),
+                    inset 0 0 0 clamp(1px, 0.25vw, 2px) rgba(255,255,255,0.3)
                   `,
                   zIndex: 20
                 }}
               >
-                <Facebook className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(28px, 5vw, 40px)', height: 'clamp(28px, 5vw, 40px)' }} />
+                <Facebook className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(20px, 4vw, 40px)', height: 'clamp(20px, 4vw, 40px)' }} />
               </motion.a>
               <motion.a 
                 href={member.socials.twitter} 
@@ -503,20 +470,20 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 whileTap={{ scale: 0.9 }}
                 className="flex items-center justify-center relative"
                 style={{
-                  width: 'clamp(44px, 8vw, 64px)',
-                  height: 'clamp(44px, 8vw, 64px)',
+                  width: 'clamp(36px, 7vw, 64px)',
+                  height: 'clamp(36px, 7vw, 64px)',
                   background: `linear-gradient(135deg, #000000 0%, #1a1a1a 100%)`,
-                  border: `clamp(2px, 0.5vw, 4px) solid ${bossColor.primary}`,
-                  borderRadius: 'clamp(6px, 1.5vw, 12px)',
+                  border: `clamp(1px, 0.4vw, 4px) solid ${bossColor.primary}`,
+                  borderRadius: 'clamp(4px, 1.2vw, 12px)',
                   boxShadow: `
-                    0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}60,
-                    clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.3)
+                    0 0 clamp(8px, 2vw, 20px) ${bossColor.glow}60,
+                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.6),
+                    inset 0 0 0 clamp(1px, 0.25vw, 2px) rgba(255,255,255,0.3)
                   `,
                   zIndex: 20
                 }}
               >
-                <svg className="text-white" fill="white" viewBox="0 0 24 24" style={{ strokeWidth: 0, width: 'clamp(28px, 5vw, 40px)', height: 'clamp(28px, 5vw, 40px)' }}>
+                <svg className="text-white" fill="white" viewBox="0 0 24 24" style={{ strokeWidth: 0, width: 'clamp(20px, 4vw, 40px)', height: 'clamp(20px, 4vw, 40px)' }}>
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
               </motion.a>
@@ -528,247 +495,26 @@ function TeamMember({ member, isCore = false, index }: { member: TeamMemberType,
                 whileTap={{ scale: 0.9 }}
                 className="flex items-center justify-center relative"
                 style={{
-                  width: 'clamp(44px, 8vw, 64px)',
-                  height: 'clamp(44px, 8vw, 64px)',
+                  width: 'clamp(36px, 7vw, 64px)',
+                  height: 'clamp(36px, 7vw, 64px)',
                   background: `linear-gradient(135deg, #0077B5 0%, #005885 100%)`,
-                  border: `clamp(2px, 0.5vw, 4px) solid ${bossColor.primary}`,
-                  borderRadius: 'clamp(6px, 1.5vw, 12px)',
+                  border: `clamp(1px, 0.4vw, 4px) solid ${bossColor.primary}`,
+                  borderRadius: 'clamp(4px, 1.2vw, 12px)',
                   boxShadow: `
-                    0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}60,
-                    clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.3)
+                    0 0 clamp(8px, 2vw, 20px) ${bossColor.glow}60,
+                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.6),
+                    inset 0 0 0 clamp(1px, 0.25vw, 2px) rgba(255,255,255,0.3)
                   `,
                   zIndex: 20
                 }}
               >
-                <Linkedin className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(28px, 5vw, 40px)', height: 'clamp(28px, 5vw, 40px)' }} />
+                <Linkedin className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(20px, 4vw, 40px)', height: 'clamp(20px, 4vw, 40px)' }} />
               </motion.a>
             </div>
           </div>
         </div>
       </motion.article>
     );
-  }
-  
-  // Regular card for core team members
-  return (
-    <motion.article 
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.6 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -8, scale: 1.02 }}
-      className="group relative"
-    >
-      {/* Card Container - Watercolor Speed Painting Style */}
-      <div 
-        className="relative overflow-hidden bg-white"
-        style={{ 
-          border: `clamp(2px, 0.5vw, 4px) solid ${borderColor}`,
-          borderRadius: 'clamp(4px, 1vw, 8px)',
-          boxShadow: '0 clamp(2px, 0.5vw, 4px) clamp(6px, 1.5vw, 12px) rgba(0,0,0,0.15), 0 clamp(1px, 0.3vw, 2px) clamp(2px, 0.5vw, 4px) rgba(0,0,0,0.1)',
-        }}
-      >
-        {/* Watercolor Background - Splattered paint effect */}
-        <div 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `radial-gradient(ellipse at 20% 30%, ${bgColorPair[0]}40 0%, transparent 50%),
-                         radial-gradient(ellipse at 80% 70%, ${bgColorPair[1]}40 0%, transparent 50%),
-                         radial-gradient(ellipse at 50% 50%, ${bgColorPair[0]}30 0%, transparent 60%),
-                         radial-gradient(ellipse at 10% 80%, ${bgColorPair[1]}35 0%, transparent 55%)`,
-            backgroundSize: '100% 100%',
-            mixBlendMode: 'multiply',
-            opacity: 0.8
-          }}
-        />
-        
-        {/* Scrolling Train Sign Header */}
-        <div 
-          className="w-full relative z-10 overflow-hidden"
-          style={{
-            background: '#000000',
-            borderBottom: `clamp(2px, 0.4vw, 3px) solid ${borderColor}`,
-            height: 'clamp(24px, 4vw, 32px)',
-            display: 'flex',
-            alignItems: 'center',
-            padding: 'clamp(0.375rem, 0.75vw, 0.5rem) 0'
-          }}
-        >
-          <div 
-            className="train-sign-scroll"
-            style={{
-              display: 'flex',
-              whiteSpace: 'nowrap',
-              animation: 'scrollTrain 15s linear infinite',
-              fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: 'clamp(0.5rem, 1vw, 0.8rem)',
-              color: '#FFD700',
-              fontWeight: '400',
-              letterSpacing: 'clamp(0.05em, 0.15vw, 0.1em)',
-              textShadow: '0 0 clamp(4px, 1vw, 8px) #FFD700, 0 0 clamp(6px, 1.5vw, 12px) #FFD700, 0 0 clamp(8px, 2vw, 16px) #FFD700',
-              textTransform: 'uppercase'
-            }}
-          >
-            <span style={{ paddingRight: '60px' }}>
-              ⚡ FILIPINOWEB3 ⚡ SPEED PAINTINGS ⚡ {member.name.toUpperCase()} ⚡
-            </span>
-            <span style={{ paddingRight: '60px' }}>
-              ⚡ FILIPINOWEB3 ⚡ SPEED PAINTINGS ⚡ {member.name.toUpperCase()} ⚡
-            </span>
-          </div>
-        </div>
-        
-        {/* Character Portrait Area */}
-        <div 
-          className="relative mb-3"
-          style={{
-            minHeight: 'clamp(200px, 35vw, 300px)',
-            background: 'transparent',
-            marginLeft: 'clamp(0.5rem, 1.5vw, 0.75rem)',
-            marginRight: 'clamp(0.5rem, 1.5vw, 0.75rem)'
-          }}
-        >
-          <div 
-            className="relative overflow-hidden"
-            style={{
-              height: 'clamp(180px, 32vw, 280px)',
-              borderRadius: 'clamp(3px, 0.5vw, 4px)',
-              background: 'transparent'
-            }}
-          >
-            <Image 
-              src={member.image} 
-              alt={member.name} 
-              width={400}
-              height={400}
-              className="w-full h-full object-cover"
-              style={{ 
-                filter: 'contrast(1.1) saturate(1.2)',
-                objectPosition: 'center top',
-                mixBlendMode: 'multiply'
-              }}
-            />
-            {/* Watercolor overlay effect */}
-            <div 
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: `radial-gradient(circle at 30% 40%, ${bgColorPair[0]}20 0%, transparent 40%),
-                             radial-gradient(circle at 70% 60%, ${bgColorPair[1]}20 0%, transparent 40%)`,
-                mixBlendMode: 'overlay'
-              }}
-            />
-          </div>
-        </div>
-        
-        {/* Name Tag at Bottom - Colored border matching */}
-        <div 
-          className="relative z-10"
-          style={{
-            paddingLeft: 'clamp(0.5rem, 1.5vw, 0.75rem)',
-            paddingRight: 'clamp(0.5rem, 1.5vw, 0.75rem)',
-            paddingBottom: 'clamp(0.5rem, 1.5vw, 0.75rem)'
-          }}
-        >
-          <div 
-            style={{
-              padding: 'clamp(0.5rem, 1vw, 0.5rem) clamp(0.5rem, 1.5vw, 0.75rem)',
-              background: borderColor,
-              borderRadius: 'clamp(3px, 0.5vw, 4px)',
-              boxShadow: '0 clamp(1px, 0.3vw, 2px) clamp(2px, 0.5vw, 4px) rgba(0,0,0,0.2)'
-            }}
-          >
-            <h4 
-              className="text-center" 
-              style={{
-                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: 'clamp(0.6rem, 1vw, 0.9rem)',
-                color: borderColor === '#00AA00' ? '#FFFF00' : 
-                       borderColor === '#0066FF' ? '#FFD700' :
-                       borderColor === '#FF0000' ? '#FFFFFF' :
-                       borderColor === '#FFD700' ? '#000000' :
-                       borderColor === '#8B5CF6' ? '#FFD700' :
-                       borderColor === '#FF6B9D' ? '#FFFF00' :
-                       borderColor === '#4ECDC4' ? '#FF0000' :
-                       '#000000',
-                fontWeight: '400',
-                letterSpacing: 'clamp(0.03em, 0.08vw, 0.05em)',
-                textShadow: borderColor === '#FFD700' ? 'clamp(0.5px, 0.15vw, 1px) clamp(0.5px, 0.15vw, 1px) 0px rgba(255,255,255,0.5)' : 'clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px rgba(0,0,0,0.5)',
-                lineHeight: '1.3',
-                padding: '0 clamp(0.25rem, 0.5vw, 0.5rem)'
-              }}
-            >
-              {member.name.toUpperCase()}
-            </h4>
-          </div>
-          
-          {/* Social Media Links */}
-          <div className="flex justify-center relative z-20" style={{ gap: 'clamp(0.5rem, 1vw, 0.75rem)', marginTop: 'clamp(0.75rem, 1.5vw, 1rem)', marginBottom: 'clamp(0.5rem, 1vw, 0.5rem)' }}>
-            <motion.a 
-              href={member.socials.facebook} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              className="flex items-center justify-center relative"
-              style={{
-                width: 'clamp(40px, 7vw, 56px)',
-                height: 'clamp(40px, 7vw, 56px)',
-                background: '#1877F2',
-                border: 'clamp(2px, 0.5vw, 4px) solid #000000',
-                borderRadius: 'clamp(4px, 1vw, 8px)',
-                boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.5), inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.2)',
-                zIndex: 20
-              }}
-            >
-              <Facebook className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(24px, 4vw, 32px)', height: 'clamp(24px, 4vw, 32px)' }} />
-            </motion.a>
-            <motion.a 
-              href={member.socials.twitter} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              className="flex items-center justify-center relative"
-              style={{
-                width: 'clamp(40px, 7vw, 56px)',
-                height: 'clamp(40px, 7vw, 56px)',
-                background: '#000000',
-                border: 'clamp(2px, 0.5vw, 4px) solid #FFFFFF',
-                borderRadius: 'clamp(4px, 1vw, 8px)',
-                boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.5), inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.2)',
-                zIndex: 20
-              }}
-            >
-              <svg className="text-white" fill="white" viewBox="0 0 24 24" style={{ strokeWidth: 0, width: 'clamp(24px, 4vw, 32px)', height: 'clamp(24px, 4vw, 32px)' }}>
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-            </motion.a>
-            <motion.a 
-              href={member.socials.linkedin} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-              className="flex items-center justify-center relative"
-              style={{
-                width: 'clamp(40px, 7vw, 56px)',
-                height: 'clamp(40px, 7vw, 56px)',
-                background: '#0077B5',
-                border: 'clamp(2px, 0.5vw, 4px) solid #000000',
-                borderRadius: 'clamp(4px, 1vw, 8px)',
-                boxShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px rgba(0,0,0,0.5), inset 0 0 0 clamp(1px, 0.3vw, 2px) rgba(255,255,255,0.2)',
-                zIndex: 20
-              }}
-            >
-              <Linkedin className="text-white" fill="white" style={{ strokeWidth: 0, width: 'clamp(24px, 4vw, 32px)', height: 'clamp(24px, 4vw, 32px)' }} />
-            </motion.a>
-          </div>
-        </div>
-        
-      </div>
-    </motion.article>
-  );
 }
 
 export default function Team() {
@@ -785,41 +531,7 @@ export default function Team() {
       }} />
       
       <div className="container relative z-10 px-4 sm:px-6 md:px-8" style={{ paddingTop: 'clamp(3rem, 6vw, 5rem)', paddingBottom: 'clamp(3rem, 6vw, 5rem)' }}>
-        {/* Core Team Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center"
-          style={{ marginBottom: 'clamp(2rem, 4vw, 4rem)' }}
-        >
-          <h2 
-            className="font-black text-white pixelated"
-            style={{ 
-              fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: 'clamp(1.5rem, 5vw, 3.5rem)',
-              letterSpacing: '0.05em',
-              textShadow: 'clamp(2px, 0.5vw, 4px) clamp(2px, 0.5vw, 4px) 0px #000000',
-              imageRendering: 'pixelated',
-              WebkitFontSmoothing: 'none',
-              marginBottom: 'clamp(1rem, 2vw, 1.5rem)'
-            }}
-          >
-            CORE TEAM
-          </h2>
-          <div className="flex justify-center" style={{ marginTop: 'clamp(1rem, 2vw, 1.5rem)' }}>
-            <div className="ph-divider" />
-          </div>
-        </motion.div>
-        
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 sm:gap-6 md:gap-8" style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
-          {coreTeam.map((member, index) => (
-            <TeamMember key={index} member={member} isCore={true} index={index} />
-          ))}
-        </div>
-        
-        {/* Founding Members Section */}
+        {/* Founding/Core Members Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -840,17 +552,55 @@ export default function Team() {
               marginBottom: 'clamp(1rem, 2vw, 1.5rem)'
             }}
           >
-            FOUNDING MEMBERS
+            FOUNDING / CORE MEMBERS
           </h2>
           <div className="flex justify-center" style={{ marginTop: 'clamp(1rem, 2vw, 1.5rem)' }}>
             <div className="ph-divider" />
           </div>
         </motion.div>
         
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 sm:gap-6 md:gap-8">
-          {foundingMembers.map((member, index) => (
-            <TeamMember key={index} member={member} isCore={false} index={index + coreTeam.length} />
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+          {[...foundingMembers, ...otherMembers].map((member, index) => (
+            <TeamMember key={`${member.name}-${index}`} member={member} index={index} />
           ))}
+        </div>
+
+        {/* Former Members Callout */}
+        <div 
+          className="flex justify-center"
+          style={{ marginTop: 'clamp(3rem, 6vw, 5rem)', marginBottom: 'clamp(3rem, 6vw, 5rem)' }}
+        >
+          <div
+            className="relative text-center px-6 py-4"
+            style={{
+              border: '3px dashed rgba(255,255,255,0.4)',
+              borderRadius: '12px',
+              background: 'rgba(0,0,0,0.6)',
+              boxShadow: '0 0 20px rgba(0,0,0,0.5)',
+              maxWidth: '600px'
+            }}
+          >
+            <p
+              className="pixelated mb-2"
+              style={{
+                fontSize: 'clamp(0.7rem, 1vw, 1rem)',
+                letterSpacing: '0.1em',
+                color: '#facc15'
+              }}
+            >
+              FORMER MEMBERS
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                fontSize: 'clamp(0.55rem, 0.9vw, 0.85rem)',
+                lineHeight: 1.6,
+                letterSpacing: '0.05em'
+              }}
+            >
+              {formerMembers.join(' • ')}
+            </p>
+          </div>
         </div>
       </div>
     </section>
