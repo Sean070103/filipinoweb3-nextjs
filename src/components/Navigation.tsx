@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Home, FlaskConical, Briefcase, Mail } from "lucide-react";
+import { ChevronDown, Home, FlaskConical, Briefcase, Users } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -55,6 +55,7 @@ export default function Navigation() {
     { id: "about", label: "About" },
     { id: "team", label: "Team" },
     { id: "faqs", label: "FAQs", category: null },
+    { id: "contact", label: "Contact" },
   ];
 
   return (
@@ -139,12 +140,14 @@ export default function Navigation() {
                 <Briefcase className="navbar-icon" />
                 CAREERS
               </button>
-          </Link>
+            </Link>
 
-            <button className="navbar-button navbar-contact" onClick={() => scrollToSection("contact")}>
-              <Mail className="navbar-icon" />
-              CONTACT
-            </button>
+            <Link href="/community" className="navbar-link">
+              <button className="navbar-button navbar-community">
+                <Users className="navbar-icon" />
+                COMMUNITY
+              </button>
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -224,20 +227,15 @@ export default function Navigation() {
                   <Briefcase className="navbar-icon" />
                   CAREERS
                 </button>
-          </Link>
+              </Link>
 
-              <button
-                className="navbar-button navbar-contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("contact");
-                  setMobileOpen(false);
-                }}
-              >
-                <Mail className="navbar-icon" />
-                CONTACT
-              </button>
-        </div>
+              <Link href="/community" className="navbar-link" onClick={() => setMobileOpen(false)}>
+                <button className="navbar-button navbar-community">
+                  <Users className="navbar-icon" />
+                  COMMUNITY
+                </button>
+              </Link>
+            </div>
           </>
         )}
       </nav>
@@ -451,16 +449,16 @@ export default function Navigation() {
           border-color: #ffe4c7;
         }
 
-        .navbar-contact {
-          background: linear-gradient(180deg, #c084fc 0%, #9333ea 100%);
-          border-color: #f5d0fe;
-          color: #230334;
-          text-shadow: 1px 1px 0 #f5d0fe60;
+        .navbar-community {
+          background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+          border-color: #86efac;
+          color: #03110c;
+          text-shadow: 1px 1px 0 #86efac50;
         }
 
-        .navbar-contact:hover {
-          background: linear-gradient(180deg, #d8b4fe 0%, #7e22ce 100%);
-          border-color: #fde4ff;
+        .navbar-community:hover {
+          background: linear-gradient(180deg, #4ade80 0%, #15803d 100%);
+          border-color: #bbf7d0;
         }
 
         .navbar-icon {

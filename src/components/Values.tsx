@@ -420,7 +420,7 @@ export default function Values() {
           ))}
         </div>
 
-        {/* CTA Section */}
+        {/* CTA Section - Retro Pixel Popup */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -434,156 +434,188 @@ export default function Values() {
           }}
         >
           <div 
-            className="p-4 sm:p-6 md:p-8 lg:p-12 max-w-4xl mx-auto text-center pixelated w-full"
+            className="p-6 sm:p-8 md:p-10 lg:p-12 max-w-3xl mx-auto text-center pixelated w-full relative"
             style={{
               background: '#000000',
-              border: 'clamp(2px, 0.5vw, 4px) solid #CCCCCC',
+              border: 'clamp(3px, 0.8vw, 5px) solid #CCCCCC',
               borderStyle: 'outset',
-              borderRadius: 'clamp(8px, 1.5vw, 12px)',
-              boxShadow: 'clamp(3px, 0.8vw, 6px) clamp(3px, 0.8vw, 6px) 0px rgba(0,0,0,0.8), inset clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px rgba(255,255,255,0.1)',
+              borderRadius: 'clamp(12px, 2vw, 16px)',
+              boxShadow: 'clamp(4px, 1vw, 8px) clamp(4px, 1vw, 8px) 0px rgba(0,0,0,0.9), inset clamp(2px, 0.5vw, 3px) clamp(2px, 0.5vw, 3px) 0px rgba(255,255,255,0.15)',
               imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-              overflow: 'hidden'
+              overflow: 'hidden',
+              position: 'relative'
             }}
           >
-            <h3 
-              className="pixelated mb-3 sm:mb-4 md:mb-6" 
-              style={{ 
-                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                letterSpacing: '0.08em',
-                fontSize: 'clamp(1rem, 3vw, 2rem)',
-                color: '#FFFFFF',
-                fontWeight: '400',
-                imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                WebkitFontSmoothing: 'none',
-                textShadow: 'clamp(2px, 0.4vw, 3px) clamp(2px, 0.4vw, 3px) 0px #000000',
-                lineHeight: '1.4',
-                wordBreak: 'break-word',
-                padding: '0 clamp(0.5rem, 2vw, 1rem)'
-              }}
-            >
-              READY TO BUILD THE FUTURE?
-            </h3>
-            <p 
-              className="text-white mb-4 sm:mb-6 md:mb-8 text-center" 
+            {/* Grid Background Pattern */}
+            <div 
+              className="absolute inset-0 pointer-events-none opacity-20"
               style={{
-                fontFamily: '"Courier New", monospace',
-                fontWeight: 'bold',
-                fontSize: 'clamp(0.75rem, 2vw, 1rem)',
-                lineHeight: '1.6',
-                wordWrap: 'break-word',
-                textAlign: 'center',
-                display: 'block',
-                margin: '0 auto',
-                maxWidth: '100%',
-                padding: '0 clamp(0.5rem, 2vw, 1rem)'
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='none'/%3E%3Cpath d='M 0 0 L 20 0 M 0 20 L 20 20 M 0 0 L 0 20 M 20 0 L 20 20' stroke='%2306b6d4' stroke-width='0.5'/%3E%3C/svg%3E")`,
+                backgroundSize: '20px 20px',
+                imageRendering: 'pixelated' as CSSProperties['imageRendering']
               }}
-            >
-              Join our community of Web3 builders, developers, and innovators.
-            </p>
-            <div className="flex justify-center mb-3 sm:mb-4 px-2">
-              <motion.div
-                whileHover={{ 
-                  scale: 1.05,
-                  y: -2
-                }}
-                whileTap={{ 
-                  scale: 0.98,
-                  y: 2,
-                  boxShadow: 'inset 0 4px 8px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.3)'
+            />
+            
+            <div className="relative z-10">
+              <h3 
+                className="pixelated mb-4 sm:mb-5 md:mb-6" 
+                style={{ 
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  letterSpacing: '0.1em',
+                  fontSize: 'clamp(1.1rem, 3.5vw, 2.2rem)',
+                  color: '#FFFFFF',
+                  fontWeight: '400',
+                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                  WebkitFontSmoothing: 'none',
+                  textShadow: 'clamp(3px, 0.6vw, 4px) clamp(3px, 0.6vw, 4px) 0px #000000, 0 0 clamp(10px, 2vw, 15px) rgba(6, 182, 212, 0.5)',
+                  lineHeight: '1.3',
+                  wordBreak: 'break-word',
+                  padding: '0 clamp(0.5rem, 2vw, 1rem)'
                 }}
               >
-                <Link
-                  href="/community"
-                  className="pixelated mario-button relative overflow-hidden"
-                  style={{
-                    background: 'linear-gradient(180deg, #FF6B6B 0%, #E63946 50%, #C1121F 100%)',
-                    color: '#FFFFFF',
-                    padding: 'clamp(1rem, 2.5vw, 1.5rem) clamp(1.5rem, 4vw, 3rem)',
-                    border: 'clamp(2px, 0.5vw, 4px) solid #000000',
-                    borderStyle: 'outset',
-                    borderRadius: 'clamp(30px, 6vw, 50px)',
-                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                    fontSize: 'clamp(0.7rem, 2vw, 1rem)',
-                    fontWeight: '400',
-                    textTransform: 'uppercase',
-                    boxShadow: 'inset 0 clamp(-2px, -0.5vw, -4px) 0 rgba(0,0,0,0.3), inset 0 clamp(2px, 0.5vw, 4px) 0 rgba(255,255,255,0.2), 0 clamp(4px, 1vw, 8px) 0 rgba(0,0,0,0.6), 0 clamp(6px, 1.5vw, 12px) 0 rgba(0,0,0,0.4)',
-                    imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                    WebkitFontSmoothing: 'none',
-                    fontSmooth: 'never',
-                    letterSpacing: '0.1em',
-                    lineHeight: '1.3',
-                    cursor: 'pointer',
-                    transition: 'all 0.1s ease',
-                    minWidth: 'clamp(200px, 50vw, 280px)',
-                    width: 'auto',
-                    maxWidth: '100%',
-                    display: 'inline-block',
-                    position: 'relative',
-                    zIndex: 10,
-                    opacity: 1,
-                    textShadow: 'clamp(2px, 0.4vw, 3px) clamp(2px, 0.4vw, 3px) 0px rgba(0,0,0,0.8), clamp(1px, 0.2vw, 1px) clamp(1px, 0.2vw, 1px) 0px rgba(0,0,0,0.5)',
-                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                    textDecoration: 'none'
+                READY TO BUILD THE<br />
+                <span style={{ 
+                  fontSize: 'clamp(1.3rem, 4vw, 2.5rem)',
+                  background: 'linear-gradient(135deg, #06b6d4 0%, #22c55e 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>FUTURE?</span>
+              </h3>
+              
+              <p 
+                className="mb-6 sm:mb-8 md:mb-10 text-center" 
+                style={{
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontWeight: '400',
+                  fontSize: 'clamp(0.65rem, 1.8vw, 0.9rem)',
+                  lineHeight: '1.8',
+                  wordWrap: 'break-word',
+                  textAlign: 'center',
+                  display: 'block',
+                  margin: '0 auto',
+                  maxWidth: '100%',
+                  padding: '0 clamp(0.5rem, 2vw, 1rem)',
+                  color: '#CCCCCC',
+                  textShadow: '2px 2px 0px #000000',
+                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                  WebkitFontSmoothing: 'none'
+                }}
+              >
+                Join our community of Web3 builders, developers, and innovators.
+              </p>
+              
+              <div className="flex justify-center mb-4 sm:mb-5 px-2">
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.05,
+                    y: -3
+                  }}
+                  whileTap={{ 
+                    scale: 0.95,
+                    y: 0
                   }}
                 >
-                {/* Top highlight */}
-                <div 
-                  className="absolute top-0 left-0 right-0 pointer-events-none"
-                  style={{
-                    height: '40%',
-                    background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)',
-                    borderRadius: '50px 50px 0 0',
-                    imageRendering: 'pixelated' as CSSProperties['imageRendering']
-                  }}
-                />
-                {/* Bottom shadow */}
-                <div 
-                  className="absolute bottom-0 left-0 right-0 pointer-events-none"
-                  style={{
-                    height: '40%',
-                    background: 'linear-gradient(0deg, rgba(0,0,0,0.2) 0%, transparent 100%)',
-                    borderRadius: '0 0 50px 50px',
-                    imageRendering: 'pixelated' as CSSProperties['imageRendering']
-                  }}
-                />
-                {/* Pixelated pattern overlay */}
-                <div 
-                  className="absolute inset-0 pointer-events-none opacity-10"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='4' fill='none'/%3E%3Crect x='0' y='0' width='1' height='4' fill='%23ffffff'/%3E%3Crect x='0' y='0' width='4' height='1' fill='%23ffffff'/%3E%3C/svg%3E")`,
-                    backgroundSize: '4px 4px',
-                    imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                    borderRadius: '50px'
-                  }}
-                />
-                  <span className="relative z-10" style={{
-                    imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                    WebkitFontSmoothing: 'none',
-                    fontSmooth: 'never',
-                    display: 'block'
-                  }}>JOIN OUR COMMUNITY</span>
-                </Link>
-              </motion.div>
-            </div>
-            
-            {/* Pixelated Footer Pattern */}
-            <div 
-              className="mt-4 sm:mt-6 md:mt-8 pt-2 sm:pt-3 md:pt-4"
-              style={{
-                borderTop: 'clamp(1px, 0.3vw, 2px) solid #666666',
-                paddingTop: 'clamp(0.5rem, 1.5vw, 1rem)'
-              }}
-            >
-              <div
+                  <Link
+                    href="/community"
+                    className="pixelated relative overflow-hidden block"
+                    style={{
+                      background: 'linear-gradient(135deg, #06b6d4 0%, #22c55e 50%, #06b6d4 100%)',
+                      backgroundSize: '200% 200%',
+                      color: '#000000',
+                      padding: 'clamp(1rem, 2.5vw, 1.5rem) clamp(2rem, 5vw, 3.5rem)',
+                      border: 'clamp(3px, 0.8vw, 5px) solid #000000',
+                      borderStyle: 'outset',
+                      borderRadius: '0',
+                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                      fontSize: 'clamp(0.7rem, 1.8vw, 0.95rem)',
+                      fontWeight: '400',
+                      textTransform: 'uppercase',
+                      boxShadow: 'inset 0 clamp(-3px, -0.8vw, -5px) 0 rgba(0,0,0,0.2), inset 0 clamp(3px, 0.8vw, 5px) 0 rgba(255,255,255,0.3), 0 clamp(4px, 1vw, 8px) 0 rgba(0,0,0,0.8)',
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                      WebkitFontSmoothing: 'none',
+                      fontSmooth: 'never',
+                      letterSpacing: '0.15em',
+                      lineHeight: '1.4',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      minWidth: 'clamp(220px, 55vw, 300px)',
+                      width: 'auto',
+                      maxWidth: '100%',
+                      display: 'inline-block',
+                      position: 'relative',
+                      zIndex: 10,
+                      textShadow: '1px 1px 0px rgba(255,255,255,0.3)',
+                      textDecoration: 'none'
+                    }}
+                  >
+                    {/* Animated gradient overlay */}
+                    <motion.div 
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%, rgba(255,255,255,0.1) 100%)',
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering']
+                      }}
+                      animate={{
+                        backgroundPosition: ['0% 0%', '100% 100%'],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatType: 'reverse',
+                        ease: 'linear'
+                      }}
+                    />
+                    {/* Top highlight */}
+                    <div 
+                      className="absolute top-0 left-0 right-0 pointer-events-none"
+                      style={{
+                        height: '35%',
+                        background: 'linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%)',
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering']
+                      }}
+                    />
+                    {/* Pixelated pattern overlay */}
+                    <div 
+                      className="absolute inset-0 pointer-events-none opacity-15"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='4' fill='none'/%3E%3Crect x='0' y='0' width='1' height='4' fill='%23000000'/%3E%3Crect x='0' y='0' width='4' height='1' fill='%23000000'/%3E%3C/svg%3E")`,
+                        backgroundSize: '4px 4px',
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering']
+                      }}
+                    />
+                    <span className="relative z-10" style={{
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                      WebkitFontSmoothing: 'none',
+                      fontSmooth: 'never',
+                      display: 'block',
+                      position: 'relative',
+                      zIndex: 2
+                    }}>JOIN OUR COMMUNITY</span>
+                  </Link>
+                </motion.div>
+              </div>
+              
+              {/* Pixelated Footer Pattern - Yellow/Black Checkerboard */}
+              <div 
+                className="mt-5 sm:mt-6 md:mt-8 pt-3 sm:pt-4 md:pt-5"
                 style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='%23FFD700'/%3E%3Crect x='2' y='2' width='4' height='4' fill='%23000000'/%3E%3C/svg%3E")`,
-                  backgroundSize: 'clamp(6px, 1.5vw, 8px) clamp(6px, 1.5vw, 8px)',
-                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                  height: 'clamp(12px, 2.5vw, 16px)',
-                  opacity: 0.8,
-                  borderTop: 'clamp(0.5px, 0.2vw, 1px) solid #999999'
+                  borderTop: 'clamp(2px, 0.5vw, 3px) solid #666666',
+                  paddingTop: 'clamp(0.75rem, 2vw, 1.25rem)'
                 }}
-              />
+              >
+                <div
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='12' height='12' fill='%23FFD700'/%3E%3Crect x='0' y='0' width='6' height='6' fill='%23000000'/%3E%3Crect x='6' y='6' width='6' height='6' fill='%23000000'/%3E%3C/svg%3E")`,
+                    backgroundSize: 'clamp(10px, 2vw, 12px) clamp(10px, 2vw, 12px)',
+                    imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                    height: 'clamp(16px, 3vw, 20px)',
+                    opacity: 0.9,
+                    borderTop: 'clamp(1px, 0.3vw, 2px) solid #999999',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.5)'
+                  }}
+                />
+              </div>
             </div>
           </div>
         </motion.div>

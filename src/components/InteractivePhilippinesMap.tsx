@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { X, Sparkles } from 'lucide-react';
+import { REGION_COLORS, getRegionColor, getRegionGlowColor, type Region } from '@/constants/regionColors';
 
 type CommunityLocation = {
   name: string;
@@ -83,15 +84,8 @@ const communityLocations: CommunityLocation[] = [
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const createCustomIcon = (L: any, region: CommunityLocation['region'], isSelected: boolean, isHovered: boolean) => {
   const size = isSelected ? 32 : isHovered ? 24 : 20;
-  const color = 
-    region === 'Luzon' ? '#22d3ee' :
-    region === 'Visayas' ? '#a855f7' :
-    '#f97316';
-
-  const glowColor = 
-    region === 'Luzon' ? 'rgba(34, 211, 238, 0.8)' :
-    region === 'Visayas' ? 'rgba(168, 85, 247, 0.8)' :
-    'rgba(249, 115, 22, 0.8)';
+  const color = getRegionColor(region as Region);
+  const glowColor = getRegionGlowColor(region as Region, 0.8);
 
   return L.divIcon({
     className: 'custom-marker',
@@ -176,6 +170,8 @@ export default function InteractivePhilippinesMap() {
   const markersRef = useRef<any[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const leafletRef = useRef<any>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const geoJsonLayerRef = useRef<any>(null);
   const [selectedLocation, setSelectedLocation] = useState<CommunityLocation | null>(null);
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
@@ -245,6 +241,9 @@ export default function InteractivePhilippinesMap() {
             },
           }).addTo(map);
           
+          // Store reference to GeoJSON layer
+          geoJsonLayerRef.current = geoJsonLayer;
+          
           // Add hover effect
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           geoJsonLayer.on('mouseover', function(e: any) {
@@ -290,6 +289,9 @@ export default function InteractivePhilippinesMap() {
                 },
               }).addTo(map);
               
+              // Store reference to GeoJSON layer
+              geoJsonLayerRef.current = geoJsonLayer;
+              
               const padding = isMobile ? [15, 15] : [30, 30];
               map.fitBounds(geoJsonLayer.getBounds(), { padding });
             }
@@ -312,6 +314,19 @@ export default function InteractivePhilippinesMap() {
           setSelectedLocation(location);
           const zoomLevel = isMobile ? 8 : 9;
           map.setView(location.coordinates, zoomLevel, { animate: true, duration: 1 });
+          
+          // Change map color based on selected region
+          if (geoJsonLayerRef.current) {
+            const regionColor = REGION_COLORS[location.region as Region];
+            const regionGlow = getRegionGlowColor(location.region as Region, 0.6);
+            
+            geoJsonLayerRef.current.setStyle({
+              fillColor: regionGlow,
+              fillOpacity: 0.4,
+              color: regionColor,
+              weight: 4,
+            });
+          }
         })
         .on('mouseover', () => {
           setHoveredLocation(location.name);
@@ -319,6 +334,16 @@ export default function InteractivePhilippinesMap() {
         .on('mouseout', () => {
           setHoveredLocation(null);
         });
+
+      // Get all members in the same city
+      const cityName = getCityLabel(location);
+      const membersInCity = communityLocations.filter(
+        (loc) => getCityLabel(loc) === cityName
+      );
+      const memberNames = membersInCity.map((loc) => {
+        const parts = loc.name.split('•');
+        return parts.length > 1 ? parts[1].trim() : '';
+      }).filter(Boolean);
 
       // Enhanced popup with responsive sizing
       marker.bindPopup(`
@@ -347,8 +372,18 @@ export default function InteractivePhilippinesMap() {
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
               background-clip: text;
-            ">${location.name.toUpperCase()}</strong>
+            ">${cityName.toUpperCase()}</strong>
           </div>
+          ${memberNames.length > 0 ? `
+            <div style="
+              font-size: ${isMobile ? '0.5rem' : '0.6rem'};
+              color: #a855f7;
+              margin-bottom: ${isMobile ? '0.25rem' : '0.35rem'};
+              line-height: 1.4;
+            ">
+              ${memberNames.join(' • ')}
+            </div>
+          ` : ''}
           <div style="
             font-size: ${isMobile ? '0.5rem' : '0.6rem'};
             opacity: 0.9;
@@ -381,6 +416,7 @@ export default function InteractivePhilippinesMap() {
       map.remove();
       mapRef.current = null;
       markersRef.current = [];
+      geoJsonLayerRef.current = null;
     };
   }, [isMapLoaded]);
 
@@ -398,11 +434,22 @@ export default function InteractivePhilippinesMap() {
     });
   }, [selectedLocation, hoveredLocation]);
 
-  const regionColors = {
-    Luzon: '#22d3ee',
-    Visayas: '#a855f7',
-    Mindanao: '#f97316',
-  };
+  // Reset map color when no location is selected
+  useEffect(() => {
+    if (!geoJsonLayerRef.current) return;
+    
+    if (!selectedLocation) {
+      // Reset to default cyan color
+      geoJsonLayerRef.current.setStyle({
+        fillColor: 'rgba(34, 211, 238, 0.25)',
+        fillOpacity: 0.9,
+        color: 'rgba(34, 211, 238, 1)',
+        weight: 3,
+      });
+    }
+  }, [selectedLocation]);
+
+  const regionColors = REGION_COLORS;
 
   const getCityLabel = (location: CommunityLocation) =>
     location.name.split('•')[0]?.trim() || location.name;
@@ -603,24 +650,46 @@ export default function InteractivePhilippinesMap() {
                           flexShrink: 0,
                         }} 
                       />
-                      <h3
-                        style={{
-                          fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                          fontSize: 'clamp(0.75rem, 1.8vw, 1rem)',
-                          letterSpacing: '0.08em',
-                          margin: 0,
-                          background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
-                          backgroundClip: 'text',
-                          textShadow: `0 0 10px ${regionColors[selectedLocation.region]}40`,
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {getCityLabel(selectedLocation).toUpperCase()}
-                      </h3>
+                      <div className="flex-1 min-w-0">
+                        <h3
+                          style={{
+                            fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                            fontSize: 'clamp(0.75rem, 1.8vw, 1rem)',
+                            letterSpacing: '0.08em',
+                            margin: 0,
+                            marginBottom: '0.25rem',
+                            background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            textShadow: `0 0 10px ${regionColors[selectedLocation.region]}40`,
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          {getCityLabel(selectedLocation).toUpperCase()}
+                        </h3>
+                        {(() => {
+                          const memberName = selectedLocation.name.split('•')[1]?.trim();
+                          return memberName ? (
+                            <div
+                              style={{
+                                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                                fontSize: 'clamp(0.55rem, 1.2vw, 0.7rem)',
+                                letterSpacing: '0.05em',
+                                color: '#a855f7',
+                                marginTop: '0.15rem',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              {memberName.toUpperCase()}
+                            </div>
+                          ) : null;
+                        })()}
+                      </div>
                     </div>
                     <div
                       style={{

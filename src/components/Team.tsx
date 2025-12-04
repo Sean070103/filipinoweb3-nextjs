@@ -560,7 +560,7 @@ export default function Team() {
         </motion.div>
         
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-          {[...foundingMembers, ...otherMembers].map((member, index) => (
+          {otherMembers.map((member, index) => (
             <TeamMember key={`${member.name}-${index}`} member={member} index={index} />
           ))}
         </div>
@@ -588,7 +588,7 @@ export default function Team() {
                 color: '#facc15'
               }}
             >
-              FORMER MEMBERS
+              FOUNDING / FORMER MEMBERS
             </p>
             <p
               style={{
@@ -598,7 +598,7 @@ export default function Team() {
                 letterSpacing: '0.05em'
               }}
             >
-              {formerMembers.join(' • ')}
+              {[...foundingMembers.map((m) => m.name), ...formerMembers].join(' • ')}
             </p>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import InteractivePhilippinesMap from "@/components/InteractivePhilippinesMap";
+import { REGION_COLORS, type Region } from "@/constants/regionColors";
 
 type Champion = {
   name: string;
@@ -239,12 +240,7 @@ export default function CommunityPage() {
             }}
           >
             {champions.map((champion) => {
-              const regionColors = {
-                Luzon: "#22d3ee",
-                Visayas: "#a855f7",
-                Mindanao: "#f97316",
-              };
-              const color = regionColors[champion.region];
+              const color = REGION_COLORS[champion.region as Region];
 
               return (
                 <div
