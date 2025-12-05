@@ -44,8 +44,9 @@ export default function RetroGamingHero() {
 
       {/* Large Mobile Cloud (centered) */}
       <div 
-        className="absolute inset-x-0 top-32 flex justify-center z-20 pixel-cloud sm:hidden"
+        className="absolute inset-x-0 flex justify-center z-20 pixel-cloud sm:hidden"
         style={{
+          top: 'clamp(60px, 12vw, 100px)',
           animation: 'floatCloud 14s ease-in-out infinite',
         }}
       >
@@ -57,7 +58,7 @@ export default function RetroGamingHero() {
           priority
           style={{ 
             imageRendering: 'pixelated',
-            width: 'min(90vw, 320px)',
+            width: 'min(95vw, 400px)',
             height: 'auto'
           }}
         />
@@ -105,8 +106,9 @@ export default function RetroGamingHero() {
       </div>
 
       <div 
-        className="absolute left-1/2 transform -translate-x-1/2 z-20 pixel-cloud top-28 sm:top-20 md:top-16"
+        className="absolute left-1/2 transform -translate-x-1/2 z-20 pixel-cloud"
         style={{
+          top: 'clamp(60px, 12vw, 100px)',
           animation: 'floatCloud 12s ease-in-out infinite',
         }}
       >
@@ -118,7 +120,7 @@ export default function RetroGamingHero() {
           priority
           style={{ 
             imageRendering: 'pixelated',
-            width: 'clamp(80px, 40vw, 160px)',
+            width: 'clamp(120px, 50vw, 200px)',
             height: 'auto'
           }}
         />
@@ -224,10 +226,12 @@ export default function RetroGamingHero() {
         />
       </div>
 
-      {/* Animated Sun */}
+      {/* Animated Sun - Mobile Visible */}
       <div 
-        className="absolute top-8 right-1/3 z-20 hidden sm:block"
+        className="absolute z-20"
         style={{
+          top: 'clamp(60px, 12vw, 100px)',
+          right: 'clamp(8px, 5vw, 120px)',
           animation: 'pulseSun 4s ease-in-out infinite',
         }}
       >
@@ -236,9 +240,9 @@ export default function RetroGamingHero() {
           style={{ 
             imageRendering: 'pixelated',
             borderRadius: '50%',
-            width: 'clamp(40px, 5vw, 64px)',
-            height: 'clamp(40px, 5vw, 64px)',
-            boxShadow: '0 0 20px rgba(255, 255, 0, 0.6), 0 0 40px rgba(255, 255, 0, 0.4)',
+            width: 'clamp(60px, 12vw, 80px)',
+            height: 'clamp(60px, 12vw, 80px)',
+            boxShadow: '0 0 25px rgba(255, 255, 0, 0.7), 0 0 50px rgba(255, 255, 0, 0.5)',
             animation: 'rotateSun 20s linear infinite',
           }}
         />

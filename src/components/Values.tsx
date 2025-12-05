@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import type { CSSProperties } from 'react';
+import { Link2, Zap, CircleDot } from 'lucide-react';
 
 export default function Values() {
   // const containerVariants = {
@@ -32,29 +33,27 @@ export default function Values() {
 
   const values = [
     {
-      title: "Bayanihan",
+      title: "HOLISTIC",
       image: "/images/holistic.png",
-      description: "The Filipino spirit of community cooperation drives our Web3 ecosystem. Every builder, developer, and community member works together for collective success.",
-      color: "from-red-500 to-yellow-500",
-      glowColor: "#FFD700"
+      description: "Building in Web3 involves different roles that are essential in its success as an industry. Maintaining the balance and flow of interdependence is vital for overall development. As builders, we must develop and strengthen the shared goals and ideals of our communities.",
+      neonColor: "#00FFFF", // Cyan
+      icon: CircleDot
     },
     {
-      title: "Malasakit",
+      title: "CONNECTED",
       image: "/images/connected.png",
-      description: "Deep concern for others' welfare guides our Web3 relationships. We build authentic connections that uplift our entire Filipino community.",
-      color: "from-blue-500 to-red-500",
-      glowColor: "#FF6B9D"
+      description: "Web3 interactions should be built on authentic, harmonious, and mutually-beneficial relationships. Strategies must be attuned to the community's needs, passions, and interests. The organization's advocacy is a community-centered approach for the professional development of the community.",
+      neonColor: "#FF00FF", // Magenta
+      icon: Link2
     },
     {
-      title: "Diskarte",
+      title: "INNOVATIVE",
       image: "/images/innovative.png", 
-      description: "Filipino resourcefulness meets Web3 innovation. We embrace change with creative problem-solving and stay ahead of the curve.",
-      color: "from-yellow-500 to-blue-500",
-      glowColor: "#4ECDC4"
+      description: "Web3 as an emerging industry is distinguished by its fast-paced dynamics. It is important for Web3 builders to be highly agile and adaptable. The organization aims to foster a vibrant exchange of information and encourage continuing education.",
+      neonColor: "#FFFF00", // Yellow
+      icon: Zap
     }
   ];
-
-  const dotPositions = [2, 0, 1]; // Yellow dot position for each card (0=blue, 1=red, 2=yellow)
 
   return (
     <>
@@ -172,252 +171,250 @@ export default function Values() {
         }
       `}} />
     <section id="about" className="values relative">
-      {/* Dark Background with Grid Pattern */}
+      {/* Dark Futuristic Background */}
       <div className="absolute inset-0" style={{
-        background: '#000000'
+        background: 'linear-gradient(135deg, #0d0d0d 0%, #111111 50%, #0d0d0d 100%)'
       }} />
-      <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='none'/%3E%3Crect x='0' y='0' width='1' height='8' fill='%23FFD700'/%3E%3Crect x='0' y='0' width='8' height='1' fill='%23FFD700'/%3E%3C/svg%3E")`,
-        backgroundSize: '8px 8px',
+      
+      {/* Subtle Grid Overlay */}
+      <div className="absolute inset-0 opacity-10" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='none'/%3E%3Cpath d='M 0 0 L 20 0 M 0 20 L 20 20 M 0 0 L 0 20 M 20 0 L 20 20' stroke='%2300FFFF' stroke-width='0.5'/%3E%3C/svg%3E")`,
+        backgroundSize: '20px 20px',
         imageRendering: 'pixelated' as CSSProperties['imageRendering']
       }} />
       
-      {/* Animated Scanlines */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10" style={{
-        background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.1) 2px, rgba(255,255,255,0.1) 4px)',
-        imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-        animation: 'scanline 8s linear infinite'
+      {/* Subtle Scanlines */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-5" style={{
+        background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,255,0.1) 2px, rgba(0,255,255,0.1) 4px)',
+        imageRendering: 'pixelated' as CSSProperties['imageRendering']
       }} />
       
-      <div className="container relative z-10 py-8 sm:py-12 md:py-16 lg:py-24">
+      <div className="container relative z-10 py-12 sm:py-16 md:py-20 lg:py-24">
         {/* Header */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 px-4 sm:px-6"
+          className="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20 px-4 sm:px-6"
         >
           <h2 className="pixelated" style={{ 
             fontFamily: 'var(--font-press-start-2p), "Courier New", monospace', 
-            letterSpacing: '0.1em', 
+            letterSpacing: '0.15em', 
             lineHeight: '1.4', 
-            fontSize: 'clamp(2rem, 6vw, 5rem)',
+            fontSize: 'clamp(2rem, 5vw, 4rem)',
             imageRendering: 'pixelated' as CSSProperties['imageRendering'],
             WebkitFontSmoothing: 'none',
-            textRendering: 'optimizeSpeed',
-            wordSpacing: '0.2em'
+            textRendering: 'optimizeSpeed'
           }}>
             <span style={{ 
               color: '#FFFFFF',
-              textShadow: '4px 4px 0px #000000',
+              textShadow: '3px 3px 0px #000000',
               WebkitFontSmoothing: 'none',
               display: 'inline-block',
-              marginRight: '0.3em'
+              marginRight: '0.4em'
             }}>OUR</span>
             <span style={{ 
-              color: '#00FF00',
-              textShadow: '0 0 10px #00FF00, 0 0 20px #00FF00, 0 0 30px #00FF00, 4px 4px 0px #000000',
+              color: '#00FFFF',
+              textShadow: `
+                3px 3px 0px #000000,
+                0 0 10px #00FFFF40,
+                0 0 20px #00FFFF20
+              `,
               WebkitFontSmoothing: 'none',
-              filter: 'drop-shadow(0 0 5px #00FF00)',
               display: 'inline-block'
             }}>VALUES</span>
           </h2>
         </motion.div>
 
-        {/* Values Grid */}
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 sm:gap-6 md:gap-8 max-w-7xl mx-auto mb-8 sm:mb-12 md:mb-16 px-4 sm:px-6 md:px-8">
-          {values.map((value, index) => (
-            <motion.div
-              key={value.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="group relative"
-            >
-              {/* Card - Pixelated Style with Pink Triangles */}
-              <motion.div 
-                className="value-card relative pixelated h-full flex flex-col"
-                style={{
-                  background: '#000000',
-                  border: 'clamp(2px, 0.5vw, 4px) solid #FFFFFF',
-                  borderStyle: 'outset',
-                  borderRadius: 'clamp(8px, 1.5vw, 12px)',
-                  boxShadow: 'clamp(3px, 0.8vw, 6px) clamp(3px, 0.8vw, 6px) 0px rgba(0,0,0,0.8), inset clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px rgba(255,255,255,0.1)',
-                  imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                  WebkitFontSmoothing: 'none',
-                  fontSmooth: 'never',
-                  overflow: 'hidden'
-                }}
-                whileHover={{ 
-                  y: -8,
-                  transition: { duration: 0.3 }
-                }}
+        {/* Values Grid - Cyberpunk Pixel Art Style */}
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 sm:gap-10 md:gap-12 max-w-7xl mx-auto mb-8 sm:mb-12 md:mb-16 px-4 sm:px-6 md:px-8">
+          {values.map((value, index) => {
+            const IconComponent = value.icon;
+            return (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.15, duration: 0.6, ease: "easeOut" }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="group relative"
               >
-                {/* Pink Triangles on Top Edge */}
-                <div className="absolute -top-2 sm:-top-3 md:-top-4 left-0 right-0 flex justify-start gap-0.5 sm:gap-1 px-1 sm:px-2" style={{ zIndex: 1 }}>
-                  {[...Array(8)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="hidden sm:block"
-                      style={{
-                        width: 0,
-                        height: 0,
-                        borderLeft: 'clamp(4px, 1vw, 6px) solid transparent',
-                        borderRight: 'clamp(4px, 1vw, 6px) solid transparent',
-                        borderBottom: 'clamp(6px, 1.2vw, 8px) solid #FF6B9D',
-                        imageRendering: 'pixelated' as CSSProperties['imageRendering']
-                      }}
-                    />
-                  ))}
-                </div>
-                
-                {/* Image */}
-                <div className="relative overflow-hidden flex-shrink-0" style={{ borderBottom: 'clamp(2px, 0.5vw, 4px) solid #FFFFFF' }}>
-                  <Image 
-                    src={value.image} 
-                    alt={value.title} 
-                    width={400}
-                    height={250}
-                    className="w-full h-40 xs:h-44 sm:h-48 md:h-56 object-cover"
+                {/* Cyberpunk Card */}
+                <motion.div 
+                  className="relative h-full flex flex-col"
+                  style={{
+                    background: 'linear-gradient(135deg, #0d0d0d 0%, #0f0f0f 50%, #0d0d0d 100%)',
+                    border: `1px solid ${value.neonColor}35`,
+                    borderRadius: '0',
+                    boxShadow: `
+                      0 0 15px ${value.neonColor}15,
+                      inset 0 0 15px ${value.neonColor}03
+                    `,
+                    overflow: 'hidden',
+                    minHeight: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    position: 'relative'
+                  }}
+                  whileHover={{ 
+                    y: -3,
+                    borderColor: `${value.neonColor}50`,
+                    boxShadow: `
+                      0 0 20px ${value.neonColor}25,
+                      inset 0 0 20px ${value.neonColor}05
+                    `,
+                    transition: { duration: 0.25 }
+                  }}
+                >
+                  {/* Subtle Grid Overlay */}
+                  <div 
+                    className="absolute inset-0 pointer-events-none opacity-3"
                     style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='none'/%3E%3Cpath d='M 0 0 L 20 0 M 0 20 L 20 20 M 0 0 L 0 20 M 20 0 L 20 20' stroke='${value.neonColor}' stroke-width='0.3'/%3E%3C/svg%3E")`,
+                      backgroundSize: '20px 20px',
                       imageRendering: 'pixelated' as CSSProperties['imageRendering']
                     }}
                   />
-                </div>
-                
-                {/* Content */}
-                <div className="p-3 sm:p-4 md:p-6 flex flex-col flex-grow space-y-2 sm:space-y-3 md:space-y-4">
-                  <h3 
-                    className="pixelated" 
-                    style={{ 
-                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                      letterSpacing: '0.08em',
-                      fontSize: 'clamp(1rem, 2.5vw, 1.8rem)',
-                      color: '#FFFFFF',
-                      fontWeight: '400',
-                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                      WebkitFontSmoothing: 'none',
-                      MozOsxFontSmoothing: 'unset',
-                      fontSmooth: 'never',
-                      textShadow: `3px 3px 0px #000000, 0 0 10px ${value.glowColor}`,
-                      textRendering: 'optimizeSpeed',
-                      lineHeight: '1.3',
-                      wordBreak: 'break-word',
-                      marginBottom: '0.75rem'
-                    }}
-                  >
-                    {value.title.toUpperCase()}
-                  </h3>
-                  <p 
-                    className="text-white flex-grow" 
-                    style={{
-                      fontFamily: '"Courier New", monospace',
-                      color: '#FFFFFF',
-                      fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
-                      fontWeight: 'bold',
-                      lineHeight: '1.7',
-                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                      WebkitFontSmoothing: 'none',
-                      textRendering: 'optimizeSpeed',
-                      wordWrap: 'break-word',
-                      overflowWrap: 'break-word'
-                    }}
-                  >
-                    {value.description}
-                  </p>
                   
-                  {/* Bottom Bar with Segments */}
-                  <div className="mt-3 sm:mt-4 pt-2 sm:pt-3 relative flex-shrink-0" style={{ borderTop: 'clamp(1px, 0.3vw, 2px) solid #FFFFFF' }}>
-                    <div className="flex items-center gap-0.5 sm:gap-1 h-4 sm:h-5 relative">
-                      {/* Blue Segment */}
+                  {/* Subtle Scanline Overlay */}
+                  <div 
+                    className="absolute inset-0 pointer-events-none opacity-5"
+                    style={{
+                      background: `repeating-linear-gradient(0deg, transparent, transparent 3px, ${value.neonColor}15 3px, ${value.neonColor}15 6px)`,
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering']
+                    }}
+                  />
+                  
+                  {/* Soft Neon Edge Glow */}
+                  <div 
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      border: `1px solid ${value.neonColor}40`,
+                      boxShadow: `0 0 10px ${value.neonColor}20, inset 0 0 10px ${value.neonColor}08`,
+                      borderRadius: '0'
+                    }}
+                  />
+                  
+                  {/* Image Section */}
+                  <div className="relative overflow-hidden flex-shrink-0" style={{ 
+                    borderBottom: `1px solid ${value.neonColor}30`,
+                    height: 'clamp(220px, 32vw, 300px)'
+                  }}>
+                    <Image 
+                      src={value.image} 
+                      alt={value.title} 
+                      width={400}
+                      height={300}
+                      className="w-full h-full object-cover"
+                      style={{
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                        filter: 'contrast(1.05) brightness(0.98) saturate(1.1)'
+                      }}
+                    />
+                    {/* Subtle Image Overlay Gradient */}
+                    <div 
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background: `linear-gradient(to bottom, transparent 0%, rgba(13, 13, 13, 0.3) 100%)`
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Content Section */}
+                  <div className="p-6 sm:p-7 md:p-8 flex flex-col flex-grow">
+                    {/* Header with Icon */}
+                    <div className="flex items-start gap-4 mb-5">
                       <div 
-                        className="progress-bar-segment flex-1 h-full relative"
+                        className="flex-shrink-0 mt-1"
                         style={{
-                          background: '#0066FF',
-                          border: 'clamp(1px, 0.3vw, 2px) solid #000000',
-                          imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                          '--index': '0'
-                        } as React.CSSProperties}
+                          color: value.neonColor,
+                          filter: `drop-shadow(0 0 6px ${value.neonColor}50)`
+                        }}
                       >
-                        {/* Blue Dot Indicator */}
-                        {dotPositions[index] === 0 && (
-                          <div 
-                            className="dot-indicator absolute -top-2 sm:-top-2.5 left-1/2 transform -translate-x-1/2"
-                            style={{
-                              width: 'clamp(10px, 2vw, 14px)',
-                              height: 'clamp(10px, 2vw, 14px)',
-                              background: '#0066FF',
-                              border: 'clamp(1px, 0.3vw, 2px) solid #000000',
-                              borderRadius: '50%',
-                              imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                              boxShadow: '0 0 12px #0066FF, 0 0 20px #0066FF',
-                              zIndex: 10
-                            }}
-                          />
-                        )}
+                        <IconComponent size={24} strokeWidth={2.5} />
                       </div>
-                      {/* Red Segment */}
-                      <div 
-                        className="progress-bar-segment flex-1 h-full relative"
-                        style={{
-                          background: '#FF0000',
-                          border: 'clamp(1px, 0.3vw, 2px) solid #000000',
+                      <h3 
+                        className="pixelated flex-1" 
+                        style={{ 
+                          fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                          letterSpacing: '0.12em',
+                          fontSize: 'clamp(0.85rem, 2vw, 1.25rem)',
+                          color: '#FFFFFF',
+                          fontWeight: '400',
                           imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                          '--index': '1'
-                        } as React.CSSProperties}
+                          WebkitFontSmoothing: 'none',
+                          textShadow: `
+                            2px 2px 0px #000000,
+                            0 0 6px ${value.neonColor}30
+                          `,
+                          textRendering: 'optimizeSpeed',
+                          lineHeight: '1.5',
+                          wordBreak: 'break-word',
+                          overflowWrap: 'break-word',
+                          margin: 0,
+                          hyphens: 'auto'
+                        }}
                       >
-                        {/* Red Dot Indicator */}
-                        {dotPositions[index] === 1 && (
-                          <div 
-                            className="dot-indicator absolute -top-2 sm:-top-2.5 left-1/2 transform -translate-x-1/2"
-                            style={{
-                              width: 'clamp(10px, 2vw, 14px)',
-                              height: 'clamp(10px, 2vw, 14px)',
-                              background: '#FF0000',
-                              border: 'clamp(1px, 0.3vw, 2px) solid #000000',
-                              borderRadius: '50%',
-                              imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                              boxShadow: '0 0 12px #FF0000, 0 0 20px #FF0000',
-                              zIndex: 10
-                            }}
-                          />
-                        )}
-                      </div>
-                      {/* Yellow Segment */}
-                      <div 
-                        className="progress-bar-segment flex-1 h-full relative"
-                        style={{
-                          background: '#FFD700',
-                          border: 'clamp(1px, 0.3vw, 2px) solid #000000',
-                          imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                          '--index': '2'
-                        } as React.CSSProperties}
-                      >
-                        {/* Yellow Dot Indicator */}
-                        {dotPositions[index] === 2 && (
-                          <div 
-                            className="dot-indicator absolute -top-2 sm:-top-2.5 left-1/2 transform -translate-x-1/2"
-                            style={{
-                              width: 'clamp(10px, 2vw, 14px)',
-                              height: 'clamp(10px, 2vw, 14px)',
-                              background: '#FFD700',
-                              border: 'clamp(1px, 0.3vw, 2px) solid #000000',
-                              borderRadius: '50%',
-                              imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                              boxShadow: '0 0 12px #FFD700, 0 0 20px #FFD700',
-                              zIndex: 10
-                            }}
-                          />
-                        )}
+                        {value.title}
+                      </h3>
+                    </div>
+                    
+                    {/* Description */}
+                    <p 
+                      className="flex-grow mb-6" 
+                      style={{
+                        fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
+                        color: '#C8C8C8',
+                        fontSize: 'clamp(0.9rem, 1.3vw, 1rem)',
+                        fontWeight: '400',
+                        lineHeight: '1.75',
+                        textRendering: 'optimizeLegibility',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word',
+                        letterSpacing: '0.015em',
+                        margin: 0
+                      }}
+                    >
+                      {value.description}
+                    </p>
+                    
+                    {/* RGB Divider */}
+                    <div className="mt-auto pt-5 relative flex-shrink-0" style={{ 
+                      borderTop: `1px solid ${value.neonColor}25`
+                    }}>
+                      <div className="flex items-center gap-0.5 h-0.5 relative">
+                        {/* Red Segment */}
+                        <div 
+                          className="flex-1 h-full"
+                          style={{
+                            background: '#FF0000',
+                            boxShadow: '0 0 3px #FF000030'
+                          }}
+                        />
+                        {/* Green Segment */}
+                        <div 
+                          className="flex-1 h-full"
+                          style={{
+                            background: '#00FF00',
+                            boxShadow: '0 0 3px #00FF0030'
+                          }}
+                        />
+                        {/* Blue Segment */}
+                        <div 
+                          className="flex-1 h-full"
+                          style={{
+                            background: '#0000FF',
+                            boxShadow: '0 0 3px #0000FF30'
+                          }}
+                        />
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
 
         {/* CTA Section - Retro Pixel Popup */}

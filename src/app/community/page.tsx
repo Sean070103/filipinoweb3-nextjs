@@ -124,7 +124,7 @@ const champions: Champion[] = [
   {
     name: "Cordyx",
     role: "Backend",
-    image: "/images/Sift.jpg", // Placeholder - update with actual image
+    image: "/images/Cordy.jfif",
     region: "Visayas",
     skill: "Backend Development",
     stat: 91,

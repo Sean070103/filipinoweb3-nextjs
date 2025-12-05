@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Linkedin, Facebook } from 'lucide-react';
+import { memo, useMemo } from 'react';
 
 const formerMembers = ["Waterlemon", "Speedy", "Mychel_T"];
 
@@ -129,7 +130,7 @@ const otherMembers = [
   },
   {
     name: "CordyStackx",
-    image: "/images/CordyStackx.jpg",
+    image: "/images/Cordy.jfif",
     socials: {
       facebook: "https://www.facebook.com/cordystackx",
       twitter: "https://twitter.com/cordystackx",
@@ -153,31 +154,37 @@ type TeamMemberType = {
   status?: 'active' | 'former';
 };
 
-function TeamMember({ member, index }: { member: TeamMemberType, index: number }) {
+// Memoize boss colors to avoid recalculation
+const bossColors = [
+  { primary: '#FFD700', secondary: '#FF8C00', glow: '#FFD700' }, // Gold
+  { primary: '#DC143C', secondary: '#8B0000', glow: '#FF0000' }, // Crimson
+  { primary: '#4169E1', secondary: '#00008B', glow: '#00BFFF' }, // Royal Blue
+  { primary: '#9370DB', secondary: '#4B0082', glow: '#BA55D3' }, // Purple
+  { primary: '#FF4500', secondary: '#8B0000', glow: '#FF6347' }, // Orange Red
+  { primary: '#00CED1', secondary: '#008B8B', glow: '#00FFFF' }  // Dark Turquoise
+] as const;
+
+const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMemberType, index: number }) {
   if (!member.socials) {
     return null;
   }
 
-  // Boss card colors for members (One Piece style)
-  const bossColors = [
-    { primary: '#FFD700', secondary: '#FF8C00', glow: '#FFD700' }, // Gold
-    { primary: '#DC143C', secondary: '#8B0000', glow: '#FF0000' }, // Crimson
-    { primary: '#4169E1', secondary: '#00008B', glow: '#00BFFF' }, // Royal Blue
-    { primary: '#9370DB', secondary: '#4B0082', glow: '#BA55D3' }, // Purple
-    { primary: '#FF4500', secondary: '#8B0000', glow: '#FF6347' }, // Orange Red
-    { primary: '#00CED1', secondary: '#008B8B', glow: '#00FFFF' }  // Dark Turquoise
-  ];
-  const bossColor = bossColors[index % bossColors.length];
+  // Memoize boss color calculation
+  const bossColor = useMemo(() => bossColors[index % bossColors.length], [index]);
 
   return (
       <motion.article 
-        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        initial={{ opacity: 0, y: 30, scale: 0.95 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ delay: index * 0.15, duration: 0.8, type: "spring", stiffness: 100 }}
-        viewport={{ once: true }}
-        whileHover={{ y: -12, scale: 1.05, rotateY: 5 }}
+        transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-50px" }}
+        whileHover={{ y: -8, scale: 1.02 }}
         className="group relative one-piece-boss-card w-full"
-        style={{ perspective: '1000px', maxWidth: '100%' }}
+        style={{ 
+          maxWidth: '100%',
+          willChange: 'transform',
+          transform: 'translateZ(0)' // Force GPU acceleration
+        }}
       >
         {/* Boss Card Container - One Piece Style */}
         <div 
@@ -187,25 +194,23 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
             border: `clamp(2px, 0.6vw, 6px) solid ${bossColor.primary}`,
             borderRadius: 'clamp(6px, 1.5vw, 16px)',
             boxShadow: `
-              0 0 clamp(10px, 3vw, 30px) ${bossColor.glow}80,
-              0 0 clamp(20px, 6vw, 60px) ${bossColor.glow}40,
-              0 clamp(3px, 1vw, 10px) clamp(15px, 4vw, 40px) rgba(0,0,0,0.6),
-              inset 0 0 clamp(8px, 2vw, 20px) ${bossColor.primary}20
+              0 0 clamp(8px, 2vw, 20px) ${bossColor.glow}60,
+              0 clamp(2px, 0.8vw, 6px) clamp(10px, 2.5vw, 25px) rgba(0,0,0,0.5)
             `,
             position: 'relative',
             transformStyle: 'preserve-3d',
             maxWidth: '100%'
           }}
         >
-          {/* Glowing Border Effect */}
+          {/* Glowing Border Effect - Simplified */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
               borderRadius: 'clamp(6px, 1.5vw, 12px)',
               border: `clamp(1px, 0.3vw, 2px) solid ${bossColor.glow}`,
-              boxShadow: `0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}, inset 0 0 clamp(10px, 2.5vw, 20px) ${bossColor.glow}40`,
-              animation: 'bossGlow 3s ease-in-out infinite',
-              opacity: 0.8
+              boxShadow: `0 0 clamp(8px, 2vw, 16px) ${bossColor.glow}50`,
+              opacity: 0.7,
+              willChange: 'opacity'
             }}
           />
           
@@ -251,18 +256,12 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
             }}
           />
           
-          {/* Epic Background Pattern */}
+          {/* Simplified Background Pattern */}
           <div 
             className="absolute inset-0 pointer-events-none"
             style={{
-              background: `
-                radial-gradient(ellipse at 20% 20%, ${bossColor.primary}30 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, ${bossColor.secondary}30 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, ${bossColor.glow}20 0%, transparent 60%),
-                linear-gradient(135deg, ${bossColor.primary}10 0%, ${bossColor.secondary}15 100%)
-              `,
-              mixBlendMode: 'overlay',
-              opacity: 0.9
+              background: `linear-gradient(135deg, ${bossColor.primary}15 0%, ${bossColor.secondary}20 100%)`,
+              opacity: 0.8
             }}
           />
           
@@ -284,14 +283,15 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
               style={{
                 display: 'flex',
                 whiteSpace: 'nowrap',
-                animation: 'scrollTrain 12s linear infinite',
+                animation: 'scrollTrain 15s linear infinite',
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                 fontSize: 'clamp(0.45rem, 1.5vw, 1rem)',
                 color: bossColor.primary,
                 fontWeight: '400',
                 letterSpacing: 'clamp(0.03em, 0.15vw, 0.15em)',
-                textShadow: `0 0 clamp(3px, 1vw, 10px) ${bossColor.glow}, 0 0 clamp(6px, 1.5vw, 20px) ${bossColor.glow}, 0 0 clamp(10px, 3vw, 30px) ${bossColor.glow}`,
-                textTransform: 'uppercase'
+                textShadow: `0 0 clamp(4px, 1.2vw, 8px) ${bossColor.glow}`,
+                textTransform: 'uppercase',
+                willChange: 'transform'
               }}
             >
               <span style={{ paddingRight: 'clamp(40px, 8vw, 80px)' }}>
@@ -314,14 +314,15 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
               marginRight: 'clamp(0.5rem, 1.5vw, 1rem)'
             }}
           >
-            {/* Portrait Glow Effect */}
+            {/* Simplified Portrait Glow Effect */}
             <div 
               className="absolute inset-0 pointer-events-none"
               style={{
-                background: `radial-gradient(ellipse at center, ${bossColor.glow}30 0%, transparent 70%)`,
+                background: `radial-gradient(ellipse at center, ${bossColor.glow}25 0%, transparent 60%)`,
                 borderRadius: 'clamp(3px, 0.8vw, 8px)',
-                filter: 'blur(clamp(8px, 2vw, 20px))',
-                zIndex: 1
+                filter: 'blur(clamp(6px, 1.5vw, 12px))',
+                zIndex: 1,
+                willChange: 'opacity'
               }}
             />
             
@@ -333,7 +334,7 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                 borderRadius: 'clamp(3px, 0.8vw, 8px)',
                 background: `linear-gradient(135deg, ${bossColor.primary}20 0%, ${bossColor.secondary}20 100%)`,
                 border: `clamp(1px, 0.3vw, 3px) solid ${bossColor.primary}60`,
-                boxShadow: `0 0 clamp(10px, 3vw, 30px) ${bossColor.glow}40, inset 0 0 clamp(10px, 3vw, 30px) ${bossColor.primary}20`,
+                boxShadow: `0 0 clamp(8px, 2vw, 20px) ${bossColor.glow}30`,
                 padding: 'clamp(0.5rem, 1vw, 1rem)'
               }}
             >
@@ -356,23 +357,21 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                     objectPosition: 'center center',
                     maxWidth: '100%',
                     maxHeight: '100%',
-                    display: 'block'
+                    display: 'block',
+                    willChange: 'transform'
                   }}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   priority={index < 4}
+                  loading={index < 4 ? 'eager' : 'lazy'}
+                  quality={85}
                 />
               </div>
-              {/* Epic Overlay Effect */}
+              {/* Simplified Overlay Effect */}
               <div 
                 className="absolute inset-0 pointer-events-none"
                 style={{
-                  background: `
-                    radial-gradient(circle at 30% 40%, ${bossColor.primary}20 0%, transparent 50%),
-                    radial-gradient(circle at 70% 60%, ${bossColor.secondary}20 0%, transparent 50%),
-                    linear-gradient(180deg, transparent 0%, ${bossColor.glow}15 100%)
-                  `,
-                  mixBlendMode: 'soft-light',
-                  opacity: 0.6
+                  background: `linear-gradient(180deg, transparent 0%, ${bossColor.glow}10 100%)`,
+                  opacity: 0.5
                 }}
               />
             </div>
@@ -394,24 +393,15 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                 background: `linear-gradient(135deg, ${bossColor.primary} 0%, ${bossColor.secondary} 100%)`,
                 borderRadius: 'clamp(3px, 0.8vw, 8px)',
                 boxShadow: `
-                  0 clamp(1px, 0.4vw, 4px) clamp(8px, 2vw, 20px) ${bossColor.glow}80,
-                  0 0 clamp(15px, 4vw, 40px) ${bossColor.glow}40,
-                  inset 0 clamp(1px, 0.25vw, 2px) clamp(4px, 1.2vw, 10px) rgba(255,255,255,0.3)
+                  0 clamp(1px, 0.4vw, 4px) clamp(6px, 1.5vw, 15px) ${bossColor.glow}60,
+                  inset 0 clamp(1px, 0.25vw, 2px) clamp(3px, 1vw, 8px) rgba(255,255,255,0.2)
                 `,
                 border: `clamp(1px, 0.25vw, 2px) solid ${bossColor.glow}`,
                 position: 'relative',
                 overflow: 'hidden'
               }}
             >
-              {/* Shimmer Effect */}
-              <div 
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%)',
-                  animation: 'shimmer 3s infinite',
-                  transform: 'translateX(-100%)'
-                }}
-              />
+              {/* Simplified Shimmer Effect - Removed for performance */}
               
               <h4 
                 className="text-center relative z-10" 
@@ -423,9 +413,7 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                   letterSpacing: 'clamp(0.03em, 0.12vw, 0.1em)',
                   textShadow: `
                     clamp(1px, 0.25vw, 2px) clamp(1px, 0.25vw, 2px) 0px rgba(0,0,0,0.8),
-                    0 0 clamp(4px, 1.2vw, 10px) ${bossColor.glow},
-                    0 0 clamp(8px, 2vw, 20px) ${bossColor.glow},
-                    0 0 clamp(12px, 3vw, 30px) ${bossColor.glow}
+                    0 0 clamp(4px, 1.2vw, 8px) ${bossColor.glow}
                   `,
                   lineHeight: '1.3',
                   textTransform: 'uppercase',
@@ -443,8 +431,8 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                 href={member.socials.facebook} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.3, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
                 className="flex items-center justify-center relative"
                 style={{
                   width: 'clamp(36px, 7vw, 64px)',
@@ -453,9 +441,8 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                   border: `clamp(1px, 0.4vw, 4px) solid ${bossColor.primary}`,
                   borderRadius: 'clamp(4px, 1.2vw, 12px)',
                   boxShadow: `
-                    0 0 clamp(8px, 2vw, 20px) ${bossColor.glow}60,
-                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 clamp(1px, 0.25vw, 2px) rgba(255,255,255,0.3)
+                    0 0 clamp(6px, 1.5vw, 15px) ${bossColor.glow}40,
+                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.5)
                   `,
                   zIndex: 20
                 }}
@@ -466,8 +453,8 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                 href={member.socials.twitter} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.3, rotate: -5 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
                 className="flex items-center justify-center relative"
                 style={{
                   width: 'clamp(36px, 7vw, 64px)',
@@ -476,9 +463,8 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                   border: `clamp(1px, 0.4vw, 4px) solid ${bossColor.primary}`,
                   borderRadius: 'clamp(4px, 1.2vw, 12px)',
                   boxShadow: `
-                    0 0 clamp(8px, 2vw, 20px) ${bossColor.glow}60,
-                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 clamp(1px, 0.25vw, 2px) rgba(255,255,255,0.3)
+                    0 0 clamp(6px, 1.5vw, 15px) ${bossColor.glow}40,
+                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.5)
                   `,
                   zIndex: 20
                 }}
@@ -491,8 +477,8 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                 href={member.socials.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.3, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.95 }}
                 className="flex items-center justify-center relative"
                 style={{
                   width: 'clamp(36px, 7vw, 64px)',
@@ -501,9 +487,8 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
                   border: `clamp(1px, 0.4vw, 4px) solid ${bossColor.primary}`,
                   borderRadius: 'clamp(4px, 1.2vw, 12px)',
                   boxShadow: `
-                    0 0 clamp(8px, 2vw, 20px) ${bossColor.glow}60,
-                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.6),
-                    inset 0 0 0 clamp(1px, 0.25vw, 2px) rgba(255,255,255,0.3)
+                    0 0 clamp(6px, 1.5vw, 15px) ${bossColor.glow}40,
+                    clamp(1px, 0.4vw, 4px) clamp(1px, 0.4vw, 4px) 0px rgba(0,0,0,0.5)
                   `,
                   zIndex: 20
                 }}
@@ -513,9 +498,9 @@ function TeamMember({ member, index }: { member: TeamMemberType, index: number }
             </div>
           </div>
         </div>
-      </motion.article>
-    );
-}
+        </motion.article>
+      );
+});
 
 export default function Team() {
   return (
