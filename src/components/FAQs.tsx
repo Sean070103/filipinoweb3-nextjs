@@ -439,15 +439,18 @@ export default function FAQs() {
                               </div>
                             </div>
                           ) : (
-                            <div className="max-w-3xl mx-auto w-full px-2 sm:px-0">
+                            <div className="max-w-3xl mx-auto w-full px-2 sm:px-0 flex flex-col h-full">
                               {/* App window */}
                               <motion.div 
-                                className="mb-4 sm:mb-6 w-full"
+                                className="mb-4 sm:mb-6 w-full flex flex-col flex-1"
                                 style={{
                                   border: '3px solid #000000',
                                   boxShadow: '4px 4px 0 rgba(0,0,0,0.5)',
                                   imageRendering: 'pixelated',
-                                  margin: '0 auto'
+                                  margin: '0 auto',
+                                  minHeight: 'clamp(400px, 60vh, 600px)',
+                                  display: 'flex',
+                                  flexDirection: 'column'
                                 }}
                                 animate={{ 
                                   width: isMaximized ? '100%' : '80%'
@@ -541,14 +544,17 @@ export default function FAQs() {
                                 </div>
                                 {/* Content with minimize/maximize */}
                                 <motion.div 
-                                  className="overflow-y-auto"
+                                  className="overflow-y-auto flex flex-col flex-1"
                                   style={{ 
                                     background: 'linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%)', 
                                     padding: 'clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 3vw, 1.75rem)',
-                                    maxHeight: 'calc(100vh - 260px)'
+                                    minHeight: 'clamp(350px, 45vh, 500px)',
+                                    maxHeight: 'calc(100vh - 180px)',
+                                    display: 'flex',
+                                    flexDirection: 'column'
                                   }}
                                   animate={{ 
-                                    maxHeight: isMaximized ? 'calc(100vh - 260px)' : '140px',
+                                    maxHeight: isMaximized ? 'calc(100vh - 180px)' : '140px',
                                     opacity: isMaximized ? 1 : 0.7
                                   }}
                                   transition={{ duration: 0.3 }}
@@ -558,14 +564,16 @@ export default function FAQs() {
                                     fontFamily: '"Courier New", monospace',
                                     color: '#000000',
                                     fontSize: 'clamp(0.8rem, 2.4vw, 1.05rem)',
-                                    lineHeight: 1.6,
+                                    lineHeight: 1.7,
                                     fontWeight: 'bold',
                                     letterSpacing: '0.01em',
                                     whiteSpace: 'pre-wrap',
                                     wordBreak: 'break-word',
-                                    textAlign: 'left',
+                                    textAlign: 'justify',
                                     margin: '0 auto',
                                     maxWidth: '46rem',
+                                    flex: '1',
+                                    marginBottom: '1rem'
                                   }}>
                                     {faqs[selectedApp].answer.split('. ').map((sentence, idx, arr) => {
                                       const trimmed = sentence.trim();
@@ -573,6 +581,48 @@ export default function FAQs() {
                                       if (idx === arr.length - 1) return trimmed;
                                       return trimmed + '.';
                                     }).filter(Boolean).join(' ')}
+                                  </div>
+                                  
+                                  {/* Footer bar to fill dead space */}
+                                  <div 
+                                    className="mt-auto pt-3 border-t-2 border-black/40"
+                                    style={{
+                                      background: 'linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.25) 100%)',
+                                      marginTop: 'auto',
+                                      paddingTop: '0.75rem',
+                                      paddingBottom: '0.75rem',
+                                      paddingLeft: '0.5rem',
+                                      paddingRight: '0.5rem',
+                                      borderRadius: '0 0 2px 2px',
+                                      boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.2)'
+                                    }}
+                                  >
+                                    <div className="flex items-center justify-between flex-wrap gap-2">
+                                      <div className="flex items-center gap-2" style={{
+                                        fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                                        fontSize: 'clamp(0.5rem, 1.2vw, 0.7rem)',
+                                        color: '#000000',
+                                        opacity: 0.8,
+                                        fontWeight: 'bold'
+                                      }}>
+                                        <span style={{ fontSize: 'clamp(0.6rem, 1.4vw, 0.8rem)' }}>▶</span>
+                                        <span>FAQ #{selectedApp + 1} / {faqs.length}</span>
+                                      </div>
+                                      <div className="flex items-center gap-2" style={{
+                                        fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                                        fontSize: 'clamp(0.5rem, 1.2vw, 0.7rem)',
+                                        color: '#000000',
+                                        opacity: 0.8,
+                                        fontWeight: 'bold'
+                                      }}>
+                                        <span>◀</span>
+                                        <span>PRESS X TO CLOSE</span>
+                                        <span style={{ 
+                                          fontSize: 'clamp(0.6rem, 1.4vw, 0.8rem)',
+                                          animation: 'cursorBlink 1s steps(2, start) infinite'
+                                        }}>▮</span>
+                                      </div>
+                                    </div>
                                   </div>
                                 </motion.div>
                               </motion.div>

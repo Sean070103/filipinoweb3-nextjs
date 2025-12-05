@@ -105,6 +105,12 @@ body {
   background: transparent;
 }
 
+/* Justify all paragraphs */
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 /* Only apply black background to sections that don't have their own background */
 body > *:not(section):not(.categories):not(#home) {
   background: #000000;

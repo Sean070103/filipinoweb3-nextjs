@@ -216,16 +216,6 @@ export default function Contact() {
           >
             CONTACT US
           </h2>
-          <div
-            className="mx-auto mb-6"
-            style={{
-              width: '100px',
-              height: '3px',
-              background: 'linear-gradient(90deg, #06b6d4 0%, #22c55e 100%)',
-              boxShadow: '0 0 10px rgba(6, 182, 212, 0.5)',
-              imageRendering: 'pixelated',
-            }}
-          />
           <p
             style={{
               fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',

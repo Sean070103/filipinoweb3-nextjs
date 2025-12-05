@@ -64,9 +64,9 @@ export default function RetroGamingHero() {
         />
       </div>
 
-      {/* Animated Clouds */}
+      {/* Animated Clouds - Desktop */}
       <div 
-        className="absolute top-10 left-10 z-20 pixel-cloud hidden sm:block"
+        className="absolute top-8 left-8 z-20 pixel-cloud hidden sm:block"
         style={{
           animation: 'floatCloud 8s ease-in-out infinite',
         }}
@@ -79,14 +79,14 @@ export default function RetroGamingHero() {
           priority
           style={{ 
             imageRendering: 'pixelated',
-            width: 'clamp(30px, 5vw, 80px)',
+            width: 'clamp(60px, 8vw, 120px)',
             height: 'auto'
           }}
         />
       </div>
 
       <div 
-        className="absolute top-20 right-20 z-20 pixel-cloud hidden md:block"
+        className="absolute top-16 right-16 z-20 pixel-cloud hidden md:block"
         style={{
           animation: 'floatCloud 10s ease-in-out infinite reverse',
         }}
@@ -99,14 +99,15 @@ export default function RetroGamingHero() {
           priority
           style={{ 
             imageRendering: 'pixelated',
-            width: 'clamp(25px, 4vw, 60px)',
+            width: 'clamp(50px, 7vw, 100px)',
             height: 'auto'
           }}
         />
       </div>
 
+      {/* Mobile Central Cloud */}
       <div 
-        className="absolute left-1/2 transform -translate-x-1/2 z-20 pixel-cloud"
+        className="absolute left-1/2 transform -translate-x-1/2 z-20 pixel-cloud sm:hidden"
         style={{
           top: 'clamp(60px, 12vw, 100px)',
           animation: 'floatCloud 12s ease-in-out infinite',
@@ -121,6 +122,28 @@ export default function RetroGamingHero() {
           style={{ 
             imageRendering: 'pixelated',
             width: 'clamp(120px, 50vw, 200px)',
+            height: 'auto'
+          }}
+        />
+      </div>
+      
+      {/* Desktop Central Cloud - Moved to Left */}
+      <div 
+        className="absolute left-1/6 z-20 pixel-cloud hidden sm:block"
+        style={{
+          top: 'clamp(40px, 6vw, 80px)',
+          animation: 'floatCloud 12s ease-in-out infinite',
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={70}
+          height={35}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(100px, 20vw, 180px)',
             height: 'auto'
           }}
         />
@@ -226,9 +249,157 @@ export default function RetroGamingHero() {
         />
       </div>
 
-      {/* Animated Sun - Mobile Visible */}
+      {/* Additional Clouds */}
       <div 
-        className="absolute z-20"
+        className="absolute top-6 left-1/3 z-20 pixel-cloud hidden sm:block"
+        style={{
+          animation: 'floatCloud 9s ease-in-out infinite',
+          animationDelay: '2s'
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={70}
+          height={35}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(55px, 6vw, 90px)',
+            height: 'auto'
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-20 right-1/3 z-20 pixel-cloud hidden md:block"
+        style={{
+          animation: 'floatCloud 11s ease-in-out infinite reverse',
+          animationDelay: '3s'
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={60}
+          height={30}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(45px, 5vw, 75px)',
+            height: 'auto'
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-10 left-2/3 z-20 pixel-cloud hidden lg:block"
+        style={{
+          animation: 'floatCloud 8s ease-in-out infinite',
+          animationDelay: '1s'
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={50}
+          height={25}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(40px, 4vw, 65px)',
+            height: 'auto'
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-18 left-1/5 z-20 pixel-cloud hidden xl:block"
+        style={{
+          animation: 'floatCloud 10s ease-in-out infinite reverse',
+          animationDelay: '4s'
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={45}
+          height={22}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(35px, 3.5vw, 55px)',
+            height: 'auto'
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-22 right-2/5 z-20 pixel-cloud hidden xl:block"
+        style={{
+          animation: 'floatCloud 12s ease-in-out infinite',
+          animationDelay: '2.5s'
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={65}
+          height={32}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(50px, 5.5vw, 80px)',
+            height: 'auto'
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-4 left-4/5 z-20 pixel-cloud hidden lg:block"
+        style={{
+          animation: 'floatCloud 7s ease-in-out infinite reverse',
+          animationDelay: '1.5s'
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={55}
+          height={27}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(42px, 4.5vw, 70px)',
+            height: 'auto'
+          }}
+        />
+      </div>
+
+      <div 
+        className="absolute top-16 left-3/5 z-20 pixel-cloud hidden md:block"
+        style={{
+          animation: 'floatCloud 9s ease-in-out infinite',
+          animationDelay: '3.5s'
+        }}
+      >
+        <Image
+          src="/images/cloud.png"
+          alt="Pixel Cloud"
+          width={48}
+          height={24}
+          priority
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(38px, 4vw, 62px)',
+            height: 'auto'
+          }}
+        />
+      </div>
+
+      {/* Animated Sun - Mobile */}
+      <div 
+        className="absolute z-20 sm:hidden"
         style={{
           top: 'clamp(60px, 12vw, 100px)',
           right: 'clamp(8px, 5vw, 120px)',
@@ -243,6 +414,28 @@ export default function RetroGamingHero() {
             width: 'clamp(60px, 12vw, 80px)',
             height: 'clamp(60px, 12vw, 80px)',
             boxShadow: '0 0 25px rgba(255, 255, 0, 0.7), 0 0 50px rgba(255, 255, 0, 0.5)',
+            animation: 'rotateSun 20s linear infinite',
+          }}
+        />
+      </div>
+      
+      {/* Animated Sun - Desktop */}
+      <div 
+        className="absolute z-20 hidden sm:block"
+        style={{
+          top: 'clamp(20px, 4vw, 40px)',
+          right: 'clamp(20px, 8vw, 120px)',
+          animation: 'pulseSun 4s ease-in-out infinite',
+        }}
+      >
+        <div 
+          className="bg-yellow-400"
+          style={{ 
+            imageRendering: 'pixelated',
+            borderRadius: '50%',
+            width: 'clamp(70px, 8vw, 100px)',
+            height: 'clamp(70px, 8vw, 100px)',
+            boxShadow: '0 0 30px rgba(255, 255, 0, 0.8), 0 0 60px rgba(255, 255, 0, 0.6)',
             animation: 'rotateSun 20s linear infinite',
           }}
         />
@@ -272,18 +465,46 @@ export default function RetroGamingHero() {
               filter: 'drop-shadow(0 0 clamp(10px, 2.5vw, 20px) rgba(255,255,255,0.5))',
               padding: '0 clamp(0.5rem, 2vw, 1rem)',
               wordBreak: 'break-word',
-              overflowWrap: 'break-word'
+              overflowWrap: 'break-word',
+              marginBottom: 'clamp(0.5rem, 2vw, 1.5rem)'
             }}
           >
             FW3
           </h1>
+          
+          {/* Subtitle */}
+          <h2
+            className="pixelated"
+            style={{
+              fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+              fontSize: 'clamp(0.7rem, 2vw, 1.2rem)',
+              letterSpacing: 'clamp(0.1em, 0.3vw, 0.2em)',
+              fontWeight: '400',
+              imageRendering: 'pixelated',
+              WebkitFontSmoothing: 'none',
+              fontSmooth: 'never',
+              textRendering: 'optimizeSpeed',
+              background: 'linear-gradient(135deg, #059669 0%, #10b981 20%, #22c55e 40%, #34d399 60%, #22c55e 80%, #10b981 100%)',
+              backgroundSize: '200% 200%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'subtitleGradient 3s ease-in-out infinite, subtitlePulse 2s ease-in-out infinite',
+              padding: '0 clamp(0.5rem, 2vw, 1rem)',
+              lineHeight: 1.4,
+              textTransform: 'uppercase'
+            }}
+          >
+            TO WEB3 AND BEYOND!
+          </h2>
         </div>
       </div>
 
       {/* Moving Jeepney 1 - Left to Right */}
       <div 
-        className="absolute bottom-4 sm:bottom-6 md:bottom-8 z-20"
+        className="absolute z-20"
         style={{
+          bottom: '0px',
           animation: 'moveJeepneyLeftToRight 25s linear infinite',
         }}
       >
@@ -295,7 +516,7 @@ export default function RetroGamingHero() {
           priority
           style={{ 
             imageRendering: 'pixelated',
-            width: 'clamp(60px, 8vw, 120px)',
+            width: 'clamp(80px, 10vw, 150px)',
             height: 'auto'
           }}
         />
@@ -303,8 +524,9 @@ export default function RetroGamingHero() {
 
       {/* Moving Jeepney 2 - Right to Left */}
       <div 
-        className="absolute bottom-4 sm:bottom-6 md:bottom-8 z-20"
+        className="absolute z-20"
         style={{
+          bottom: '0px',
           animation: 'moveJeepneyRightToLeft 25s linear infinite',
           animationDelay: '12.5s'
         }}
@@ -318,7 +540,7 @@ export default function RetroGamingHero() {
           style={{ 
             imageRendering: 'pixelated', 
             transform: 'scaleX(-1)',
-            width: 'clamp(60px, 8vw, 120px)',
+            width: 'clamp(80px, 10vw, 150px)',
             height: 'auto'
           }}
         />
@@ -447,38 +669,18 @@ export default function RetroGamingHero() {
         @keyframes moveJeepneyLeftToRight {
           0% {
             left: -200px;
-            opacity: 0;
-          }
-          2% {
-            left: -200px;
-            opacity: 1;
-          }
-          98% {
-            left: calc(100vw + 200px);
-            opacity: 1;
           }
           100% {
-            left: calc(100vw + 200px);
-            opacity: 0;
+            left: calc(100% + 200px);
           }
         }
         
         @keyframes moveJeepneyRightToLeft {
           0% {
-            left: calc(100vw + 200px);
-            opacity: 0;
-          }
-          2% {
-            left: calc(100vw + 200px);
-            opacity: 1;
-          }
-          98% {
-            left: -200px;
-            opacity: 1;
+            right: -200px;
           }
           100% {
-            left: -200px;
-            opacity: 0;
+            right: calc(100% + 200px);
           }
         }
         
@@ -500,6 +702,29 @@ export default function RetroGamingHero() {
           }
           100% {
             background-position: 0% 50%;
+          }
+        }
+        
+        @keyframes subtitleGradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        
+        @keyframes subtitlePulse {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 0.9;
           }
         }
         
