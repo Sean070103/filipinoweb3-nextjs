@@ -76,7 +76,7 @@ const communityLocations: CommunityLocation[] = [
     name: 'Bacolod City • CordyStackx',
     region: 'Visayas',
     coordinates: [10.6740, 122.9670],
-    avatar: '/images/CordyStackx.jpg',
+    avatar: '/images/Cordy.jfif',
   },
 ];
 

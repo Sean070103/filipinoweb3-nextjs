@@ -282,6 +282,7 @@ export default function CommunityPage() {
                         height: "100%",
                         objectFit: "cover",
                       }}
+                      unoptimized={champion.image.endsWith('.jfif')}
                     />
                     
                     {/* Region Icon (top left) */}

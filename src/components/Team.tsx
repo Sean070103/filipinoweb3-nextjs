@@ -364,6 +364,7 @@ const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMem
                   priority={index < 4}
                   loading={index < 4 ? 'eager' : 'lazy'}
                   quality={85}
+                  unoptimized={member.image.endsWith('.jfif')}
                 />
               </div>
               {/* Simplified Overlay Effect */}
