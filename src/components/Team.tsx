@@ -557,13 +557,18 @@ export default function Team() {
           style={{ marginTop: 'clamp(3rem, 6vw, 5rem)', marginBottom: 'clamp(3rem, 6vw, 5rem)' }}
         >
           <div
-            className="relative text-center px-6 py-4"
+            className="relative text-center px-6 py-4 mx-auto"
             style={{
               border: '3px dashed rgba(255,255,255,0.4)',
               borderRadius: '12px',
               background: 'rgba(0,0,0,0.6)',
               boxShadow: '0 0 20px rgba(0,0,0,0.5)',
-              maxWidth: '600px'
+              maxWidth: '980px',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}
           >
             <p
@@ -571,7 +576,8 @@ export default function Team() {
               style={{
                 fontSize: 'clamp(0.7rem, 1vw, 1rem)',
                 letterSpacing: '0.1em',
-                color: '#facc15'
+                color: '#facc15',
+                textAlign: 'center'
               }}
             >
               FOUNDING / FORMER MEMBERS
@@ -580,8 +586,11 @@ export default function Team() {
               style={{
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                 fontSize: 'clamp(0.55rem, 0.9vw, 0.85rem)',
-                lineHeight: 1.6,
-                letterSpacing: '0.05em'
+                lineHeight: 1.8,
+                letterSpacing: '0.05em',
+                textAlign: 'center',
+                maxWidth: '900px',
+                margin: '0 auto'
               }}
             >
               {[...foundingMembers.map((m) => m.name), ...formerMembers].join(' • ')}

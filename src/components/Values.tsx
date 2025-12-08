@@ -269,20 +269,22 @@ export default function Values() {
                 >
                   {/* Subtle Grid Overlay */}
                   <div 
-                    className="absolute inset-0 pointer-events-none opacity-3"
+                    className="absolute inset-0 pointer-events-none"
                     style={{
                       backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='none'/%3E%3Cpath d='M 0 0 L 20 0 M 0 20 L 20 20 M 0 0 L 0 20 M 20 0 L 20 20' stroke='${value.neonColor}' stroke-width='0.3'/%3E%3C/svg%3E")`,
                       backgroundSize: '20px 20px',
-                      imageRendering: 'pixelated' as CSSProperties['imageRendering']
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                      opacity: 0.06,
                     }}
                   />
                   
                   {/* Subtle Scanline Overlay */}
                   <div 
-                    className="absolute inset-0 pointer-events-none opacity-5"
+                    className="absolute inset-0 pointer-events-none"
                     style={{
-                      background: `repeating-linear-gradient(0deg, transparent, transparent 3px, ${value.neonColor}15 3px, ${value.neonColor}15 6px)`,
-                      imageRendering: 'pixelated' as CSSProperties['imageRendering']
+                      background: `repeating-linear-gradient(0deg, transparent, transparent 3px, ${value.neonColor}12 3px, ${value.neonColor}12 6px)`,
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                      opacity: 0.08,
                     }}
                   />
                   
@@ -322,9 +324,22 @@ export default function Values() {
                   </div>
                   
                   {/* Content Section */}
-                  <div className="p-6 sm:p-7 md:p-8 flex flex-col flex-grow">
+                  <div
+                    className="p-6 sm:p-7 md:p-8 flex flex-col flex-grow"
+                    style={{
+                      background: 'linear-gradient(180deg, rgba(0,0,0,0.92), rgba(0,0,0,0.96))',
+                      borderTop: `1px solid ${value.neonColor}25`,
+                      boxShadow: `0 -6px 12px rgba(0,0,0,0.45)`,
+                      maxWidth: '560px',
+                      width: '100%',
+                      margin: '0 auto',
+                      rowGap: '1rem',
+                      padding: 'clamp(1.4rem, 3.2vw, 1.9rem)',
+                      textAlign: 'left',
+                    }}
+                  >
                     {/* Header with Icon */}
-                    <div className="flex items-start gap-4 mb-5">
+                    <div className="flex items-start gap-4 mb-4">
                       <div 
                         className="flex-shrink-0 mt-1"
                         style={{
@@ -338,8 +353,8 @@ export default function Values() {
                         className="pixelated flex-1" 
                         style={{ 
                           fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                          letterSpacing: '0.12em',
-                          fontSize: 'clamp(0.85rem, 2vw, 1.25rem)',
+                          letterSpacing: '0.04em',
+                          fontSize: 'clamp(0.78rem, 1.5vw, 1.05rem)',
                           color: '#FFFFFF',
                           fontWeight: '400',
                           imageRendering: 'pixelated' as CSSProperties['imageRendering'],
@@ -361,19 +376,25 @@ export default function Values() {
                     </div>
                     
                     {/* Description */}
-                    <p 
-                      className="flex-grow mb-6" 
+                    <p
+                      className="flex-grow mb-4"
                       style={{
                         fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
-                        color: '#C8C8C8',
-                        fontSize: 'clamp(0.9rem, 1.3vw, 1rem)',
-                        fontWeight: '400',
-                        lineHeight: '1.75',
+                        color: '#F8F8F8',
+                        fontSize: 'clamp(0.88rem, 1.08vw, 0.98rem)',
+                        fontWeight: '500',
+                        lineHeight: '1.65',
                         textRendering: 'optimizeLegibility',
                         wordWrap: 'break-word',
                         overflowWrap: 'break-word',
-                        letterSpacing: '0.015em',
-                        margin: 0
+                        letterSpacing: '0em',
+                        wordSpacing: '0em',
+                        textAlign: 'justify',
+                        textJustify: 'inter-word',
+                        textAlignLast: 'left',
+                        hyphens: 'auto',
+                        margin: 0,
+                        textShadow: '0 1px 0 rgba(0,0,0,0.65)',
                       }}
                     >
                       {value.description}

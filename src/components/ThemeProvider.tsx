@@ -8,7 +8,7 @@ interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   actualTheme: 'light' | 'dark';
-}
+} 
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
