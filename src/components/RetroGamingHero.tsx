@@ -4,11 +4,12 @@ import Image from 'next/image';
 
 export default function RetroGamingHero() {
   return (
-        <div 
+    <div 
       id="hero"
-      className="relative min-h-screen w-full"
-          style={{
+      className="relative min-h-screen w-full overflow-hidden"
+      style={{
         background: '#66B2FF',
+        maxWidth: '100vw'
       }}
     >
       {/* Dirt Layer - combined from left to right */}
