@@ -66,57 +66,12 @@ const foundingMembers = [
 
 const otherMembers = [
   {
-    name: "Sift",
-    image: "/images/Sift.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/sift.croix",
-      twitter: "https://twitter.com/siftcroix",
-      linkedin: "https://www.linkedin.com/in/joseph-corpuz-14891b145/"
-    }
-  },
-  {
-    name: "Lupin",
-    image: "/images/Lupin_XIV.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/lesterjun.magboo",
-      twitter: "https://twitter.com/Lupin_XIV",
-      linkedin: "https://www.linkedin.com/in/lester-jun-l-magbo-o-213223324/"
-    }
-  },
-  {
     name: "Aerva",
     image: "/images/Aerva.jpg",
     socials: {
       facebook: "https://www.facebook.com/aerva.eth",
       twitter: "https://twitter.com/aerva_eth",
       linkedin: "https://www.linkedin.com/in/aerva-eth/"
-    }
-  },
-  {
-    name: "Zirk",
-    image: "/images/coretoshi_zirk.png",
-    socials: {
-      facebook: "https://www.facebook.com/coretoshi",
-      twitter: "https://twitter.com/coretoshi",
-      linkedin: "https://www.linkedin.com/in/coretoshi/"
-    }
-  },
-  {
-    name: "Clivv",
-    image: "/images/clivv_azuki1.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/clivv.azuki",
-      twitter: "https://twitter.com/clivv_azuki",
-      linkedin: "https://www.linkedin.com/in/clivv-azuki/"
-    }
-  },
-  {
-    name: "Kata",
-    image: "/images/Katrina.jpg",
-    socials: {
-      facebook: "https://www.facebook.com/katrina.web3",
-      twitter: "https://twitter.com/katrina_web3",
-      linkedin: "https://www.linkedin.com/in/katrina-web3/"
     }
   },
   {
@@ -129,12 +84,57 @@ const otherMembers = [
     }
   },
   {
-    name: "CordyStackx",
+    name: "Clivv",
+    image: "/images/Clivv(1).png",
+    socials: {
+      facebook: "https://www.facebook.com/clivv.azuki",
+      twitter: "https://twitter.com/clivv_azuki",
+      linkedin: "https://www.linkedin.com/in/clivv-azuki/"
+    }
+  },
+  {
+    name: "CORDYX",
     image: "/images/Cordy.jfif",
     socials: {
       facebook: "https://www.facebook.com/cordystackx",
       twitter: "https://twitter.com/cordystackx",
       linkedin: "https://www.linkedin.com/in/cordystackx/"
+    }
+  },
+  {
+    name: "Kata",
+    image: "/images/Katrina.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/katrina.web3",
+      twitter: "https://twitter.com/katrina_web3",
+      linkedin: "https://www.linkedin.com/in/katrina-web3/"
+    }
+  },
+  {
+    name: "Lupin",
+    image: "/images/Lupin_XIV.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/lesterjun.magboo",
+      twitter: "https://twitter.com/Lupin_XIV",
+      linkedin: "https://www.linkedin.com/in/lester-jun-l-magbo-o-213223324/"
+    }
+  },
+  {
+    name: "Sift",
+    image: "/images/Sift.jpg",
+    socials: {
+      facebook: "https://www.facebook.com/sift.croix",
+      twitter: "https://twitter.com/siftcroix",
+      linkedin: "https://www.linkedin.com/in/joseph-corpuz-14891b145/"
+    }
+  },
+  {
+    name: "Zirk",
+    image: "/images/coretoshi_zirk.png",
+    socials: {
+      facebook: "https://www.facebook.com/coretoshi",
+      twitter: "https://twitter.com/coretoshi",
+      linkedin: "https://www.linkedin.com/in/coretoshi/"
     }
   }
 ];
@@ -155,13 +155,11 @@ type TeamMemberType = {
 };
 
 // Memoize boss colors to avoid recalculation
+// Philippine flag-inspired palette for core member cards
 const bossColors = [
-  { primary: '#FFD700', secondary: '#FF8C00', glow: '#FFD700' }, // Gold
-  { primary: '#DC143C', secondary: '#8B0000', glow: '#FF0000' }, // Crimson
-  { primary: '#4169E1', secondary: '#00008B', glow: '#00BFFF' }, // Royal Blue
-  { primary: '#9370DB', secondary: '#4B0082', glow: '#BA55D3' }, // Purple
-  { primary: '#FF4500', secondary: '#8B0000', glow: '#FF6347' }, // Orange Red
-  { primary: '#00CED1', secondary: '#008B8B', glow: '#00FFFF' }  // Dark Turquoise
+  { primary: '#CE1126', secondary: '#8B0000', glow: '#FF5A5F' }, // Red
+  { primary: '#0038A8', secondary: '#001F5C', glow: '#3B82F6' }, // Blue
+  { primary: '#FCD116', secondary: '#C8A000', glow: '#FFE066' }  // Yellow
 ] as const;
 
 const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMemberType, index: number }) {
@@ -171,6 +169,7 @@ const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMem
 
   // Memoize boss color calculation
   const bossColor = useMemo(() => bossColors[index % bossColors.length], [index]);
+  const isCordyx = member.name.trim().toLowerCase() === 'cordyx';
 
   return (
       <motion.article 
@@ -395,7 +394,7 @@ const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMem
                 borderRadius: 'clamp(3px, 0.8vw, 8px)',
                 boxShadow: `
                   0 clamp(1px, 0.4vw, 4px) clamp(6px, 1.5vw, 15px) ${bossColor.glow}60,
-                  inset 0 clamp(1px, 0.25vw, 2px) clamp(3px, 1vw, 8px) rgba(255,255,255,0.2)
+                  inset 0 clamp(1px, 0.25vw, 2px) clamp(3px, 1vw, 8px) ${bossColor.glow}30
                 `,
                 border: `clamp(1px, 0.25vw, 2px) solid ${bossColor.glow}`,
                 position: 'relative',
@@ -408,10 +407,10 @@ const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMem
                 className="text-center relative z-10" 
                 style={{
                   fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                  fontSize: 'clamp(0.6rem, 1.8vw, 1.2rem)',
-                  color: '#FFFFFF',
+                  fontSize: isCordyx ? 'clamp(0.52rem, 1.6vw, 0.95rem)' : 'clamp(0.6rem, 1.8vw, 1.2rem)',
+                  color: bossColor.glow,
                   fontWeight: '400',
-                  letterSpacing: 'clamp(0.03em, 0.12vw, 0.1em)',
+                  letterSpacing: isCordyx ? 'clamp(0.02em, 0.1vw, 0.08em)' : 'clamp(0.03em, 0.12vw, 0.1em)',
                   textShadow: `
                     clamp(1px, 0.25vw, 2px) clamp(1px, 0.25vw, 2px) 0px rgba(0,0,0,0.8),
                     0 0 clamp(4px, 1.2vw, 8px) ${bossColor.glow}
@@ -517,7 +516,7 @@ export default function Team() {
       }} />
       
       <div className="container relative z-10 px-4 sm:px-6 md:px-8" style={{ paddingTop: 'clamp(3rem, 6vw, 5rem)', paddingBottom: 'clamp(3rem, 6vw, 5rem)' }}>
-        {/* Founding/Core Members Section */}
+        {/* Core Members Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -538,7 +537,7 @@ export default function Team() {
               marginBottom: 'clamp(1rem, 2vw, 1.5rem)'
             }}
           >
-            FOUNDING / CORE MEMBERS
+            CORE MEMBERS
           </h2>
           <div className="flex justify-center" style={{ marginTop: 'clamp(1rem, 2vw, 1.5rem)' }}>
             <div className="ph-divider" />
@@ -580,7 +579,7 @@ export default function Team() {
                 textAlign: 'center'
               }}
             >
-              FOUNDING / FORMER MEMBERS
+              FORMER MEMBERS
             </p>
             <p
               style={{

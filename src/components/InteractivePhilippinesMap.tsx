@@ -52,7 +52,7 @@ const communityLocations: CommunityLocation[] = [
     name: 'Himamaylan City • Clivv',
     region: 'Visayas',
     coordinates: [10.1009, 123.0303],
-    avatar: '/images/clivv_azuki1.jpg',
+    avatar: '/images/Clivv(1).png',
   },
   {
     name: 'Daraga, Albay • Speedy',

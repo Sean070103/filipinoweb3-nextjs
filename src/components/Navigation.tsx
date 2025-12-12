@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { ChevronDown, Home, FlaskConical, Briefcase, Users } from "lucide-react";
+import { ChevronDown, FlaskConical, Briefcase, Users } from "lucide-react";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -62,10 +62,6 @@ export default function Navigation() {
     <>
       <nav className="navbar-pixel">
         <div className="navbar-container">
-          <div className="navbar-brand" onClick={goToHome}>
-            <span className="navbar-brand-chip">FW3</span>
-          </div>
-
           {/* Desktop / tablet links */}
           <div className="navbar-links-desktop">
             <div 
@@ -73,18 +69,10 @@ export default function Navigation() {
               className="navbar-dropdown-wrapper"
             >
               <div className="navbar-home-group">
-                {/* Main HOME button: always navigates home */}
-                <button
-                  className="navbar-button navbar-home"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    goToHome();
-                  }}
-                >
-                  <Home className="navbar-icon" />
-                  HOME
-                </button>
+                {/* FW3 brand: always navigates home */}
+                <div className="navbar-brand" onClick={goToHome}>
+                  <span className="navbar-brand-chip">FW3</span>
+                </div>
 
                 {/* Small toggle button: only controls dropdown */}
                 <button
@@ -140,7 +128,7 @@ export default function Navigation() {
                 <Briefcase className="navbar-icon" />
                 CAREERS
               </button>
-            </Link>
+          </Link>
 
             <Link href="/community" className="navbar-link">
               <button className="navbar-button navbar-community">
@@ -176,31 +164,19 @@ export default function Navigation() {
               <div style={{
                 marginBottom: '20px',
                 paddingBottom: '16px',
-                borderBottom: '2px solid #06b6d4',
+                borderBottom: '2px solid #22c55e',
                 textAlign: 'center'
               }}>
                 <span style={{
-                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                   fontSize: 'clamp(0.7rem, 2vw, 0.9rem)',
-                  color: '#06b6d4',
+                  color: '#22c55e',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase'
                 }}>
                   MENU
-                </span>
+            </span>
               </div>
-              <button
-                className="navbar-button navbar-home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  goToHome();
-                  setMobileOpen(false);
-                }}
-              >
-                <Home className="navbar-icon" />
-                HOME
-              </button>
-
               {homeSections.map((section) => (
                 <button
                   key={section.id}
@@ -220,12 +196,12 @@ export default function Navigation() {
                   <FlaskConical className="navbar-icon" />
                   LABS
                 </button>
-              </Link>
+          </Link>
 
               <Link href="/careers" className="navbar-link" onClick={() => setMobileOpen(false)}>
                 <button className="navbar-button navbar-careers">
                   <Briefcase className="navbar-icon" />
-                  CAREERS
+              CAREERS
                 </button>
               </Link>
 
@@ -234,8 +210,8 @@ export default function Navigation() {
                   <Users className="navbar-icon" />
                   COMMUNITY
                 </button>
-              </Link>
-            </div>
+          </Link>
+        </div>
           </>
         )}
       </nav>
@@ -270,46 +246,78 @@ export default function Navigation() {
           gap: 0;
           padding: 4px 6px;
           margin: 0;
-          background: #022c44; /* deep blue instead of black */
-          border: 2px solid #06b6d4;
+          background: #055709; /* green instead of blue */
+          border: 2px solid #22c55e;
+          border-top: 4px solid;
+          border-image: linear-gradient(90deg, #CE1126 0%, #CE1126 33%, #0038A8 33%, #0038A8 66%, #FCD116 66%, #FCD116 100%) 1;
           box-shadow:
             0 0 0 2px #000000,
-            0 4px 0 #000000;
+            0 4px 0 #000000,
+            inset 0 0 20px rgba(206, 17, 38, 0.1),
+            inset 0 0 20px rgba(0, 56, 168, 0.1),
+            inset 0 0 20px rgba(252, 209, 22, 0.1);
           border-radius: 0;
           pointer-events: auto; /* re-enable interaction on inner content */
+          position: relative;
+        }
+
+        .navbar-container::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: 
+            repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(206, 17, 38, 0.03) 2px, rgba(206, 17, 38, 0.03) 4px),
+            repeating-linear-gradient(90deg, transparent 0px, transparent 2px, rgba(0, 56, 168, 0.03) 2px, rgba(0, 56, 168, 0.03) 4px);
+          pointer-events: none;
+          z-index: 0;
         }
 
         .navbar-brand {
-          margin-right: 8px;
+          margin-right: 0;
           padding: 12px 18px;
-          background: linear-gradient(180deg, #34d399 0%, #059669 100%);
-          border: 3px solid #ecfdf5;
+          background: #055709;
+          border: 3px solid #22c55e;
           box-shadow: 4px 4px 0 #000000;
           cursor: pointer;
           display: flex;
           align-items: center;
           position: relative;
+          z-index: 1;
         }
 
         .navbar-brand::before {
+          content: '🇵🇭';
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          font-size: 10px;
+          opacity: 0.8;
+          z-index: 2;
+        }
+
+        .navbar-brand::after {
           content: '';
           position: absolute;
           top: 6px;
-          left: 6px;
-          width: 8px;
-          height: 8px;
-          border-radius: 999px;
-          background: #bbf7d0;
-          box-shadow: 0 0 6px rgba(74, 222, 128, 0.9);
+          right: 6px;
+          width: 6px;
+          height: 6px;
+          background: radial-gradient(circle, #FCD116 0%, #CE1126 50%, #0038A8 100%);
+          border-radius: 50%;
+          box-shadow: 0 0 4px rgba(252, 209, 22, 0.6);
+          z-index: 2;
         }
 
         .navbar-brand-chip {
           font-family: var(--font-press-start-2p), "Courier New", monospace;
           font-size: 11px;
           letter-spacing: 0.1em;
-          color: #ecfdf5;
+          color: #ffffff;
           text-transform: uppercase;
-          text-shadow: 1px 1px 0 #16a34a;
+          text-shadow: 1px 1px 0 #000000;
         }
 
         .navbar-dropdown-wrapper {
@@ -325,7 +333,7 @@ export default function Navigation() {
         }
 
         .navbar-toggle {
-          background: #053c5e;
+          background: #033a05;
           border: 2px solid #4b5563;
           border-left: none;
           border-style: outset;
@@ -342,19 +350,19 @@ export default function Navigation() {
         }
 
         .navbar-toggle:hover {
-          background: #111827;
-          border-color: #06b6d4;
-        }
-
-        .navbar-toggle-open {
-          background: #0f766e;
-          box-shadow: 3px 3px 0 #000000;
+          background: #022c03;
           border-color: #22c55e;
         }
 
+        .navbar-toggle-open {
+          background: #15803d;
+          box-shadow: 3px 3px 0 #000000;
+          border-color: #4ade80;
+        }
+
         .navbar-button {
-          background: #0e1f2f; /* neutral base */
-          border: 2px solid #1e3a8a;
+          background: #033a05; /* green base */
+          border: 2px solid #055709;
           border-style: outset;
           border-radius: 0;
           color: #e5e7eb;
@@ -387,10 +395,10 @@ export default function Navigation() {
         }
 
         .navbar-button:hover {
-          background: #0f172a;
+          background: #022c03;
           transform: translate(-1px, -1px);
           box-shadow: 4px 4px 0 #000000;
-          border-color: #06b6d4;
+          border-color: #22c55e;
           color: #f9fafb;
         }
 
@@ -414,51 +422,51 @@ export default function Navigation() {
 
         /* Per-button color accents */
         .navbar-home {
-          background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
-          border-color: #7dd3fc;
-          color: #01111f;
-          text-shadow: 1px 1px 0 #7dd3fc40;
+          background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+          border-color: #4ade80;
+          color: #03110c;
+          text-shadow: 1px 1px 0 #4ade8040;
         }
 
         .navbar-home:hover {
-          background: linear-gradient(180deg, #67e8f9 0%, #0369a1 100%);
-          border-color: #bae6fd;
+          background: linear-gradient(180deg, #4ade80 0%, #15803d 100%);
+          border-color: #86efac;
         }
 
         .navbar-labs {
-          background: linear-gradient(180deg, #34d399 0%, #059669 100%);
-          border-color: #bbf7d0;
-          color: #03110c;
-          text-shadow: 1px 1px 0 #86efac50;
+          background: linear-gradient(180deg, #ff4444 0%, #CE1126 100%);
+          border-color: #ff6b6b;
+          color: #ffffff;
+          text-shadow: 1px 1px 0 #000000;
         }
 
         .navbar-labs:hover {
-          background: linear-gradient(180deg, #6ee7b7 0%, #047857 100%);
-          border-color: #dcfce7;
+          background: linear-gradient(180deg, #ff6666 0%, #a00d1e 100%);
+          border-color: #ff8e8e;
         }
 
         .navbar-careers {
-          background: linear-gradient(180deg, #fb923c 0%, #ea580c 100%);
-          border-color: #fed7aa;
-          color: #2a0c00;
-          text-shadow: 1px 1px 0 #fed7aa60;
+          background: linear-gradient(180deg, #1e4dd8 0%, #0038A8 100%);
+          border-color: #4a6cf7;
+          color: #ffffff;
+          text-shadow: 1px 1px 0 #000000;
         }
 
         .navbar-careers:hover {
-          background: linear-gradient(180deg, #fdba74 0%, #c2410c 100%);
-          border-color: #ffe4c7;
+          background: linear-gradient(180deg, #3b5fe6 0%, #002d87 100%);
+          border-color: #6b8aff;
         }
 
         .navbar-community {
-          background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
-          border-color: #86efac;
-          color: #03110c;
-          text-shadow: 1px 1px 0 #86efac50;
+          background: linear-gradient(180deg, #ffd700 0%, #FCD116 100%);
+          border-color: #ffed4e;
+          color: #000000;
+          text-shadow: 1px 1px 0 #ffffff;
         }
 
         .navbar-community:hover {
-          background: linear-gradient(180deg, #4ade80 0%, #15803d 100%);
-          border-color: #bbf7d0;
+          background: linear-gradient(180deg, #ffe033 0%, #e6c014 100%);
+          border-color: #fff366;
         }
 
         .navbar-icon {
@@ -470,7 +478,7 @@ export default function Navigation() {
 
         .navbar-button:hover .navbar-icon {
           transform: scale(1.2) rotate(5deg);
-          color: #06b6d4;
+          color: #22c55e;
         }
 
         .navbar-chevron {
@@ -486,7 +494,7 @@ export default function Navigation() {
 
         .navbar-button:hover .navbar-chevron {
           transform: scale(1.1);
-          color: #06b6d4;
+          color: #22c55e;
         }
 
         .navbar-backdrop {
@@ -503,8 +511,8 @@ export default function Navigation() {
           position: absolute;
           top: 100%;
           left: 0;
-          background: #013954; /* blue dropdown */
-          border: 2px solid #06b6d4;
+          background: #033a05; /* green dropdown */
+          border: 2px solid #22c55e;
           box-shadow: 4px 4px 0 #000000;
           z-index: 10001;
           min-width: 160px;
@@ -521,6 +529,20 @@ export default function Navigation() {
           display: flex;
           align-items: center;
           gap: 0;
+          position: relative;
+          z-index: 1;
+        }
+
+        .navbar-links-desktop::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 2px;
+          height: 60%;
+          background: linear-gradient(180deg, #CE1126 0%, #0038A8 50%, #FCD116 100%);
+          opacity: 0.4;
         }
 
         .navbar-hamburger {
@@ -538,13 +560,13 @@ export default function Navigation() {
         }
 
         .navbar-hamburger:hover {
-          background: rgba(6, 182, 212, 0.1);
+          background: rgba(34, 197, 94, 0.1);
         }
 
         .navbar-hamburger span {
           width: 20px;
           height: 2px;
-          background: #06b6d4;
+          background: #22c55e;
           transition: all 0.3s ease;
           border-radius: 1px;
         }
@@ -569,7 +591,7 @@ export default function Navigation() {
           bottom: 0;
           z-index: 10000;
           background: #011420;
-          border-top: 3px solid #06b6d4;
+          border-top: 3px solid #22c55e;
           padding: 80px 20px 20px;
           display: flex;
           flex-direction: column;
@@ -631,9 +653,9 @@ export default function Navigation() {
             justify-content: space-between;
             padding: 8px 16px;
             border: none;
-            border-bottom: 2px solid #06b6d4;
+            border-bottom: 2px solid #22c55e;
             box-shadow: 0 2px 0 #000000;
-            background: rgba(2, 44, 68, 0.95);
+            background: rgba(5, 87, 9, 0.95);
             backdrop-filter: blur(10px);
             position: relative;
             z-index: 10002;
@@ -642,6 +664,11 @@ export default function Navigation() {
           .navbar-brand {
             margin-right: 0;
             padding: 8px 14px;
+          }
+
+          .navbar-home-group {
+            display: flex;
+            align-items: stretch;
           }
 
           .navbar-links-desktop {
@@ -658,9 +685,9 @@ export default function Navigation() {
             justify-content: flex-start;
             padding: 16px 20px;
             font-size: 12px;
-            border: 2px solid #06b6d4;
-            background: rgba(6, 182, 212, 0.15);
-            border-left: 4px solid #06b6d4;
+            border: 2px solid #22c55e;
+            background: rgba(34, 197, 94, 0.15);
+            border-left: 4px solid #22c55e;
             box-shadow: 2px 2px 0 #000000;
             transition: all 0.2s ease;
             margin: 0;
@@ -671,11 +698,11 @@ export default function Navigation() {
 
           .navbar-mobile-menu .navbar-button:hover,
           .navbar-mobile-menu .navbar-link .navbar-button:hover {
-            background: rgba(6, 182, 212, 0.3);
-            border-left-color: #22c55e;
-            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.3);
+            border-left-color: #4ade80;
+            border-color: #4ade80;
             transform: translateX(4px);
-            box-shadow: 3px 3px 0 #000000, -4px 0 12px rgba(6, 182, 212, 0.4);
+            box-shadow: 3px 3px 0 #000000, -4px 0 12px rgba(34, 197, 94, 0.4);
           }
 
           .navbar-mobile-menu .navbar-button:active,
@@ -740,7 +767,7 @@ export default function Navigation() {
           top: 0;
           bottom: 0;
           width: 0;
-          background: linear-gradient(to bottom, #06b6d4, #a855f7);
+          background: linear-gradient(to bottom, #22c55e, #16a34a);
           transition: width 0.3s ease;
           z-index: -1;
         }

@@ -8,6 +8,7 @@ import Values from '@/components/Values';
 import Team from '@/components/Team';
 import Partners from '@/components/Partners';
 import FAQs from '@/components/FAQs';
+import CommunityCTA from '@/components/CommunityCTA';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -29,6 +30,7 @@ export default function Home() {
       <Team />
       <Partners />
       <FAQs />
+      <CommunityCTA />
       <Contact />
       <Footer />
     </div>

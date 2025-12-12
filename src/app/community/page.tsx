@@ -63,7 +63,7 @@ const champions: Champion[] = [
   {
     name: "Clivv",
     role: "Marketing",
-    image: "/images/clivv_azuki1.jpg",
+    image: "/images/Clivv(1).png",
     region: "Mindanao",
     skill: "Marketing",
     stat: 88,
