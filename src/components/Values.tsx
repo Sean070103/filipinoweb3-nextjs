@@ -33,24 +33,33 @@ export default function Values() {
   const values = [
     {
       title: "HOLISTIC",
-      image: "/images/holistic.png",
+      image: "/images/Bayani_01.png",
       description: "Building in Web3 involves different roles that are essential in its success as an industry. Maintaining the balance and flow of interdependence is vital for overall development. As builders, we must develop and strengthen the shared goals and ideals of our communities.",
       neonColor: "#00FFFF", // Cyan
-      icon: CircleDot
+      icon: CircleDot,
+      number: "#001",
+      glowColor: "#FFE5B4", // Warm peach
+      glowColorSecondary: "#90EE90" // Light green
     },
     {
       title: "CONNECTED",
-      image: "/images/connected.png",
+      image: "/images/Bayani_02.png",
       description: "Web3 interactions should be built on authentic, harmonious, and mutually-beneficial relationships. Strategies must be attuned to the community's needs, passions, and interests. The organization's advocacy is a community-centered approach for the professional development of the community.",
       neonColor: "#FF00FF", // Magenta
-      icon: Link2
+      icon: Link2,
+      number: "#002",
+      glowColor: "#00FFFF", // Cyan
+      glowColorSecondary: "#87CEEB" // Sky blue
     },
     {
       title: "INNOVATIVE",
-      image: "/images/innovative.png", 
+      image: "/images/Bayani_03.png", 
       description: "Web3 as an emerging industry is distinguished by its fast-paced dynamics. It is important for Web3 builders to be highly agile and adaptable. The organization aims to foster a vibrant exchange of information and encourage continuing education.",
       neonColor: "#FFFF00", // Yellow
-      icon: Zap
+      icon: Zap,
+      number: "#003",
+      glowColor: "#FFEAA7", // Soft yellow
+      glowColorSecondary: "#98FB98" // Mint green
     }
   ];
 
@@ -137,6 +146,50 @@ export default function Values() {
           }
           100% {
             background-position: 0 20px;
+          }
+        }
+        @keyframes characterBlink {
+          0%, 90%, 100% {
+            opacity: 1;
+          }
+          95% {
+            opacity: 0.85;
+          }
+        }
+        @keyframes sparkleFlicker {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          25% {
+            opacity: 0.7;
+            transform: scale(0.98);
+          }
+          50% {
+            opacity: 0.9;
+            transform: scale(1.01);
+          }
+          75% {
+            opacity: 0.8;
+            transform: scale(0.99);
+          }
+        }
+        @keyframes lightBob {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-3px);
+          }
+        }
+        @keyframes glowPulse {
+          0%, 100% {
+            opacity: 0.4;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.6;
+            transform: scale(1.05);
           }
         }
         .value-card {
@@ -300,50 +353,188 @@ export default function Values() {
                   {/* Image Section */}
                   <div className="relative overflow-hidden flex-shrink-0" style={{ 
                     borderBottom: `1px solid ${value.neonColor}30`,
-                    height: 'clamp(220px, 32vw, 300px)'
+                    height: 'clamp(220px, 32vw, 300px)',
+                    background: 'linear-gradient(135deg, rgba(13, 13, 13, 0.95) 0%, rgba(20, 20, 20, 0.9) 100%)',
+                    filter: 'saturate(0.7)'
                   }}>
-                    <Image 
-                      src={value.image} 
-                      alt={value.title} 
-                      width={400}
-                      height={300}
-                      className="w-full h-full object-cover"
-                      style={{
-                        imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                        filter: 'contrast(1.05) brightness(0.98) saturate(1.1)'
-                      }}
-                    />
-                    {/* Subtle Image Overlay Gradient */}
+                    {/* Desaturated background overlay */}
                     <div 
-                      className="absolute inset-0 pointer-events-none"
+                      className="absolute inset-0 pointer-events-none z-0"
                       style={{
-                        background: `linear-gradient(to bottom, transparent 0%, rgba(13, 13, 13, 0.3) 100%)`
+                        background: `linear-gradient(to bottom, transparent 0%, rgba(13, 13, 13, 0.4) 100%)`,
+                        filter: 'saturate(0.6)'
                       }}
                     />
+                    
+                    {/* Character with enhanced saturation and glow */}
+                    <div
+                      className="relative z-10 w-full h-full flex items-center justify-center"
+                      style={{
+                        animation: 'characterBlink 4s ease-in-out infinite, sparkleFlicker 6s ease-in-out infinite, lightBob 3s ease-in-out infinite',
+                        animationDelay: `${index * 0.5}s, ${index * 0.3}s, ${index * 0.7}s`
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          height: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center'
+                        }}
+                      >
+                        {/* Soft glow outline */}
+                        <div
+                          className="absolute inset-0 pointer-events-none"
+                          style={{
+                            background: `radial-gradient(ellipse at center, ${value.glowColor}40 0%, ${value.glowColorSecondary}30 40%, transparent 70%)`,
+                            filter: `blur(8px)`,
+                            animation: 'glowPulse 3s ease-in-out infinite',
+                            animationDelay: `${index * 0.4}s`,
+                            zIndex: 1
+                          }}
+                        />
+                        
+                        {/* Character image with increased saturation */}
+                        <Image 
+                          src={value.image} 
+                          alt={value.title} 
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-contain relative z-10"
+                          style={{
+                            imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                            filter: `
+                              contrast(1.1) 
+                              brightness(1.05) 
+                              saturate(1.4)
+                              drop-shadow(0 0 2px ${value.glowColor}80)
+                              drop-shadow(0 0 4px ${value.glowColorSecondary}60)
+                            `,
+                            position: 'relative',
+                            zIndex: 2
+                          }}
+                        />
+                        
+                        {/* Additional glow layers */}
+                        <div
+                          className="absolute inset-0 pointer-events-none"
+                          style={{
+                            background: `radial-gradient(ellipse at 50% 40%, ${value.glowColor}20 0%, transparent 60%)`,
+                            filter: `blur(4px)`,
+                            zIndex: 3
+                          }}
+                        />
+                      </div>
+                    </div>
                   </div>
                   
-                  {/* Content Section */}
-                  <div
-                    className="p-6 sm:p-7 md:p-8 flex flex-col flex-grow"
+                  {/* BAYANI BLOCKS Banner */}
+                  <div 
+                    className="relative flex flex-col items-center justify-center py-3 px-4"
                     style={{
-                      background: 'linear-gradient(180deg, rgba(0,0,0,0.92), rgba(0,0,0,0.96))',
-                      borderTop: `1px solid ${value.neonColor}25`,
-                      boxShadow: `0 -6px 12px rgba(0,0,0,0.45)`,
+                      background: 'linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #8B4513 100%)',
+                      borderTop: `2px solid ${value.neonColor}40`,
+                      borderBottom: `2px solid ${value.neonColor}40`,
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                      boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2)'
+                    }}
+                  >
+                    {/* Wood grain texture overlay */}
+                    <div 
+                      className="absolute inset-0 opacity-20 pointer-events-none"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='4' height='4' fill='%23654321'/%3E%3Crect x='0' y='0' width='4' height='1' fill='%23A0522D'/%3E%3C/svg%3E")`,
+                        backgroundSize: '4px 4px',
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering']
+                      }}
+                    />
+                    
+                    <div 
+                      className="relative z-10 text-center"
+                      style={{
+                        fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                        fontSize: 'clamp(0.5rem, 1.2vw, 0.75rem)',
+                        fontWeight: '400',
+                        color: '#FFD700',
+                        textShadow: '2px 2px 0px #000000, 0 0 8px rgba(255, 215, 0, 0.5)',
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                        WebkitFontSmoothing: 'none',
+                        fontSmooth: 'never',
+                        textRendering: 'optimizeSpeed',
+                        letterSpacing: '0.05em',
+                        lineHeight: '1.3'
+                      }}
+                    >
+                      BAYANI BLOCKS
+                    </div>
+                    <div 
+                      className="relative z-10 text-center mt-1"
+                      style={{
+                        fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                        fontSize: 'clamp(0.35rem, 0.9vw, 0.55rem)',
+                        fontWeight: '400',
+                        color: '#FFFFFF',
+                        textShadow: '1px 1px 0px #000000',
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                        WebkitFontSmoothing: 'none',
+                        fontSmooth: 'never',
+                        textRendering: 'optimizeSpeed',
+                        letterSpacing: '0.03em'
+                      }}
+                    >
+                      FILIPINO PIXEL FRIENDS {value.number}
+                    </div>
+                  </div>
+                  
+                  {/* Content Section - Pixelated Card */}
+                  <div
+                    className="p-6 sm:p-7 md:p-8 flex flex-col flex-grow relative"
+                    style={{
+                      background: '#000000',
+                      border: `2px solid ${value.neonColor}60`,
+                      borderRadius: '0px',
+                      boxShadow: `
+                        4px 4px 0px rgba(0,0,0,0.8),
+                        inset 2px 2px 0px rgba(255,255,255,0.1),
+                        0 0 15px ${value.neonColor}20
+                      `,
                       maxWidth: '560px',
                       width: '100%',
                       margin: '0 auto',
                       rowGap: '1rem',
                       padding: 'clamp(1.4rem, 3.2vw, 1.9rem)',
                       textAlign: 'left',
+                      imageRendering: 'pixelated' as CSSProperties['imageRendering'],
+                      WebkitFontSmoothing: 'none',
+                      fontSmooth: 'never',
+                      position: 'relative'
                     }}
                   >
+                    {/* Pixelated grid overlay */}
+                    <div 
+                      className="absolute inset-0 pointer-events-none opacity-5"
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml,%3Csvg width='8' height='8' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='none'/%3E%3Crect x='0' y='0' width='1' height='8' fill='${value.neonColor}'/%3E%3Crect x='0' y='0' width='8' height='1' fill='${value.neonColor}'/%3E%3C/svg%3E")`,
+                        backgroundSize: '8px 8px',
+                        imageRendering: 'pixelated' as CSSProperties['imageRendering']
+                      }}
+                    />
+                    
+                    {/* Corner decorations */}
+                    <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2" style={{ borderColor: value.neonColor, opacity: 0.6 }} />
+                    <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2" style={{ borderColor: value.neonColor, opacity: 0.6 }} />
+                    <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2" style={{ borderColor: value.neonColor, opacity: 0.6 }} />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2" style={{ borderColor: value.neonColor, opacity: 0.6 }} />
                     {/* Header with Icon */}
-                    <div className="flex items-start gap-4 mb-4">
+                    <div className="flex items-start gap-4 mb-4 relative z-10">
                       <div 
                         className="flex-shrink-0 mt-1"
                         style={{
                           color: value.neonColor,
-                          filter: `drop-shadow(0 0 6px ${value.neonColor}50)`
+                          filter: `drop-shadow(0 0 6px ${value.neonColor}50)`,
+                          imageRendering: 'pixelated' as CSSProperties['imageRendering']
                         }}
                       >
                         <IconComponent size={24} strokeWidth={2.5} />
@@ -376,7 +567,7 @@ export default function Values() {
                     
                     {/* Description */}
                     <p
-                      className="flex-grow mb-4"
+                      className="flex-grow mb-4 relative z-10"
                       style={{
                         fontFamily: '"Inter", "Segoe UI", system-ui, sans-serif',
                         color: '#F8F8F8',
@@ -400,16 +591,17 @@ export default function Values() {
                     </p>
                     
                     {/* RGB Divider */}
-                    <div className="mt-auto pt-5 relative flex-shrink-0" style={{ 
+                    <div className="mt-auto pt-5 relative flex-shrink-0 z-10" style={{ 
                       borderTop: `1px solid ${value.neonColor}25`
                     }}>
-                      <div className="flex items-center gap-0.5 h-0.5 relative">
+                      <div className="flex items-center gap-0.5 h-1 relative">
                         {/* Red Segment */}
                         <div 
                           className="flex-1 h-full"
                           style={{
                             background: '#FF0000',
-                            boxShadow: '0 0 3px #FF000030'
+                            boxShadow: '0 0 4px #FF000040',
+                            imageRendering: 'pixelated' as CSSProperties['imageRendering']
                           }}
                         />
                         {/* Green Segment */}
@@ -417,7 +609,8 @@ export default function Values() {
                           className="flex-1 h-full"
                           style={{
                             background: '#00FF00',
-                            boxShadow: '0 0 3px #00FF0030'
+                            boxShadow: '0 0 4px #00FF0040',
+                            imageRendering: 'pixelated' as CSSProperties['imageRendering']
                           }}
                         />
                         {/* Blue Segment */}
@@ -425,7 +618,8 @@ export default function Values() {
                           className="flex-1 h-full"
                           style={{
                             background: '#0000FF',
-                            boxShadow: '0 0 3px #0000FF30'
+                            boxShadow: '0 0 4px #0000FF40',
+                            imageRendering: 'pixelated' as CSSProperties['imageRendering']
                           }}
                         />
                       </div>

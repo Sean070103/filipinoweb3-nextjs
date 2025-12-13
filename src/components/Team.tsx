@@ -171,7 +171,7 @@ const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMem
   const bossColor = useMemo(() => bossColors[index % bossColors.length], [index]);
   const isCordyx = member.name.trim().toLowerCase() === 'cordyx';
 
-  return (
+    return (
       <motion.article 
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -343,15 +343,15 @@ const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMem
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center'
-                }}
-              >
-                <Image 
-                  src={member.image} 
-                  alt={member.name} 
-                  width={400}
-                  height={400}
+              }}
+            >
+              <Image 
+                src={member.image} 
+                alt={member.name} 
+                width={400}
+                height={400}
                   className="w-full h-full object-contain"
-                  style={{ 
+                style={{ 
                     filter: 'contrast(1.1) saturate(1.2) brightness(1.05)',
                     objectPosition: 'center center',
                     maxWidth: '100%',
@@ -498,8 +498,8 @@ const TeamMember = memo(function TeamMember({ member, index }: { member: TeamMem
             </div>
           </div>
         </div>
-        </motion.article>
-      );
+      </motion.article>
+    );
 });
 
 export default function Team() {
