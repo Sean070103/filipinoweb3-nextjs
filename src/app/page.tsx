@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import RetroGamingHero from '@/components/RetroGamingHero';
-import Header from '@/components/Header';
 import Categories from '@/components/Categories';
 import Values from '@/components/Values';
 import Team from '@/components/Team';
@@ -24,7 +23,6 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <RetroGamingHero />
-      <Header />
       <Categories />
       <Values />
       <Team />

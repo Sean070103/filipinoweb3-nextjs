@@ -544,7 +544,7 @@ export default function Team() {
           </div>
         </motion.div>
         
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+        <div className="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {otherMembers.map((member, index) => (
             <TeamMember key={`${member.name}-${index}`} member={member} index={index} />
           ))}

@@ -13,70 +13,59 @@ type CommunityLocation = {
 
 const communityLocations: CommunityLocation[] = [
   {
-    name: 'Tarlac City • Siftcroix',
+    name: 'Tarlac City • TBA',
     region: 'Luzon',
     coordinates: [15.4861, 120.5986],
-    avatar: '/images/Sift.jpg',
   },
   {
-    name: 'Bacolod City • Lupin_XIV',
+    name: 'Bacolod City • TBA',
     region: 'Visayas',
     coordinates: [10.6769, 122.9620],
-    avatar: '/images/Lupin_XIV.jpg',
   },
   {
-    name: 'Makati City • Mychel_T',
+    name: 'Makati City • TBA',
     region: 'Luzon',
     coordinates: [14.5546, 121.0244],
-    avatar: '/images/Mychel_T.jpg',
   },
   {
-    name: 'Butuan City • Aerva',
+    name: 'Butuan City • TBA',
     region: 'Mindanao',
     coordinates: [8.9475, 125.5406],
-    avatar: '/images/Aerva.jpg',
   },
   {
-    name: 'Orani, Bataan • Zirk',
+    name: 'Orani, Bataan • TBA',
     region: 'Luzon',
     coordinates: [14.8004, 120.5362],
-    avatar: '/images/coretoshi_zirk.png',
   },
   {
-    name: 'San Pedro, Laguna • Waterlemon',
+    name: 'San Pedro, Laguna • TBA',
     region: 'Luzon',
     coordinates: [14.3571, 121.0509],
-    avatar: '/images/Waterlemon.jpg',
   },
   {
-    name: 'Himamaylan City • Clivv',
+    name: 'Kabankalan City • TBA',
     region: 'Visayas',
-    coordinates: [10.1009, 123.0303],
-    avatar: '/images/Clivv(1).png',
+    coordinates: [9.9867, 122.8144],
   },
   {
-    name: 'Daraga, Albay • Speedy',
+    name: 'Daraga, Albay • TBA',
     region: 'Luzon',
     coordinates: [13.1489, 123.7126],
-    avatar: '/images/Speedy.jpg',
   },
   {
-    name: 'Batangas City • Kata',
+    name: 'Batangas City • TBA',
     region: 'Luzon',
     coordinates: [13.7565, 121.0583],
-    avatar: '/images/Katrina.jpg',
   },
   {
-    name: 'Cabuyao City • Arkin',
+    name: 'Cabuyao City • TBA',
     region: 'Luzon',
     coordinates: [14.2742, 121.1236],
-    avatar: '/images/Arkin.png',
   },
   {
-    name: 'Bacolod City • CordyStackx',
+    name: 'Bacolod City • TBA',
     region: 'Visayas',
     coordinates: [10.6740, 122.9670],
-    avatar: '/images/Cordy.jfif',
   },
 ];
 

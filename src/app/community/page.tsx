@@ -234,10 +234,7 @@ export default function CommunityPage() {
           }}
         >
           <div
-            className="flex flex-wrap justify-center"
-            style={{
-              gap: "clamp(1rem, 2vw, 1.5rem)",
-            }}
+            className="grid gap-0 sm:gap-1 lg:gap-2 sm:grid-cols-2 lg:grid-cols-4 justify-items-stretch"
           >
             {champions.map((champion) => {
               const color = REGION_COLORS[champion.region as Region];
@@ -247,7 +244,7 @@ export default function CommunityPage() {
                   key={champion.name}
                   style={{
                     position: "relative",
-                    width: "clamp(100px, 12vw, 140px)",
+                    width: "100%",
                     transition: "all 0.3s ease",
                     cursor: "pointer",
                   }}
@@ -262,14 +259,14 @@ export default function CommunityPage() {
                   <div
                     style={{
                       position: "relative",
-                      width: "clamp(100px, 12vw, 140px)",
-                      height: "clamp(100px, 12vw, 140px)",
+                      width: "100%",
+                      height: "clamp(110px, 13vw, 150px)",
                       border: `clamp(2px, 0.4vw, 3px) solid ${color}`,
                       borderRadius: "clamp(3px, 0.5vw, 4px)",
                       overflow: "hidden",
                       background: "rgba(0,0,0,0.8)",
                       boxShadow: `0 clamp(2px, 0.5vw, 4px) clamp(8px, 2vw, 15px) rgba(0,0,0,0.5), 0 0 clamp(5px, 1.5vw, 10px) ${color}40`,
-                      marginBottom: "clamp(0.375rem, 0.75vw, 0.5rem)",
+                      marginBottom: "clamp(0.25rem, 0.5vw, 0.4rem)",
                     }}
                   >
                     <Image

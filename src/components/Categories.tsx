@@ -1,9 +1,8 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Eye, Rocket } from 'lucide-react';
-import type { CSSProperties } from 'react';
 import ScrollReveal from './ScrollReveal';
 
 const bmoMessages = [
@@ -20,9 +19,6 @@ const bmoMessages = [
 export default function Categories() {
   const [displayText, setDisplayText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  const [selectedApp, setSelectedApp] = useState<string | null>(null);
-  const [isMaximized, setIsMaximized] = useState(true);
-  const [swipeStart, setSwipeStart] = useState<{ x: number; y: number } | null>(null);
   const [bmoMessage, setBmoMessage] = useState('');
   const [showBmoSpeech, setShowBmoSpeech] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -121,11 +117,6 @@ export default function Categories() {
       document.removeEventListener('touchmove', handleTouchMove);
     };
   }, [isDragging, dragOffset]);
-
-  const apps = [
-    { id: 'vision', label: 'VISION', icon: '👁️' },
-    { id: 'mission', label: 'MISSION', icon: '🚀' }
-  ];
 
   return (
     <>

@@ -432,13 +432,13 @@ export default function Values() {
                   
                   {/* BAYANI BLOCKS Banner */}
                   <div 
-                    className="relative flex flex-col items-center justify-center py-3 px-4"
+                    className="relative flex items-center justify-center py-3 px-5"
                     style={{
                       background: 'linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #8B4513 100%)',
                       borderTop: `2px solid ${value.neonColor}40`,
                       borderBottom: `2px solid ${value.neonColor}40`,
                       imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                      boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2)'
+                      boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.25)'
                     }}
                   >
                     {/* Wood grain texture overlay */}
@@ -450,41 +450,42 @@ export default function Values() {
                         imageRendering: 'pixelated' as CSSProperties['imageRendering']
                       }}
                     />
+
+                    {/* Decorative side caps */}
+                    <div 
+                      className="absolute left-1 top-1 bottom-1"
+                      style={{
+                        width: '6px',
+                        background: `linear-gradient(180deg, ${value.neonColor}90 0%, ${value.neonColor}40 50%, ${value.neonColor}90 100%)`,
+                        boxShadow: `2px 0 4px rgba(0,0,0,0.4)`
+                      }}
+                    />
+                    <div 
+                      className="absolute right-1 top-1 bottom-1"
+                      style={{
+                        width: '6px',
+                        background: `linear-gradient(180deg, ${value.neonColor}90 0%, ${value.neonColor}40 50%, ${value.neonColor}90 100%)`,
+                        boxShadow: `-2px 0 4px rgba(0,0,0,0.4)`
+                      }}
+                    />
                     
                     <div 
                       className="relative z-10 text-center"
                       style={{
                         fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                        fontSize: 'clamp(0.5rem, 1.2vw, 0.75rem)',
+                        fontSize: 'clamp(0.6rem, 1.4vw, 0.85rem)',
                         fontWeight: '400',
                         color: '#FFD700',
-                        textShadow: '2px 2px 0px #000000, 0 0 8px rgba(255, 215, 0, 0.5)',
+                        textShadow: '2px 2px 0px #000000, 0 0 8px rgba(255, 215, 0, 0.6)',
                         imageRendering: 'pixelated' as CSSProperties['imageRendering'],
                         WebkitFontSmoothing: 'none',
                         fontSmooth: 'never',
                         textRendering: 'optimizeSpeed',
-                        letterSpacing: '0.05em',
+                        letterSpacing: '0.08em',
                         lineHeight: '1.3'
                       }}
                     >
                       BAYANI BLOCKS
-                    </div>
-                    <div 
-                      className="relative z-10 text-center mt-1"
-                      style={{
-                        fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                        fontSize: 'clamp(0.35rem, 0.9vw, 0.55rem)',
-                        fontWeight: '400',
-                        color: '#FFFFFF',
-                        textShadow: '1px 1px 0px #000000',
-                        imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                        WebkitFontSmoothing: 'none',
-                        fontSmooth: 'never',
-                        textRendering: 'optimizeSpeed',
-                        letterSpacing: '0.03em'
-                      }}
-                    >
-                      FILIPINO PIXEL FRIENDS {value.number}
                     </div>
                   </div>
                   

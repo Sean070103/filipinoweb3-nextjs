@@ -6,17 +6,34 @@ export default function RetroGamingHero() {
   return (
     <div 
       id="hero"
-      className="relative min-h-screen w-full overflow-hidden"
+      className="relative w-full"
       style={{
         background: '#66B2FF',
-        maxWidth: '100vw'
+        maxWidth: '100vw',
+        minHeight: '100vh',
+        paddingBottom: 'clamp(50px, 7vw, 80px)',
+        overflow: 'visible'
       }}
     >
-      {/* Dirt Layer - combined from left to right */}
+      {/* Grass Layer */}
       <div
-        className="absolute left-0 right-0 z-10 dirt-layer"
+        className="absolute left-0 right-0 z-10 grass-layer"
+        style={{
+          bottom: 'clamp(50px, 7vw, 80px)',
+          height: 'clamp(40px, 5vw, 70px)',
+          backgroundImage: "url('/images/grass.png')",
+          backgroundRepeat: 'repeat-x',
+          backgroundSize: 'auto clamp(40px, 5vw, 70px)',
+          backgroundPosition: 'left bottom',
+          imageRendering: 'pixelated',
+        }}
+      />
+      
+      {/* Dirt Layer - beneath grass */}
+      <div
+        className="absolute left-0 right-0 z-9 dirt-layer"
           style={{
-          bottom: 0,
+          bottom: 'clamp(50px, 7vw, 80px)',
           height: 'clamp(60px, 8vw, 120px)',
           backgroundImage: "url('/images/dirt.png'), url('/images/dirt.png')",
           backgroundRepeat: 'repeat-x, repeat-x',
@@ -26,19 +43,64 @@ export default function RetroGamingHero() {
         }}
       />
 
-      {/* Tindahan Store on top of dirt */}
-      <div className="absolute left-1/4 z-20 tindahan-store hidden sm:block" style={{ bottom: '-10px' }}>
+      {/* Tindahan Store on top of grass/dirt */}
+      <div className="absolute left-1/4 z-20 tindahan-store hidden sm:block" style={{ 
+        bottom: 'clamp(20px, 4vw, 50px)',
+        left: 'clamp(5%, 8vw, 15%)'
+      }}>
         <Image
           src="/images/tindahan2.png"
           alt="Sari-Sari Store"
-          width={200}
-          height={150}
+          width={400}
+          height={300}
           priority
           className="w-auto h-auto"
           style={{ 
             imageRendering: 'pixelated',
-            width: 'clamp(100px, 15vw, 200px)',
-            height: 'auto'
+            width: 'clamp(200px, 25vw, 400px)',
+            height: 'auto',
+            display: 'block'
+          }}
+        />
+      </div>
+
+      {/* Bahay on top of grass/dirt */}
+      <div className="absolute right-1/4 z-20 bahay-store hidden sm:block" style={{ 
+        bottom: 'clamp(60px, 8vw, 90px)',
+        right: 'clamp(5%, 8vw, 15%)'
+      }}>
+        <Image
+          src="/images/bahay(1).png"
+          alt="Bahay"
+          width={400}
+          height={300}
+          priority
+          className="w-auto h-auto"
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(200px, 25vw, 400px)',
+            height: 'auto',
+            display: 'block'
+          }}
+        />
+      </div>
+
+      {/* Academy in the center */}
+      <div className="absolute left-1/2 transform -translate-x-1/2 z-20 academy-store hidden sm:block" style={{ 
+        bottom: 'clamp(60px, 8vw, 90px)',
+      }}>
+        <Image
+          src="/images/Academy.png"
+          alt="Academy"
+          width={600}
+          height={450}
+          priority
+          className="w-auto h-auto"
+          style={{ 
+            imageRendering: 'pixelated',
+            width: 'clamp(300px, 35vw, 600px)',
+            height: 'auto',
+            display: 'block'
           }}
         />
       </div>
@@ -505,7 +567,7 @@ export default function RetroGamingHero() {
       <div 
         className="absolute z-20"
         style={{
-          bottom: '0px',
+          bottom: 'clamp(50px, 7vw, 80px)',
           animation: 'moveJeepneyLeftToRight 25s linear infinite',
         }}
       >
@@ -527,7 +589,7 @@ export default function RetroGamingHero() {
       <div 
         className="absolute z-20"
         style={{
-          bottom: '0px',
+          bottom: 'clamp(50px, 7vw, 80px)',
           animation: 'moveJeepneyRightToLeft 25s linear infinite',
           animationDelay: '12.5s'
         }}
@@ -551,7 +613,7 @@ export default function RetroGamingHero() {
       <div 
         className="absolute left-0 right-0 z-5 jeepney-carousel-container"
         style={{
-          bottom: 'clamp(-60px, -8vw, -80px)',
+          bottom: '0px',
           height: 'clamp(50px, 7vw, 80px)',
           background: '#000000',
           borderTop: 'clamp(2px, 0.3vw, 4px) solid #00FF00',
