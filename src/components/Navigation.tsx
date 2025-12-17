@@ -128,7 +128,7 @@ export default function Navigation() {
                 <Briefcase className="navbar-icon" />
                 CAREERS
               </button>
-          </Link>
+            </Link>
 
             <Link href="/community" className="navbar-link">
               <button className="navbar-button navbar-community">
@@ -138,7 +138,7 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger (left) */}
           <button
             className={`navbar-hamburger ${mobileOpen ? "navbar-hamburger-open" : ""}`}
             onClick={(e) => {
@@ -150,6 +150,18 @@ export default function Navigation() {
             <span />
             <span />
             <span />
+          </button>
+
+          {/* Mobile FW3 home button (right) */}
+          <button
+            className="navbar-fw3-mobile"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              goToHome();
+            }}
+          >
+            <span className="navbar-brand-chip">FW3</span>
           </button>
         </div>
 
@@ -177,6 +189,16 @@ export default function Navigation() {
                   MENU
             </span>
               </div>
+              <button
+                className="navbar-button navbar-brand-mobile"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToHome();
+                  setMobileOpen(false);
+                }}
+              >
+                <span className="navbar-brand-chip">FW3</span>
+              </button>
               {homeSections.map((section) => (
                 <button
                   key={section.id}
@@ -288,15 +310,6 @@ export default function Navigation() {
           z-index: 1;
         }
 
-        .navbar-brand::before {
-          content: '🇵🇭';
-          position: absolute;
-          top: 4px;
-          left: 4px;
-          font-size: 10px;
-          opacity: 0.8;
-          z-index: 2;
-        }
 
         .navbar-brand::after {
           content: '';
@@ -551,7 +564,7 @@ export default function Navigation() {
           justify-content: center;
           align-items: center;
           gap: 4px;
-          margin-left: 8px;
+          margin-right: 8px;
           padding: 10px;
           background: transparent;
           border: none;
@@ -636,6 +649,10 @@ export default function Navigation() {
           }
         }
 
+        .navbar-fw3-mobile {
+          display: none;
+        }
+
         @media (max-width: 768px) {
           .navbar-pixel {
             left: 0;
@@ -679,6 +696,23 @@ export default function Navigation() {
             display: flex;
           }
 
+          .navbar-fw3-mobile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            padding: 8px 14px;
+            background: #055709;
+            border: 2px solid #22c55e;
+            box-shadow: 2px 2px 0 #000000;
+            cursor: pointer;
+          }
+
+          .navbar-fw3-mobile:hover {
+            background: #15803d;
+            border-color: #4ade80;
+          }
+
           .navbar-mobile-menu .navbar-button,
           .navbar-mobile-menu .navbar-link .navbar-button {
             width: 100%;
@@ -694,6 +728,18 @@ export default function Navigation() {
             pointer-events: auto;
             color: #ffffff !important;
             font-weight: 600;
+          }
+
+          .navbar-brand-mobile {
+            background: #055709 !important;
+            border-color: #22c55e !important;
+            justify-content: center !important;
+            font-weight: 700 !important;
+          }
+
+          .navbar-brand-mobile:hover {
+            background: #15803d !important;
+            border-color: #4ade80 !important;
           }
 
           .navbar-mobile-menu .navbar-button:hover,

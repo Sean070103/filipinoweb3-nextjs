@@ -38,16 +38,16 @@ export default function CommunityCTA() {
       <section id="community-cta" className="relative py-6 sm:py-10 overflow-hidden">
         {/* Dark Background with Grid Pattern */}
         <div className="absolute inset-0" style={{
-          background: '#0a0a0a',
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='20' height='20' fill='%230a0a0a'/%3E%3Cpath d='M 0 0 L 20 0 M 0 20 L 20 20 M 0 0 L 0 20 M 20 0 L 20 20' stroke='%2314b8a6' stroke-width='0.5' opacity='0.4'/%3E%3C/svg%3E")`,
-          backgroundSize: '20px 20px',
+          background: '#050911',
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23050911'/%3E%3Cpath d='M 0 8 L 16 8 M 8 0 L 8 16' stroke='%230f172a' stroke-width='1' opacity='0.7'/%3E%3C/svg%3E")`,
+          backgroundSize: '16px 16px',
           imageRendering: 'pixelated'
         }} />
         
         {/* Subtle scanline effect */}
         <div className="absolute inset-0 pointer-events-none" style={{
-          background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(20, 184, 166, 0.03) 2px, rgba(20, 184, 166, 0.03) 4px)',
-          animation: 'scanline 8s linear infinite',
+          background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(148, 163, 184, 0.06) 2px, rgba(148, 163, 184, 0.06) 4px)',
+          animation: 'scanline 9s linear infinite',
           imageRendering: 'pixelated'
         }} />
         
@@ -63,16 +63,31 @@ export default function CommunityCTA() {
             <div 
               className="relative"
               style={{
-                background: '#d3d3d3',
-                borderRadius: 'clamp(8px, 1.5vw, 14px)',
-                padding: 'clamp(3px, 0.5vw, 4px)',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                background: '#c0c0c0',
+                borderRadius: '0px',
+                padding: '4px',
+                boxShadow: '0 0 0 4px #111, 0 0 0 6px #cbd5f5, 0 8px 0 rgba(0,0,0,0.8)',
                 imageRendering: 'pixelated',
-                maxWidth: 'clamp(320px, 70vw, 480px)',
+                maxWidth: 'clamp(360px, 78vw, 540px)',
                 width: '100%',
-                animation: 'terminalFlicker 0.15s infinite'
+                animation: 'terminalFlicker 0.18s infinite steps(2,end)',
+                border: '2px solid #111'
               }}
             >
+              {/* Corner pixels */}
+              {['top-1 left-1', 'top-1 right-1', 'bottom-1 left-1', 'bottom-1 right-1'].map((pos) => (
+                <div
+                  key={pos}
+                  className={`absolute ${pos}`}
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    background: '#0f172a',
+                    boxShadow: '2px 2px 0 #000',
+                    imageRendering: 'pixelated'
+                  }}
+                />
+              ))}
               {/* Inner Dark Border */}
               <div 
                 className="relative"
@@ -92,12 +107,19 @@ export default function CommunityCTA() {
                     borderRadius: 'clamp(5px, 1vw, 10px)',
                     padding: 'clamp(1rem, 2vw, 1.5rem) clamp(0.8rem, 1.5vw, 1.2rem)',
                     imageRendering: 'pixelated',
-                    position: 'relative'
+                    position: 'relative',
+                    boxShadow: 'inset 0 0 12px rgba(0,255,255,0.15)'
                   }}
                 >
                   {/* Subtle CRT screen glow */}
                   <div className="absolute inset-0 pointer-events-none" style={{
-                    background: 'radial-gradient(ellipse at center, rgba(173, 216, 230, 0.05) 0%, transparent 70%)',
+                    background: 'radial-gradient(ellipse at center, rgba(173, 216, 230, 0.07) 0%, transparent 70%)',
+                    imageRendering: 'pixelated'
+                  }} />
+                  {/* Noise overlay */}
+                  <div className="absolute inset-0 opacity-5 pointer-events-none" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.25'/%3E%3C/svg%3E")`,
+                    mixBlendMode: 'screen',
                     imageRendering: 'pixelated'
                   }} />
                   
@@ -110,10 +132,10 @@ export default function CommunityCTA() {
                     className="text-center mb-2"
                     style={{
                       fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                      fontSize: 'clamp(0.65rem, 1.7vw, 1.2rem)',
+                      fontSize: 'clamp(0.72rem, 2vw, 1.3rem)',
                       fontWeight: '400',
                       color: '#FFFFFF',
-                      letterSpacing: '0.08em',
+                      letterSpacing: '0.12em',
                       textShadow: '0 0 12px rgba(173, 216, 230, 0.95), 0 0 24px rgba(173, 216, 230, 0.75), 0 0 36px rgba(173, 216, 230, 0.55)',
                       imageRendering: 'pixelated',
                       WebkitFontSmoothing: 'none',
@@ -123,7 +145,7 @@ export default function CommunityCTA() {
                       animation: 'crtGlow 3s ease-in-out infinite',
                       position: 'relative',
                       zIndex: 10,
-                      marginBottom: 'clamp(0.75rem, 1.5vw, 1rem)'
+                      marginBottom: 'clamp(0.9rem, 1.7vw, 1.2rem)'
                     }}
                   >
                     READY TO BUILD THE
@@ -273,12 +295,12 @@ export default function CommunityCTA() {
                     viewport={{ once: true }}
                     className="mt-2"
                     style={{
-                      height: 'clamp(14px, 2.2vw, 20px)',
+                      height: 'clamp(16px, 2.4vw, 22px)',
                       backgroundImage: `url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16' fill='%23FFD700'/%3E%3Crect x='0' y='0' width='8' height='8' fill='%23000000'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%23000000'/%3E%3C/svg%3E")`,
-                      backgroundSize: 'clamp(14px, 2.2vw, 20px) clamp(14px, 2.2vw, 20px)',
+                      backgroundSize: 'clamp(16px, 2.4vw, 22px) clamp(16px, 2.4vw, 22px)',
                       imageRendering: 'pixelated',
                       borderRadius: '0 0 clamp(3px, 0.6vw, 8px) clamp(3px, 0.6vw, 8px)',
-                      marginTop: 'clamp(0.5rem, 1vw, 0.75rem)',
+                      marginTop: 'clamp(0.75rem, 1.2vw, 1rem)',
                       marginLeft: `-clamp(0.8rem, 1.5vw, 1.2rem)`,
                       marginRight: `-clamp(0.8rem, 1.5vw, 1.2rem)`,
                       marginBottom: `-clamp(1rem, 2vw, 1.5rem)`,

@@ -9,6 +9,7 @@ type CommunityLocation = {
   region: 'Luzon' | 'Visayas' | 'Mindanao';
   coordinates: [number, number]; // [latitude, longitude] for Leaflet
   avatar?: string;
+  facebookLink?: string;
 };
 
 const communityLocations: CommunityLocation[] = [
@@ -43,9 +44,39 @@ const communityLocations: CommunityLocation[] = [
     coordinates: [14.3571, 121.0509],
   },
   {
-    name: 'Kabankalan City • TBA',
+    name: 'Kabankalan City',
     region: 'Visayas',
     coordinates: [9.9867, 122.8144],
+    avatar: '/images/Kabankalan.jfif',
+    facebookLink: 'https://www.facebook.com/web3kab',
+  },
+  {
+    name: 'Iloilo City',
+    region: 'Visayas',
+    coordinates: [10.7202, 122.5621],
+    avatar: '/images/Iloilo.jfif',
+    facebookLink: 'https://www.facebook.com/web3iloilo',
+  },
+  {
+    name: 'Cebu City',
+    region: 'Visayas',
+    coordinates: [10.3157, 123.8854],
+    avatar: '/images/Cebu.jfif',
+    facebookLink: 'https://www.facebook.com/web3cebu',
+  },
+  {
+    name: 'Rizal',
+    region: 'Luzon',
+    coordinates: [14.6255, 121.1245], // Antipolo, Rizal
+    avatar: '/images/Rizal.jfif',
+    facebookLink: 'https://www.facebook.com/Web3Rizal',
+  },
+  {
+    name: 'San Carlos City',
+    region: 'Visayas',
+    coordinates: [10.4929, 123.4097], // San Carlos City, Negros Occidental
+    avatar: '/images/Sancarlos.jfif',
+    facebookLink: 'https://www.facebook.com/web3sancarlos',
   },
   {
     name: 'Daraga, Albay • TBA',
@@ -61,11 +92,6 @@ const communityLocations: CommunityLocation[] = [
     name: 'Cabuyao City • TBA',
     region: 'Luzon',
     coordinates: [14.2742, 121.1236],
-  },
-  {
-    name: 'Bacolod City • TBA',
-    region: 'Visayas',
-    coordinates: [10.6740, 122.9670],
   },
 ];
 
@@ -335,6 +361,7 @@ export default function InteractivePhilippinesMap() {
       }).filter(Boolean);
 
       // Enhanced popup with responsive sizing
+      const hasFacebookLink = location.facebookLink;
       marker.bindPopup(`
         <div style="
           font-family: var(--font-press-start-2p), 'Courier New', monospace;
@@ -381,7 +408,32 @@ export default function InteractivePhilippinesMap() {
             border-radius: ${isMobile ? '4px' : '6px'};
             display: inline-block;
             margin-top: ${isMobile ? '0.15rem' : '0.25rem'};
+            margin-bottom: ${hasFacebookLink ? (isMobile ? '0.25rem' : '0.35rem') : '0'};
           ">${location.region}</div>
+          ${hasFacebookLink ? `
+            <a 
+              href="${location.facebookLink}" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style="
+                display: inline-block;
+                font-size: ${isMobile ? '0.5rem' : '0.6rem'};
+                color: #1877f2;
+                text-decoration: none;
+                padding: ${isMobile ? '0.3rem 0.6rem' : '0.4rem 0.8rem'};
+                background: rgba(24, 119, 242, 0.15);
+                border: 1px solid rgba(24, 119, 242, 0.5);
+                border-radius: ${isMobile ? '4px' : '6px'};
+                margin-top: ${isMobile ? '0.25rem' : '0.35rem'};
+                transition: all 0.2s ease;
+                cursor: pointer;
+              "
+              onmouseover="this.style.background='rgba(24, 119, 242, 0.3)'; this.style.borderColor='rgba(24, 119, 242, 0.8)';"
+              onmouseout="this.style.background='rgba(24, 119, 242, 0.15)'; this.style.borderColor='rgba(24, 119, 242, 0.5)';"
+            >
+              📘 Facebook
+            </a>
+          ` : ''}
         </div>
       `, {
         className: 'custom-popup',
@@ -446,20 +498,22 @@ export default function InteractivePhilippinesMap() {
   return (
     <div className="w-full px-4 sm:px-6 md:px-8" style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto' }}>
       {/* Region Legend */}
-      <div className="flex justify-center gap-4 sm:gap-6 md:gap-8 flex-wrap mb-4 sm:mb-6 md:mb-8">
+      <div className="flex justify-center gap-3 sm:gap-5 md:gap-7 flex-wrap mb-4 sm:mb-6 md:mb-8 px-2">
         {Object.entries(regionColors).map(([region, color]) => (
-          <div key={region} className="flex items-center gap-2 sm:gap-3">
+          <div key={region} className="flex items-center gap-1.5 sm:gap-2.5">
             <div style={{
-              width: 'clamp(12px, 2.5vw, 16px)',
-              height: 'clamp(12px, 2.5vw, 16px)',
+              width: 'clamp(14px, 3vw, 18px)',
+              height: 'clamp(14px, 3vw, 18px)',
               borderRadius: '50%',
               background: color,
               boxShadow: `0 0 clamp(6px, 1.5vw, 10px) ${color}`,
+              flexShrink: 0,
             }}></div>
             <span style={{
               fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-              fontSize: 'clamp(0.5rem, 1.2vw, 0.7rem)',
+              fontSize: 'clamp(0.6rem, 1.5vw, 0.75rem)',
               color: 'var(--color-light)',
+              whiteSpace: 'nowrap',
             }}>{region}</span>
           </div>
         ))}
@@ -540,19 +594,19 @@ export default function InteractivePhilippinesMap() {
         <div ref={mapContainerRef} style={{ width: '100%', height: '100%', zIndex: 1 }} />
 
         {/* Selected Member Overlay */}
-        {selectedLocation && (
-          <div
+      {selectedLocation && (
+        <div
             className="member-floating-card"
-            style={{
+          style={{
               position: 'absolute',
               top: 'clamp(0.75rem, 2vw, 1.5rem)',
               right: 'clamp(0.75rem, 2vw, 1.5rem)',
               width: 'min(340px, 85vw)',
               background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 40, 0.95))',
-              border: `clamp(2px, 0.4vw, 3px) solid ${regionColors[selectedLocation.region]}`,
-              borderRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
+            border: `clamp(2px, 0.4vw, 3px) solid ${regionColors[selectedLocation.region]}`,
+            borderRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
               padding: 'clamp(0.85rem, 2vw, 1.25rem)',
-              boxShadow: `
+            boxShadow: `
                 0 20px 40px rgba(0,0,0,0.5),
                 0 0 clamp(20px, 5vw, 40px) ${regionColors[selectedLocation.region]}60
               `,
@@ -606,7 +660,9 @@ export default function InteractivePhilippinesMap() {
                               borderRadius: '14px',
                               objectFit: 'cover',
                               display: 'block',
+                              imageRendering: 'pixelated',
                             }}
+                            loading="lazy"
                           />
                         )}
                       </button>
@@ -618,7 +674,7 @@ export default function InteractivePhilippinesMap() {
                   <span
                     style={{
                       fontFamily: 'var(--font-montserrat), sans-serif',
-                      fontSize: '0.65rem',
+                      fontSize: 'clamp(0.6rem, 1.2vw, 0.65rem)',
                       color: '#9ca3af',
                       whiteSpace: 'nowrap',
                     }}
@@ -631,26 +687,26 @@ export default function InteractivePhilippinesMap() {
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 mb-2">
-                      <Sparkles 
-                        style={{ 
-                          color: regionColors[selectedLocation.region],
+                  <Sparkles 
+                    style={{ 
+                      color: regionColors[selectedLocation.region],
                           width: 16,
                           height: 16,
                           flexShrink: 0,
-                        }} 
-                      />
+                    }} 
+                  />
                       <div className="flex-1 min-w-0">
-                        <h3
-                          style={{
-                            fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                             fontSize: 'clamp(0.75rem, 1.8vw, 1rem)',
-                            letterSpacing: '0.08em',
-                            margin: 0,
+                      letterSpacing: '0.08em',
+                      margin: 0,
                             marginBottom: '0.25rem',
-                            background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
+                      background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
                             textShadow: `0 0 10px ${regionColors[selectedLocation.region]}40`,
                             overflow: 'hidden',
                             textOverflow: 'ellipsis',
@@ -686,11 +742,11 @@ export default function InteractivePhilippinesMap() {
                         flexWrap: 'wrap',
                         alignItems: 'center',
                         gap: '0.25rem 0.5rem',
-                        padding: '0.3rem 0.7rem',
+                        padding: 'clamp(0.25rem, 0.6vw, 0.4rem) clamp(0.5rem, 1vw, 0.7rem)',
                         background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}20, ${regionColors[selectedLocation.region]}05)`,
                         border: `1px solid ${regionColors[selectedLocation.region]}`,
                         borderRadius: '999px',
-                        fontSize: '0.6rem',
+                        fontSize: 'clamp(0.55rem, 1.1vw, 0.65rem)',
                         letterSpacing: '0.08em',
                         color: regionColors[selectedLocation.region],
                         fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
@@ -739,21 +795,56 @@ export default function InteractivePhilippinesMap() {
                 </div>
                 <p
                   style={{
-                    marginTop: '0.55rem',
+                    marginTop: 'clamp(0.4rem, 1vw, 0.6rem)',
                     fontFamily: 'var(--font-montserrat), sans-serif',
-                    fontSize: '0.72rem',
-                    lineHeight: 1.45,
+                    fontSize: 'clamp(0.65rem, 1.3vw, 0.75rem)',
+                    lineHeight: 1.5,
                     color: '#e5e7eb',
                     opacity: 0.9,
+                    wordBreak: 'break-word',
                   }}
                 >
                   Tap markers to explore the people powering Filipino Web3 in every city.
                 </p>
+                {selectedLocation.facebookLink && (
+                  <a
+                    href={selectedLocation.facebookLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 'clamp(0.3rem, 0.6vw, 0.4rem)',
+                      marginTop: 'clamp(0.5rem, 1vw, 0.75rem)',
+                      padding: 'clamp(0.4rem, 0.8vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
+                      background: 'rgba(24, 119, 242, 0.15)',
+                      border: '1px solid rgba(24, 119, 242, 0.5)',
+                      borderRadius: '999px',
+                      color: '#1877f2',
+                      textDecoration: 'none',
+                      fontFamily: 'var(--font-montserrat), sans-serif',
+                      fontSize: 'clamp(0.65rem, 1.2vw, 0.7rem)',
+                      fontWeight: '600',
+                      transition: 'all 0.2s ease',
+                    }}
+                onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(24, 119, 242, 0.3)';
+                      e.currentTarget.style.borderColor = 'rgba(24, 119, 242, 0.8)';
+                }}
+                onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(24, 119, 242, 0.15)';
+                      e.currentTarget.style.borderColor = 'rgba(24, 119, 242, 0.5)';
+                    }}
+                  >
+                    <span>📘</span>
+                    <span>Visit Facebook Page</span>
+                  </a>
+                )}
               </div>
             </div>
           </div>
         )}
-      </div>
+        </div>
 
       <style>{`
         .custom-marker {

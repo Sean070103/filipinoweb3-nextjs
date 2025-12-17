@@ -164,17 +164,18 @@ export default function CommunityPage() {
             >
               <h1
                 style={{
-                  fontSize: "clamp(2.5rem, 8vw, 6rem)",
-                  marginBottom: "clamp(1rem, 2.5vw, 2rem)",
+                  fontSize: "clamp(2rem, 6vw, 5rem)",
+                  marginBottom: "clamp(0.75rem, 2vw, 1.5rem)",
                   fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                   letterSpacing: "clamp(0.05em, 0.15vw, 0.1em)",
-                  lineHeight: 1,
+                  lineHeight: 1.2,
                   background: "linear-gradient(135deg, #22d3ee, #a855f7, #f97316)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
-                  textShadow: "0 0 clamp(20px, 5vw, 40px) rgba(34, 211, 238, 0.5)",
+                  textShadow: "0 0 clamp(15px, 4vw, 35px) rgba(34, 211, 238, 0.5)",
                   padding: "0 clamp(0.5rem, 2vw, 1rem)",
+                  wordBreak: "break-word",
                 }}
               >
                 FW3
@@ -191,18 +192,20 @@ export default function CommunityPage() {
             borderBottom: "1px solid rgba(255,255,255,0.05)",
           }}
         >
-          <div className="text-center mb-8 sm:mb-12 md:mb-16 px-4">
+          <div className="text-center mb-6 sm:mb-10 md:mb-14 px-4">
             <h2
               style={{
                 fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                fontSize: "clamp(1.25rem, 4vw, 2.5rem)",
+                fontSize: "clamp(1rem, 3.5vw, 2.25rem)",
                 letterSpacing: "0.08em",
-                marginBottom: "clamp(0.5rem, 1.5vw, 1rem)",
+                marginBottom: "clamp(0.75rem, 2vw, 1.25rem)",
                 background: "linear-gradient(135deg, #22d3ee, #a855f7)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
                 padding: "0 clamp(0.5rem, 2vw, 1rem)",
+                lineHeight: 1.3,
+                wordBreak: "break-word",
               }}
             >
               EXPLORE OUR COMMUNITIES
@@ -210,11 +213,12 @@ export default function CommunityPage() {
             <p
               style={{
                 color: "var(--color-light)",
-                fontSize: "clamp(0.9rem, 1.5vw, 1.1rem)",
+                fontSize: "clamp(0.85rem, 1.8vw, 1.05rem)",
                 maxWidth: "600px",
                 margin: "0 auto",
-                lineHeight: 1.6,
+                lineHeight: 1.7,
                 padding: "0 clamp(0.5rem, 2vw, 1rem)",
+                wordBreak: "break-word",
               }}
             >
               Click on any marker to learn more about our Web3 communities
@@ -233,8 +237,31 @@ export default function CommunityPage() {
             borderBottom: "1px solid rgba(255,255,255,0.05)",
           }}
         >
+          <div className="text-center mb-6 sm:mb-10 md:mb-14 px-4">
+            <h2
+              style={{
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                fontSize: "clamp(1rem, 3.5vw, 2.25rem)",
+                letterSpacing: "0.08em",
+                marginBottom: "clamp(0.75rem, 2vw, 1.25rem)",
+                background: "linear-gradient(135deg, #22d3ee, #a855f7)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                padding: "0 clamp(0.5rem, 2vw, 1rem)",
+                lineHeight: 1.3,
+                wordBreak: "break-word",
+              }}
+            >
+              CORE MEMBERS
+            </h2>
+          </div>
           <div
-            className="grid gap-0 sm:gap-1 lg:gap-2 sm:grid-cols-2 lg:grid-cols-4 justify-items-stretch"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+            style={{
+              gap: "clamp(1rem, 2vw, 1.5rem)",
+              width: "100%",
+            }}
           >
             {champions.map((champion) => {
               const color = REGION_COLORS[champion.region as Region];
@@ -242,17 +269,25 @@ export default function CommunityPage() {
               return (
                 <div
                   key={champion.name}
+                  className="champion-card"
                   style={{
                     position: "relative",
                     width: "100%",
+                    maxWidth: "100%",
                     transition: "all 0.3s ease",
                     cursor: "pointer",
+                    padding: "0",
+                    touchAction: "manipulation",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "scale(1.1) translateY(-5px)";
+                    if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                      e.currentTarget.style.transform = "scale(1.05) translateY(-5px)";
+                    }
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "scale(1) translateY(0)";
+                    if (typeof window !== 'undefined' && window.innerWidth >= 640) {
+                      e.currentTarget.style.transform = "scale(1) translateY(0)";
+                    }
                   }}
                 >
                   {/* Character Portrait Frame */}
@@ -260,13 +295,13 @@ export default function CommunityPage() {
                     style={{
                       position: "relative",
                       width: "100%",
-                      height: "clamp(110px, 13vw, 150px)",
+                      height: "clamp(180px, 25vw, 220px)",
                       border: `clamp(2px, 0.4vw, 3px) solid ${color}`,
-                      borderRadius: "clamp(3px, 0.5vw, 4px)",
+                      borderRadius: "clamp(4px, 0.6vw, 6px)",
                       overflow: "hidden",
                       background: "rgba(0,0,0,0.8)",
                       boxShadow: `0 clamp(2px, 0.5vw, 4px) clamp(8px, 2vw, 15px) rgba(0,0,0,0.5), 0 0 clamp(5px, 1.5vw, 10px) ${color}40`,
-                      marginBottom: "clamp(0.25rem, 0.5vw, 0.4rem)",
+                      marginBottom: "clamp(0.5rem, 1vw, 0.75rem)",
                     }}
                   >
                     <Image
@@ -286,19 +321,21 @@ export default function CommunityPage() {
                     <div
                       style={{
                         position: "absolute",
-                        top: "clamp(3px, 0.5vw, 4px)",
-                        left: "clamp(3px, 0.5vw, 4px)",
-                        width: "clamp(16px, 2.5vw, 20px)",
-                        height: "clamp(16px, 2.5vw, 20px)",
+                        top: "clamp(4px, 0.8vw, 6px)",
+                        left: "clamp(4px, 0.8vw, 6px)",
+                        width: "clamp(20px, 3.5vw, 28px)",
+                        height: "clamp(20px, 3.5vw, 28px)",
                         borderRadius: "50%",
                         background: color,
-                        border: "clamp(1px, 0.25vw, 2px) solid #000",
+                        border: "clamp(1.5px, 0.3vw, 2px) solid #000",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: "clamp(8px, 1.2vw, 10px)",
+                        fontSize: "clamp(10px, 1.8vw, 12px)",
                         fontWeight: "bold",
+                        color: "#fff",
                         boxShadow: `0 0 clamp(4px, 1vw, 8px) ${color}`,
+                        zIndex: 10,
                       }}
                     >
                       {champion.region[0]}
@@ -308,41 +345,23 @@ export default function CommunityPage() {
                     <div
                       style={{
                         position: "absolute",
-                        bottom: "clamp(3px, 0.5vw, 4px)",
-                        right: "clamp(3px, 0.5vw, 4px)",
-                        width: "clamp(18px, 3vw, 24px)",
-                        height: "clamp(18px, 3vw, 24px)",
+                        bottom: "clamp(4px, 0.8vw, 6px)",
+                        right: "clamp(4px, 0.8vw, 6px)",
+                        width: "clamp(22px, 4vw, 30px)",
+                        height: "clamp(22px, 4vw, 30px)",
                         background: "linear-gradient(135deg, #FFD700, #FFA500)",
                         borderRadius: "50%",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         boxShadow: "0 0 clamp(5px, 1.5vw, 10px) rgba(255, 215, 0, 0.8)",
-                        border: "clamp(1px, 0.25vw, 2px) solid #000",
+                        border: "clamp(1.5px, 0.3vw, 2px) solid #000",
+                        zIndex: 10,
                       }}
                     >
-                      <span style={{ fontSize: "clamp(10px, 1.8vw, 14px)", color: "#000" }}>★</span>
+                      <span style={{ fontSize: "clamp(12px, 2.2vw, 16px)", color: "#000", fontWeight: "bold" }}>★</span>
                     </div>
 
-                    {/* Stat Badge (top right) */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "clamp(3px, 0.5vw, 4px)",
-                        right: "clamp(3px, 0.5vw, 4px)",
-                        background: "rgba(0,0,0,0.8)",
-                        border: `clamp(0.5px, 0.15vw, 1px) solid ${color}`,
-                        borderRadius: "clamp(3px, 0.5vw, 4px)",
-                        padding: "clamp(1px, 0.3vw, 2px) clamp(4px, 0.8vw, 6px)",
-                        fontSize: "clamp(8px, 1.2vw, 10px)",
-                        fontWeight: "bold",
-                        color: color,
-                        fontFamily:
-                          'var(--font-press-start-2p), "Courier New", monospace',
-                      }}
-                    >
-                      {champion.stat}%
-                    </div>
                   </div>
 
                   {/* Character Name */}
@@ -351,11 +370,14 @@ export default function CommunityPage() {
                       textAlign: "center",
                       fontFamily:
                         'var(--font-press-start-2p), "Courier New", monospace',
-                      fontSize: "clamp(0.6rem, 1vw, 0.7rem)",
+                      fontSize: "clamp(0.7rem, 1.5vw, 0.85rem)",
                       color: "#fff",
                       letterSpacing: "0.05em",
                       textShadow: "clamp(1px, 0.3vw, 2px) clamp(1px, 0.3vw, 2px) 0px #000",
-                      marginBottom: "clamp(0.15rem, 0.4vw, 0.25rem)",
+                      marginBottom: "clamp(0.25rem, 0.6vw, 0.4rem)",
+                      padding: "0 clamp(0.25rem, 0.5vw, 0.5rem)",
+                      wordBreak: "break-word",
+                      lineHeight: 1.3,
                     }}
                   >
                     {champion.name.toUpperCase()}
@@ -365,43 +387,43 @@ export default function CommunityPage() {
               <div
                 style={{
                       textAlign: "center",
-                      fontSize: "clamp(0.55rem, 0.9vw, 0.65rem)",
+                      fontSize: "clamp(0.6rem, 1.2vw, 0.7rem)",
                       color: color,
                       textTransform: "uppercase",
                       letterSpacing: "0.05em",
                       fontWeight: 600,
+                      padding: "0 clamp(0.25rem, 0.5vw, 0.5rem)",
+                      lineHeight: 1.4,
                     }}
                   >
                     {champion.role}
                   </div>
 
-                  {/* Skill Stat Bar */}
-                  <div
-                    style={{
-                      marginTop: "clamp(0.375rem, 0.75vw, 0.5rem)",
-                      width: "100%",
-                      height: "clamp(4px, 0.8vw, 6px)",
-                      background: "rgba(255,255,255,0.1)",
-                      borderRadius: "clamp(2px, 0.4vw, 3px)",
-                      overflow: "hidden",
-                      border: "clamp(0.5px, 0.15vw, 1px) solid rgba(255,255,255,0.2)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: `${champion.stat}%`,
-                        height: "100%",
-                        background: `linear-gradient(90deg, ${color}, ${color}cc)`,
-                        boxShadow: `0 0 8px ${color}60`,
-                        transition: "width 0.5s ease",
-                      }}
-                    />
-              </div>
+                  {/* Skill Stat Bar removed by request */}
             </div>
               );
             })}
         </div>
       </section>
+      
+      <style dangerouslySetInnerHTML={{__html: `
+        @media (max-width: 640px) {
+          .champion-card {
+            max-width: 100%;
+            margin: 0 auto;
+          }
+          
+          .champion-card:active {
+            transform: scale(0.98) !important;
+          }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+          .champion-card {
+            max-width: 100%;
+          }
+        }
+      `}} />
     </main>
     </>
   );

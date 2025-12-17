@@ -33,7 +33,7 @@ export default function Values() {
   const values = [
     {
       title: "HOLISTIC",
-      image: "/images/Bayani_01.png",
+      image: "/images/intra1.png",
       description: "Building in Web3 involves different roles that are essential in its success as an industry. Maintaining the balance and flow of interdependence is vital for overall development. As builders, we must develop and strengthen the shared goals and ideals of our communities.",
       neonColor: "#00FFFF", // Cyan
       icon: CircleDot,
@@ -43,7 +43,7 @@ export default function Values() {
     },
     {
       title: "CONNECTED",
-      image: "/images/Bayani_02.png",
+      image: "/images/lrt.png",
       description: "Web3 interactions should be built on authentic, harmonious, and mutually-beneficial relationships. Strategies must be attuned to the community's needs, passions, and interests. The organization's advocacy is a community-centered approach for the professional development of the community.",
       neonColor: "#FF00FF", // Magenta
       icon: Link2,
@@ -53,7 +53,7 @@ export default function Values() {
     },
     {
       title: "INNOVATIVE",
-      image: "/images/Bayani_03.png", 
+      image: "/images/innovative1.png", 
       description: "Web3 as an emerging industry is distinguished by its fast-paced dynamics. It is important for Web3 builders to be highly agile and adaptable. The organization aims to foster a vibrant exchange of information and encourage continuing education.",
       neonColor: "#FFFF00", // Yellow
       icon: Zap,
@@ -469,24 +469,6 @@ export default function Values() {
                       }}
                     />
                     
-                    <div 
-                      className="relative z-10 text-center"
-                      style={{
-                        fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                        fontSize: 'clamp(0.6rem, 1.4vw, 0.85rem)',
-                        fontWeight: '400',
-                        color: '#FFD700',
-                        textShadow: '2px 2px 0px #000000, 0 0 8px rgba(255, 215, 0, 0.6)',
-                        imageRendering: 'pixelated' as CSSProperties['imageRendering'],
-                        WebkitFontSmoothing: 'none',
-                        fontSmooth: 'never',
-                        textRendering: 'optimizeSpeed',
-                        letterSpacing: '0.08em',
-                        lineHeight: '1.3'
-                      }}
-                    >
-                      BAYANI BLOCKS
-                    </div>
                   </div>
                   
                   {/* Content Section - Pixelated Card */}

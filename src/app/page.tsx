@@ -25,10 +25,10 @@ export default function Home() {
       <RetroGamingHero />
       <Categories />
       <Values />
+      <CommunityCTA />
       <Team />
       <Partners />
       <FAQs />
-      <CommunityCTA />
       <Contact />
       <Footer />
     </div>

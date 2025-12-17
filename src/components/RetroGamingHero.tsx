@@ -10,9 +10,12 @@ export default function RetroGamingHero() {
       style={{
         background: '#66B2FF',
         maxWidth: '100vw',
+        width: '100vw',
         minHeight: '100vh',
         paddingBottom: 'clamp(50px, 7vw, 80px)',
-        overflow: 'visible'
+        overflowX: 'hidden',
+        overflowY: 'visible',
+        margin: '0 auto'
       }}
     >
       {/* Grass Layer */}
@@ -45,7 +48,7 @@ export default function RetroGamingHero() {
 
       {/* Tindahan Store on top of grass/dirt */}
       <div className="absolute left-1/4 z-20 tindahan-store hidden sm:block" style={{ 
-        bottom: 'clamp(20px, 4vw, 50px)',
+        bottom: 'clamp(10px, 3vw, 30px)',
         left: 'clamp(5%, 8vw, 15%)'
       }}>
         <Image
@@ -611,7 +614,7 @@ export default function RetroGamingHero() {
 
       {/* Destination Carousel under dirt */}
       <div 
-        className="absolute left-0 right-0 z-5 jeepney-carousel-container"
+        className="absolute left-0 right-0 jeepney-carousel-container"
         style={{
           bottom: '0px',
           height: 'clamp(50px, 7vw, 80px)',
@@ -620,7 +623,8 @@ export default function RetroGamingHero() {
           borderBottom: 'clamp(2px, 0.3vw, 4px) solid #FF6B00',
           overflow: 'hidden',
           imageRendering: 'pixelated',
-          boxShadow: 'inset 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(255, 107, 0, 0.3)'
+          boxShadow: 'inset 0 0 30px rgba(0, 255, 0, 0.3), inset 0 0 30px rgba(255, 107, 0, 0.3)',
+          zIndex: 3,
         }}
       >
         {/* Decorative top border pattern */}
@@ -823,6 +827,24 @@ export default function RetroGamingHero() {
           }
           100% {
             transform: rotate(360deg);
+          }
+        }
+        
+        @media (max-width: 640px) {
+          .jeepney-carousel-container {
+            bottom: 0px !important;
+            z-index: 3 !important;
+            position: absolute !important;
+          }
+          
+          .dirt-layer {
+            z-index: 9 !important;
+            position: absolute !important;
+          }
+          
+          .grass-layer {
+            z-index: 10 !important;
+            position: absolute !important;
           }
         }
       `}</style>
