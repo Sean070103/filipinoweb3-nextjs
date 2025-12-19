@@ -131,6 +131,7 @@ export default function CosmicHero() {
          >
            <div className="w-full h-full border border-gray-500 rounded-full flex items-center justify-center">
              <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+         
            </div>
          </motion.div>
          
