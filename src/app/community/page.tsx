@@ -253,8 +253,21 @@ export default function CommunityPage() {
                 wordBreak: "break-word",
               }}
             >
-              CORE MEMBERS
+              TEAM FW3
             </h2>
+            <p
+              style={{
+                color: "var(--color-light)",
+                fontSize: "clamp(0.85rem, 1.8vw, 1.05rem)",
+                maxWidth: "600px",
+                margin: "0 auto",
+                lineHeight: 1.7,
+                padding: "0 clamp(0.5rem, 2vw, 1rem)",
+                wordBreak: "break-word",
+              }}
+            >
+              Meet the team powering Filipino Web3 innovation
+            </p>
           </div>
           <div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
