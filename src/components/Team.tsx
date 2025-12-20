@@ -12,22 +12,16 @@ type Champion = {
 
 const champions: Champion[] = [
   {
-    name: "Sift",
-    role: "Operations",
-    image: "/images/Sift.jpg",
-    region: "Luzon",
-  },
-  {
-    name: "Lupin",
-    role: "Business Dev",
-    image: "/images/lupz_u.jpg",
-    region: "Luzon",
-  },
-  {
-    name: "Zirk",
-    role: "Product",
-    image: "/images/coretoshi_zirk.png",
+    name: "Aerva",
+    role: "Community",
+    image: "/images/Aerva.jpg",
     region: "Visayas",
+  },
+  {
+    name: "Arkin",
+    role: "Frontend",
+    image: "/images/Arkin.jpeg",
+    region: "Luzon",
   },
   {
     name: "Clivv",
@@ -36,9 +30,9 @@ const champions: Champion[] = [
     region: "Mindanao",
   },
   {
-    name: "Aerva",
-    role: "Community",
-    image: "/images/Aerva.jpg",
+    name: "Cordyx",
+    role: "Backend",
+    image: "/images/Cordy.jfif",
     region: "Visayas",
   },
   {
@@ -48,15 +42,21 @@ const champions: Champion[] = [
     region: "Luzon",
   },
   {
-    name: "Arkin",
-    role: "Frontend",
-    image: "/images/Arkin.jpeg",
+    name: "Lupin",
+    role: "Business Dev",
+    image: "/images/lupz_u.jpg",
+    region: "Visayas",
+  },
+  {
+    name: "Sift",
+    role: "Operations",
+    image: "/images/Sift.jpg",
     region: "Luzon",
   },
   {
-    name: "Cordyx",
-    role: "Backend",
-    image: "/images/Cordy.jfif",
+    name: "Zirk",
+    role: "Product",
+    image: "/images/coretoshi_zirk.png",
     region: "Visayas",
   },
 ];

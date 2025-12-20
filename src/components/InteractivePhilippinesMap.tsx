@@ -20,7 +20,7 @@ const communityLocations: CommunityLocation[] = [
   },
   {
     name: 'Bacolod City • TBA',
-    region: 'Visayas',
+    region: 'Mindanao',
     coordinates: [10.6769, 122.9620],
   },
   {

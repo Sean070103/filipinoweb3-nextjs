@@ -154,7 +154,7 @@ export default function CommunityPage() {
                   wordBreak: "break-word",
                 }}
               >
-                OUR ORGANIZATIONS
+                WEB3 COMMUNITIES
               </h2>
               <p
                 style={{
