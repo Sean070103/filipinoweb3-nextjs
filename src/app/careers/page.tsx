@@ -233,7 +233,7 @@ export default function CareersPage() {
                   padding: "0 clamp(0.5rem, 2vw, 1rem)",
                 }}
               >
-                JOB BOARD LAUNCHING Q2 2025
+                JOB BOARD LAUNCHING Q2 2026
               </p>
               <p
                 style={{

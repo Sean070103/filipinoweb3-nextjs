@@ -211,7 +211,7 @@ export default function LabsPage() {
                   padding: "0 clamp(0.5rem, 2vw, 1rem)",
                 }}
               >
-                LABS SECTION LAUNCHING Q2 2025
+                LABS SECTION LAUNCHING Q2 2026
               </p>
             </div>
           </div>

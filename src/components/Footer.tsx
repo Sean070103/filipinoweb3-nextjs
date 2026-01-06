@@ -140,7 +140,7 @@ export default function Footer() {
                 letterSpacing: '0.05em'
               }}
             >
-              © 2025 Filipino Web3. All rights reserved.
+              © 2026 Filipino Web3. All rights reserved.
             </p>
           </motion.div>
 
