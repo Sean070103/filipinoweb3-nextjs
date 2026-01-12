@@ -15,7 +15,7 @@ const champions: Champion[] = [
     name: "Aerva",
     role: "Community",
     image: "/images/Aerva.jpg",
-    region: "Visayas",
+    region: "Mindanao",
   },
   {
     name: "Arkin",

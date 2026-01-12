@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { X, Sparkles } from 'lucide-react';
 import { REGION_COLORS, getRegionColor, getRegionGlowColor, type Region } from '@/constants/regionColors';
 
@@ -95,6 +96,21 @@ const communityLocations: CommunityLocation[] = [
   },
 ];
 
+// Helper function to convert city name to URL slug
+const getCitySlug = (cityName: string): string => {
+  // Extract city name (remove "• TBA" part if present)
+  const name = cityName.split('•')[0].trim();
+  // Convert to lowercase and replace spaces/special chars with hyphens
+  return name.toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+};
+
+// Helper function to find location by slug
+const findLocationBySlug = (slug: string): CommunityLocation | undefined => {
+  return communityLocations.find(loc => getCitySlug(loc.name) === slug);
+};
+
 // Custom marker icons with enhanced design
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const createCustomIcon = (L: any, region: CommunityLocation['region'], isSelected: boolean, isHovered: boolean) => {
@@ -178,6 +194,8 @@ const createCustomIcon = (L: any, region: CommunityLocation['region'], isSelecte
 };
 
 export default function InteractivePhilippinesMap() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mapRef = useRef<any>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -190,6 +208,17 @@ export default function InteractivePhilippinesMap() {
   const [selectedLocation, setSelectedLocation] = useState<CommunityLocation | null>(null);
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+  // Initialize selected location from URL params
+  useEffect(() => {
+    const cityParam = searchParams.get('city');
+    if (cityParam) {
+      const location = findLocationBySlug(cityParam);
+      if (location) {
+        setSelectedLocation(location);
+      }
+    }
+  }, [searchParams]);
 
   // Load Leaflet and fix icon paths
   useEffect(() => {
@@ -329,6 +358,10 @@ export default function InteractivePhilippinesMap() {
           setSelectedLocation(location);
           const zoomLevel = isMobile ? 8 : 9;
           map.setView(location.coordinates, zoomLevel, { animate: true, duration: 1 });
+          
+          // Update URL with city parameter
+          const citySlug = getCitySlug(location.name);
+          router.push(`/community?city=${citySlug}`, { scroll: false });
           
           // Change map color based on selected region
           if (geoJsonLayerRef.current) {
@@ -487,6 +520,24 @@ export default function InteractivePhilippinesMap() {
         color: 'rgba(34, 211, 238, 1)',
         weight: 3,
       });
+    } else {
+      // Update map color based on selected region
+      const regionColor = REGION_COLORS[selectedLocation.region as Region];
+      const regionGlow = getRegionGlowColor(selectedLocation.region as Region, 0.6);
+      
+      geoJsonLayerRef.current.setStyle({
+        fillColor: regionGlow,
+        fillOpacity: 0.4,
+        color: regionColor,
+        weight: 4,
+      });
+
+      // Zoom to selected location if map is loaded
+      if (mapRef.current) {
+        const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+        const zoomLevel = isMobile ? 8 : 9;
+        mapRef.current.setView(selectedLocation.coordinates, zoomLevel, { animate: true, duration: 1 });
+      }
     }
   }, [selectedLocation]);
 
