@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import InteractivePhilippinesMap from "@/components/InteractivePhilippinesMap";
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
@@ -96,7 +97,21 @@ export default function CommunityPageContent() {
           </p>
         </div>
 
-          <InteractivePhilippinesMap />
+          <Suspense fallback={
+            <div style={{ 
+              width: '100%', 
+              height: '600px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              background: 'rgba(0,0,0,0.3)',
+              borderRadius: '12px'
+            }}>
+              <p style={{ color: 'rgba(255,255,255,0.6)' }}>Loading map...</p>
+            </div>
+          }>
+            <InteractivePhilippinesMap />
+          </Suspense>
         </section>
 
         {/* Organizations Section */}

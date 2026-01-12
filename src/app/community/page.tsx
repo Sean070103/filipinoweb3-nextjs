@@ -11,6 +11,6 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   return generateCommunityMetadata(params.city);
 }
 
-export default async function CommunityPage({ searchParams }: Props) {
+export default async function CommunityPage() {
   return <CommunityPageContent />;
 }

@@ -2,7 +2,7 @@
 
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
-import { Briefcase, Code, Gamepad2, Megaphone, TrendingUp, Laptop, BookOpen, Sparkles } from "lucide-react";
+import { Code, Gamepad2, Megaphone, TrendingUp, Laptop, BookOpen, Sparkles } from "lucide-react";
 
 export default function CareersPage() {
   return (
