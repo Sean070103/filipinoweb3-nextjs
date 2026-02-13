@@ -27,7 +27,7 @@ const champions: Champion[] = [
     name: "Clivv",
     role: "Marketing",
     image: "/images/Clivv(1).png",
-    region: "Mindanao",
+    region: "Visayas",
   },
   {
     name: "Cordyx",
@@ -57,7 +57,7 @@ const champions: Champion[] = [
     name: "Zirk",
     role: "Product",
     image: "/images/coretoshi_zirk.png",
-    region: "Visayas",
+    region: "Luzon",
   },
 ];
 
