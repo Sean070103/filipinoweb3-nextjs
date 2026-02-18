@@ -4,7 +4,19 @@ import { Suspense } from "react";
 import InteractivePhilippinesMap from "@/components/InteractivePhilippinesMap";
 import ScrollReveal from "@/components/ScrollReveal";
 import { motion } from "framer-motion";
-import { ExternalLink, MapPin } from "lucide-react";
+import { ExternalLink, MapPin, Mail, Facebook } from "lucide-react";
+
+const XIcon = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 export default function CommunityPageContent() {
   return (
@@ -258,8 +270,102 @@ export default function CommunityPageContent() {
               </motion.div>
             </ScrollReveal>
 
-            {/* Web3 Iloilo */}
+            {/* Web3 Bacolod */}
             <ScrollReveal direction="up" delay={0.3}>
+              <motion.div
+                className="group"
+                whileHover={{ x: 8 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                style={{ cursor: "pointer" }}
+              >
+                <div className="flex items-start gap-6 pb-8 border-b border-white/10 group-hover:border-cyan-500/30 transition-colors">
+                  <img
+                    src="/images/Bacolod.jpg"
+                    alt="Web3 Bacolod"
+                    className="rounded-lg flex-shrink-0"
+                    style={{
+                      width: "clamp(80px, 12vw, 100px)",
+                      height: "clamp(80px, 12vw, 100px)",
+                      objectFit: "cover",
+                      border: "2px solid rgba(34, 211, 238, 0.2)",
+                    }}
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3
+                        style={{
+                          fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                          fontSize: "clamp(0.9rem, 2vw, 1.2rem)",
+                          letterSpacing: "0.05em",
+                          background: "linear-gradient(135deg, #22d3ee, #a855f7)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          backgroundClip: "text",
+                        }}
+                      >
+                        WEB3 BACOLOD
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <MapPin size={14} style={{ color: "#22d3ee", opacity: 0.7 }} />
+                      <span
+                        style={{
+                          fontSize: "clamp(0.7rem, 1.3vw, 0.85rem)",
+                          color: "#22d3ee",
+                          opacity: 0.8,
+                          fontFamily: '"Courier New", monospace',
+                        }}
+                      >
+                        Visayas
+                      </span>
+                    </div>
+                    <p
+                      style={{
+                        color: "rgba(255, 255, 255, 0.8)",
+                        fontSize: "clamp(0.9rem, 1.6vw, 1.05rem)",
+                        lineHeight: 1.7,
+                        marginBottom: "clamp(0.75rem, 1.5vw, 1rem)",
+                      }}
+                    >
+                      Pioneering Web3 adoption in Bacolod City. Connecting blockchain enthusiasts, developers, and innovators in the City of Smiles to build a thriving decentralized community in Negros Occidental.
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <a
+                        href="https://facebook.com/web3bacolod"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:opacity-80 transition-opacity"
+                        style={{ color: "#22d3ee" }}
+                      >
+                        <Facebook size={18} />
+                      </a>
+                      <a
+                        href="https://x.com/web3bacolod"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:opacity-80 transition-opacity"
+                        style={{ color: "#22d3ee" }}
+                      >
+                        <XIcon size={18} />
+                      </a>
+                      <a
+                        href="mailto:web3bacolod@gmail.com"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:opacity-80 transition-opacity"
+                        style={{ color: "#22d3ee" }}
+                      >
+                        <Mail size={18} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </ScrollReveal>
+
+            {/* Web3 Iloilo */}
+            <ScrollReveal direction="up" delay={0.4}>
               <motion.div
                 className="group"
                 whileHover={{ x: 8 }}
@@ -328,7 +434,7 @@ export default function CommunityPageContent() {
             </ScrollReveal>
 
             {/* Web3 Kabankalan */}
-            <ScrollReveal direction="up" delay={0.4}>
+            <ScrollReveal direction="up" delay={0.5}>
               <motion.div
                 className="group"
                 whileHover={{ x: 8 }}
@@ -397,7 +503,7 @@ export default function CommunityPageContent() {
             </ScrollReveal>
 
             {/* Web3 Rizal */}
-            <ScrollReveal direction="up" delay={0.5}>
+            <ScrollReveal direction="up" delay={0.6}>
               <motion.div
                 className="group"
                 whileHover={{ x: 8 }}
@@ -466,7 +572,7 @@ export default function CommunityPageContent() {
             </ScrollReveal>
 
             {/* Web3 San Carlos */}
-            <ScrollReveal direction="up" delay={0.6}>
+            <ScrollReveal direction="up" delay={0.7}>
               <motion.div
                 className="group"
                 whileHover={{ x: 8 }}

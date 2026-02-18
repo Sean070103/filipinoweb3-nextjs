@@ -20,9 +20,11 @@ const communityLocations: CommunityLocation[] = [
     coordinates: [15.4861, 120.5986],
   },
   {
-    name: 'Bacolod City • TBA',
-    region: 'Mindanao',
+    name: 'Bacolod City',
+    region: 'Visayas',
     coordinates: [10.6769, 122.9620],
+    avatar: '/images/Bacolod.jpg',
+    facebookLink: 'https://facebook.com/web3bacolod',
   },
   {
     name: 'Makati City • TBA',
