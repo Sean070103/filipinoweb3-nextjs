@@ -1,10 +1,224 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState, useEffect, useCallback } from "react";
 import InteractivePhilippinesMap from "@/components/InteractivePhilippinesMap";
 import ScrollReveal from "@/components/ScrollReveal";
-import { motion } from "framer-motion";
-import { ExternalLink, MapPin, Mail, Facebook } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, MapPin, Mail, Facebook, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+
+const communityImages = [
+  {
+    src: "/images/community_bc.jpg",
+    alt: "Web3 Bacolod Community Event",
+    caption: "Web3 Bacolod",
+  },
+  {
+    src: "/images/community_bc(1).jpg",
+    alt: "Web3 Bacolod Community Event",
+    caption: "Web3 Bacolod",
+  },
+  {
+    src: "/images/community_bc(2).jpg",
+    alt: "Web3 Bacolod Community Event",
+    caption: "Web3 Bacolod",
+  },
+];
+
+const CommunityCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % communityImages.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + communityImages.length) % communityImages.length);
+  }, []);
+
+  useEffect(() => {
+    if (!isAutoPlaying || communityImages.length <= 1) return;
+    const interval = setInterval(nextSlide, 3000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, nextSlide]);
+
+  return (
+    <div
+      className="relative w-full overflow-hidden"
+      style={{
+        borderRadius: "clamp(0.75rem, 2vw, 1.5rem)",
+        border: "2px solid rgba(34, 211, 238, 0.2)",
+        boxShadow: "0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(34, 211, 238, 0.1)",
+      }}
+      onMouseEnter={() => setIsAutoPlaying(false)}
+      onMouseLeave={() => setIsAutoPlaying(true)}
+    >
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          aspectRatio: "16/9",
+          background: "linear-gradient(135deg, #0a0f1a 0%, #1a1f2e 100%)",
+        }}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            style={{
+              position: "absolute",
+              inset: 0,
+            }}
+          >
+            <Image
+              src={communityImages[currentIndex].src}
+              alt={communityImages[currentIndex].alt}
+              fill
+              style={{ objectFit: "cover" }}
+              priority={currentIndex === 0}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 40%, transparent 100%)",
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {communityImages[currentIndex].caption && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            style={{
+              position: "absolute",
+              bottom: "clamp(1rem, 3vw, 2rem)",
+              left: "clamp(1rem, 3vw, 2rem)",
+              right: "clamp(1rem, 3vw, 2rem)",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                fontSize: "clamp(0.7rem, 1.8vw, 1rem)",
+                color: "#ffffff",
+                textShadow: "0 2px 10px rgba(0,0,0,0.8)",
+                letterSpacing: "0.05em",
+              }}
+            >
+              {communityImages[currentIndex].caption}
+            </p>
+          </motion.div>
+        )}
+
+        {communityImages.length > 1 && (
+          <>
+            <button
+              onClick={prevSlide}
+              style={{
+                position: "absolute",
+                left: "clamp(0.5rem, 2vw, 1rem)",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "clamp(36px, 6vw, 48px)",
+                height: "clamp(36px, 6vw, 48px)",
+                borderRadius: "50%",
+                background: "rgba(0, 0, 0, 0.6)",
+                border: "2px solid rgba(34, 211, 238, 0.4)",
+                color: "#22d3ee",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                zIndex: 10,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(34, 211, 238, 0.2)";
+                e.currentTarget.style.borderColor = "rgba(34, 211, 238, 0.8)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(0, 0, 0, 0.6)";
+                e.currentTarget.style.borderColor = "rgba(34, 211, 238, 0.4)";
+              }}
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={nextSlide}
+              style={{
+                position: "absolute",
+                right: "clamp(0.5rem, 2vw, 1rem)",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "clamp(36px, 6vw, 48px)",
+                height: "clamp(36px, 6vw, 48px)",
+                borderRadius: "50%",
+                background: "rgba(0, 0, 0, 0.6)",
+                border: "2px solid rgba(34, 211, 238, 0.4)",
+                color: "#22d3ee",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                zIndex: 10,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(34, 211, 238, 0.2)";
+                e.currentTarget.style.borderColor = "rgba(34, 211, 238, 0.8)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(0, 0, 0, 0.6)";
+                e.currentTarget.style.borderColor = "rgba(34, 211, 238, 0.4)";
+              }}
+              aria-label="Next slide"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            <div
+              style={{
+                position: "absolute",
+                bottom: "clamp(0.5rem, 1.5vw, 1rem)",
+                left: "50%",
+                transform: "translateX(-50%)",
+                display: "flex",
+                gap: "clamp(0.4rem, 1vw, 0.6rem)",
+                zIndex: 10,
+              }}
+            >
+              {communityImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  style={{
+                    width: index === currentIndex ? "clamp(24px, 4vw, 32px)" : "clamp(8px, 1.5vw, 10px)",
+                    height: "clamp(8px, 1.5vw, 10px)",
+                    borderRadius: "999px",
+                    background: index === currentIndex ? "#22d3ee" : "rgba(255, 255, 255, 0.4)",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "all 0.3s ease",
+                    boxShadow: index === currentIndex ? "0 0 10px rgba(34, 211, 238, 0.8)" : "none",
+                  }}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
 
 const XIcon = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
   <svg
@@ -65,6 +279,54 @@ export default function CommunityPageContent() {
               </h1>
             </div>
           </div>
+        </section>
+
+        {/* Community Carousel Section */}
+        <section
+          className="container mx-auto max-w-7xl px-4 sm:px-6 md:px-8"
+          style={{
+            padding: "clamp(3rem, 6vw, 6rem) 0",
+            borderBottom: "1px solid rgba(255,255,255,0.05)",
+          }}
+        >
+          <ScrollReveal direction="up" delay={0.1}>
+            <div className="text-center mb-6 sm:mb-10 md:mb-14 px-4">
+              <h2
+                style={{
+                  fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                  fontSize: "clamp(1rem, 3.5vw, 2.25rem)",
+                  letterSpacing: "0.08em",
+                  marginBottom: "clamp(0.75rem, 2vw, 1.25rem)",
+                  background: "linear-gradient(135deg, #22d3ee, #a855f7)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  padding: "0 clamp(0.5rem, 2vw, 1rem)",
+                  lineHeight: 1.3,
+                  wordBreak: "break-word",
+                }}
+              >
+                OUR COMMUNITY
+              </h2>
+              <p
+                style={{
+                  color: "var(--color-light)",
+                  fontSize: "clamp(0.85rem, 1.8vw, 1.05rem)",
+                  maxWidth: "600px",
+                  margin: "0 auto",
+                  lineHeight: 1.7,
+                  padding: "0 clamp(0.5rem, 2vw, 1rem)",
+                  wordBreak: "break-word",
+                }}
+              >
+                Capturing moments of connection, learning, and growth across the Filipino Web3 ecosystem
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={0.2}>
+            <CommunityCarousel />
+          </ScrollReveal>
         </section>
 
         {/* Interactive Philippines Map Section */}
