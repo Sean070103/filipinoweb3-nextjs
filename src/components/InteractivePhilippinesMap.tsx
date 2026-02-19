@@ -2,30 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { X, Sparkles, Mail } from 'lucide-react';
+import { X, Sparkles } from 'lucide-react';
 import { REGION_COLORS, getRegionColor, getRegionGlowColor, type Region } from '@/constants/regionColors';
-
-const XIcon = ({ size = 18 }: { size?: number }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-  >
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
-
-const FacebookIcon = ({ size = 18 }: { size?: number }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-  >
-    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-  </svg>
-);
 
 type CommunityLocation = {
   name: string;
@@ -35,6 +13,8 @@ type CommunityLocation = {
   facebookLink?: string;
   xLink?: string;
   email?: string;
+  description?: string;
+  communityImage?: string;
 };
 
 const communityLocations: CommunityLocation[] = [
@@ -51,6 +31,8 @@ const communityLocations: CommunityLocation[] = [
     facebookLink: 'https://facebook.com/web3bacolod',
     xLink: 'https://x.com/web3bacolod',
     email: 'web3bacolod@gmail.com',
+    description: 'Web3 Bacolod is a local community of blockchain & Web3 enthusiasts based in Bacolod City & the Negros Island Region.',
+    communityImage: '/images/community_bc.jpg',
   },
   {
     name: 'Makati City • TBA',
@@ -236,17 +218,6 @@ export default function InteractivePhilippinesMap() {
   const [selectedLocation, setSelectedLocation] = useState<CommunityLocation | null>(null);
   const [hoveredLocation, setHoveredLocation] = useState<string | null>(null);
   const [isMapLoaded, setIsMapLoaded] = useState(false);
-  const [emailCopied, setEmailCopied] = useState(false);
-
-  const copyEmailToClipboard = async (email: string) => {
-    try {
-      await navigator.clipboard.writeText(email);
-      setEmailCopied(true);
-      setTimeout(() => setEmailCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy email:', err);
-    }
-  };
 
   // Initialize selected location from URL params
   useEffect(() => {
@@ -433,7 +404,7 @@ export default function InteractivePhilippinesMap() {
       }).filter(Boolean);
 
       // Enhanced popup with responsive sizing
-      const hasFacebookLink = location.facebookLink;
+      const hasSocialLinks = location.facebookLink || location.xLink || location.email;
       marker.bindPopup(`
         <div style="
           font-family: var(--font-press-start-2p), 'Courier New', monospace;
@@ -480,31 +451,94 @@ export default function InteractivePhilippinesMap() {
             border-radius: ${isMobile ? '4px' : '6px'};
             display: inline-block;
             margin-top: ${isMobile ? '0.15rem' : '0.25rem'};
-            margin-bottom: ${hasFacebookLink ? (isMobile ? '0.25rem' : '0.35rem') : '0'};
+            margin-bottom: ${hasSocialLinks ? (isMobile ? '0.25rem' : '0.35rem') : '0'};
           ">${location.region}</div>
-          ${hasFacebookLink ? `
-            <a 
-              href="${location.facebookLink}" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              style="
-                display: inline-block;
-                font-size: ${isMobile ? '0.5rem' : '0.6rem'};
-                color: #1877f2;
-                text-decoration: none;
-                padding: ${isMobile ? '0.3rem 0.6rem' : '0.4rem 0.8rem'};
-                background: rgba(24, 119, 242, 0.15);
-                border: 1px solid rgba(24, 119, 242, 0.5);
-                border-radius: ${isMobile ? '4px' : '6px'};
-                margin-top: ${isMobile ? '0.25rem' : '0.35rem'};
-                transition: all 0.2s ease;
-                cursor: pointer;
-              "
-              onmouseover="this.style.background='rgba(24, 119, 242, 0.3)'; this.style.borderColor='rgba(24, 119, 242, 0.8)';"
-              onmouseout="this.style.background='rgba(24, 119, 242, 0.15)'; this.style.borderColor='rgba(24, 119, 242, 0.5)';"
-            >
-              📘 Facebook
-            </a>
+          ${hasSocialLinks ? `
+            <div style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: ${isMobile ? '0.4rem' : '0.5rem'};
+              margin-top: ${isMobile ? '0.35rem' : '0.5rem'};
+            ">
+              ${location.facebookLink ? `
+                <a 
+                  href="${location.facebookLink}" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: ${isMobile ? '28px' : '32px'};
+                    height: ${isMobile ? '28px' : '32px'};
+                    background: rgba(24, 119, 242, 0.15);
+                    border: 1px solid rgba(24, 119, 242, 0.5);
+                    border-radius: 50%;
+                    color: #1877f2;
+                    text-decoration: none;
+                    transition: all 0.2s ease;
+                  "
+                  onmouseover="this.style.background='rgba(24, 119, 242, 0.3)'; this.style.transform='scale(1.1)';"
+                  onmouseout="this.style.background='rgba(24, 119, 242, 0.15)'; this.style.transform='scale(1)';"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+              ` : ''}
+              ${location.xLink ? `
+                <a 
+                  href="${location.xLink}" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: ${isMobile ? '28px' : '32px'};
+                    height: ${isMobile ? '28px' : '32px'};
+                    background: rgba(255, 255, 255, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    color: #ffffff;
+                    text-decoration: none;
+                    transition: all 0.2s ease;
+                  "
+                  onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'; this.style.transform='scale(1.1)';"
+                  onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.transform='scale(1)';"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </a>
+              ` : ''}
+              ${location.email ? `
+                <button 
+                  onclick="navigator.clipboard.writeText('${location.email}'); this.style.background='rgba(34, 197, 94, 0.3)'; this.style.borderColor='rgba(34, 197, 94, 0.8)'; this.style.color='#22c55e'; setTimeout(() => { this.style.background='rgba(34, 211, 238, 0.15)'; this.style.borderColor='rgba(34, 211, 238, 0.5)'; this.style.color='#22d3ee'; }, 1500);"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: ${isMobile ? '28px' : '32px'};
+                    height: ${isMobile ? '28px' : '32px'};
+                    background: rgba(34, 211, 238, 0.15);
+                    border: 1px solid rgba(34, 211, 238, 0.5);
+                    border-radius: 50%;
+                    color: #22d3ee;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                  "
+                  onmouseover="this.style.transform='scale(1.1)';"
+                  onmouseout="this.style.transform='scale(1)';"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </button>
+              ` : ''}
+            </div>
           ` : ''}
         </div>
       `, {
@@ -894,142 +928,27 @@ export default function InteractivePhilippinesMap() {
                     wordBreak: 'break-word',
                   }}
                 >
-                  Tap markers to explore the people powering Filipino Web3 in every city.
+                  {selectedLocation.description || 'Tap markers to explore the people powering Filipino Web3 in every city.'}
                 </p>
-                {(selectedLocation.facebookLink || selectedLocation.xLink || selectedLocation.email) && (
+                {selectedLocation.communityImage && (
                   <div
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'clamp(0.5rem, 1vw, 0.75rem)',
                       marginTop: 'clamp(0.5rem, 1vw, 0.75rem)',
+                      borderRadius: 'clamp(6px, 1vw, 8px)',
+                      overflow: 'hidden',
+                      border: `1px solid ${regionColors[selectedLocation.region]}40`,
                     }}
                   >
-                    {selectedLocation.facebookLink && (
-                      <a
-                        href={selectedLocation.facebookLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: 'clamp(32px, 5vw, 40px)',
-                          height: 'clamp(32px, 5vw, 40px)',
-                          background: 'rgba(24, 119, 242, 0.15)',
-                          border: '1px solid rgba(24, 119, 242, 0.5)',
-                          borderRadius: '50%',
-                          color: '#1877f2',
-                          textDecoration: 'none',
-                          transition: 'all 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'rgba(24, 119, 242, 0.3)';
-                          e.currentTarget.style.borderColor = 'rgba(24, 119, 242, 0.8)';
-                          e.currentTarget.style.transform = 'scale(1.1)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'rgba(24, 119, 242, 0.15)';
-                          e.currentTarget.style.borderColor = 'rgba(24, 119, 242, 0.5)';
-                          e.currentTarget.style.transform = 'scale(1)';
-                        }}
-                        aria-label="Visit Facebook Page"
-                      >
-                        <FacebookIcon size={18} />
-                      </a>
-                    )}
-                    {selectedLocation.xLink && (
-                      <a
-                        href={selectedLocation.xLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: 'clamp(32px, 5vw, 40px)',
-                          height: 'clamp(32px, 5vw, 40px)',
-                          background: 'rgba(255, 255, 255, 0.1)',
-                          border: '1px solid rgba(255, 255, 255, 0.3)',
-                          borderRadius: '50%',
-                          color: '#ffffff',
-                          textDecoration: 'none',
-                          transition: 'all 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-                          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.6)';
-                          e.currentTarget.style.transform = 'scale(1.1)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
-                          e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
-                          e.currentTarget.style.transform = 'scale(1)';
-                        }}
-                        aria-label="Visit X Profile"
-                      >
-                        <XIcon size={16} />
-                      </a>
-                    )}
-                    {selectedLocation.email && (
-                      <div style={{ position: 'relative' }}>
-                        <button
-                          onClick={() => copyEmailToClipboard(selectedLocation.email!)}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: 'clamp(32px, 5vw, 40px)',
-                            height: 'clamp(32px, 5vw, 40px)',
-                            background: emailCopied ? 'rgba(34, 197, 94, 0.3)' : 'rgba(34, 211, 238, 0.15)',
-                            border: emailCopied ? '1px solid rgba(34, 197, 94, 0.8)' : '1px solid rgba(34, 211, 238, 0.5)',
-                            borderRadius: '50%',
-                            color: emailCopied ? '#22c55e' : '#22d3ee',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s ease',
-                          }}
-                          onMouseEnter={(e) => {
-                            if (!emailCopied) {
-                              e.currentTarget.style.background = 'rgba(34, 211, 238, 0.3)';
-                              e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.8)';
-                            }
-                            e.currentTarget.style.transform = 'scale(1.1)';
-                          }}
-                          onMouseLeave={(e) => {
-                            if (!emailCopied) {
-                              e.currentTarget.style.background = 'rgba(34, 211, 238, 0.15)';
-                              e.currentTarget.style.borderColor = 'rgba(34, 211, 238, 0.5)';
-                            }
-                            e.currentTarget.style.transform = 'scale(1)';
-                          }}
-                          aria-label="Copy Email"
-                        >
-                          <Mail size={18} />
-                        </button>
-                        {emailCopied && (
-                          <div
-                            style={{
-                              position: 'absolute',
-                              bottom: '100%',
-                              left: '50%',
-                              transform: 'translateX(-50%)',
-                              marginBottom: '0.5rem',
-                              padding: '0.25rem 0.5rem',
-                              background: 'rgba(34, 197, 94, 0.9)',
-                              borderRadius: '4px',
-                              color: '#ffffff',
-                              fontSize: '0.65rem',
-                              fontFamily: 'var(--font-montserrat), sans-serif',
-                              fontWeight: '600',
-                              whiteSpace: 'nowrap',
-                              zIndex: 100,
-                            }}
-                          >
-                            Copied!
-                          </div>
-                        )}
-                      </div>
-                    )}
+                    <img
+                      src={selectedLocation.communityImage}
+                      alt={`${getCityLabel(selectedLocation)} community`}
+                      style={{
+                        width: '100%',
+                        height: 'auto',
+                        display: 'block',
+                        objectFit: 'cover',
+                      }}
+                    />
                   </div>
                 )}
               </div>
