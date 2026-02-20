@@ -262,8 +262,14 @@ export default function InteractivePhilippinesMap() {
       zoom: isMobile ? 6 : 7,
       zoomControl: true,
       attributionControl: false,
-      minZoom: isMobile ? 4 : 5,
-      maxZoom: isMobile ? 8 : 10,
+      minZoom: isMobile ? 6 : 7,
+      maxZoom: isMobile ? 6 : 7,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      touchZoom: false,
     });
 
     // Set max bounds
@@ -404,7 +410,6 @@ export default function InteractivePhilippinesMap() {
       }).filter(Boolean);
 
       // Enhanced popup with responsive sizing
-      const hasSocialLinks = location.facebookLink || location.xLink || location.email;
       marker.bindPopup(`
         <div style="
           font-family: var(--font-press-start-2p), 'Courier New', monospace;
@@ -421,16 +426,16 @@ export default function InteractivePhilippinesMap() {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: ${isMobile ? '0.25rem' : '0.5rem'};
-            margin-bottom: ${isMobile ? '0.25rem' : '0.5rem'};
+            gap: ${isMobile ? '0.35rem' : '0.5rem'};
+            margin-bottom: ${isMobile ? '0.4rem' : '0.6rem'};
           ">
-            <span style="color: #22d3ee; font-size: ${isMobile ? '0.8rem' : '1rem'};">📍</span>
+            <span style="color: #22d3ee; font-size: ${isMobile ? '1rem' : '1.2rem'};">📍</span>
             <strong style="
-              font-size: ${isMobile ? '0.65rem' : '0.8rem'};
-              background: linear-gradient(135deg, #22d3ee, #a855f7);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
+              font-size: ${isMobile ? '0.9rem' : '1.1rem'};
+              font-weight: 800;
+              letter-spacing: 0.05em;
+              color: #ffffff;
+              text-shadow: 0 0 10px rgba(34, 211, 238, 0.6), 0 2px 4px rgba(0,0,0,0.5);
             ">${cityName.toUpperCase()}</strong>
           </div>
           ${memberNames.length > 0 ? `
@@ -445,99 +450,32 @@ export default function InteractivePhilippinesMap() {
           ` : ''}
           <div style="
             font-size: ${isMobile ? '0.5rem' : '0.6rem'};
-            opacity: 0.9;
             padding: ${isMobile ? '0.2rem 0.4rem' : '0.25rem 0.5rem'};
-            background: rgba(34, 211, 238, 0.1);
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.6);
             border-radius: ${isMobile ? '4px' : '6px'};
             display: inline-block;
             margin-top: ${isMobile ? '0.15rem' : '0.25rem'};
-            margin-bottom: ${hasSocialLinks ? (isMobile ? '0.25rem' : '0.35rem') : '0'};
+            margin-bottom: ${location.avatar ? (isMobile ? '0.35rem' : '0.5rem') : '0'};
+            color: #a855f7;
           ">${location.region}</div>
-          ${hasSocialLinks ? `
+          ${location.avatar ? `
             <div style="
+              margin-top: ${isMobile ? '0.5rem' : '0.65rem'};
               display: flex;
-              align-items: center;
               justify-content: center;
-              gap: ${isMobile ? '0.4rem' : '0.5rem'};
-              margin-top: ${isMobile ? '0.35rem' : '0.5rem'};
             ">
-              ${location.facebookLink ? `
-                <a 
-                  href="${location.facebookLink}" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: ${isMobile ? '28px' : '32px'};
-                    height: ${isMobile ? '28px' : '32px'};
-                    background: rgba(24, 119, 242, 0.15);
-                    border: 1px solid rgba(24, 119, 242, 0.5);
-                    border-radius: 50%;
-                    color: #1877f2;
-                    text-decoration: none;
-                    transition: all 0.2s ease;
-                  "
-                  onmouseover="this.style.background='rgba(24, 119, 242, 0.3)'; this.style.transform='scale(1.1)';"
-                  onmouseout="this.style.background='rgba(24, 119, 242, 0.15)'; this.style.transform='scale(1)';"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </a>
-              ` : ''}
-              ${location.xLink ? `
-                <a 
-                  href="${location.xLink}" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: ${isMobile ? '28px' : '32px'};
-                    height: ${isMobile ? '28px' : '32px'};
-                    background: rgba(255, 255, 255, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    color: #ffffff;
-                    text-decoration: none;
-                    transition: all 0.2s ease;
-                  "
-                  onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'; this.style.transform='scale(1.1)';"
-                  onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.transform='scale(1)';"
-                >
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                </a>
-              ` : ''}
-              ${location.email ? `
-                <button 
-                  onclick="navigator.clipboard.writeText('${location.email}'); this.style.background='rgba(34, 197, 94, 0.3)'; this.style.borderColor='rgba(34, 197, 94, 0.8)'; this.style.color='#22c55e'; setTimeout(() => { this.style.background='rgba(34, 211, 238, 0.15)'; this.style.borderColor='rgba(34, 211, 238, 0.5)'; this.style.color='#22d3ee'; }, 1500);"
-                  style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: ${isMobile ? '28px' : '32px'};
-                    height: ${isMobile ? '28px' : '32px'};
-                    background: rgba(34, 211, 238, 0.15);
-                    border: 1px solid rgba(34, 211, 238, 0.5);
-                    border-radius: 50%;
-                    color: #22d3ee;
-                    cursor: pointer;
-                    transition: all 0.2s ease;
-                  "
-                  onmouseover="this.style.transform='scale(1.1)';"
-                  onmouseout="this.style.transform='scale(1)';"
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect width="20" height="16" x="2" y="4" rx="2"/>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                  </svg>
-                </button>
-              ` : ''}
+              <img 
+                src="${location.avatar}" 
+                alt="${cityName} logo"
+                style="
+                  width: ${isMobile ? '120px' : '150px'};
+                  height: auto;
+                  border-radius: 10px;
+                  border: 2px solid rgba(168, 85, 247, 0.4);
+                  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                "
+              />
             </div>
           ` : ''}
         </div>
@@ -725,11 +663,11 @@ export default function InteractivePhilippinesMap() {
               position: 'absolute',
               top: 'clamp(0.75rem, 2vw, 1.5rem)',
               right: 'clamp(0.75rem, 2vw, 1.5rem)',
-              width: 'min(340px, 85vw)',
+              width: 'min(280px, 80vw)',
               background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 40, 0.95))',
             border: `clamp(2px, 0.4vw, 3px) solid ${regionColors[selectedLocation.region]}`,
             borderRadius: 'clamp(0.5rem, 1.5vw, 1rem)',
-              padding: 'clamp(0.85rem, 2vw, 1.25rem)',
+              padding: 'clamp(0.75rem, 1.5vw, 1rem)',
             boxShadow: `
                 0 20px 40px rgba(0,0,0,0.5),
                 0 0 clamp(20px, 5vw, 40px) ${regionColors[selectedLocation.region]}60
@@ -737,222 +675,234 @@ export default function InteractivePhilippinesMap() {
               zIndex: 20,
             }}
           >
-            <div className="flex items-start gap-3">
-              {/* Avatars strip (scrollable when multiple members in a city) */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  flexShrink: 0,
-                }}
-              >
-                <div
+            {/* Header with title and close button */}
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
+                <Sparkles 
+                  style={{ 
+                    color: regionColors[selectedLocation.region],
+                    width: 16,
+                    height: 16,
+                    flexShrink: 0,
+                  }} 
+                />
+                <h3
                   style={{
-                    display: 'flex',
-                    gap: '0.4rem',
-                    maxWidth: '110px',
-                    overflowX: 'auto',
-                    paddingBottom: '0.15rem',
+                    fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                    fontSize: 'clamp(0.65rem, 1.5vw, 0.85rem)',
+                    letterSpacing: '0.05em',
+                    margin: 0,
+                    background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
                   }}
                 >
-                  {communityLocations
-                    .filter((loc) => getCityLabel(loc) === getCityLabel(selectedLocation))
-                    .map((loc) => (
-                      <button
-                        key={loc.name}
-                        onClick={() => setSelectedLocation(loc)}
-                        style={{
-                          border: loc.name === selectedLocation.name
-                            ? `2px solid ${regionColors[loc.region]}`
-                            : '2px solid rgba(148,163,184,0.5)',
-                          borderRadius: '18px',
-                          padding: '4px',
-                          background: 'rgba(0,0,0,0.4)',
-                          cursor: 'pointer',
-                          width: '90px',
-                          flexShrink: 0,
-                        }}
-                      >
-                        {loc.avatar && (
-                          <img
-                            src={loc.avatar}
-                            alt={loc.name}
-                            style={{
-                              width: '100%',
-                              borderRadius: '14px',
-                              objectFit: 'cover',
-                              display: 'block',
-                              imageRendering: 'pixelated',
-                            }}
-                            loading="lazy"
-                          />
-                        )}
-                      </button>
-                    ))}
-                </div>
-                {communityLocations.filter(
-                  (loc) => getCityLabel(loc) === getCityLabel(selectedLocation)
-                ).length > 1 && (
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-montserrat), sans-serif',
-                      fontSize: 'clamp(0.6rem, 1.2vw, 0.65rem)',
-                      color: '#9ca3af',
-                      whiteSpace: 'nowrap',
-                    }}
-                  >
-                    Swipe avatars →
-                  </span>
-                )}
+                  {`WEB3 ${getCityLabel(selectedLocation).toUpperCase().replace(' CITY', '')}`}
+                </h3>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start justify-between gap-2">
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-2 mb-2">
-                  <Sparkles 
-                    style={{ 
-                      color: regionColors[selectedLocation.region],
-                          width: 16,
-                          height: 16,
-                          flexShrink: 0,
-                    }} 
-                  />
-                      <div className="flex-1 min-w-0">
-                  <h3
+              <button
+                onClick={() => setSelectedLocation(null)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#9ca3af',
+                  width: 24,
+                  height: 24,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'color 0.2s ease',
+                  flexShrink: 0,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#9ca3af';
+                }}
+                aria-label="Close member card"
+              >
+                <X style={{ width: 16, height: 16, strokeWidth: 2 }} />
+              </button>
+            </div>
+
+            {/* Social icons row */}
+            {(selectedLocation.facebookLink || selectedLocation.xLink || selectedLocation.email) && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.5rem' }}>
+                {selectedLocation.facebookLink && (
+                  <a
+                    href={selectedLocation.facebookLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
-                      fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                            fontSize: 'clamp(0.75rem, 1.8vw, 1rem)',
-                      letterSpacing: '0.08em',
-                      margin: 0,
-                            marginBottom: '0.25rem',
-                      background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}, #ffffff)`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                            textShadow: `0 0 10px ${regionColors[selectedLocation.region]}40`,
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                          }}
-                        >
-                          {getCityLabel(selectedLocation).toUpperCase()}
-                        </h3>
-                        {(() => {
-                          const memberName = selectedLocation.name.split('•')[1]?.trim();
-                          return memberName ? (
-                            <div
-                              style={{
-                                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                                fontSize: 'clamp(0.55rem, 1.2vw, 0.7rem)',
-                                letterSpacing: '0.05em',
-                                color: '#a855f7',
-                                marginTop: '0.15rem',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                              }}
-                            >
-                              {memberName.toUpperCase()}
-                            </div>
-                          ) : null;
-                        })()}
-                      </div>
-                    </div>
-                    <div
-                      style={{
-                        display: 'inline-flex',
-                        flexWrap: 'wrap',
-                        alignItems: 'center',
-                        gap: '0.25rem 0.5rem',
-                        padding: 'clamp(0.25rem, 0.6vw, 0.4rem) clamp(0.5rem, 1vw, 0.7rem)',
-                        background: `linear-gradient(135deg, ${regionColors[selectedLocation.region]}20, ${regionColors[selectedLocation.region]}05)`,
-                        border: `1px solid ${regionColors[selectedLocation.region]}`,
-                        borderRadius: '999px',
-                        fontSize: 'clamp(0.55rem, 1.1vw, 0.65rem)',
-                        letterSpacing: '0.08em',
-                        color: regionColors[selectedLocation.region],
-                        fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
-                        textTransform: 'uppercase',
-                        maxWidth: '100%',
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: '0.35rem',
-                          height: '0.35rem',
-                          borderRadius: '50%',
-                          background: regionColors[selectedLocation.region],
-                          boxShadow: `0 0 8px ${regionColors[selectedLocation.region]}80`,
-                          flexShrink: 0,
-                        }}
-                      />
-                      <span>{selectedLocation.region}</span>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => setSelectedLocation(null)}
-                    style={{
-                      background: 'transparent',
-                      border: 'none',
-                      color: '#9ca3af',
-                      width: 24,
-                      height: 24,
-                      cursor: 'pointer',
-                      flexShrink: 0,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      transition: 'color 0.2s ease',
+                      width: '28px',
+                      height: '28px',
+                      background: 'rgba(24, 119, 242, 0.15)',
+                      border: '1px solid rgba(24, 119, 242, 0.5)',
+                      borderRadius: '50%',
+                      color: '#1877f2',
+                      textDecoration: 'none',
+                      transition: 'all 0.2s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#ffffff';
+                      e.currentTarget.style.background = 'rgba(24, 119, 242, 0.3)';
+                      e.currentTarget.style.transform = 'scale(1.1)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#9ca3af';
+                      e.currentTarget.style.background = 'rgba(24, 119, 242, 0.15)';
+                      e.currentTarget.style.transform = 'scale(1)';
                     }}
-                    aria-label="Close member card"
+                    aria-label="Visit Facebook Page"
                   >
-                    <X style={{ width: 16, height: 16, strokeWidth: 2 }} />
-                  </button>
-                </div>
-                <p
-                  style={{
-                    marginTop: 'clamp(0.4rem, 1vw, 0.6rem)',
-                    fontFamily: 'var(--font-montserrat), sans-serif',
-                    fontSize: 'clamp(0.65rem, 1.3vw, 0.75rem)',
-                    lineHeight: 1.5,
-                    color: '#e5e7eb',
-                    opacity: 0.9,
-                    wordBreak: 'break-word',
-                  }}
-                >
-                  {selectedLocation.description || 'Tap markers to explore the people powering Filipino Web3 in every city.'}
-                </p>
-                {selectedLocation.communityImage && (
-                  <div
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </a>
+                )}
+                {selectedLocation.xLink && (
+                  <a
+                    href={selectedLocation.xLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
-                      marginTop: 'clamp(0.5rem, 1vw, 0.75rem)',
-                      borderRadius: 'clamp(6px, 1vw, 8px)',
-                      overflow: 'hidden',
-                      border: `1px solid ${regionColors[selectedLocation.region]}40`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '28px',
+                      height: '28px',
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
+                      borderRadius: '50%',
+                      color: '#ffffff',
+                      textDecoration: 'none',
+                      transition: 'all 0.2s ease',
                     }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                    aria-label="Visit X Profile"
                   >
-                    <img
-                      src={selectedLocation.communityImage}
-                      alt={`${getCityLabel(selectedLocation)} community`}
-                      style={{
-                        width: '100%',
-                        height: 'auto',
-                        display: 'block',
-                        objectFit: 'cover',
-                      }}
-                    />
-                  </div>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  </a>
+                )}
+                {selectedLocation.email && (
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(selectedLocation.email!);
+                    }}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '28px',
+                      height: '28px',
+                      background: 'rgba(34, 211, 238, 0.15)',
+                      border: '1px solid rgba(34, 211, 238, 0.5)',
+                      borderRadius: '50%',
+                      color: '#22d3ee',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(34, 211, 238, 0.3)';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(34, 211, 238, 0.15)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                    aria-label="Copy Email"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2"/>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                  </button>
                 )}
               </div>
+            )}
+
+            {/* Community badge */}
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                padding: '0.25rem 0.5rem',
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+                borderRadius: '999px',
+                fontSize: 'clamp(0.5rem, 1vw, 0.6rem)',
+                letterSpacing: '0.08em',
+                color: '#ffffff',
+                fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
+                textTransform: 'uppercase',
+                marginBottom: '0.5rem',
+              }}
+            >
+              <span
+                style={{
+                  width: '0.3rem',
+                  height: '0.3rem',
+                  borderRadius: '50%',
+                  background: '#ffffff',
+                  boxShadow: '0 0 6px rgba(255, 255, 255, 0.5)',
+                }}
+              />
+              <span>Community</span>
             </div>
+
+            {/* Description */}
+            <p
+              style={{
+                margin: 0,
+                fontFamily: 'var(--font-montserrat), sans-serif',
+                fontSize: 'clamp(0.65rem, 1.2vw, 0.75rem)',
+                lineHeight: 1.5,
+                color: '#e5e7eb',
+                opacity: 0.9,
+              }}
+            >
+              {selectedLocation.description || 'Tap markers to explore the people powering Filipino Web3 in every city.'}
+            </p>
+
+            {/* Community Image */}
+            {selectedLocation.communityImage && (
+              <div
+                style={{
+                  marginTop: '0.75rem',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  border: `1px solid ${regionColors[selectedLocation.region]}40`,
+                }}
+              >
+                <img
+                  src={selectedLocation.communityImage}
+                  alt={`${getCityLabel(selectedLocation)} community`}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    objectFit: 'cover',
+                  }}
+                />
+              </div>
+            )}
           </div>
         )}
         </div>
