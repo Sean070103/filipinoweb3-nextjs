@@ -5,8 +5,11 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: false,
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [],
+  },
+  turbopack: {
+    root: __dirname,
   },
 };
 

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { REGION_COLORS, type Region } from "@/constants/regionColors";
@@ -26,7 +26,7 @@ const champions: Champion[] = [
   {
     name: "Clivv",
     role: "Marketing",
-    image: "/images/Clivv(1).png",
+    image: "/images/CLivv_new.jpg",
     region: "Visayas",
   },
   {
@@ -44,7 +44,7 @@ const champions: Champion[] = [
   {
     name: "Lupin",
     role: "Business Dev",
-    image: "/images/lupz_u.jpg",
+    image: "/images/Lupin_new.jpg",
     region: "Visayas",
   },
   {
@@ -232,8 +232,7 @@ export default function Team() {
                       right: "clamp(4px, 0.8vw, 6px)",
                       width: "clamp(22px, 4vw, 30px)",
                       height: "clamp(22px, 4vw, 30px)",
-                      background:
-                        "linear-gradient(135deg, #FFD700, #FFA500)",
+                      background: "linear-gradient(135deg, #FFD700, #FFA500)",
                       borderRadius: "50%",
                       display: "flex",
                       alignItems: "center",
