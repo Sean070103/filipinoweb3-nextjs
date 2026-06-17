@@ -74,6 +74,10 @@ const communityLocations: CommunityLocation[] = [
     coordinates: [10.7202, 122.5621],
     avatar: "/images/Iloilo.jfif",
     facebookLink: "https://www.facebook.com/web3iloilo",
+    email: "ryan.web3iloilo@gmail.com",
+    description:
+      "Web3 Iloilo is the FIRST to bring Web3 IRL events to Iloilo City. A FUN, SAFE space for newbies and Web3 enthusiasts across Panay Island!",
+      communityImage: "/images/community_iloilo.jpg",
   },
   {
     name: "Cebu City",
