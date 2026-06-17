@@ -44,7 +44,7 @@ const champions: Champion[] = [
   {
     name: "Lupin",
     role: "Business Dev",
-    image: "/images/Lupin_new.jpg",
+    image: "/images/Lupin_2.jpg",
     region: "Visayas",
   },
   {
@@ -56,7 +56,7 @@ const champions: Champion[] = [
   {
     name: "Zirk",
     role: "Product",
-    image: "/images/coretoshi_zirk.png",
+    image: "/images/Zirk_3.jpg",
     region: "Luzon",
   },
 ];
