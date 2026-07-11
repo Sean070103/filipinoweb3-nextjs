@@ -21,6 +21,7 @@ type CommunityLocation = {
   email?: string;
   description?: string;
   communityImage?: string;
+  customName?: string;
 };
 
 const communityLocations: CommunityLocation[] = [
@@ -111,10 +112,11 @@ const communityLocations: CommunityLocation[] = [
     coordinates: [13.7565, 121.0583],
   },
   {
-    name: "Cavite City",
+    name: "Cryptita Plays",
     region: "Luzon",
     coordinates: [14.272612, 120.913171],
     avatar: "/images/community_cavite.jpg",
+    customName: "Cryptita Plays",
   },
   {
     name: "Aklan",
@@ -169,6 +171,7 @@ const communityLocations: CommunityLocation[] = [
     region: "Mindanao",
     coordinates: [7.203656, 125.515015],
     avatar: "/images/community_davaodefi.jpg",
+    customName: "Davao DeFi Community",
   },
   {
     name: "Cabuyao City • TBA",
@@ -832,6 +835,8 @@ export default function InteractivePhilippinesMap() {
               top: "clamp(0.75rem, 2vw, 1.5rem)",
               right: "clamp(0.75rem, 2vw, 1.5rem)",
               width: "min(280px, 80vw)",
+              maxHeight: "calc(100% - 3rem)",
+              overflowY: "auto",
               background:
                 "linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 40, 0.95))",
               border: `clamp(2px, 0.4vw, 3px) solid ${
@@ -846,6 +851,7 @@ export default function InteractivePhilippinesMap() {
                 }60
               `,
               zIndex: 20,
+              scrollbarWidth: "none",
             }}
           >
             {/* Header with title and close button */}
@@ -889,12 +895,13 @@ export default function InteractivePhilippinesMap() {
                     backgroundClip: "text",
                     overflow: "hidden",
                     textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
+                    whiteSpace: "normal",
                   }}
                 >
-                  {`WEB3 ${getCityLabel(selectedLocation)
-                    .toUpperCase()
-                    .replace(" CITY", "")}`}
+                  {selectedLocation.customName ??
+                    `WEB3 ${getCityLabel(selectedLocation)
+                      .toUpperCase()
+                      .replace(" CITY", "")}`}
                 </h3>
               </div>
               <button
@@ -1139,6 +1146,10 @@ export default function InteractivePhilippinesMap() {
       </div>
 
       <style>{`
+        .member-floating-card::-webkit-scrollbar {
+          display: none;
+        }
+        
         .custom-marker {
           background: transparent !important;
           border: none !important;
