@@ -174,6 +174,13 @@ const communityLocations: CommunityLocation[] = [
     customName: "Davao DeFi Community",
   },
   {
+    name: "APHWEB3",
+    region: "Mindanao",
+    coordinates: [8.462452, 124.651406],
+    avatar: "/images/community_aphweb3.jpg",
+    customName: "APHWEB3",
+  },
+  {
     name: "Cabuyao City • TBA",
     region: "Luzon",
     coordinates: [14.2742, 121.1236],
