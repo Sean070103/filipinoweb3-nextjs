@@ -1,11 +1,19 @@
 'use client';
 
-import React from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
-  const prefersReduced = useReducedMotion();
+  const [prefersReduced, setPrefersReduced] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReduced(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const socialLinks = [
     {
@@ -65,9 +73,10 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative text-white overflow-hidden"
+      className="relative overflow-hidden"
       style={{
         background: '#000000',
+        color: '#ffffff',
         borderTop: '4px solid #06b6d4',
         imageRendering: 'pixelated',
         WebkitFontSmoothing: 'none',
@@ -92,10 +101,10 @@ export default function Footer() {
           {/* Brand Section */}
           <motion.div
             className="flex flex-col"
-            initial={prefersReduced ? undefined : { opacity: 0, y: 20 }}
-            whileInView={prefersReduced ? undefined : { opacity: 1, y: 0 }}
-            transition={prefersReduced ? undefined : { duration: 0.6 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0 }}
           >
             <Link href="/" className="inline-block mb-4 focus:outline-none group">
               <div 
@@ -147,10 +156,10 @@ export default function Footer() {
           {/* Quick Links */}
           <motion.div
             className="flex flex-col"
-            initial={prefersReduced ? undefined : { opacity: 0, y: 20 }}
-            whileInView={prefersReduced ? undefined : { opacity: 1, y: 0 }}
-            transition={prefersReduced ? undefined : { duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true, amount: 0 }}
           >
             <h3 
               className="mb-4 font-bold"
@@ -196,10 +205,10 @@ export default function Footer() {
           {/* Pages */}
           <motion.div
             className="flex flex-col"
-            initial={prefersReduced ? undefined : { opacity: 0, y: 20 }}
-            whileInView={prefersReduced ? undefined : { opacity: 1, y: 0 }}
-            transition={prefersReduced ? undefined : { duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0 }}
           >
             <h3 
               className="mb-4 font-bold"
