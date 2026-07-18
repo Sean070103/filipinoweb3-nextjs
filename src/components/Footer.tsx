@@ -117,7 +117,7 @@ export default function Footer() {
                 }}
               >
                 <span 
-                  className="font-black text-xl"
+                  className="font-black text-xl footer-logo-text"
                   style={{
                     fontFamily: 'var(--font-press-start-2p), "Courier New", monospace',
                     color: '#000000',

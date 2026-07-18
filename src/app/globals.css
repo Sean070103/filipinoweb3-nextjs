@@ -171,6 +171,12 @@ section#home p,
   -webkit-text-fill-color: #ffffff !important;
 }
 
+/* Footer logo text must stay black */
+footer .footer-logo-text {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
 /* Button text specifically */
 .btn, .btn-primary, .btn-secondary {
   color: #ffffff !important;
